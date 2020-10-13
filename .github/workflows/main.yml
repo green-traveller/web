@@ -28,4 +28,4 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         npm install
-        npm run ng -- deploy --base-href=/ --name="Fabian Bucher" --email="git@fabianbucher.de" --no-silent
+        npm run ng -- deploy --base-href=/web/ --name="Fabian Bucher" --email="git@fabianbucher.de" --no-silent
