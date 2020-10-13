@@ -121,8 +121,13 @@
               "devServerTarget": "green-traveller:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {}
         }
       }
-    }},
+    }
+  },
   "defaultProject": "green-traveller"
 }
