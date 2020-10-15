@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Current State
 
-[Develop State](https://green-traveller.github.io/web/).
+[Develop Branch](https://green-traveller.github.io/web/).
 
 ## Development server
 
