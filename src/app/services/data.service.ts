@@ -10,7 +10,10 @@ export class DataService {
 
   items: any;
 
-  constructor(@Inject(LOCAL_STORAGE) private storage: StorageService) { }
+  constructor(@Inject(LOCAL_STORAGE) private storage: StorageService) {
+    this.getItems();
+    this.addItem('Christopher');
+  }
 
   public getItems(): any {
     this.items = this.storage.get(STORAGE_KEY) || [];
