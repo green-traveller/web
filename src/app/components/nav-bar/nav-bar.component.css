@@ -1,0 +1,9 @@
+.nav-bar { 
+    background-color: green;
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav-bar__item {
+    padding: 0.5rem;
+}
