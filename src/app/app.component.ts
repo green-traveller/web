@@ -13,6 +13,6 @@ export class AppComponent {
   }
 
   ngOnInit(): void {
-    this.dataService.addItem('Niklas isset');
+    // this.dataService.addItem('Niklas isset');
   }
 }
