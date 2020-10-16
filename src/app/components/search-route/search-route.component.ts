@@ -9,10 +9,17 @@ export class SearchRouteComponent implements OnInit {
 
   @ViewChild('nowButton') nowButton: ElementRef;
   @ViewChild('dateInput') dateInput: ElementRef;
+  @ViewChild('timeInput') timeInput: ElementRef;
   constructor() { }
 
   ngOnInit(): void {
     console.log(this.nowButton);
+  }
+
+  ngAfterViewInit(): void {
+    let dateStrings: String[] = new Date().toISOString().split('T');
+    this.dateInput.nativeElement.value = dateStrings[0];
+    this.timeInput.nativeElement.value = dateStrings[1].substring(0,5);
   }
 
   handleNowButtonClick(): void {
