@@ -1,0 +1,32 @@
+<app-nav-bar title="Search Routes"></app-nav-bar>
+
+<div class="search-route">
+  <div class="form-group">
+    <label for="inputFrom">From: </label>
+    <input class="form-control" id="inputFrom" type="text" placeholder="From" >
+  </div>
+
+  <div class="form-group">
+    <label for="inputTo">To: </label>
+    <input class="form-control" id="inputTo" type="text" placeholder="To">
+  </div>
+
+  <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" [(ngModel)]="departureArrival">
+    <label ngbButtonLabel class="btn-primary">
+      <input ngbButton type="radio" value="Departure">Departure
+    </label>
+    <label ngbButtonLabel class="btn-primary">
+      <input ngbButton type="radio" value="Arrival">Arrival
+    </label>
+  </div>
+
+  <div class="search-route__time-select">
+    <input type="time" class="form-control" #timeInput>
+    <input type="date" class="form-control" #dateInput>
+    <button class="btn btn-primary" #nowButton (click)="handleNowButtonClick()">Now</button>
+  </div>
+
+  <div class="search-route__action">
+    <button class="btn btn-primary btn-block" type="button">Search</button>
+  </div>
+</div>

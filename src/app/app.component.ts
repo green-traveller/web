@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DataService } from './services/data.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = '🚴🌳 Green Traveller';
+
+  constructor(private dataService: DataService) {
+  }
+
+  ngOnInit(): void {
+    // this.dataService.addItem('Niklas isset');
+  }
 }
