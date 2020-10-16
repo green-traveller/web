@@ -1,5 +1,17 @@
 <app-nav-bar title="About"></app-nav-bar>
-<div>
-  <img alt="Green Traveller Logo" src="https://via.placeholder.com/150">
-  <span>🚴🌳 Green Traveller</span>
+
+<div class="about">
+  <div class="about__about">
+    <img alt="Green Traveller Logo" src="https://via.placeholder.com/150">
+    <span class="about__title">🚴🌳 Green Traveller</span>
+    <small>Version: {{ version }} - License: <a [href]="homepage + '/blob/develop/LICENSE'" target="_blank">{{ license }}</a></small>
+    <small>View source code on <a [href]="homepage" target="_blank">Github</a>.</small>
+  </div>
+  <div class="about__dependencies">
+    <span><b>Dependencies</b></span>
+    <small>View licenses of dependencies <a href="https://green-traveller.github.io/web/3rdpartylicenses.txt" target="_blank">here</a>.</small>
+    <div class="about__dependencies-list">
+      <div *ngFor="let dependency of dependencies" class="about__dependency">{{ dependency }}</div>
+    </div>
+  </div>
 </div>

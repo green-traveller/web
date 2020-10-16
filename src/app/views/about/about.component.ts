@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { version, homepage, dependencies, license } from '../../../../package.json';
 
 @Component({
   selector: 'app-about',
@@ -6,6 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./about.component.css']
 })
 export class AboutComponent implements OnInit {
+
+  version = version;
+  license = license;
+  homepage = homepage;
+  dependencies = Object.keys(dependencies);
 
   constructor() { }
 

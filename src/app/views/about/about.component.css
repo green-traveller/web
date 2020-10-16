@@ -1,0 +1,33 @@
+.about {
+  padding: 0.5rem;
+}
+
+.about__about {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: 4rem 0;
+}
+
+.about__title {
+  margin-top: 1rem;
+}
+
+.about__dependencies {
+  display: flex;
+  flex-direction: column;
+}
+
+.about__dependencies-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.about__dependency {
+  background-color: #5DFFA6;
+  border-radius: 0.5rem;
+  margin: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  white-space: nowrap;
+}
