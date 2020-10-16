@@ -1,3 +1,4 @@
+import { formatDate } from '@angular/common';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 @Component({
@@ -10,35 +11,26 @@ export class SearchRouteComponent implements OnInit {
   @ViewChild('nowButton') nowButton: ElementRef;
   @ViewChild('dateInput') dateInput: ElementRef;
   @ViewChild('timeInput') timeInput: ElementRef;
+
+  departureArrival = 'Departure';
+
   constructor() { }
 
   ngOnInit(): void {
     console.log(this.nowButton);
   }
 
+  setCurrentDateTime(): void {
+    this.timeInput.nativeElement.value = formatDate(new Date(), 'HH:mm', 'en-US');
+    this.dateInput.nativeElement.value = formatDate(new Date(), 'yyyy-MM-dd', 'en-US');
+  }
+
+  // tslint:disable-next-line: use-lifecycle-interface
   ngAfterViewInit(): void {
-    let dateStrings: String[] = new Date().toISOString().split('T');
-    this.dateInput.nativeElement.value = this.getDateString();
-    console.log(this.getDateString());
-    this.timeInput.nativeElement.value = dateStrings[1].substring(0,5);
+    this.setCurrentDateTime();
   }
 
   handleNowButtonClick(): void {
-    this.dateInput.nativeElement.value = new Date().toISOString().split('T')[0];
-  }
-
-  getDateString(): String {
-    const date = new Date();
-    const yearString = date.getFullYear();
-    let monthString = date.getMonth().toString();
-    if (monthString.length < 2) {
-      monthString = `0${monthString}`;
-    }
-    let dayString = date.getDate().toString();
-    if (dayString.length < 2) {
-      dayString = `0${dayString}`;
-    }
-
-    return `${yearString}-${monthString}-${dayString}`;
+    this.setCurrentDateTime();
   }
 }

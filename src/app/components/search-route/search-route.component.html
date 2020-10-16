@@ -11,14 +11,16 @@
     <input class="form-control" id="inputTo" type="text" placeholder="To">
   </div>
 
-  <div class="btn-group btn-group-toggle" data-toggle="buttons">
-    <label class="btn btn-secondary active">
-      <input type="radio" name="options" id="option1" autocomplete="off" checked> Departure
+  <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" [(ngModel)]="departureArrival">
+    <label ngbButtonLabel class="btn-primary">
+      <input ngbButton type="radio" value="Departure">Departure
     </label>
-    <label class="btn btn-secondary">
-      <input type="radio" name="options" id="option2" autocomplete="off"> Arrival
+    <label ngbButtonLabel class="btn-primary">
+      <input ngbButton type="radio" value="Arrival">Arrival
     </label>
   </div>
+  
+
   <div class="search-route__time-select">
     <input type="time" class="form-control" #timeInput>
     <input type="date" class="form-control" #dateInput>
