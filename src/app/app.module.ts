@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { SearchRouteComponent } from './components/search-route/search-route.component';
+import { SearchRouteComponent } from './views/search-route/search-route.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 
 @NgModule({
