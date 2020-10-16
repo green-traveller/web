@@ -1,0 +1,16 @@
+.search-route {
+  margin: 0.5rem;
+}
+
+.search-route__time-select {
+  margin-top: 0.5rem;
+  display: flex;
+}
+
+.search-route__action {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  right: 0;
+  padding: 0.5rem;
+}
