@@ -11,6 +11,9 @@ import { SearchRouteComponent } from './views/search-route/search-route.componen
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { PreferencesComponent } from './views/preferences/preferences.component';
 import { AboutComponent } from './views/about/about.component';
+import { ManageDataComponent } from './views/preferences/manage-data/manage-data.component';
+import { CustomVehiclesComponent } from './views/preferences/custom-vehicles/custom-vehicles.component';
+import { Co2GoalsComponent } from './views/preferences/co2-goals/co2-goals.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,10 @@ import { AboutComponent } from './views/about/about.component';
     SearchRouteComponent,
     NavBarComponent,
     PreferencesComponent,
-    AboutComponent
+    AboutComponent,
+    ManageDataComponent,
+    CustomVehiclesComponent,
+    Co2GoalsComponent
   ],
   imports: [
     BrowserModule,
