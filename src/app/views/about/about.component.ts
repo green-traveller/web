@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+// @ts-ignore
 import { version, homepage, dependencies, license } from '../../../../package.json';
 
 @Component({
