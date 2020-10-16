@@ -21,8 +21,8 @@
   </div>
   <div class="search-route__time-select">
     <input type="time" class="form-control">
-    <input type="date" class="form-control">
-    <button class="btn btn-primary">Now</button>
+    <input type="date" class="form-control" #dateInput>
+    <button class="btn btn-primary" #nowButton (click)="handleNowButtonClick()">Now</button>
   </div>
 
   <div class="search-route__action">
