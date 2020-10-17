@@ -9,14 +9,20 @@ import { environment } from '../environments/environment';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SearchRouteComponent } from './views/search-route/search-route.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
-import { InitialSetupInfoComponent } from './views/initial-setup-info/initial-setup-info.component';
+import { InitialSetupInfoComponent } from './views/initial-setup/initial-setup-info/initial-setup-info.component';
+import { InitialSetupNameComponent } from './views/initial-setup/initial-setup-name/initial-setup-name.component';
+import { InitialSetupVehicleComponent } from './views/initial-setup/initial-setup-vehicle/initial-setup-vehicle.component';
+import { InitialSetupTipsComponent } from './views/initial-setup/initial-setup-tips/initial-setup-tips.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchRouteComponent,
     NavBarComponent,
-    InitialSetupInfoComponent
+    InitialSetupInfoComponent,
+    InitialSetupNameComponent,
+    InitialSetupVehicleComponent,
+    InitialSetupTipsComponent
   ],
   imports: [
     BrowserModule,

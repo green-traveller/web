@@ -1,0 +1,15 @@
+.initial-setup-info__textarea {
+    position: absolute;
+    width: 100%;
+    height: 80%;
+    right: 0;
+    padding: 2rem;
+  }
+
+.initial-setup-info__action {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    right: 0;
+    padding: 0.5rem;
+  }
