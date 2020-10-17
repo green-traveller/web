@@ -1,5 +1,17 @@
 <app-nav-bar title="Personal CO₂-Balance"></app-nav-bar>
 
-<div class="pie-chart">
+<div class="pie-chart-CO₂">
+    <h4>CO₂-Emissions (kilo tons)</h4>
+    <app-pie-chart></app-pie-chart>
+    <p>
+        <ngb-alert>
+            {{co2AlertMessage}}
+        </ngb-alert>
+        <!-- <ngb-alert alert.type="{{co2AlertType}}">  -->
+    </p>
+</div>
+
+<div class="pie-chart-km">
+    <h4>Means of Transport (km)</h4>
     <app-pie-chart></app-pie-chart>
 </div>
