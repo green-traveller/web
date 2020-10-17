@@ -9,12 +9,14 @@ import { environment } from '../environments/environment';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SearchRouteComponent } from './views/search-route/search-route.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { RouteSearchResultsComponent } from './views/route-search-results/route-search-results.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchRouteComponent,
-    NavBarComponent
+    NavBarComponent,
+    RouteSearchResultsComponent
   ],
   imports: [
     BrowserModule,
