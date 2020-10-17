@@ -1,5 +1,21 @@
 <app-nav-bar title="Who Are You?"></app-nav-bar>
 
-<div class="initial-setup-info__action">
-    <button class="btn btn-primary btn-block" type="button" [routerLink]="['/initial-setup-vehicle']">Become a Green Traveller!</button>
+<div class="initial-setup-name__logo">
+    LOGO
+</div>
+
+<div class="form-group">
+    <div class="initial-setup-name__text">
+        text text text
+    </div>
+    <div class="initial-setup-name__search">
+        <input class="form-control" name="userName" id="inputName" type="text" placeholder="Your Name">
+    </div>
+    <div class="initial-setup-name__text">
+        text text text end
+    </div>
+</div>
+
+<div class="initial-setup-name__action">
+    <button class="btn btn-primary btn-block" type="button" [routerLink]="['/initial-setup-vehicle']">{{buttonName}}</button>
 </div>

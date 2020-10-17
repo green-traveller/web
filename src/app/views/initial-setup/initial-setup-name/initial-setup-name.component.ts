@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InitialSetupNameComponent implements OnInit {
 
+  buttonName = 'Let\'s move on';
+
   constructor() { }
 
   ngOnInit(): void {

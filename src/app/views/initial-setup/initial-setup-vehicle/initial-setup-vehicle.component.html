@@ -1,5 +1,27 @@
 <app-nav-bar title="Customize Your Vehicles"></app-nav-bar>
 
-<div class="initial-setup-info__action">
+<div class="initial-setup-vehicle__text">
+        Tell me if you're using any private vehicles.
+</div>
+<div>
+    <label>Bicycle Icon</label>
+    <div  class="initial-setup-vehicle__select">
+        <div class="custom-control custom-switch">
+            <input type="checkbox" class="custom-control-input" id="customSwitch1" checked>
+            <label class="custom-control-label" for="customSwitch1"></label> <!-- not working without label? -->
+        </div>
+    </div>
+</div>
+<div>
+    <label>Car Icon</label>
+    <div class="initial-setup-vehicle__select">
+        <div class="custom-control custom-switch">
+            <input type="checkbox" class="custom-control-input" id="customSwitch2" checked>
+            <label class="custom-control-label" for="customSwitch2"></label>  <!-- not working without label? -->
+        </div>
+    </div>
+</div>
+
+<div class="initial-setup-vehicle__action">
     <button class="btn btn-primary btn-block" type="button" [routerLink]="['/initial-setup-tips']">Become a Green Traveller!</button>
 </div>

@@ -1,0 +1,22 @@
+.initial-setup-name__logo {
+  position: relative;
+  justify-content: center;
+}
+
+.initial-setup-name__text {
+  width: 100%;
+  right: 0;
+  padding: 0.5rem;
+}
+
+.initial-setup-name__search {
+  padding: 0.5rem;
+}
+
+.initial-setup-name__action {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  right: 0;
+  padding: 0.5rem;
+}
