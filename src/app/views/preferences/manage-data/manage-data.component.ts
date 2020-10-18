@@ -24,6 +24,14 @@ export class ManageDataComponent implements OnInit {
     this.alert = ALERTS.export.success;
   }
 
+  reset(): void {
+    if (window.confirm('Resetting your app and removing data.\nAre you sure?')) {
+      this.alert = ALERTS.reset.success;
+    } else {
+      this.alert = ALERTS.reset.cancel;
+    }
+  }
+
   closeAlert(): void {
     this.alert = undefined;
   }
@@ -37,7 +45,7 @@ const ALERTS = {
     },
     failure: {
       type: 'danger',
-      message: 'This is a danger alert',
+      message: 'Failed to import your data.',
     }
   },
   export: {
@@ -48,6 +56,16 @@ const ALERTS = {
     failure: {
       type: 'danger',
       message: 'This is a danger alert',
+    }
+  },
+  reset: {
+    success: {
+      type: 'success',
+      message: 'Successfully reset.',
+    },
+    cancel: {
+      type: 'info',
+      message: 'Reset cancelled.',
     }
   }
 };
