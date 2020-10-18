@@ -4,11 +4,9 @@
     <div class="vehicles__subtitle">
       <b>Default Vehicles:</b>
     </div>
-    <div  *ngFor="let vehicle of defaultVehicles" class="vehicles__list-item vehicles__list-item--default" (click)="handleDefaultVehicleClick(vehicle)">
+    <div *ngFor="let vehicle of defaultVehicles" class="vehicles__list-item vehicles__list-item--default" (click)="handleDefaultVehicleClick(vehicle)">
       <div>
-        <div class="vehicles__item-icon">
-          <fa-icon [icon]="icons[vehicle.icon]"></fa-icon>
-        </div>
+        <app-vehicle-icon [vehicle]="vehicle.icon"></app-vehicle-icon>
       </div>
       <div class="vehicles__item-details">
         <div><b>{{ vehicle.name }}</b></div>
@@ -27,18 +25,18 @@
     </div>
     <div *ngFor="let vehicle of customVehicles" class="vehicles__list-item">
       <div>
-        <div class="vehicles__item-icon">
-          <fa-icon [icon]="icons[vehicle.icon]"></fa-icon>
-        </div>
+        <app-vehicle-icon [vehicle]="vehicle.icon"></app-vehicle-icon>
       </div>
       <div class="vehicles__item-details">
         <div><b>{{ vehicle.name }}</b></div>
         <div>{{ vehicle.co2 }} g/km</div>
       </div>
       <div class="vehicles__item-actions">
-        <button class="btn btn-outline-primary btn-sm vehicles__item-button">
-          <fa-icon [icon]="icons.edit"></fa-icon>
-        </button>
+        <a [routerLink]="vehicle.id">
+          <button class="btn btn-outline-primary btn-sm vehicles__item-button">
+            <fa-icon [icon]="icons.edit"></fa-icon>
+          </button>
+        </a>
         <button class="btn btn-outline-danger btn-sm vehicles__item-button" (click)="delete(vehicle)">
           <fa-icon [icon]="icons.delete"></fa-icon>
         </button>
@@ -46,6 +44,8 @@
     </div>
   </div>
   <div class="vehicles__action-button">
-    <button class="btn btn-outline-primary btn-block">add Custom Vehicle</button>
+    <a routerLink="new">
+      <button class="btn btn-outline-primary btn-block">add Custom Vehicle</button>
+    </a>
   </div>
 </div>

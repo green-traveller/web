@@ -7,6 +7,7 @@ import { AboutComponent } from './views/about/about.component';
 import { CustomVehiclesComponent } from './views/preferences/custom-vehicles/custom-vehicles.component';
 import { Co2GoalsComponent } from './views/preferences/co2-goals/co2-goals.component';
 import { ManageDataComponent } from './views/preferences/manage-data/manage-data.component';
+import { EditVehicleComponent } from './views/preferences/custom-vehicles/edit-vehicle/edit-vehicle.component';
 
 const routes: Routes = [
   { path: '', component: SearchRouteComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'preferences/manage-data', component: ManageDataComponent },
   { path: 'preferences/co2-goals', component: Co2GoalsComponent },
   { path: 'preferences/vehicles', component: CustomVehiclesComponent },
+  { path: 'preferences/vehicles/:id', component: EditVehicleComponent },
   { path: 'about', component: AboutComponent },
   { path: 'nav', component: NavBarComponent }
 ];

@@ -1,0 +1,21 @@
+.edit-vehicle {
+  padding: 0.5rem;
+}
+
+.edit-vehicle__input {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.edit-vehicle__icon-list {
+  display: flex;
+}
+
+.edit-vehicle__icon-list-icon {
+  margin-right: 0.5rem;
+}
+
+.edit-vehicle__action {
+  margin-bottom: 0.5rem;
+}

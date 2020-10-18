@@ -15,6 +15,8 @@ import { ManageDataComponent } from './views/preferences/manage-data/manage-data
 import { CustomVehiclesComponent } from './views/preferences/custom-vehicles/custom-vehicles.component';
 import { Co2GoalsComponent } from './views/preferences/co2-goals/co2-goals.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { EditVehicleComponent } from './views/preferences/custom-vehicles/edit-vehicle/edit-vehicle.component';
+import { VehicleIconComponent } from './components/vehicle-icon/vehicle-icon.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     AboutComponent,
     ManageDataComponent,
     CustomVehiclesComponent,
-    Co2GoalsComponent
+    Co2GoalsComponent,
+    EditVehicleComponent,
+    VehicleIconComponent
   ],
   imports: [
     BrowserModule,
