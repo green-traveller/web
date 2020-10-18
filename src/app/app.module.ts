@@ -14,6 +14,7 @@ import { AboutComponent } from './views/about/about.component';
 import { ManageDataComponent } from './views/preferences/manage-data/manage-data.component';
 import { CustomVehiclesComponent } from './views/preferences/custom-vehicles/custom-vehicles.component';
 import { Co2GoalsComponent } from './views/preferences/co2-goals/co2-goals.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { Co2GoalsComponent } from './views/preferences/co2-goals/co2-goals.compo
     AppRoutingModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     FormsModule,
-    NgbModule
+    NgbModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
