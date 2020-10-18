@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 
 import { VEHICLES } from '../custom-vehicles.component';
 import { Vehicle } from '../../../../models/vehicle';
-import {Location} from "@angular/common";
 
 @Component({
   selector: 'app-edit-vehicle',
@@ -29,7 +29,7 @@ export class EditVehicleComponent implements OnInit {
       vehicle = {
         id: 'new',
         name: 'new car',
-        icon: 'car',
+        type: 'car',
         co2: 251,
         active: true,
       default: false

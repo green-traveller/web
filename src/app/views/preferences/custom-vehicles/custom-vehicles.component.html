@@ -6,7 +6,7 @@
     </div>
     <div *ngFor="let vehicle of defaultVehicles" class="vehicles__list-item vehicles__list-item--default" (click)="handleDefaultVehicleClick(vehicle)">
       <div>
-        <app-vehicle-icon [vehicle]="vehicle.icon"></app-vehicle-icon>
+        <app-vehicle-icon [vehicle]="vehicle.type"></app-vehicle-icon>
       </div>
       <div class="vehicles__item-details">
         <div><b>{{ vehicle.name }}</b></div>
@@ -25,7 +25,7 @@
     </div>
     <div *ngFor="let vehicle of customVehicles" class="vehicles__list-item">
       <div>
-        <app-vehicle-icon [vehicle]="vehicle.icon"></app-vehicle-icon>
+        <app-vehicle-icon [vehicle]="vehicle.type"></app-vehicle-icon>
       </div>
       <div class="vehicles__item-details">
         <div><b>{{ vehicle.name }}</b></div>

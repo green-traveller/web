@@ -11,14 +11,14 @@
       <app-vehicle-icon
         vehicle="car"
         class="edit-vehicle__icon-list-icon"
-        [active]="vehicle.icon === 'car'"
-        (click)="vehicle.icon = 'car'"
+        [active]="vehicle.type === 'car'"
+        (click)="vehicle.type = 'car'"
       ></app-vehicle-icon>
       <app-vehicle-icon
         vehicle="motorcycle"
         class="edit-vehicle__icon-list-icon"
-        [active]="vehicle.icon === 'motorcycle'"
-        (click)="vehicle.icon = 'motorcycle'"
+        [active]="vehicle.type === 'motorcycle'"
+        (click)="vehicle.type = 'motorcycle'"
       ></app-vehicle-icon>
     </div>
   </div>

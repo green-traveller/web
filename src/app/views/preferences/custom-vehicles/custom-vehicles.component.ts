@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faCarSide, faMotorcycle, faBicycle, faEdit, faTrashAlt, faWalking, faSubway } from '@fortawesome/free-solid-svg-icons';
+import { faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { Vehicle } from '../../../models/vehicle';
 
 @Component({
@@ -10,13 +10,8 @@ import { Vehicle } from '../../../models/vehicle';
 export class CustomVehiclesComponent implements OnInit {
 
   icons = {
-    car: faCarSide,
-    motorcycle: faMotorcycle,
-    bicycle: faBicycle,
     edit: faEdit,
     delete: faTrashAlt,
-    train: faSubway,
-    walking: faWalking
   };
 
   customVehicles = VEHICLES.filter((v) => v.active && !v.default);
@@ -44,7 +39,7 @@ export const VEHICLES = [
   {
     id: 'uuidv4_-1',
     name: 'Walking',
-    icon: 'walking',
+    type: 'walking',
     co2: 0,
     active: true,
     default: true
@@ -52,7 +47,7 @@ export const VEHICLES = [
   {
     id: 'uuidv4_-2',
     name: 'Bicycle',
-    icon: 'bicycle',
+    type: 'bicycle',
     co2: 0,
     active: true,
     default: true
@@ -60,7 +55,7 @@ export const VEHICLES = [
   {
     id: 'uuidv4_-3',
     name: 'Public Transportation',
-    icon: 'train',
+    type: 'train',
     co2: 50,
     active: true,
     default: true
@@ -68,7 +63,7 @@ export const VEHICLES = [
   {
     id: 'uuidv4_-4',
     name: 'Average Car',
-    icon: 'car',
+    type: 'car',
     co2: 251,
     active: true,
     default: true
@@ -76,7 +71,7 @@ export const VEHICLES = [
   {
     id: 'uuidv4_0',
     name: 'H-WR 1337',
-    icon: 'car',
+    type: 'car',
     co2: 251,
     active: true,
     default: false
@@ -84,7 +79,7 @@ export const VEHICLES = [
   {
     id: 'uuidv4_1',
     name: 'My speedy bike',
-    icon: 'motorcycle',
+    type: 'motorcycle',
     co2: 78,
     active: true,
     default: false

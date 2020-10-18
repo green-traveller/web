@@ -1,7 +1,7 @@
 export interface Vehicle {
   id: string;
   name: string;
-  icon: string;
+  type: string;
   co2: number;
   active: boolean;
   default: boolean;
