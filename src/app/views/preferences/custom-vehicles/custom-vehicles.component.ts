@@ -48,6 +48,14 @@ const VEHICLES = [
     default: true
   },
   {
+    id: 'uuidv4_-2',
+    name: 'Average Car',
+    icon: 'car',
+    co2: 251,
+    active: true,
+    default: true
+  },
+  {
     id: 'uuidv4_0',
     name: 'H-WR 1337',
     icon: 'car',

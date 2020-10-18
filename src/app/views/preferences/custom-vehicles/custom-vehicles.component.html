@@ -11,12 +11,12 @@
         </div>
       </div>
       <div class="vehicles__item-details">
-        <div><b>Bicycle</b></div>
+        <div><b>{{ vehicle.name }}</b></div>
       </div>
       <div class="vehicles__item-actions">
         <div class="custom-control custom-switch  vehicles__item-switch">
-          <input type="checkbox" class="custom-control-input" id="bicycleSwitch" [(ngModel)]="vehicle.active">
-          <label class="custom-control-label" for="bicycleSwitch"></label>
+          <input type="checkbox" class="custom-control-input" id="defaultVehicleSwitch" [(ngModel)]="vehicle.active">
+          <label class="custom-control-label" for="defaultVehicleSwitch"></label>
         </div>
       </div>
     </div>

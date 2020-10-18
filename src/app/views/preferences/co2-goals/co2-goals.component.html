@@ -3,13 +3,37 @@
   <div class="goals__subtitle"><b>CO<sub>2</sub>-Goal per Month</b></div>
   <div class="goals__list">
     <label class="goals__list-item">
-      <input type="radio" name="goalRadio" value="average" [(ngModel)]="model" class="goals__item-input" (change)="handleRadioChange()"> Average ({{ defaultValues.average }} kg/month)
+      <input
+        type="radio"
+        name="goalRadio"
+        value="average"
+        [(ngModel)]="model"
+        class="goals__item-input"
+        (change)="handleRadioChange()"
+      >
+      Average ({{ defaultValues.average }} kg/month)
     </label>
     <label class="goals__list-item">
-      <input type="radio" name="goalRadio" value="lower" [(ngModel)]="model" class="goals__item-input" (change)="handleRadioChange()"> Lower Average ({{ defaultValues.lower }} kg/month)
+      <input
+        type="radio"
+        name="goalRadio"
+        value="lower"
+        [(ngModel)]="model"
+        class="goals__item-input"
+        (change)="handleRadioChange()"
+      >
+      Lower Average ({{ defaultValues.lower }} kg/month)
     </label>
     <label class="goals__list-item">
-      <input type="radio" name="goalRadio" value="custom" [(ngModel)]="model" class="goals__item-input" (change)="handleRadioChange()"> Custom
+      <input
+        type="radio"
+        name="goalRadio"
+        value="custom"
+        [(ngModel)]="model"
+        class="goals__item-input"
+        (change)="handleRadioChange()"
+      >
+      Custom
     </label>
   </div>
   <div *ngIf="model === 'custom'" class="goals__custom">
