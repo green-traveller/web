@@ -4,10 +4,10 @@
     <div class="vehicles__subtitle">
       <b>Default Vehicles:</b>
     </div>
-    <div class="vehicles__list-item vehicles__list-item--default" (click)="handleBicycleClick()">
+    <div  *ngFor="let vehicle of defaultVehicles" class="vehicles__list-item vehicles__list-item--default" (click)="handleDefaultVehicleClick(vehicle)">
       <div>
         <div class="vehicles__item-icon">
-          <fa-icon [icon]="icons.bicycle"></fa-icon>
+          <fa-icon [icon]="icons[vehicle.icon]"></fa-icon>
         </div>
       </div>
       <div class="vehicles__item-details">
@@ -15,7 +15,7 @@
       </div>
       <div class="vehicles__item-actions">
         <div class="custom-control custom-switch  vehicles__item-switch">
-          <input type="checkbox" class="custom-control-input" id="bicycleSwitch" [(ngModel)]="bicycle">
+          <input type="checkbox" class="custom-control-input" id="bicycleSwitch" [(ngModel)]="vehicle.active">
           <label class="custom-control-label" for="bicycleSwitch"></label>
         </div>
       </div>
@@ -25,7 +25,7 @@
     <div class="vehicles__subtitle">
       <b>Custom Vehicles:</b>
     </div>
-    <div *ngFor="let vehicle of vehicles" class="vehicles__list-item">
+    <div *ngFor="let vehicle of customVehicles" class="vehicles__list-item">
       <div>
         <div class="vehicles__item-icon">
           <fa-icon [icon]="icons[vehicle.icon]"></fa-icon>

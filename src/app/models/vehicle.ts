@@ -4,4 +4,5 @@ export interface Vehicle {
   icon: string;
   co2: number;
   active: boolean;
+  default: boolean;
 }

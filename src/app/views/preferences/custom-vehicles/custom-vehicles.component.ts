@@ -17,8 +17,8 @@ export class CustomVehiclesComponent implements OnInit {
     delete: faTrashAlt
   };
 
-  vehicles = VEHICLES;
-  lastDeletedVehicle = undefined;
+  customVehicles = VEHICLES.filter((v) => v.active && !v.default);
+  defaultVehicles = VEHICLES.filter((v) => v.default);
 
   bicycle = false;
 
@@ -28,27 +28,39 @@ export class CustomVehiclesComponent implements OnInit {
   }
 
   delete(vehicle: Vehicle): void {
-    if (window.confirm(`Deleting vehicle ${vehicle.name}`)) {
+    if (window.confirm(`Deleting vehicle "${vehicle.name}".`)) {
       // TODO
     }
   }
 
-  handleBicycleClick(): void {
-    this.bicycle = !this.bicycle;
+  handleDefaultVehicleClick(vehicle): void {
+    vehicle.active = !vehicle.active;
   }
 }
 
 const VEHICLES = [
   {
+    id: 'uuidv4_-1',
+    name: 'Bicycle',
+    icon: 'bicycle',
+    co2: 0,
+    active: true,
+    default: true
+  },
+  {
     id: 'uuidv4_0',
     name: 'H-WR 1337',
     icon: 'car',
-    co2: 251
+    co2: 251,
+    active: true,
+    default: false
   },
   {
     id: 'uuidv4_1',
     name: 'My speedy bike',
     icon: 'motorcycle',
-    co2: 78
+    co2: 78,
+    active: true,
+    default: false
   }
 ];
