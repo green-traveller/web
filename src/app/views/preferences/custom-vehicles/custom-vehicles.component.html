@@ -1,2 +1,51 @@
 <app-nav-bar title="Custom Vehicles"></app-nav-bar>
-<p>custom-vehicles works!</p>
+<div>
+  <div class="vehicles__section">
+    <div class="vehicles__subtitle">
+      <b>Default Vehicles:</b>
+    </div>
+    <div class="vehicles__list-item vehicles__list-item--default" (click)="handleBicycleClick()">
+      <div>
+        <div class="vehicles__item-icon">
+          <fa-icon [icon]="icons.bicycle"></fa-icon>
+        </div>
+      </div>
+      <div class="vehicles__item-details">
+        <div><b>Bicycle</b></div>
+      </div>
+      <div class="vehicles__item-actions">
+        <div class="custom-control custom-switch  vehicles__item-switch">
+          <input type="checkbox" class="custom-control-input" id="bicycleSwitch" [(ngModel)]="bicycle">
+          <label class="custom-control-label" for="bicycleSwitch"></label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="vehicles__section">
+    <div class="vehicles__subtitle">
+      <b>Custom Vehicles:</b>
+    </div>
+    <div *ngFor="let vehicle of vehicles" class="vehicles__list-item">
+      <div>
+        <div class="vehicles__item-icon">
+          <fa-icon [icon]="icons[vehicle.icon]"></fa-icon>
+        </div>
+      </div>
+      <div class="vehicles__item-details">
+        <div><b>{{ vehicle.name }}</b></div>
+        <div>{{ vehicle.co2 }} g/km</div>
+      </div>
+      <div class="vehicles__item-actions">
+        <button class="btn btn-outline-primary btn-sm vehicles__item-button">
+          <fa-icon [icon]="icons.edit"></fa-icon>
+        </button>
+        <button class="btn btn-outline-danger btn-sm vehicles__item-button" (click)="delete(vehicle)">
+          <fa-icon [icon]="icons.delete"></fa-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="vehicles__action-button">
+    <button class="btn btn-outline-primary btn-block">add Custom Vehicle</button>
+  </div>
+</div>
