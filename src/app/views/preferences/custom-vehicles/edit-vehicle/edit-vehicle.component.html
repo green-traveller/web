@@ -8,8 +8,18 @@
   <div class="edit-vehicle__input">
     <div>Icon</div>
     <div class="edit-vehicle__icon-list">
-      <app-vehicle-icon vehicle="car" class="edit-vehicle__icon-list-icon" active="true"></app-vehicle-icon>
-      <app-vehicle-icon vehicle="motorcycle" class="edit-vehicle__icon-list-icon"></app-vehicle-icon>
+      <app-vehicle-icon
+        vehicle="car"
+        class="edit-vehicle__icon-list-icon"
+        [active]="vehicle.icon === 'car'"
+        (click)="vehicle.icon = 'car'"
+      ></app-vehicle-icon>
+      <app-vehicle-icon
+        vehicle="motorcycle"
+        class="edit-vehicle__icon-list-icon"
+        [active]="vehicle.icon === 'motorcycle'"
+        (click)="vehicle.icon = 'motorcycle'"
+      ></app-vehicle-icon>
     </div>
   </div>
   <div class="edit-vehicle__input">
