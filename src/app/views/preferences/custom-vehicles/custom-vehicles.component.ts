@@ -25,7 +25,7 @@ export class CustomVehiclesComponent implements OnInit {
   }
 
   delete(vehicle: Vehicle): void {
-    if (window.confirm(`Deleting vehicle "${vehicle.name}".`)) {
+    if (window.confirm(`Delete vehicle "${vehicle.name}"?`)) {
       // TODO
     }
   }
