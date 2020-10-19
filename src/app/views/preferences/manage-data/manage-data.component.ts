@@ -35,7 +35,7 @@ export class ManageDataComponent implements OnInit {
               this.alert = ALERTS.import.failure;
               throw new Error('Restore: No data attribute available.');
             }
-            this.dataService.manuallySetStorage(result.data);
+            this.dataService.setStorageManually(result.data);
             this.alert = ALERTS.import.success;
           } catch (e) {
             console.log(e);

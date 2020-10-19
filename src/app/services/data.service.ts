@@ -120,7 +120,7 @@ export class DataService {
     this.setStorage();
   }
 
-  manuallySetStorage(result: Storage): void {
+  setStorageManually(result: Storage): void {
     this.data = result;
     this.setStorage();
   }
