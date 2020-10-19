@@ -119,4 +119,9 @@ export class DataService {
     this.data = DataService.defaultStorage();
     this.setStorage();
   }
+
+  manuallySetStorage(result: Storage): void {
+    this.data = result;
+    this.setStorage();
+  }
 }

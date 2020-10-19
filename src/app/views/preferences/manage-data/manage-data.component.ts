@@ -18,10 +18,44 @@ export class ManageDataComponent implements OnInit {
   }
 
   import(): void {
-    this.alert = ALERTS.import.success;
+    const importElement = document.createElement('input');
+    importElement.setAttribute('type', 'file');
+    importElement.setAttribute('accept', '.GreenTraveller');
+    importElement.setAttribute('multiple', 'false');
+    importElement.click();
+    importElement.addEventListener('change', () => {
+      const file = importElement.files[0];
+      if (file !== undefined) {
+        const fr = new FileReader();
+        fr.onload = () => {
+          try {
+            // @ts-ignore
+            const result = JSON.parse(fr.result);
+            if (!result.data) {
+              this.alert = ALERTS.import.failure;
+              throw new Error('Restore: No data attribute available.');
+            }
+            this.dataService.manuallySetStorage(result.data);
+            this.alert = ALERTS.import.success;
+          } catch (e) {
+            console.log(e);
+            this.alert = ALERTS.import.failure;
+          }
+        };
+        fr.readAsText(file);
+      }
+      importElement.remove();
+    });
   }
 
   export(): void {
+    const dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify({ data: this.dataService.getStorage() }));
+    const exportElement = document.createElement('a');
+    exportElement.setAttribute('href', dataStr);
+    const exportName = 'Export_' + new Date().toISOString().split('T')[0] + '.GreenTraveller';
+    exportElement.setAttribute('download', exportName);
+    exportElement.click();
+    exportElement.remove();
     this.alert = ALERTS.export.success;
   }
 
@@ -54,10 +88,6 @@ const ALERTS = {
     success: {
       type: 'success',
       message: 'Successfully exported your data.',
-    },
-    failure: {
-      type: 'danger',
-      message: 'This is a danger alert',
     }
   },
   reset: {
