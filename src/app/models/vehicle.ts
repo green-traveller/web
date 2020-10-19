@@ -5,4 +5,5 @@ export interface Vehicle {
   co2: number;
   active: boolean;
   default: boolean;
+  travelmode: string;
 }

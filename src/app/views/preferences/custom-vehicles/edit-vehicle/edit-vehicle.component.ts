@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { VEHICLES } from '../custom-vehicles.component';
 import { Vehicle } from '../../../../models/vehicle';
+import { DataService } from '../../../../services/data.service';
 
 @Component({
   selector: 'app-edit-vehicle',
@@ -13,10 +13,9 @@ import { Vehicle } from '../../../../models/vehicle';
 export class EditVehicleComponent implements OnInit {
 
   id: string;
-  vehicles = VEHICLES;
   vehicle: Vehicle;
 
-  constructor(private route: ActivatedRoute, private location: Location) { }
+  constructor(private route: ActivatedRoute, private location: Location, private dataService: DataService) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
@@ -24,7 +23,7 @@ export class EditVehicleComponent implements OnInit {
   }
 
   getVehicle(): Vehicle {
-    let vehicle = this.vehicles.find(v => v.id === this.id);
+    let vehicle = this.dataService.getVehicle(this.id);
     if (!vehicle) {
       vehicle = {
         id: 'new',
@@ -32,13 +31,15 @@ export class EditVehicleComponent implements OnInit {
         type: 'car',
         co2: 251,
         active: true,
-      default: false
+        default: false,
+        travelmode: 'driving'
       };
     }
-    return vehicle;
+    return JSON.parse(JSON.stringify(vehicle));
   }
 
   handleSaveClick(): void {
+    this.dataService.setVehicle(this.vehicle);
     this.location.back();
   }
 }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../../../services/data.service';
+import { Co2 } from '../../../models/co2';
 
 @Component({
   selector: 'app-co2-goals',
@@ -13,24 +15,27 @@ export class Co2GoalsComponent implements OnInit {
     lower: 100
   };
 
-  model = 'average';
-  customAmount = this.defaultValues.average;
+  co2: Co2;
 
-  currentAmount = this.defaultValues.average;
+  customAmount: number;
 
-  constructor() { }
+  constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
+    this.co2 = this.dataService.getCo2();
+    this.customAmount = this.co2.value;
   }
 
   handleRadioChange(): void {
-    if (this.model !== 'custom') {
-      this.customAmount = this.defaultValues[this.model];
-      this.currentAmount = this.defaultValues[this.model];
+    if (this.co2.mode !== 'custom') {
+      this.customAmount = this.defaultValues[this.co2.mode];
+      this.co2.value = this.defaultValues[this.co2.mode];
     }
+    this.dataService.setStorage();
   }
 
   handleCustomAmountChange(): void {
-    // TODO
+    this.co2.value = this.customAmount;
+    this.dataService.setStorage();
   }
 }
