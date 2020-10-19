@@ -9,6 +9,7 @@
 }
 
 .edit-vehicle__input-title {
+  font-weight: bold;
   margin-bottom: 0.5rem;
 }
 
