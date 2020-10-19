@@ -1,21 +1,8 @@
 <app-nav-bar title="Who Are You?"></app-nav-bar>
-
-<div class="initial-setup-name__logo">
-    LOGO
-</div>
-
-<div class="form-group">
-    <div class="initial-setup-name__text">
-        text text text
+<div class="initial-setup-name">
+    <div class="initial-setup-name__logo">LOGO</div>
+    <h3 class="initial-setup-name__text">Hello and welcome! Why dont you first tell me <span class="initital-setup-name__text-editable" contenteditable="true" autofocus>your name</span>? and maybe some more text here</h3>
+    <div class="initial-setup-name__action">
+        <button class="btn btn-primary btn-block" type="button" [routerLink]="['/initial-setup-vehicle']">{{buttonName}}</button>
     </div>
-    <div class="initial-setup-name__search">
-        <input class="form-control" name="userName" id="inputName" type="text" placeholder="Your Name">
-    </div>
-    <div class="initial-setup-name__text">
-        text text text end
-    </div>
-</div>
-
-<div class="initial-setup-name__action">
-    <button class="btn btn-primary btn-block" type="button" [routerLink]="['/initial-setup-vehicle']">{{buttonName}}</button>
 </div>

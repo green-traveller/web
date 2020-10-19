@@ -7,8 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InitialSetupVehicleComponent implements OnInit {
 
-  currentOrientation = 'yes';
-
   constructor() { }
 
   ngOnInit(): void {

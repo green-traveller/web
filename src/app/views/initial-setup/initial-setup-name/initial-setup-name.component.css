@@ -1,13 +1,26 @@
+.initial-setup-name {
+  background-color: lightgreen;
+}
+
 .initial-setup-name__logo {
   position: relative;
   justify-content: center;
+  text-align: center;
+  padding: 5rem;
 }
 
 .initial-setup-name__text {
+  background-color: lightgreen;
   width: 100%;
   right: 0;
-  padding: 0.5rem;
+  padding: 1rem;
 }
+
+.initital-setup-name__text-editable {
+  background-color: green;
+  border-radius: 10px;
+}
+
 
 .initial-setup-name__search {
   padding: 0.5rem;
