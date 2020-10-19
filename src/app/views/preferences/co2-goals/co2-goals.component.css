@@ -23,7 +23,15 @@
 }
 
 .goals__custom {
+  display: flex;
   padding: 0.5rem;
+  align-items: baseline;
+}
+
+.goals__custom-input {
+  width: 5rem;
+  text-align: center;
+  margin-right: 0.5rem;
 }
 
 .goals__info {
