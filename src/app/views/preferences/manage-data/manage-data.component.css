@@ -1,0 +1,17 @@
+.manage-data {
+  padding: 0.5rem;
+}
+
+.manage-data__content {
+  position: absolute;
+  width: 100%;
+  bottom: 6rem;
+  right: 0;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.manage-data__import-data {
+  margin-top: 1rem;
+}

@@ -1,0 +1,12 @@
+<app-nav-bar title="Manage Data"></app-nav-bar>
+<div class="manage-data">
+  <div *ngIf="alert">
+    <ngb-alert [type]="alert.type" (close)="closeAlert()">{{ alert.message }}</ngb-alert>
+  </div>
+  <div class="manage-data__content">
+    <button class="btn btn-outline-primary" (click)="export()">Export</button>
+    <button class="btn btn-outline-secondary manage-data__import-data" (click)="import()">Import</button>
+    <small>Consider exporting your data before your current app data will be overwritten.</small>
+    <button class="btn btn-outline-danger manage-data__import-data" (click)="reset()">Reset App</button>
+  </div>
+</div>

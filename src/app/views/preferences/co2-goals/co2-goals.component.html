@@ -1,0 +1,49 @@
+<app-nav-bar title="CO2 Goals"></app-nav-bar>
+<div class="goals">
+  <div class="goals__subtitle"><b>CO<sub>2</sub>-Goal per Month</b></div>
+  <div class="goals__list">
+    <label class="goals__list-item">
+      <input
+        type="radio"
+        name="goalRadio"
+        value="average"
+        [(ngModel)]="model"
+        class="goals__item-input"
+        (change)="handleRadioChange()"
+      >
+      Average ({{ defaultValues.average }} kg/month)
+    </label>
+    <label class="goals__list-item">
+      <input
+        type="radio"
+        name="goalRadio"
+        value="lower"
+        [(ngModel)]="model"
+        class="goals__item-input"
+        (change)="handleRadioChange()"
+      >
+      Lower Average ({{ defaultValues.lower }} kg/month)
+    </label>
+    <label class="goals__list-item">
+      <input
+        type="radio"
+        name="goalRadio"
+        value="custom"
+        [(ngModel)]="model"
+        class="goals__item-input"
+        (change)="handleRadioChange()"
+      >
+      Custom
+    </label>
+  </div>
+  <div *ngIf="model === 'custom'" class="goals__custom">
+    <input
+      id="custom-input"
+      type="number"
+      [(ngModel)]="customAmount"
+      min="1" (change)="handleCustomAmountChange()"
+      class="form-control goals__custom-input">
+    <label for="custom-input">kg/month</label>
+  </div>
+  <small class="goals__info">Some more explanation. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</small>
+</div>
