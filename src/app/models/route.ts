@@ -6,5 +6,6 @@ export interface Route {
   to: RouteLocation;
   time: string;
   vehicleId: string;
+  passengers: number;
   options: { [optionName: string]: RouteOption };
 }
