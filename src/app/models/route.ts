@@ -1,5 +1,5 @@
 import { RouteLocation } from './route-location';
-import {RouteOption} from './route-option';
+import { RouteOption } from './route-option';
 
 export interface Route {
   from: RouteLocation;

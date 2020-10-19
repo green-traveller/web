@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../../services/data.service';
-import {Co2} from '../../../models/co2';
+import { Co2 } from '../../../models/co2';
 
 @Component({
   selector: 'app-co2-goals',
