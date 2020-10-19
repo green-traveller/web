@@ -7,7 +7,7 @@
         type="radio"
         name="goalRadio"
         value="average"
-        [(ngModel)]="model"
+        [(ngModel)]="co2.mode"
         class="goals__item-input"
         (change)="handleRadioChange()"
       >
@@ -18,7 +18,7 @@
         type="radio"
         name="goalRadio"
         value="lower"
-        [(ngModel)]="model"
+        [(ngModel)]="co2.mode"
         class="goals__item-input"
         (change)="handleRadioChange()"
       >
@@ -29,14 +29,14 @@
         type="radio"
         name="goalRadio"
         value="custom"
-        [(ngModel)]="model"
+        [(ngModel)]="co2.mode"
         class="goals__item-input"
         (change)="handleRadioChange()"
       >
       Custom
     </label>
   </div>
-  <div *ngIf="model === 'custom'" class="goals__custom">
+  <div *ngIf="co2.mode === 'custom'" class="goals__custom">
     <input
       id="custom-input"
       type="number"

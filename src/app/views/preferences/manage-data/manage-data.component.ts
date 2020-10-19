@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Alert } from '../../../models/alert';
+import { DataService } from '../../../services/data.service';
 
 @Component({
   selector: 'app-manage-data',
@@ -11,7 +12,7 @@ export class ManageDataComponent implements OnInit {
 
   alert: Alert;
 
-  constructor() { }
+  constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
   }
@@ -26,6 +27,7 @@ export class ManageDataComponent implements OnInit {
 
   reset(): void {
     if (window.confirm('Resetting your app and removing data.\nAre you sure?')) {
+      this.dataService.resetStorage();
       this.alert = ALERTS.reset.success;
     } else {
       this.alert = ALERTS.reset.cancel;
