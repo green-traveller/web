@@ -2,11 +2,11 @@
 
 <div class="edit-vehicle">
   <div class="edit-vehicle__input">
-    <label for="vehicleName">Name or License plate</label>
-    <input type="text" [(ngModel)]="vehicle.name" id="vehicleName">
+    <label for="vehicleName" class="edit-vehicle__input-title">Name or License plate</label>
+    <input type="text" [(ngModel)]="vehicle.name" id="vehicleName" class="form-control">
   </div>
   <div class="edit-vehicle__input">
-    <div>Icon</div>
+    <div class="edit-vehicle__input-title">Icon</div>
     <div class="edit-vehicle__icon-list">
       <app-vehicle-icon
         vehicle="car"
@@ -23,10 +23,11 @@
     </div>
   </div>
   <div class="edit-vehicle__input">
-    <div>Carbon Emissions</div>
-    <label for="vehicleCo2">
-      <input type="number" [(ngModel)]="vehicle.co2" id="vehicleCo2"> g/km
-    </label>
+    <div class="edit-vehicle__input-title">Carbon Emissions</div>
+    <div class="edit-vehicle__carbon-label-input">
+      <input type="number" [(ngModel)]="vehicle.co2" id="vehicleCo2" class="form-control edit-vehicle__carbon-input">
+      <label for="vehicleCo2">g/km</label>
+    </div>
     <small>Unsure about your car? Lookup your car <a href="https://example.com" target="_blank">here</a>!</small>
   </div>
   <div>
