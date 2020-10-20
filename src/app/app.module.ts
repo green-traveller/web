@@ -13,6 +13,7 @@ import { SearchRouteComponent } from './views/search-route/search-route.componen
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { PersonalBalanceComponent } from './views/personal-balance/personal-balance.component';
 import { PieChartComponent } from './components/pie-chart/pie-chart.component';
+import { BarChartComponent } from './components/bar-chart/bar-chart.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { PieChartComponent } from './components/pie-chart/pie-chart.component';
     SearchRouteComponent,
     NavBarComponent,
     PersonalBalanceComponent,
-    PieChartComponent
+    PieChartComponent,
+    BarChartComponent
   ],
   imports: [
     BrowserModule,
