@@ -1,0 +1,28 @@
+<app-nav-bar title="Previous Routes"></app-nav-bar>
+
+<ngb-accordion [closeOthers]="true">
+    <ngb-panel *ngFor="let Route of prevRoutes; index as i" id="{{i}}">
+        <ng-template ngbPanelTitle>
+            <div>
+                <table class="table table-borderless">
+                    <tbody>
+                        <tr>
+                            <td rowspan="2">
+                                <app-vehicle-icon [vehicle]="getVehicleType(Route)"></app-vehicle-icon>
+                            </td>
+                            <td>{{getRouteCO2(Route) | number: '1.2-2'}} kg</td>
+                            <td>{{Route.from.name}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{Route.time}}</td>
+                            <td>{{Route.to.name}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </ng-template>
+        <ng-template ngbPanelContent>
+          TODO: Add fancy stuff here...
+        </ng-template>
+    </ngb-panel>
+</ngb-accordion>
