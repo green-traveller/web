@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
@@ -11,6 +11,8 @@ import { DataService } from '../../../../services/data.service';
   styleUrls: ['./edit-vehicle.component.css']
 })
 export class EditVehicleComponent implements OnInit {
+
+  @ViewChild('carbonInput') carbonInput: ElementRef;
 
   id: string;
   vehicle: Vehicle;
@@ -27,7 +29,7 @@ export class EditVehicleComponent implements OnInit {
     if (!vehicle) {
       vehicle = {
         id: 'new',
-        name: 'new car',
+        name: 'My own fancy car',
         type: 'car',
         co2: 251,
         active: true,
@@ -41,5 +43,9 @@ export class EditVehicleComponent implements OnInit {
   handleSaveClick(): void {
     this.dataService.setVehicle(this.vehicle);
     this.location.back();
+  }
+
+  focusOnCarbonInput(): void {
+    this.carbonInput.nativeElement.focus();
   }
 }
