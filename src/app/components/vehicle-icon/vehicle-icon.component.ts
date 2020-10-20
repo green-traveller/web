@@ -4,7 +4,8 @@ import {
   faMotorcycle,
   faBicycle,
   faWalking,
-  faSubway
+  faSubway,
+  faQuestion
 } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -18,6 +19,7 @@ export class VehicleIconComponent implements OnInit {
   @Input() active: boolean;
 
   icons = {
+    unknown: faQuestion,
     car: faCarSide,
     motorcycle: faMotorcycle,
     bicycle: faBicycle,
