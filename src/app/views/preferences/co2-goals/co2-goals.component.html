@@ -37,13 +37,20 @@
     </label>
   </div>
   <div *ngIf="co2.mode === 'custom'" class="goals__custom">
-    <input
-      id="custom-input"
-      type="number"
-      [(ngModel)]="customAmount"
-      min="1" (change)="handleCustomAmountChange()"
-      class="form-control goals__custom-input">
-    <label for="custom-input">kg/month</label>
+    <div class="input-group goals__custom-input-group">
+      <input
+        id="custom-input"
+        type="number"
+        [(ngModel)]="customAmount"
+        min="1" (change)="handleCustomAmountChange()"
+        class="form-control goals__custom-input"
+        #customInput
+      >
+      <div class="input-group-append" (click)="focusOnCustomInput()">
+        <span class="input-group-text">kg/month</span>
+      </div>
+    </div>
+    <label for="custom-input"></label>
   </div>
   <small class="goals__info">Some more explanation. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</small>
 </div>
