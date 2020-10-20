@@ -1,5 +1,5 @@
 <nav class="nav-bar">
-  <div class="nav-bar__item"><button class="btn nav-bar__back-button"><fa-icon [icon]="icons.leftArrow"></fa-icon></button> </div>
+  <div class="nav-bar__item"><button class="btn nav-bar__back-button" (click)="back()" [class.nav-bar__back-button--hidden]="hideBackButton"><fa-icon [icon]="icons.leftArrow"></fa-icon></button> </div>
   <div class="nav-bar__item"><span class="nav-bar__title">{{ title }}</span></div>
   <div class="nav-bar__item">
     <div ngbDropdown class="d-inline-block navbar-light">
@@ -7,8 +7,8 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div ngbDropdownMenu>
-        <a class="nav-bar__menu-item" routerLink="/" ngbDropdownItem>Search</a>
-        <a class="nav-bar__menu-item" routerLink="/preferences" ngbDropdownItem>Preferences</a>
+        <button class="nav-bar__menu-item" (click)="navigate('/')" ngbDropdownItem>Search</button>
+        <button class="nav-bar__menu-item" (click)="navigate('/preferences')" ngbDropdownItem>Preferences</button>
       </div>
     </div>
   </div>
