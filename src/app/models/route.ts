@@ -7,5 +7,6 @@ export interface Route {
   time: string;
   vehicleId: string;
   passengers: number;
+  distance: number;
   options: { [optionName: string]: RouteOption };
 }
