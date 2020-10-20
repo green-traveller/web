@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-nav-bar',
@@ -6,6 +7,10 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent implements OnInit {
+
+  icons = {
+    leftArrow: faChevronLeft
+  };
 
   constructor() { }
 
