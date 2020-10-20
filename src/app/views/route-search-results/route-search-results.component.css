@@ -1,7 +1,14 @@
 .route-search-results__item {
-  display: flex;
-  justify-content: space-between;
+  width: 100%;
 }
+
+.route-search-results__item-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 5rem;
+}
+
 .route-search-results__item-icon {
 }
 
@@ -9,6 +16,13 @@
 }
 
 .route-search-results__item-time {
+}
+
+.route-search-results__item-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 5rem;
 }
 
 
