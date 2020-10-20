@@ -18,6 +18,7 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { PreferencesComponent } from './views/preferences/preferences.component';
 import { SearchRouteComponent } from './views/search-route/search-route.component';
 import { VehicleIconComponent } from './components/vehicle-icon/vehicle-icon.component';
+import { PreviousRoutesComponent } from './views/previous-routes/previous-routes.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { VehicleIconComponent } from './components/vehicle-icon/vehicle-icon.com
     NavBarComponent,
     PreferencesComponent,
     SearchRouteComponent,
-    VehicleIconComponent
+    VehicleIconComponent,
+    PreviousRoutesComponent
   ],
   imports: [
     AppRoutingModule,
