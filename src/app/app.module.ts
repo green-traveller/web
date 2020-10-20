@@ -18,7 +18,6 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { PreferencesComponent } from './views/preferences/preferences.component';
 import { SearchRouteComponent } from './views/search-route/search-route.component';
 import { VehicleIconComponent } from './components/vehicle-icon/vehicle-icon.component';
-import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { RouteSearchResultsComponent } from './views/route-search-results/route-search-results.component';
 
 @NgModule({
@@ -33,7 +32,7 @@ import { RouteSearchResultsComponent } from './views/route-search-results/route-
     PreferencesComponent,
     SearchRouteComponent,
     NavBarComponent,
-    RouteSearchResultsComponent
+    RouteSearchResultsComponent,
     VehicleIconComponent
   ],
   imports: [
