@@ -1,0 +1,41 @@
+<app-nav-bar title="Edit Vehicle"></app-nav-bar>
+
+<div class="edit-vehicle navigation-gap">
+  <div class="edit-vehicle__input">
+    <label for="vehicleName" class="edit-vehicle__input-title">Name or License plate</label>
+    <input type="text" [(ngModel)]="vehicle.name" id="vehicleName" class="form-control">
+  </div>
+  <div class="edit-vehicle__input">
+    <div class="edit-vehicle__input-title">Icon</div>
+    <div class="edit-vehicle__icon-list">
+      <app-vehicle-icon
+        vehicle="car"
+        class="edit-vehicle__icon-list-icon"
+        [active]="vehicle.type === 'car'"
+        (click)="vehicle.type = 'car'"
+      ></app-vehicle-icon>
+      <app-vehicle-icon
+        vehicle="motorcycle"
+        class="edit-vehicle__icon-list-icon"
+        [active]="vehicle.type === 'motorcycle'"
+        (click)="vehicle.type = 'motorcycle'"
+      ></app-vehicle-icon>
+    </div>
+  </div>
+  <div class="edit-vehicle__input">
+    <label class="edit-vehicle__input-title" for="vehicleCo2">Carbon Emissions</label>
+    <div class="input-group goals__custom-input-group">
+      <input type="number" [(ngModel)]="vehicle.co2" id="vehicleCo2" class="form-control edit-vehicle__carbon-input" #carbonInput>
+      <div class="input-group-append" (click)="focusOnCarbonInput()">
+        <span class="input-group-text">g/km</span>
+      </div>
+    </div>
+    <small>Unsure about your car? Lookup your car <a href="https://example.com" target="_blank">here</a>!</small>
+  </div>
+  <div>
+    <button class="btn btn-primary btn-block edit-vehicle__action" (click)="handleSaveClick()">Save</button>
+    <a routerLink=".." class="edit-vehicle__action">
+      <button class="btn btn-outline-primary btn-block">Cancel</button>
+    </a>
+  </div>
+</div>
