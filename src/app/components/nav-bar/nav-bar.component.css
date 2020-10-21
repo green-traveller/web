@@ -1,11 +1,36 @@
 .nav-bar {
-    background-color: green;
-    display: flex;
-    justify-content: space-between;
+  align-items: center;
+  background-color: #52F75D;
+  box-shadow: 0 2px 12px 0 rgba(0,0,0,.2);
+  display: flex;
+  justify-content: space-between;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 101;
 }
 
 .nav-bar__item {
-    padding: 0.5rem;
+  padding: 0.5rem;
+}
+
+.nav-bar__back-button {
+  color: rgba(0,0,0,.5);
+  width: 3.375rem;
+}
+
+.nav-bar__back-button--hidden {
+  opacity: 0;
+  cursor: default !important;
+}
+
+.nav-bar__title {
+  font-size: 1.2rem;
+}
+
+.nav-bar__menu-item {
+  font-size: 1.2rem;
 }
 
 .dropdown-toggle::after {

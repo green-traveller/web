@@ -6,6 +6,7 @@
 }
 
 .initial-setup-info__text {
+  margin-top: 50px;  
   overflow: scrollable;
 }
 

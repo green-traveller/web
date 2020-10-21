@@ -1,0 +1,51 @@
+<app-nav-bar title="Custom Vehicles"></app-nav-bar>
+<div class="navigation-gap">
+  <div class="vehicles__section">
+    <div class="vehicles__subtitle">
+      <b>Default Vehicles:</b>
+    </div>
+    <div *ngFor="let vehicle of defaultVehicles" class="vehicles__list-item vehicles__list-item--default" (click)="handleDefaultVehicleClick(vehicle)">
+      <div>
+        <app-vehicle-icon [vehicle]="vehicle.type"></app-vehicle-icon>
+      </div>
+      <div class="vehicles__item-details">
+        <div>{{ vehicle.name }}</div>
+      </div>
+      <div class="vehicles__item-actions">
+        <div class="custom-control custom-switch  vehicles__item-switch">
+          <input type="checkbox" class="custom-control-input" id="defaultVehicleSwitch" [(ngModel)]="vehicle.active">
+          <label class="custom-control-label" for="defaultVehicleSwitch"></label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="vehicles__section">
+    <div class="vehicles__subtitle">
+      <b>Custom Vehicles:</b>
+    </div>
+    <div *ngFor="let vehicle of customVehicles" class="vehicles__list-item">
+      <div>
+        <app-vehicle-icon [vehicle]="vehicle.type"></app-vehicle-icon>
+      </div>
+      <div class="vehicles__item-details">
+        <div>{{ vehicle.name }}</div>
+        <small>{{ vehicle.co2 }} g/km</small>
+      </div>
+      <div class="vehicles__item-actions">
+        <a [routerLink]="vehicle.id">
+          <button class="btn btn-outline-primary btn-sm vehicles__item-button">
+            <fa-icon [icon]="icons.edit"></fa-icon>
+          </button>
+        </a>
+        <button class="btn btn-outline-danger btn-sm vehicles__item-button" (click)="delete(vehicle)">
+          <fa-icon [icon]="icons.delete"></fa-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="vehicles__action-button">
+    <a routerLink="new">
+      <button class="btn btn-outline-primary btn-block">add Custom Vehicle</button>
+    </a>
+  </div>
+</div>
