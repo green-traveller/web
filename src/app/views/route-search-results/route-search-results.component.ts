@@ -9,6 +9,8 @@ export class RouteSearchResultsComponent implements OnInit {
 
   constructor() { }
 
+  public isCollapsed = true;
+
   ngOnInit(): void {
   }
 

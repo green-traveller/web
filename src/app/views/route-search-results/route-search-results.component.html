@@ -2,14 +2,19 @@
 
 <div>
   <div class="route-search-results__item">
-    <div class="route-search-results__item-header">
-      <div>icon</div>
-      <div>co_2</div>
-      <div>time</div>
-    </div>
-    <div class="route-search-results__item-content">
+      <span class="route-search-results__item-header" (click)="isCollapsed = !isCollapsed"
+            [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">
+        <div>icon</div>
+        <div>co_2</div>
+        <div>time</div>
+      </span>
+
+    <div id="collapseExample" [ngbCollapse]="isCollapsed">
       <button type="button" class="btn btn-primary w-25">Map</button>
       <button type="button" class="btn btn-primary w-25">Save</button>
     </div>
+
   </div>
 </div>
+
+
