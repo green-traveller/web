@@ -1,5 +1,17 @@
-<input
-  id="autocomplete"
-  placeholder="Enter your address"
-  type="text"
-/>
+<div>
+  <input
+    id="autocompleteOrigin"
+    placeholder="Enter your address"
+    type="text"
+  />
+  <div>{{ origin |  json }}</div>
+  <input
+    id="autocompleteDestination"
+    placeholder="Enter your address"
+    type="text"
+  />
+  <div>{{ destination |  json }}</div>
+  <button class="btn btn-outline-primary" (click)="calcRoute()">calc</button>
+  <div>{{ routeDistance }}</div>
+  <div>{{ routeDuration }}</div>
+</div>
