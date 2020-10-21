@@ -1,7 +1,7 @@
 <app-nav-bar title="Previous Routes"></app-nav-bar>
 
-<ngb-accordion [closeOthers]="true">
-    <ngb-panel *ngFor="let Route of prevRoutes; index as i" id="{{i}}">
+<ngb-accordion [closeOthers]="true" class="test">
+    <ngb-panel  *ngFor="let Route of prevRoutes; index as i" id="{{i}}">
         <ng-template ngbPanelTitle>
             <div>
                 <table class="table table-borderless">

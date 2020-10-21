@@ -12,16 +12,16 @@ import { DataService } from 'src/app/services/data.service';
 export class PreviousRoutesComponent implements OnInit {
 
   public prevRoutes: Route[] = [
-    {from: {name: 'start', place_id: '1'}, to: {name: 'destination', place_id: '2'}, time: '01-01-1970', vehicleId: 'walking', passengers: 1, options: { walking: { distance: 30, duration: 40}}},
-    {from: {name: 'start', place_id: '1'}, to: {name: 'destination', place_id: '2'}, time: '01-01-1970', vehicleId: 'bicycling', passengers: 1, options: { bicycling: { distance: 30, duration: 40}}},
-    {from: {name: 'start', place_id: '1'}, to: {name: 'destination', place_id: '2'}, time: '01-01-1970', vehicleId: 'transit', passengers: 1, options: { transit: { distance: 30, duration: 40}}},
-    {from: {name: 'start', place_id: '1'}, to: {name: 'destination', place_id: '2'}, time: '01-01-1970', vehicleId: 'driving', passengers: 1, options: { driving: { distance: 30, duration: 40}}},
-    {from: {name: 'start', place_id: '1'}, to: {name: 'destination', place_id: '2'}, time: '01-01-1970', vehicleId: 'walking', passengers: 4, options: { walking: { distance: 30, duration: 40}}},
-    {from: {name: 'start', place_id: '1'}, to: {name: 'destination', place_id: '2'}, time: '01-01-1970', vehicleId: 'bicycling', passengers: 4, options: { bicycling: { distance: 30, duration: 40}}},
-    {from: {name: 'start', place_id: '1'}, to: {name: 'destination', place_id: '2'}, time: '01-01-1970', vehicleId: 'transit', passengers: 4, options: { transit: { distance: 30, duration: 40}}},
-    {from: {name: 'start', place_id: '1'}, to: {name: 'destination', place_id: '2'}, time: '01-01-1970', vehicleId: 'driving', passengers: 4, options: { driving: { distance: 30, duration: 40}}},
-    {from: {name: 'start', place_id: '1'}, to: {name: 'destination', place_id: '2'}, time: '01-01-1970', vehicleId: 'thisIsInvalid', passengers: 4, options: { walking: { distance: 30, duration: 40}}},
-    {from: {name: 'start', place_id: '1'}, to: {name: 'destination', place_id: '2'}, time: '01-01-1970', vehicleId: 'driving', passengers: 4, options: { }}
+    {id: 'a', from: {name: 'start', place_id: '1'}, to: {name: 'destination', place_id: '2'}, time: '01-01-1970', vehicleId: 'walking', passengers: 1, options: { walking: { distance: 30, duration: 40}}},
+    {id: 'a', from: {name: 'start', place_id: '1'}, to: {name: 'destination', place_id: '2'}, time: '01-01-1970', vehicleId: 'bicycling', passengers: 1, options: { bicycling: { distance: 30, duration: 40}}},
+    {id: 'a', from: {name: 'start', place_id: '1'}, to: {name: 'destination', place_id: '2'}, time: '01-01-1970', vehicleId: 'transit', passengers: 1, options: { transit: { distance: 30, duration: 40}}},
+    {id: 'a', from: {name: 'start', place_id: '1'}, to: {name: 'destination', place_id: '2'}, time: '01-01-1970', vehicleId: 'driving', passengers: 1, options: { driving: { distance: 30, duration: 40}}},
+    {id: 'a', from: {name: 'start', place_id: '1'}, to: {name: 'destination', place_id: '2'}, time: '01-01-1970', vehicleId: 'walking', passengers: 4, options: { walking: { distance: 30, duration: 40}}},
+    {id: 'a', from: {name: 'start', place_id: '1'}, to: {name: 'destination', place_id: '2'}, time: '01-01-1970', vehicleId: 'bicycling', passengers: 4, options: { bicycling: { distance: 30, duration: 40}}},
+    {id: 'a', from: {name: 'start', place_id: '1'}, to: {name: 'destination', place_id: '2'}, time: '01-01-1970', vehicleId: 'transit', passengers: 4, options: { transit: { distance: 30, duration: 40}}},
+    {id: 'a', from: {name: 'start', place_id: '1'}, to: {name: 'destination', place_id: '2'}, time: '01-01-1970', vehicleId: 'driving', passengers: 4, options: { driving: { distance: 30, duration: 40}}},
+    {id: 'a', from: {name: 'start', place_id: '1'}, to: {name: 'destination', place_id: '2'}, time: '01-01-1970', vehicleId: 'thisIsInvalid', passengers: 4, options: { walking: { distance: 30, duration: 40}}},
+    {id: 'a', from: {name: 'start', place_id: '1'}, to: {name: 'destination', place_id: '2'}, time: '01-01-1970', vehicleId: 'driving', passengers: 4, options: { }}
   ];
 
   constructor(private dataService: DataService) { }

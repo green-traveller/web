@@ -1,0 +1,7 @@
+.card-header {
+    padding: 0;
+}
+
+.test > div.card{
+    background-color: brown;
+}
