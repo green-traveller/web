@@ -64,7 +64,13 @@ export class DataService {
           travelmode: 'driving'
         }
       },
-      routes: {}
+      routes: {
+        // TODO: Find out how this actually works...
+        // tslint:disable-next-line: max-line-length
+        a: { id: 'a', from: { name: 'start', place_id: '1'}, to: { name: 'destination', place_id: '2'}, time: '01-01-1970 00:00', vehicleId: 'walking', passengers: 1, options: {}},
+        // tslint:disable-next-line: max-line-length
+        b: { id: 'b', from: { name: 'start', place_id: '1'}, to: { name: 'destination', place_id: '2'}, time: '01-01-1970 00:00', vehicleId: 'walking', passengers: 1, options: { walking: { distance: 43.3, duration: 44.4 } } }
+      }
     }));
   }
 
