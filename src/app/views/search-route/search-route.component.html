@@ -11,19 +11,21 @@
     <input class="form-control" id="inputTo" type="text" placeholder="To">
   </div>
 
-  <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" [(ngModel)]="departureArrival">
+  <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" [(ngModel)]="timeMode">
     <label ngbButtonLabel class="btn-primary">
-      <input ngbButton type="radio" value="Departure">Departure
+      <input ngbButton type="radio" value="now">Leave now
     </label>
     <label ngbButtonLabel class="btn-primary">
-      <input ngbButton type="radio" value="Arrival">Arrival
+      <input ngbButton type="radio" value="departure">Depart at
+    </label>
+    <label ngbButtonLabel class="btn-primary">
+      <input ngbButton type="radio" value="arrival">Arrive at
     </label>
   </div>
 
-  <div class="search-route__time-select">
-    <input type="time" class="form-control" #timeInput>
-    <input type="date" class="form-control" #dateInput>
-    <button class="btn btn-primary" #nowButton (click)="handleNowButtonClick()">Now</button>
+  <div class="search-route__time-select" *ngIf="timeMode !== 'now'">
+    <input type="time" class="form-control" [value]="currentTimeString()" (change)="handleTimeChange()" #timeInput>
+    <input type="date" class="form-control" [value]="currentDateString()" (change)="handleDateChange()" #dateInput>
   </div>
 
   <div class="search-route__action">
