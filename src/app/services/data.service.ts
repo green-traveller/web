@@ -20,7 +20,7 @@ export class DataService {
   static defaultStorage(): Storage {
     return JSON.parse(JSON.stringify({
       version: 0,
-      name: 'User',
+      username: 'User',
       setupCompleted: false,
       co2: {
         mode: 'average',
@@ -34,6 +34,7 @@ export class DataService {
           co2: 0,
           active: true,
           default: true,
+          init: false,
           travelmode: 'walking'
         },
         bicycling: {
@@ -43,6 +44,7 @@ export class DataService {
           co2: 0,
           active: true,
           default: true,
+          init: true,
           travelmode: 'bicycling'
         },
         transit: {
@@ -52,6 +54,7 @@ export class DataService {
           co2: 50,
           active: true,
           default: true,
+          init: false,
           travelmode: 'transit'
         },
         driving: {
@@ -61,6 +64,7 @@ export class DataService {
           co2: 251,
           active: true,
           default: true,
+          init: true,
           travelmode: 'driving'
         }
       },
@@ -124,4 +128,15 @@ export class DataService {
     this.data = result;
     this.setStorage();
   }
+
+  // Username
+  public setUsername(s: string): void {
+    this.data.username = s;
+    this.setStorage();
+  }
+
+  public getUsername(): string {
+    return this.data.username;
+  }
 }
+

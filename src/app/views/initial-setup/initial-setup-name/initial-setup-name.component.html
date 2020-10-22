@@ -1,8 +1,16 @@
-<app-nav-bar title="Who Are You?"></app-nav-bar>
-<div class="initial-setup-name">
-    <div class="initial-setup-name__logo">LOGO</div>
-    <h3 class="initial-setup-name__text">Hello and welcome! Why dont you first tell me <span class="initital-setup-name__text-editable" contenteditable="true" autofocus>your name</span>? and maybe some more text here</h3>
-    <div class="initial-setup-name__action">
-        <button class="btn btn-primary btn-block" type="button" [routerLink]="['/initial-setup-vehicle']">{{buttonName}}</button>
+<div class="initial-setup-info__close" [routerLink]="['/']">
+    <fa-icon [icon]="icons.close"></fa-icon>
+</div>
+<div class="navigation-gap">
+  <div class="initial-setup-name">
+        <div class="initial-setup-name__logo">LOGO</div>
+        <h3 class="initial-setup-name__text">
+            Hello and welcome! Why dont you first tell me 
+            <span class="name" id="inputName" contenteditable="true" autofocus>your name</span>
+            ? and maybe some more text here
+        </h3>
+        <div class="initial-setup-name__action">
+            <button class="btn btn-primary btn-block" type="button" [routerLink]="['/initial-setup-vehicle']" (click)="clickChangeName()">On on on</button>
+        </div>
     </div>
 </div>

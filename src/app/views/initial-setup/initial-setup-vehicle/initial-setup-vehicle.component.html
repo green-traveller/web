@@ -1,28 +1,26 @@
-<app-nav-bar title="Customize Your Vehicles"></app-nav-bar>
-
-<div class="initial-setup-vehicle__text">
-        Tell me if you're using any private vehicles.
+<div class="initial-setup-info__close" [routerLink]="['/']">
+    <fa-icon [icon]="icons.close"></fa-icon>
 </div>
-<div>
-    <label>Bicycle Icon</label>
-    <div  class="initial-setup-vehicle__select">
-        <div class="custom-control custom-switch">
-            <input type="checkbox" class="custom-control-input" id="customSwitch1" checked>
-            <label class="custom-control-label" for="customSwitch1"></label> <!-- not working without label? -->
+<div class="navigation-gap">
+    <div class="initial-setup-vehicle__text">
+        <h3>Hi {{username}}!</h3>
+        <b>Choose from the list below if you're owning a bicycle or a car. This helps us showing you routes which fit your personal vehicles. Just click on it!</b>
+    </div>
+    <div *ngFor="let vehicle of defaultVehicles" class="initial-setup-vehicle__list-item" (click)="handleDefaultVehicleClick(vehicle)">
+        <div>
+            <app-vehicle-icon [vehicle]="vehicle.type"></app-vehicle-icon>
+        </div>
+        <div class="initial-setup-vehicle__item-details">
+            <div>{{ vehicle.name }}</div>
+        </div>
+        <div class="initial-setup-vehicle__item-actions">
+            <div class="custom-control custom-switch initial-setup-vehicle__item-switch">
+                <input type="checkbox" class="custom-control-input" id="defaultVehicleSwitch" [(ngModel)]="vehicle.active">
+                <label class="custom-control-label" for="defaultVehicleSwitch"></label>
+            </div>
         </div>
     </div>
-</div>
-<div>
-    <label>Car Icon</label>
-    <div class="initial-setup-vehicle__select">
-        <div class="custom-control custom-switch">
-            <input type="checkbox" class="custom-control-input" id="customSwitch2" checked>
-            <label class="custom-control-label" for="customSwitch2"></label>  <!-- not working without label? -->
-        </div>
+    <div class="initial-setup-vehicle__action">
+        <button class="btn btn-primary btn-block" type="button" [routerLink]="['/initial-setup-tips']">Become a Green Traveller!</button>
     </div>
-</div>
-
-
-<div class="initial-setup-vehicle__action">
-    <button class="btn btn-primary btn-block" type="button" [routerLink]="['/initial-setup-tips']">Become a Green Traveller!</button>
 </div>

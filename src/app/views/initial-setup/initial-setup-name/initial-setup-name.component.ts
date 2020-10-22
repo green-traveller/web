@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../../../services/data.service';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-initial-setup-name',
@@ -7,11 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InitialSetupNameComponent implements OnInit {
 
-  buttonName = 'Let\'s move on';
+  icons = {
+    close: faTimes
+  };
 
-  constructor() { }
+  constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
   }
 
+  clickChangeName(): void {
+    const input = document.getElementById('inputName');
+    const text = input.innerHTML;
+    this.dataService.setUsername(text);
+  }
 }
