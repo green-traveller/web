@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1603370881578,
+  "timestamp": 1603389913067,
   "index": "/web/index.html",
   "assetGroups": [
     {
@@ -13,11 +13,11 @@
       "urls": [
         "/web/favicon.ico",
         "/web/index.html",
-        "/web/main.f7b434be7296fde38cca.js",
+        "/web/main.d5fff0057dc6222a1288.js",
         "/web/manifest.webmanifest",
         "/web/polyfills.5c8033dfb7c3b4aa1601.js",
         "/web/runtime.acf0dec4155e77772545.js",
-        "/web/styles.3e052d500c54adae5bcf.css"
+        "/web/styles.f12400a5acf02c39677f.css"
       ],
       "patterns": []
     },
@@ -29,35 +29,41 @@
         "ignoreVary": true
       },
       "urls": [
-        "/web/assets/icons/icon-128x128.png",
-        "/web/assets/icons/icon-144x144.png",
-        "/web/assets/icons/icon-152x152.png",
-        "/web/assets/icons/icon-192x192.png",
-        "/web/assets/icons/icon-384x384.png",
-        "/web/assets/icons/icon-512x512.png",
-        "/web/assets/icons/icon-72x72.png",
-        "/web/assets/icons/icon-96x96.png"
+        "/web/assets/icons/android-chrome-192x192.png",
+        "/web/assets/icons/android-chrome-512x512.png",
+        "/web/assets/icons/apple-touch-icon.png",
+        "/web/assets/icons/browserconfig.xml",
+        "/web/assets/icons/favicon-16x16.png",
+        "/web/assets/icons/favicon-32x32.png",
+        "/web/assets/icons/favicon.ico",
+        "/web/assets/icons/mstile-150x150.png",
+        "/web/assets/icons/safari-pinned-tab.svg",
+        "/web/assets/icons/site.webmanifest",
+        "/web/assets/logo.png"
       ],
       "patterns": []
     }
   ],
   "dataGroups": [],
   "hashTable": {
-    "/web/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
-    "/web/assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
-    "/web/assets/icons/icon-152x152.png": "7479a9477815dfd9668d60f8b3b2fba709b91310",
-    "/web/assets/icons/icon-192x192.png": "1abd80d431a237a853ce38147d8c63752f10933b",
-    "/web/assets/icons/icon-384x384.png": "329749cd6393768d3131ed6304c136b1ca05f2fd",
-    "/web/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
-    "/web/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
-    "/web/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
+    "/web/assets/icons/android-chrome-192x192.png": "e8b4501be9b716beb396daf8163e73ad9e97c327",
+    "/web/assets/icons/android-chrome-512x512.png": "38a9a4fb75c59db49edc30e8881facdef9239fa7",
+    "/web/assets/icons/apple-touch-icon.png": "c2140eb4572e2ed82814d2bf51135e65ede4b40a",
+    "/web/assets/icons/browserconfig.xml": "31e512b3a60f71abfc08546e79332b51cf4c0bff",
+    "/web/assets/icons/favicon-16x16.png": "d272b12a084a5b931a4b0bfe00c93a32187f317b",
+    "/web/assets/icons/favicon-32x32.png": "47f20a6475e2766a60cea02a32de465c55c0f7bb",
+    "/web/assets/icons/favicon.ico": "4b2a5b4da03619418ec2d9505e4c41a51746cddb",
+    "/web/assets/icons/mstile-150x150.png": "7553e179b486ee369f6e85f2fe06a55a48d2b7b5",
+    "/web/assets/icons/safari-pinned-tab.svg": "322ddcf5066a2d1ce4717d6b45680f8d52f87e0e",
+    "/web/assets/icons/site.webmanifest": "00efe493863e0d84502cac20adf84fbaf515b77b",
+    "/web/assets/logo.png": "c22a5b6045bb6193d7bd27d5bc80d3a8c18a411e",
     "/web/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "/web/index.html": "f58155b9f6e905e990769c1e5a41503fb810f574",
-    "/web/main.f7b434be7296fde38cca.js": "6205100d84f33eecf8643702e2603f7eddd25839",
+    "/web/index.html": "15444b12a1617d390166b652eae9a856743e0324",
+    "/web/main.d5fff0057dc6222a1288.js": "6f962d654831a377c3815c5cee18890e56720b0a",
     "/web/manifest.webmanifest": "70796a8de56e87ae3fdd33581dfc558a9467a572",
     "/web/polyfills.5c8033dfb7c3b4aa1601.js": "dbc502f030c7bb83c7caa1feee7aff990831f7d9",
     "/web/runtime.acf0dec4155e77772545.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
-    "/web/styles.3e052d500c54adae5bcf.css": "7f48f3de4784dd433f783fc1d27d695199da14d8"
+    "/web/styles.f12400a5acf02c39677f.css": "cdf636c28492d898d180b979882dad65bd01c942"
   },
   "navigationUrls": [
     {
