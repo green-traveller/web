@@ -10,6 +10,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 
 import { AboutComponent } from './views/about/about.component';
 import { AppComponent } from './app.component';
+import { CloseIconComponent } from './components/close-icon/close-icon.component';
 import { Co2GoalsComponent } from './views/preferences/co2-goals/co2-goals.component';
 import { CustomVehiclesComponent } from './views/preferences/custom-vehicles/custom-vehicles.component';
 import { EditVehicleComponent } from './views/preferences/custom-vehicles/edit-vehicle/edit-vehicle.component';
@@ -27,6 +28,7 @@ import { VehicleIconComponent } from './components/vehicle-icon/vehicle-icon.com
   declarations: [
     AboutComponent,
     AppComponent,
+    CloseIconComponent,
     Co2GoalsComponent,
     CustomVehiclesComponent,
     EditVehicleComponent,
