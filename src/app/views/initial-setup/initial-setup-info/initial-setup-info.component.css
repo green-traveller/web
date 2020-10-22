@@ -4,21 +4,6 @@
   padding: 1rem;
 }
 
-.initial-setup-info__close {
-  position: fixed;
-  top: 0;
-  right: 0;
-  margin: 1rem;
-  margin-right: 1.5rem;
-  color: lightgreen;
-  font-size: 200%;
-}
-
-.initial-setup-info__text {
-  margin-top: 50px;  
-  overflow: scrollable;
-}
-
 .initial-setup-info__action {
   position: absolute;
   width: 100%;
@@ -26,4 +11,17 @@
   right: 0;
   padding: 0.5rem;
   background-color: white;
+}
+
+.initial-setup-info__text {
+  margin-top: 5rem;
+  margin-left: 1rem;
+  margin-right: 1rem;  
+  background-color:lightgreen;
+  border-radius: 5px;
+}
+
+.initial-setup-info__text-headline {
+  text-align: center; 
+  margin: 3rem; 
 }

@@ -22,6 +22,21 @@ export class InitialSetupVehicleComponent implements OnInit {
     this.getStorage();
     this.getDefaultVehicles();
     this.username = this.data.username;
+    console.log(this.getMobileOperatingSystem());
+  }
+
+  getMobileOperatingSystem(): string {
+    const userAgent = (navigator.userAgent || navigator.vendor); // || window.opera
+    if (/windows phone/i.test(userAgent)) {
+      return 'Windows Phone';
+    }
+    if (/android/i.test(userAgent)) {
+      return 'Android';
+    }
+    if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+      return 'iOS';
+    }
+    return 'unknown';
   }
 
   getStorage(): void {

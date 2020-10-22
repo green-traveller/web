@@ -1,13 +1,3 @@
-.initial-setup-info__close {
-  position: fixed;
-  top: 0;
-  right: 0;
-  margin: 1rem;
-  margin-right: 1.5rem;
-  color: lightgreen;
-  font-size: 200%;
-}
-
 .initial-setup-tips__action {
     position: absolute;
     width: 100%;
@@ -15,4 +5,8 @@
     right: 0;
     padding: 0.5rem;
   }
+
+.initital-setup-tips__text {
+  margin-top: 5rem;
+}
   

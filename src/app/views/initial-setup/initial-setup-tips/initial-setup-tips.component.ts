@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
+import { faExternalLinkAlt, faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-initial-setup-tips',
@@ -7,6 +8,11 @@ import { DataService } from 'src/app/services/data.service';
   styleUrls: ['./initial-setup-tips.component.css']
 })
 export class InitialSetupTipsComponent implements OnInit {
+
+  icons = {
+    share: faExternalLinkAlt,
+    add: faPlusSquare
+  };
 
   constructor(private dataservice: DataService) { }
 

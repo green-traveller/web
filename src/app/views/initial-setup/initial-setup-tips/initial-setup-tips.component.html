@@ -1,4 +1,11 @@
 <app-close-icon></app-close-icon>
+<h4 class="initital-setup-tips__text">
+    If you want to install this app on your homescreen just press:
+    <fa-icon [icon]="icons.share"></fa-icon>
+    scroll down a litte bit and press the "to homescreen" button labeled with a
+    <fa-icon [icon]="icons.add"></fa-icon>
+
+</h4>
 
 <div class="initial-setup-tips__action">
     <button class="btn btn-primary btn-block" type="button" (click)="finishSetup()" [routerLink]="['/']">Become a Green Traveller!</button>
