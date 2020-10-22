@@ -10,8 +10,10 @@ export class SearchRouteComponent implements OnInit {
 
   @ViewChild('dateInput') dateInput: ElementRef;
   @ViewChild('timeInput') timeInput: ElementRef;
+  @ViewChild('passengerInput') passengerInput: ElementRef;
 
   timeMode = 'now';
+  passengerAmount = 1;
 
   constructor() { }
 
@@ -35,5 +37,16 @@ export class SearchRouteComponent implements OnInit {
     if (this.dateInput.nativeElement.value === '') {
       this.dateInput.nativeElement.value = this.currentDateString();
     }
+  }
+
+  handlePassengerAmountChange(): void {
+    if (!this.passengerInput.nativeElement.validity.valid || this.passengerAmount < 1) {
+      this.passengerAmount = 1;
+    }
+  }
+
+  changePassengerAmount(n: number): void {
+    this.passengerAmount += n;
+    this.handlePassengerAmountChange();
   }
 }
