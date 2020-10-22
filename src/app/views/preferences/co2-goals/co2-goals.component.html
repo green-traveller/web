@@ -23,7 +23,7 @@
           class="goals__item-input"
           (change)="handleRadioChange()"
         >
-        Lower Average ({{ defaultValues.lower }} kg/month)
+        Challenge ({{ defaultValues.lower }} kg/month)
       </label>
       <label class="goals__list-item">
         <input
@@ -34,7 +34,7 @@
           class="goals__item-input"
           (change)="handleRadioChange()"
         >
-        Custom
+        CustomChallenge
       </label>
     </div>
     <div *ngIf="co2.mode === 'custom'" class="goals__custom">
