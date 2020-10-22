@@ -8,29 +8,32 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 })
 export class SearchRouteComponent implements OnInit {
 
-  @ViewChild('nowButton') nowButton: ElementRef;
   @ViewChild('dateInput') dateInput: ElementRef;
   @ViewChild('timeInput') timeInput: ElementRef;
 
-  departureArrival = 'Departure';
+  timeMode = 'now';
 
   constructor() { }
 
-  ngOnInit(): void {
-    console.log(this.nowButton);
+  ngOnInit(): void { }
+
+  currentTimeString(): string {
+    return formatDate(new Date(), 'HH:mm', 'en-US');
   }
 
-  setCurrentDateTime(): void {
-    this.timeInput.nativeElement.value = formatDate(new Date(), 'HH:mm', 'en-US');
-    this.dateInput.nativeElement.value = formatDate(new Date(), 'yyyy-MM-dd', 'en-US');
+  currentDateString(): string {
+    return formatDate(new Date(), 'yyyy-MM-dd', 'en-US');
   }
 
-  // tslint:disable-next-line: use-lifecycle-interface
-  ngAfterViewInit(): void {
-    this.setCurrentDateTime();
+  handleTimeChange(): void {
+    if (this.timeInput.nativeElement.value === '') {
+      this.timeInput.nativeElement.value = this.currentTimeString();
+    }
   }
 
-  handleNowButtonClick(): void {
-    this.setCurrentDateTime();
+  handleDateChange(): void {
+    if (this.dateInput.nativeElement.value === '') {
+      this.dateInput.nativeElement.value = this.currentDateString();
+    }
   }
 }

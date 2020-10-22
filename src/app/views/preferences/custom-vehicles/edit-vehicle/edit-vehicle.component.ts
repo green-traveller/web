@@ -46,6 +46,10 @@ export class EditVehicleComponent implements OnInit {
     this.location.back();
   }
 
+  handleCancelClick(): void {
+    this.location.back();
+  }
+
   focusOnCarbonInput(): void {
     this.carbonInput.nativeElement.focus();
   }
