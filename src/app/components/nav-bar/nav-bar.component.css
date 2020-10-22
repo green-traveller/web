@@ -1,6 +1,6 @@
 .nav-bar {
   align-items: center;
-  background-color: #52F75D;
+  background-color: var(--primary);
   box-shadow: 0 2px 12px 0 rgba(0,0,0,.2);
   display: flex;
   justify-content: space-between;
