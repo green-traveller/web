@@ -5,18 +5,20 @@
         {
             "src": "/web/assets/icons/android-chrome-192x192.png",
             "sizes": "192x192",
-            "type": "image/png"
+            "type": "image/png",
+            "purpose": "maskable any"
         },
         {
             "src": "/web/assets/icons/android-chrome-512x512.png",
             "sizes": "512x512",
-            "type": "image/png"
+            "type": "image/png",
+            "purpose": "maskable any"
         }
     ],
     "theme_color": "#26c281",
     "background_color": "#fafafa",
-    "scope": "https://green-traveller.github.io/web",
-    "start_url": "https://green-traveller.github.io/web",
+    "scope": "https://green-traveller.github.io/web/",
+    "start_url": "https://green-traveller.github.io/web/",
     "display": "standalone",
     "orientation": "portrait"
 }
