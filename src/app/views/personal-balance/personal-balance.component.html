@@ -6,7 +6,7 @@
     <h5>Over last 30 days</h5>    
     <h6>By means of transport</h6>       
     <h6>Compared to German Ø</h6>
-    <app-pie-chart [pieChartLabels]="co2PieChartLabels" [pieChartData]="currentCo2Data"></app-pie-chart>
+    <app-pie-chart [pieChartLabels]="co2PieChartLabels" [pieChartData]="currentCo2Data" [pieChartColors]="co2PieChartColors"></app-pie-chart>
     <p>
         <ngb-alert [dismissible]="true" [type]="co2AlertType">
             {{co2AlertMessage}}

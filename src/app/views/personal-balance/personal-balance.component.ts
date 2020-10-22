@@ -6,26 +6,36 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./personal-balance.component.css']
 })
 export class PersonalBalanceComponent implements OnInit {
-  public avgTranspCO2German: number = 4.4; // average co2-emissions [kg] per day caused by transport (excluding air travel) by a German
-  
-  public currentCo2Data: number[] = [0.78, 0.1, 0.46, 0.2, 0.34, 0.47]; // average co2 emissions per day in kg over the last 30 days from different means of transport
-  
-  public currentCo2Sum = this.currentCo2Data.reduce((pv, cv) => pv + cv, 0); 
 
-  public currentCo2RestBudget: number = this.avgTranspCO2German - this.currentCo2Sum;
+  avgTranspCO2German: number = 4.4; // average co2-emissions [kg] per day caused by transport (excluding air travel) by a German
+  
+  currentCo2Data: number[] = [0.81, 0.23, 0.3, 0.36, 0.34, 0.27]; // average co2 emissions per day in kg over the last 30 days from different means of transport
+  
+  currentCo2Sum = this.currentCo2Data.reduce((pv, cv) => pv + cv, 0); 
+
+  currentCo2RestBudget: number = this.avgTranspCO2German - this.currentCo2Sum;
 
   // Co2-PieChart
   
-  public co2PieChartData: number[]  = this.getCo2PieChartData();
-
-  public co2PieChartLabels: string[] = ['Car', 'Motorbike', 'Bus', 'Subway', 'Tram', 'Train', 'Rest Budget'];
+  co2PieChartData: number[]  = this.getCo2PieChartData();
   
   getCo2PieChartData(): number[] {
     this.currentCo2Data.push(this.currentCo2RestBudget);
     return this.currentCo2Data
   };
 
-  public co2AlertMessage: string = this.getCo2AlertMessage();
+  co2PieChartLabels: string[] = ['Car', 'Motorbike', 'Bus', 'Subway', 'Train', 'Tram', 'Rest Budget'];
+
+  co2PieChartColors: object[] =  [
+    {
+      backgroundColor: ["#ff4233", "#ff8c00", "#e6ff33", "#9fffcb", "#47c3a0", "#25a18e", "#f0f0f0"],
+      borderColor: '#fff',
+      pointBackgroundColor: '#fff',
+      pointBorderColor: '#fff'
+    } 
+  ];
+
+  co2AlertMessage: string = this.getCo2AlertMessage();
 
   getCo2AlertMessage(): string {
     if (this.currentCo2RestBudget > 0) {
@@ -38,7 +48,7 @@ export class PersonalBalanceComponent implements OnInit {
     }
   }
   
-  public co2AlertType: string = this.getCo2AlertType();
+  co2AlertType: string = this.getCo2AlertType();
 
   getCo2AlertType(): string {
     if (this.currentCo2RestBudget > 0) {
@@ -51,11 +61,11 @@ export class PersonalBalanceComponent implements OnInit {
     }
   }
 
-  public personalGoal: number = 3; // meaning 3 kg per day from transport, average German emmits around 4.4 kg a day from transport (not including air travel)
+  personalGoal: number = 3; // meaning 3 kg per day from transport, average German emmits around 4.4 kg a day from transport (not including air travel)
 
-  public personalGoalBarStatus: number = (this.currentCo2Sum / this.personalGoal) ;
+  personalGoalBarStatus: number = (this.currentCo2Sum / this.personalGoal) ;
 
-  public personalGoalAlertMessage: string = this.getPersonalGoalAlertMessage();
+  personalGoalAlertMessage: string = this.getPersonalGoalAlertMessage();
 
   getPersonalGoalAlertMessage(): string {
     if (this.personalGoalBarStatus < 1) {
@@ -68,7 +78,7 @@ export class PersonalBalanceComponent implements OnInit {
     }
   }
 
-  public personalGoalAlertType: string = this.getPersonalGoalAlertType();
+  personalGoalAlertType: string = this.getPersonalGoalAlertType();
 
   getPersonalGoalAlertType(): string {
     if (this.personalGoalBarStatus < 1) {
@@ -86,11 +96,11 @@ export class PersonalBalanceComponent implements OnInit {
   
   distancePieChartLabels: string[] = ['Car', 'Motorbike', 'Bus', 'Subway', 'Tram', 'Train', 'Bicycle', 'By Foot'];
 
-  distancePieChartData: number[] = [1, 2, 3, 4, 4, 3, 2, 1];
+  distancePieChartData: number[] = [150, 70, 60, 100, 20, 200, 200, 110];
 
   distancePieChartColors: object[] = [
     {
-      backgroundColor: ["ff4233", "#7ae582", "#e6ff33", "#25a18e", "#9fffcb", "#00a5cf", "#004e64", "#f0f0f0"],
+      backgroundColor: ["#ff3311", "#ee7700","#ff8c00", "#ffa500", "#f3c318", "#e6ff33", "#9fffcb", "#47c3a0"], //, "#25a18e"
       borderColor: '#fff',
       pointBackgroundColor: '#fff',
       pointBorderColor: '#fff',
