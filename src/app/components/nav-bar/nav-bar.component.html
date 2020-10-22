@@ -6,6 +6,9 @@
       <button id="dropdownBasic1" class="navbar-toggler" ngbDropdownToggle>
         <span class="navbar-toggler-icon"></span>
       </button>
+      <div ngbDropdownMenu>
+        <button class="nav-bar__menu-item" (click)="navigate('/')" ngbDropdownItem>Search</button>
+        <button class="nav-bar__menu-item" (click)="navigate('/preferences')" ngbDropdownItem>Preferences</button>
       <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
         <a routerLink="/" ngbDropdownItem>Search</a>
         <a routerLink="/nav" ngbDropdownItem>Nav</a>

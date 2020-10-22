@@ -28,10 +28,13 @@
   align-items: baseline;
 }
 
+.goals__custom-input-group {
+}
+
 .goals__custom-input {
+  flex-grow: 0;
   width: 5rem;
   text-align: center;
-  margin-right: 0.5rem;
 }
 
 .goals__info {
