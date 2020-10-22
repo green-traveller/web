@@ -1,36 +1,52 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { environment } from '../environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { ServiceWorkerModule } from '@angular/service-worker';
-import { environment } from '../environments/environment';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BrowserModule } from '@angular/platform-browser';
 import { ChartsModule } from 'ng2-charts';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgModule } from '@angular/core';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
-import { SearchRouteComponent } from './views/search-route/search-route.component';
+import { AboutComponent } from './views/about/about.component';
+import { AppComponent } from './app.component';
+import { BarChartComponent } from './components/bar-chart/bar-chart.component';
+import { Co2GoalsComponent } from './views/preferences/co2-goals/co2-goals.component';
+import { CustomVehiclesComponent } from './views/preferences/custom-vehicles/custom-vehicles.component';
+import { EditVehicleComponent } from './views/preferences/custom-vehicles/edit-vehicle/edit-vehicle.component';
+import { ManageDataComponent } from './views/preferences/manage-data/manage-data.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { PersonalBalanceComponent } from './views/personal-balance/personal-balance.component';
 import { PieChartComponent } from './components/pie-chart/pie-chart.component';
-import { BarChartComponent } from './components/bar-chart/bar-chart.component';
+import { PreferencesComponent } from './views/preferences/preferences.component';
+import { SearchRouteComponent } from './views/search-route/search-route.component';
+import { VehicleIconComponent } from './components/vehicle-icon/vehicle-icon.component';
 
 @NgModule({
   declarations: [
+    AboutComponent,
     AppComponent,
-    SearchRouteComponent,
+    BarChartComponent,
+    Co2GoalsComponent,
+    CustomVehiclesComponent,
+    EditVehicleComponent,
+    ManageDataComponent,
     NavBarComponent,
     PersonalBalanceComponent,
     PieChartComponent,
-    BarChartComponent
+    PreferencesComponent,
+    SearchRouteComponent,
+    VehicleIconComponent
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    BrowserModule,
+    ChartsModule,
+    FontAwesomeModule,
     FormsModule,
     NgbModule,
-    ChartsModule
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]
