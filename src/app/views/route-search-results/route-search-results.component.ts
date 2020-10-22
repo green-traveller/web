@@ -1,4 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import {
+  faCarSide,
+  faMotorcycle,
+  faBicycle,
+  faWalking,
+  faSubway
+} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-route-search-results',
@@ -7,10 +14,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RouteSearchResultsComponent implements OnInit {
 
-  constructor() { }
+  icons = {
+      car: faCarSide,
+      motorcycle: faMotorcycle,
+      bicycle: faBicycle,
+      train: faSubway,
+      walking: faWalking
+    };
 
-  public isCollapsedOne = true;
-  public isCollapsedTwo = true;
+  constructor() { }
 
   ngOnInit(): void {
   }

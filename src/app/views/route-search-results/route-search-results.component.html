@@ -1,40 +1,47 @@
 <app-nav-bar title="Results"></app-nav-bar>
 
-<div>
-  <div class="route-search-results__item">
-      <span class="route-search-results__item-header" (click)="isCollapsedOne = !isCollapsedOne"
-            [attr.aria-expanded]="!isCollapsedOne" aria-controls="content-one">
-        <div>icon</div>
-        <div>co_2</div>
-        <div>time</div>
-      </span>
+<div class="navigation-gap">
+  <ngb-accordion [closeOthers]="true" #acc="ngbAccordion">
 
-    <div id="content-one" [ngbCollapse]="isCollapsedOne">
-      <div class="route-search-results__item-content">
-        <button type="button" class="btn btn-primary w-25">Map</button>
-        <button type="button" class="btn btn-primary w-25">Save</button>
-      </div>
-    </div>
+  <ngb-panel id="ngb-panel-0">
 
-  </div>
+    <ng-template ngbPanelHeader >
+        <div class="route-search-results__item-header"
+             (click)="acc.toggle('ngb-panel-0')">
+          <fa-icon [icon]="icons.walking"></fa-icon>
+          <div>CO<sub>2</sub></div>
+          <div>time</div>
+        </div>
+      </ng-template>
+
+      <ng-template ngbPanelContent>
+        <div class="route-search-results__item-content">
+          <button type="button" class="btn btn-primary w-25">Map</button>
+          <button type="button" class="btn btn-primary w-25">Save</button>
+        </div>
+      </ng-template>
+
+    </ngb-panel>
+
+    <ngb-panel id="ngb-panel-1">
+
+      <ng-template ngbPanelHeader>
+        <div class="route-search-results__item-header"
+             (click)="acc.toggle('ngb-panel-1')">
+          <fa-icon [icon]="icons.car"></fa-icon>
+          <div>CO<sub>2</sub></div>
+          <div>time</div>
+        </div>
+      </ng-template>
+
+      <ng-template ngbPanelContent>
+        <div class="route-search-results__item-content">
+          <button type="button" class="btn btn-primary w-25">Map</button>
+          <button type="button" class="btn btn-primary w-25">Save</button>
+        </div>
+      </ng-template>
+
+    </ngb-panel>
+
+  </ngb-accordion>
 </div>
-<div>
-  <div class="route-search-results__item">
-      <span class="route-search-results__item-header" (click)="isCollapsedTwo = !isCollapsedTwo"
-            [attr.aria-expanded]="!isCollapsedTwo" aria-controls="content-two">
-        <div>icon</div>
-        <div>co_2</div>
-        <div>time</div>
-      </span>
-
-    <div id="content-two" [ngbCollapse]="isCollapsedTwo">
-      <div class="route-search-results__item-content">
-        <button type="button" class="btn btn-primary w-25">Map</button>
-        <button type="button" class="btn btn-primary w-25">Save</button>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-
