@@ -3,7 +3,6 @@ import {} from 'googlemaps';
 import {MapsSdkService} from '../../services/maps-sdk.service';
 import PlaceResult = google.maps.places.PlaceResult;
 
-
 @Component({
   selector: 'app-places-search',
   templateUrl: './places-search.component.html',
@@ -58,7 +57,7 @@ export class PlacesSearchComponent implements OnInit, AfterViewInit {
     const request = {
       origin: { placeId: this.origin.place_id },
       destination: { placeId: this.destination.place_id },
-      travelMode: 'DRIVING'
+      travelMode: 'TRANSIT'
     };
     console.log('Calculating...');
     // @ts-ignore
