@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1603389996272,
+  "timestamp": 1603391279703,
   "index": "/web/index.html",
   "assetGroups": [
     {
@@ -38,7 +38,6 @@
         "/web/assets/icons/favicon.ico",
         "/web/assets/icons/mstile-150x150.png",
         "/web/assets/icons/safari-pinned-tab.svg",
-        "/web/assets/icons/site.webmanifest",
         "/web/assets/logo.png"
       ],
       "patterns": []
@@ -49,18 +48,17 @@
     "/web/assets/icons/android-chrome-192x192.png": "e8b4501be9b716beb396daf8163e73ad9e97c327",
     "/web/assets/icons/android-chrome-512x512.png": "38a9a4fb75c59db49edc30e8881facdef9239fa7",
     "/web/assets/icons/apple-touch-icon.png": "c2140eb4572e2ed82814d2bf51135e65ede4b40a",
-    "/web/assets/icons/browserconfig.xml": "31e512b3a60f71abfc08546e79332b51cf4c0bff",
+    "/web/assets/icons/browserconfig.xml": "7d8db0a44d3d79d58ad51122bfdf6b6bf93073b1",
     "/web/assets/icons/favicon-16x16.png": "d272b12a084a5b931a4b0bfe00c93a32187f317b",
     "/web/assets/icons/favicon-32x32.png": "47f20a6475e2766a60cea02a32de465c55c0f7bb",
     "/web/assets/icons/favicon.ico": "4b2a5b4da03619418ec2d9505e4c41a51746cddb",
     "/web/assets/icons/mstile-150x150.png": "7553e179b486ee369f6e85f2fe06a55a48d2b7b5",
     "/web/assets/icons/safari-pinned-tab.svg": "322ddcf5066a2d1ce4717d6b45680f8d52f87e0e",
-    "/web/assets/icons/site.webmanifest": "00efe493863e0d84502cac20adf84fbaf515b77b",
     "/web/assets/logo.png": "c22a5b6045bb6193d7bd27d5bc80d3a8c18a411e",
-    "/web/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "/web/index.html": "46fc8d5f9cfe7f954c4caced9043aa9c51cfafe4",
+    "/web/favicon.ico": "4b2a5b4da03619418ec2d9505e4c41a51746cddb",
+    "/web/index.html": "0d906d900fd1adc707c259d384632047051ce344",
     "/web/main.a4392fe20a6bf62c8e06.js": "64e7f21e44bf014517099c27a095e79d0b7e6b08",
-    "/web/manifest.webmanifest": "70796a8de56e87ae3fdd33581dfc558a9467a572",
+    "/web/manifest.webmanifest": "bc0818abd3f6121fc2f6dca749db1d93f6b591e0",
     "/web/polyfills.5c8033dfb7c3b4aa1601.js": "dbc502f030c7bb83c7caa1feee7aff990831f7d9",
     "/web/runtime.acf0dec4155e77772545.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
     "/web/styles.f12400a5acf02c39677f.css": "cdf636c28492d898d180b979882dad65bd01c942"
