@@ -6,12 +6,12 @@
     <button type="button" class="btn btn-outline-secondary" placement="right"margin="20rem" ngbTooltip="This chart shows your tracked CO₂-emissions from transport in kg/day measured over the last 30 days. The full pie represents the current German average." triggers="click:blur">
     More Info
       </button>
-    <app-pie-chart [pieChartLabels]="co2PieChartLabels" [pieChartData]="currentCo2Data" [pieChartColors]="co2PieChartColors"></app-pie-chart>
     <p>
-        <ngb-alert [dismissible]="true" [type]="co2AlertType">
-            {{co2AlertMessage}}
-        </ngb-alert>
+      <ngb-alert [dismissible]="true" [type]="co2AlertType">
+          {{co2AlertMessage}}
+      </ngb-alert>
     </p>
+    <app-pie-chart [pieChartLabels]="co2PieChartLabels" [pieChartData]="currentCo2Data" [pieChartColors]="co2PieChartColors"></app-pie-chart>
 </div>
 
 <hr>

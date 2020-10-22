@@ -9,7 +9,7 @@ export class PersonalBalanceComponent implements OnInit {
 
   avgTranspCO2German: number = 4.4; // average co2-emissions [kg] per day caused by transport (excluding air travel) by a German
   
-  currentCo2Data: number[] = [0.81, 0.23, 0.3, 0.36, 0.34, 0.27]; // average co2 emissions per day in kg over the last 30 days from different means of transport
+  currentCo2Data: number[] = [0.81, 0.23, 1.26]; // average co2 emissions per day in kg over the last 30 days from different means of transport
   
   currentCo2Sum = this.currentCo2Data.reduce((pv, cv) => pv + cv, 0); 
 
@@ -20,15 +20,19 @@ export class PersonalBalanceComponent implements OnInit {
   co2PieChartData: number[]  = this.getCo2PieChartData();
   
   getCo2PieChartData(): number[] {
-    this.currentCo2Data.push(this.currentCo2RestBudget);
-    return this.currentCo2Data
+    if (this.currentCo2RestBudget >= 0) {
+      this.currentCo2Data.push(this.currentCo2RestBudget);
+      return this.currentCo2Data
+    } else {
+      return [this.currentCo2Sum]
+    }    
   };
 
-  co2PieChartLabels: string[] = ['Car', 'Motorbike', 'Bus', 'Subway', 'Train', 'Tram', 'Rest Budget'];
+  co2PieChartLabels: string[] = ['Car', 'Motorbike', 'Public Transport', 'Rest Budget'];
 
   co2PieChartColors: object[] =  [
     {
-      backgroundColor: ["#ff4233", "#ff8c00", "#e6ff33", "#9fffcb", "#47c3a0", "#25a18e", "#f0f0f0"],
+      backgroundColor: ["#ff4233", "#ff8c00", "#e6ff33", "#f0f0f0"], //"#9fffcb", "#47c3a0", "#25a18e", 
       borderColor: '#fff',
       pointBackgroundColor: '#fff',
       pointBorderColor: '#fff'
@@ -94,7 +98,7 @@ export class PersonalBalanceComponent implements OnInit {
 
   // Distance-PieChart
   
-  distancePieChartLabels: string[] = ['Car', 'Motorbike', 'Bus', 'Subway', 'Tram', 'Train', 'Bicycle', 'By Foot'];
+  distancePieChartLabels: string[] = ['Car', 'Motorbike', 'Public Transport', 'Bicycle', 'By Foot'];
 
   distancePieChartData: number[] = [150, 70, 60, 100, 20, 200, 200, 110];
 
