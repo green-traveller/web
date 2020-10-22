@@ -14,9 +14,7 @@
 }
 
 .initial-setup-info__text {
-  margin-top: 5rem;
-  margin-left: 1rem;
-  margin-right: 1rem;  
+  margin: 1rem;  
   background-color:lightgreen;
   border-radius: 5px;
 }
