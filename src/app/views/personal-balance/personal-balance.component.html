@@ -1,46 +1,52 @@
 <app-nav-bar title="Personal CO₂-Balance"></app-nav-bar>
 
-<!-- Section I Co2-Emissions vs. Goals (Pie Chart + Progress bar)  -->
-<div class="pie-chart-CO₂">
+<div class="navigation-gap">
+  <!-- Section I Co2-Emissions vs. Goals (Pie Chart + Progress bar)  -->
+  <div class="pie-chart-CO₂">
     <h4>CO₂-Emissions (kg/day)</h4>
-    <button type="button" class="btn btn-outline-secondary" placement="right"margin="20rem" ngbTooltip="This chart shows your tracked CO₂-emissions from transport in kg/day measured over the last 30 days. The full pie represents the current German average." triggers="click:blur">
-    More Info
-      </button>
+    <button type="button" class="btn btn-outline-secondary" placement="right" margin="20rem"
+      ngbTooltip="This chart shows your tracked CO₂-emissions from transport in kg/day measured over the last 30 days. The full pie represents the current German average."
+      triggers="click:blur">
+      More Info
+    </button>
     <p>
       <ngb-alert [dismissible]="true" [type]="co2AlertType">
-          {{co2AlertMessage}}
+        {{co2AlertMessage}}
       </ngb-alert>
     </p>
-    <app-pie-chart [pieChartLabels]="co2PieChartLabels" [pieChartData]="currentCo2Data" [pieChartColors]="co2PieChartColors"></app-pie-chart>
-</div>
+    <app-pie-chart [pieChartLabels]="co2PieChartLabels" [pieChartData]="currentCo2Data"
+      [pieChartColors]="co2PieChartColors"></app-pie-chart>
+  </div>
 
-<hr>
+  <hr>
 
-<div class="progressbar-personal-goal">
+  <div class="progressbar-personal-goal">
     <h4>Personal Goal</h4>
     <p>
-        <ngb-progressbar [showValue]="true" type="danger" [value]="currentCo2Sum" [max]="personalGoal"></ngb-progressbar>
+      <ngb-progressbar [showValue]="true" type="danger" [value]="currentCo2Sum" [max]="personalGoal"></ngb-progressbar>
     </p>
     <p>
-        <ngb-alert [dismissible]="true" [type]="co2AlertType">
-            {{personalGoalAlertMessage}}
-        </ngb-alert>
+      <ngb-alert [dismissible]="true" [type]="co2AlertType">
+        {{personalGoalAlertMessage}}
+      </ngb-alert>
     </p>
-</div>
+  </div>
 
-<hr>
+  <hr>
 
-<!-- Section II Means of transport by km travelled (Pie Chart) -->
-<div class="pie-chart-km">
+  <!-- Section II Means of transport by km travelled (Pie Chart) -->
+  <div class="pie-chart-km">
     <h4>Means of Transport (km)</h4>
-    <app-pie-chart [pieChartLabels]="distancePieChartLabels" [pieChartData]="distancePieChartData" [pieChartColors]="distancePieChartColors"></app-pie-chart>
-</div>
+    <app-pie-chart [pieChartLabels]="distancePieChartLabels" [pieChartData]="distancePieChartData"
+      [pieChartColors]="distancePieChartColors"></app-pie-chart>
+  </div>
 
-<hr>
+  <hr>
 
-<!-- Section III Co2-Emissions over time (Bar Chart) -->
-<div class="bar-chart-CO₂">
+  <!-- Section III Co2-Emissions over time (Bar Chart) -->
+  <div class="bar-chart-CO₂">
     <h4>CO₂-Emissions (kg/day)</h4>
     <h5>Per month (last 6)</h5>
     <app-bar-chart></app-bar-chart>
+  </div>
 </div>
