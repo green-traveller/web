@@ -3,34 +3,14 @@
 <div class="navigation-gap">
   <ngb-accordion [closeOthers]="true" #acc="ngbAccordion">
 
-  <ngb-panel id="ngb-panel-0">
-
-    <ng-template ngbPanelHeader >
-        <div class="route-search-results__item-header"
-             (click)="acc.toggle('ngb-panel-0')">
-          <fa-icon [icon]="icons.walking"></fa-icon>
-          <div>CO<sub>2</sub></div>
-          <div>time</div>
-        </div>
-      </ng-template>
-
-      <ng-template ngbPanelContent>
-        <div class="route-search-results__item-content">
-          <button type="button" class="btn btn-primary w-25">Map</button>
-          <button type="button" class="btn btn-primary w-25">Save</button>
-        </div>
-      </ng-template>
-
-    </ngb-panel>
-
-    <ngb-panel id="ngb-panel-1">
+    <ngb-panel *ngFor="let Route of routeResults" id="{{Route.id}}">
 
       <ng-template ngbPanelHeader>
         <div class="route-search-results__item-header"
-             (click)="acc.toggle('ngb-panel-1')">
-          <fa-icon [icon]="icons.car"></fa-icon>
+             (click)="acc.toggle(Route.id)">
+          <fa-icon [icon]="icons.walking"></fa-icon>
           <div>CO<sub>2</sub></div>
-          <div>time</div>
+          <div>{{Route}}</div>
         </div>
       </ng-template>
 
