@@ -1,6 +1,6 @@
 <nav class="nav-bar">
-  <div class="nav-bar__item"><button class="btn"><</button> </div>
-  <div class="nav-bar__item">{{title}}</div>
+  <div class="nav-bar__item"><button class="btn nav-bar__back-button" (click)="back()" [class.nav-bar__back-button--hidden]="hideBackButton"><fa-icon [icon]="icons.leftArrow"></fa-icon></button> </div>
+  <div class="nav-bar__item"><span class="nav-bar__title">{{ title }}</span></div>
   <div class="nav-bar__item">
     <div ngbDropdown class="d-inline-block navbar-light">
       <button id="dropdownBasic1" class="navbar-toggler" ngbDropdownToggle>
@@ -9,14 +9,7 @@
       <div ngbDropdownMenu>
         <button class="nav-bar__menu-item" (click)="navigate('/')" ngbDropdownItem>Search</button>
         <button class="nav-bar__menu-item" (click)="navigate('/preferences')" ngbDropdownItem>Preferences</button>
-      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-        <a routerLink="/" ngbDropdownItem>Search</a>
-        <a routerLink="/nav" ngbDropdownItem>Nav</a>
-        <a routerLink="/preferences" ngbDropdownItem>Preferences</a>
-        <a routerLink="/results" ngbDropdownItem>Results</a>
-        <button ngbDropdownItem>Action - 1</button>
-        <button ngbDropdownItem>Another Action</button>
-        <button ngbDropdownItem>Something else is here</button>
+        <button class="nav-bar__menu-item" (click)="navigate('/results')" ngbDropdownItem>Results</button>
       </div>
     </div>
   </div>

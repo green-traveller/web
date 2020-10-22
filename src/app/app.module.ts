@@ -31,7 +31,6 @@ import { RouteSearchResultsComponent } from './views/route-search-results/route-
     NavBarComponent,
     PreferencesComponent,
     SearchRouteComponent,
-    NavBarComponent,
     RouteSearchResultsComponent,
     VehicleIconComponent
   ],
