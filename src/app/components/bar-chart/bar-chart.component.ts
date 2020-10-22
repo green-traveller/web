@@ -42,7 +42,7 @@ export class BarChartComponent implements OnInit {
   ];
   
   barChartColors = [] = [
-    { backgroundColor: 'red' },
+    { backgroundColor: '#ff3311' },
     { backgroundColor: 'green' },
   ];
 
