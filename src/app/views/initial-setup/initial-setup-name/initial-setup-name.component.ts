@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../../services/data.service';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-initial-setup-name',
@@ -9,9 +8,6 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 })
 export class InitialSetupNameComponent implements OnInit {
 
-  icons = {
-    close: faTimes
-  };
 
   constructor(private dataService: DataService) { }
 

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../../services/data.service';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { Storage } from '../../../models/storage';
 import { Vehicle } from '../../../models/vehicle';
 
@@ -11,10 +10,6 @@ import { Vehicle } from '../../../models/vehicle';
 })
 
 export class InitialSetupVehicleComponent implements OnInit {
-
-  icons = {
-    close: faTimes
-  };
 
   data: Storage;
   username: string;

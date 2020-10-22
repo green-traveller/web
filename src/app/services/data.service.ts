@@ -129,7 +129,8 @@ export class DataService {
     this.setStorage();
   }
 
-  // Username
+  // Initial Setup
+
   public setUsername(s: string): void {
     this.data.username = s;
     this.setStorage();
@@ -137,6 +138,15 @@ export class DataService {
 
   public getUsername(): string {
     return this.data.username;
+  }
+
+  public setSetupCompleted(b: boolean): void {
+    this.data.setupCompleted = b;
+    this.setStorage();
+  }
+
+  public getSetupCompleted(): boolean {
+    return this.data.setupCompleted;
   }
 }
 

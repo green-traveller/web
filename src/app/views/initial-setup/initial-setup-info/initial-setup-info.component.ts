@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-initial-setup-info',
@@ -7,10 +6,6 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./initial-setup-info.component.css']
 })
 export class InitialSetupInfoComponent implements OnInit {
-
-  icons = {
-    close: faTimes
-  };
 
   constructor() { }
 

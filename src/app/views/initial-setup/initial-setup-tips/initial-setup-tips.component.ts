@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
-
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-initial-setup-tips',
@@ -9,13 +8,12 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 })
 export class InitialSetupTipsComponent implements OnInit {
 
-  icons = {
-    close: faTimes
-  };
-
-  constructor() { }
+  constructor(private dataservice: DataService) { }
 
   ngOnInit(): void {
   }
 
+  finishSetup(): void {
+    this.dataservice.setSetupCompleted(true);
+  }
 }
