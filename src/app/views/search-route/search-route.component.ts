@@ -1,6 +1,7 @@
 import { formatDate } from '@angular/common';
 import { Component, ElementRef, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { MapsSdkService } from '../../services/maps-sdk.service';
+import { Router } from '@angular/router';
 import {} from 'googlemaps';
 
 @Component({
@@ -94,6 +95,9 @@ export class SearchRouteComponent implements OnInit {
       this.changeDetectorRef.detectChanges();
       if (Object.keys(r.options).length < 1) {
         window.alert('No results found.');
+      } else {
+        // TODO navigate to result view
+        // this.router.navigateByUrl('/result');
       }
       console.log(r);
     });

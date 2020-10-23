@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { Route } from '../models/route';
 import { DataService } from './data.service';
+import { ResultService } from './result.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class MapsSdkService {
   toExecute = [];
   directionsService: google.maps.DirectionsService;
 
-  constructor(private dataService: DataService) {
+  constructor(private dataService: DataService, private resultService: ResultService) {
     const element = document.createElement('script');
     element.src = this.url + this.key;
     element.type = 'text/javascript';
@@ -77,6 +78,7 @@ export class MapsSdkService {
           };
         }
         if (requestCount === requestVariables.length) {
+          this.resultService.setRoute(route);
           callback(route);
         }
       });
