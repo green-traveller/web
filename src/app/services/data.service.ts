@@ -1,8 +1,10 @@
 import { Inject, Injectable } from '@angular/core';
 import { LOCAL_STORAGE, StorageService } from 'ngx-webstorage-service';
+
 import { Storage } from '../models/storage';
 import { Co2 } from '../models/co2';
 import { Vehicle } from '../models/vehicle';
+import { Route } from '../models/route';
 
 const STORAGE_KEY = 'TEST';
 
@@ -73,6 +75,18 @@ export class DataService {
       // tslint:disable-next-line:no-bitwise
       (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
     );
+  }
+
+  // Routes
+
+  public setRouteVehicle(route: Route, vehicleId: string): void {
+    this.data.routes[route.id].vehicleId = vehicleId;
+    this.setStorage();
+  }
+
+  public deleteRoute(route: Route): void {
+    delete this.data.routes[route.id];
+    this.setStorage();
   }
 
   // Vehicles
