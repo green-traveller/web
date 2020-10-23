@@ -107,6 +107,11 @@ export class DataService {
     return Object.values(this.data.vehicles);
   }
 
+  public getActiveTransportModes(): string[] {
+    const activeVehicles = this.getVehicles().filter(v => v.active);
+    return [...new Set(activeVehicles.map(v => v.travelmode.toUpperCase()))];
+  }
+
   // CO2
 
   public setCo2(co2: Co2): void {

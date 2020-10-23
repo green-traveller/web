@@ -1,5 +1,6 @@
 import { formatDate } from '@angular/common';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { MapsSdkService } from '../../services/maps-sdk.service';
 
 @Component({
   selector: 'app-search-route',
@@ -8,16 +9,93 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 })
 export class SearchRouteComponent implements OnInit {
 
+  @ViewChild('fromInput') fromInput: ElementRef;
+  @ViewChild('toInput') toInput: ElementRef;
   @ViewChild('dateInput') dateInput: ElementRef;
   @ViewChild('timeInput') timeInput: ElementRef;
   @ViewChild('passengerInput') passengerInput: ElementRef;
 
   timeMode = 'now';
   passengerAmount = 1;
+  from: google.maps.places.PlaceResult;
+  to: google.maps.places.PlaceResult;
+  directionsService: google.maps.DirectionsService;
+  mapsSdkLoaded = false;
+  toInputValid = false;
+  fromInputValid = false;
 
-  constructor() { }
+  constructor(private mapsSdkService: MapsSdkService) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.mapsSdkService.onload(this.setUpMapsApiComponents.bind(this));
+  }
+
+  setUpMapsApiComponents(): void {
+    // https://developers.google.com/maps/documentation/javascript/places-autocomplete?hl=en_US#add-autocomplete
+    const autocompleteOrigin = new google.maps.places.Autocomplete(
+      (this.fromInput.nativeElement as HTMLInputElement),
+      { componentRestrictions: { country: ['DE'] } }
+    );
+    // https://developers.google.com/maps/documentation/javascript/place-data-fields?hl=en_US
+    autocompleteOrigin.setFields(['place_id', 'name']);
+    // When the user selects an address from the drop-down
+    google.maps.event.addListenerOnce(autocompleteOrigin, 'place_changed', () => {
+      this.from = autocompleteOrigin.getPlace();
+      this.fromInputValid = true;
+    });
+
+    // dest
+    const autocompleteDestination = new google.maps.places.Autocomplete(
+      (this.toInput.nativeElement as HTMLInputElement),
+      { componentRestrictions: { country: ['DE'] } }
+    );
+    autocompleteDestination.setFields(['place_id', 'name']);
+    autocompleteDestination.addListener('place_changed', () => {
+      this.to = autocompleteDestination.getPlace();
+      this.toInputValid = true;
+    });
+
+    // search button
+    this.mapsSdkLoaded = true;
+  }
+
+  searchRoutes(): void {
+    if (!this.mapsSdkLoaded || !this.fromInputValid || !this.toInputValid) {
+      return;
+    }
+    const route = {
+      id: 'new',
+      from: {
+        name: this.from.name,
+        place_id: this.from.place_id
+      },
+      to: {
+        name: this.to.name,
+        place_id: this.to.place_id
+      },
+      time: formatDate(new Date(), 'yyyy-MM-dd HH:mm:ss', 'en_US'),
+      vehicleId: 'unknown',
+      passengers: this.passengerAmount,
+      options: {}
+    };
+    const dInput = this.dateInput;
+    const tInput = this.timeInput;
+    let customTime = new Date();
+    if (dInput && tInput) {
+      customTime = new Date(`${this.dateInput.nativeElement.value} ${this.timeInput.nativeElement.value}`);
+    }
+    this.mapsSdkService.searchRoute(route, this.timeMode, customTime, r => {
+      console.log(r);
+    });
+  }
+
+  handleFromInputKeypress(): void {
+    this.fromInputValid = false;
+  }
+
+  handleToInputKeypress(): void {
+    this.toInputValid = false;
+  }
 
   currentTimeString(): string {
     return formatDate(new Date(), 'HH:mm', 'en-US');

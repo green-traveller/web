@@ -3,12 +3,12 @@
 <div class="search-route navigation-gap">
   <div class="form-group">
     <label for="inputFrom">From: </label>
-    <input class="form-control" id="inputFrom" type="text" placeholder="From" >
+    <input class="form-control" id="inputFrom" type="text" placeholder="From" (input)="handleFromInputKeypress()" #fromInput>
   </div>
 
   <div class="form-group">
     <label for="inputTo">To: </label>
-    <input class="form-control" id="inputTo" type="text" placeholder="To">
+    <input class="form-control" id="inputTo" type="text" placeholder="To" (input)="handleToInputKeypress()" #toInput>
   </div>
 
   <div class="form-group">
@@ -43,8 +43,14 @@
     <input type="time" class="form-control search-route__time-input" [value]="currentTimeString()" (change)="handleTimeChange()" #timeInput>
     <input type="date" class="form-control search-route__time-input" [value]="currentDateString()" (change)="handleDateChange()" #dateInput>
   </div>
+  <small class="search-route__state-info" *ngIf="!mapsSdkLoaded">Maps SDK not loaded.</small>
 
   <div class="search-route__action">
-    <button class="btn btn-primary btn-block" type="button">Search</button>
+    <button
+      class="btn btn-primary btn-block"
+      [class.disabled]="!mapsSdkLoaded || !fromInputValid || !toInputValid"
+      type="button"
+      (click)="searchRoutes()"
+    >Search</button>
   </div>
 </div>
