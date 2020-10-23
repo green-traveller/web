@@ -79,6 +79,14 @@ export class DataService {
 
   // Routes
 
+  public setRoute(route: Route): void {
+    if (route.id === 'new') {
+      route.id = DataService.uuidv4();
+    }
+    this.data.routes[route.id] = route;
+    this.setStorage();
+  }
+
   public setRouteVehicle(route: Route, vehicleId: string): void {
     this.data.routes[route.id].vehicleId = vehicleId;
     this.setStorage();

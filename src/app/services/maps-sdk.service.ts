@@ -3,17 +3,18 @@ import { environment } from '../../environments/environment';
 import { Route } from '../models/route';
 import { DataService } from './data.service';
 import { ResultService } from './result.service';
+import {} from 'googlemaps';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MapsSdkService {
 
-  url = 'https://maps.googleapis.com/maps/api/js?libraries=places&key=';
-  key = environment.apiKey;
-  loaded = false;
-  toExecute = [];
-  directionsService: google.maps.DirectionsService;
+  private url = 'https://maps.googleapis.com/maps/api/js?libraries=places&key=';
+  private key = environment.apiKey;
+  private loaded = false;
+  private toExecute = [];
+  private directionsService: google.maps.DirectionsService;
 
   constructor(private dataService: DataService, private resultService: ResultService) {
     const element = document.createElement('script');
@@ -22,12 +23,17 @@ export class MapsSdkService {
     element.async = true;
     element.onload = () => {
       console.log('Maps SDK ready.');
+      this.loaded = true;
       this.directionsService = new google.maps.DirectionsService();
       for (const fn of this.toExecute) {
         fn();
       }
     };
     document.getElementsByTagName('head')[0].appendChild(element);
+  }
+
+  isLoaded(): boolean {
+    return this.loaded;
   }
 
   onload(fn: () => void): void {
@@ -42,7 +48,9 @@ export class MapsSdkService {
     const activeTransportModes = this.dataService.getActiveTransportModes();
     const requestVariables = [];
     for (const travelMode of activeTransportModes) {
-      const variable = { travelMode };
+      const variable = {
+        travelMode
+      };
       if (travelMode === 'TRANSPORT') {
         if (timeMode === 'departure') {
           // @ts-ignore
@@ -72,7 +80,7 @@ export class MapsSdkService {
       this.directionsService.route({...requestBase, ...variable}, (result, status) => {
         requestCount++;
         if (status === 'OK') {
-          route.options[variable.travelMode] = {
+          route.options[variable.travelMode.toLowerCase()] = {
             distance: result.routes[0].legs[0].distance.value,
             duration: result.routes[0].legs[0].duration.value
           };

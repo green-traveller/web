@@ -1,5 +1,5 @@
 import { formatDate } from '@angular/common';
-import { Component, ElementRef, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild, ChangeDetectorRef, AfterViewInit} from '@angular/core';
 import { MapsSdkService } from '../../services/maps-sdk.service';
 import { Router } from '@angular/router';
 import {} from 'googlemaps';
@@ -9,7 +9,7 @@ import {} from 'googlemaps';
   templateUrl: './search-route.component.html',
   styleUrls: ['./search-route.component.css']
 })
-export class SearchRouteComponent implements OnInit {
+export class SearchRouteComponent implements OnInit, AfterViewInit {
 
   @ViewChild('fromInput') fromInput: ElementRef;
   @ViewChild('toInput') toInput: ElementRef;
@@ -21,7 +21,7 @@ export class SearchRouteComponent implements OnInit {
   passengerAmount = 1;
   from: google.maps.places.PlaceResult;
   to: google.maps.places.PlaceResult;
-  mapsSdkLoaded = false;
+  mapsSdkLoaded: boolean;
   toInputValid = false;
   fromInputValid = false;
   searching = false;
@@ -32,7 +32,15 @@ export class SearchRouteComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.mapsSdkService.onload(this.setUpMapsApiComponents.bind(this));
+    this.mapsSdkLoaded = this.mapsSdkService.isLoaded();
+  }
+
+  ngAfterViewInit(): void {
+    if (this.mapsSdkService.isLoaded()) {
+      this.setUpMapsApiComponents();
+    } else {
+      this.mapsSdkService.onload(this.setUpMapsApiComponents.bind(this));
+    }
   }
 
   setUpMapsApiComponents(): void {
@@ -99,7 +107,6 @@ export class SearchRouteComponent implements OnInit {
         // TODO navigate to result view
         // this.router.navigateByUrl('/result');
       }
-      console.log(r);
     });
   }
 
