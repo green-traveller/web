@@ -1,5 +1,5 @@
 import { formatDate } from '@angular/common';
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { MapsSdkService } from '../../services/maps-sdk.service';
 import {} from 'googlemaps';
 
@@ -23,8 +23,12 @@ export class SearchRouteComponent implements OnInit {
   mapsSdkLoaded = false;
   toInputValid = false;
   fromInputValid = false;
+  searching = false;
+  changeDetectorRef: ChangeDetectorRef;
 
-  constructor(private mapsSdkService: MapsSdkService) { }
+  constructor(private mapsSdkService: MapsSdkService, changeDetectorRef: ChangeDetectorRef) {
+    this.changeDetectorRef = changeDetectorRef;
+  }
 
   ngOnInit(): void {
     this.mapsSdkService.onload(this.setUpMapsApiComponents.bind(this));
@@ -63,6 +67,7 @@ export class SearchRouteComponent implements OnInit {
     if (!this.mapsSdkLoaded || !this.fromInputValid || !this.toInputValid) {
       return;
     }
+    this.searching = true;
     const route = {
       id: 'new',
       from: {
@@ -85,6 +90,11 @@ export class SearchRouteComponent implements OnInit {
       customTime = new Date(`${this.dateInput.nativeElement.value} ${this.timeInput.nativeElement.value}`);
     }
     this.mapsSdkService.searchRoute(route, this.timeMode, customTime, r => {
+      this.searching = false;
+      this.changeDetectorRef.detectChanges();
+      if (Object.keys(r.options).length < 1) {
+        window.alert('No results found.');
+      }
       console.log(r);
     });
   }

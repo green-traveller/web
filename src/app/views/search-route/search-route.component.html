@@ -53,4 +53,8 @@
       (click)="searchRoutes()"
     >Search</button>
   </div>
+
+  <div class="search-route__loading" *ngIf="searching">
+    <div class="lds-dual-ring"></div>
+  </div>
 </div>

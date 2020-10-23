@@ -65,16 +65,18 @@ export class MapsSdkService {
       destination: { placeId: route.to.place_id },
       unitSystem: google.maps.UnitSystem.METRIC
     };
+    let requestCount = 0;
     for (const variable of requestVariables) {
       // @ts-ignore
       this.directionsService.route({...requestBase, ...variable}, (result, status) => {
+        requestCount++;
         if (status === 'OK') {
           route.options[variable.travelMode] = {
             distance: result.routes[0].legs[0].distance.value,
             duration: result.routes[0].legs[0].duration.value
           };
         }
-        if (Object.keys(route.options).length === requestVariables.length) {
+        if (requestCount === requestVariables.length) {
           callback(route);
         }
       });
