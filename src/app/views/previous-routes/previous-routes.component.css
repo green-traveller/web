@@ -1,7 +1,55 @@
-.card-header {
-    padding: 0;
+.table-margin__header {
+  margin-bottom: 0;
 }
 
-.test > div.card{
-    background-color: brown;
+.previous-routes__action-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.previous-routes__route-info {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 0.5rem;
+}
+
+.previous-routes__route-info-details {
+  display: flex;
+  align-items: center;
+}
+
+.previous-routes__route-info-details-icon {
+  margin-right: 0.5rem;
+}
+
+.previous-routes__route-info-details-input {
+  width: 5rem;
+}
+
+.previous-routes__default-vehicle-selection {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.previous-routes__custom-vehicle-selection {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.previous-routes__custom-vehicle-selection-item {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid lightgray;
+  padding: 0.5rem 0;
+  cursor: pointer;
+}
+
+.previous-routes__custom-vehicle-selection-item:last-child {
+  border-bottom: 0;
+}
+
+.previous-routes__custom-vehicle-selection-icon {
+  margin-right: 0.5rem;
 }

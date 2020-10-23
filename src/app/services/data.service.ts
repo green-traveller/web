@@ -65,7 +65,6 @@ export class DataService {
         }
       },
       routes: {
-        // TODO: Find out how this actually works...
         // tslint:disable-next-line: max-line-length
         a: { id: 'a', from: { name: 'start', place_id: '1'}, to: { name: 'destination', place_id: '2'}, time: '01-01-1970 00:00', vehicleId: 'walking', passengers: 1, options: {}},
         // tslint:disable-next-line: max-line-length
@@ -97,6 +96,18 @@ export class DataService {
 
   public getVehicles(): Vehicle[] {
     return Object.values(this.data.vehicles);
+  }
+
+  public getActiveVehicles(): Vehicle[] {
+    return Object.values(this.data.vehicles).filter((v) => v.active);
+  }
+
+  public getDefaultVehicles(): Vehicle[] {
+    return Object.values(this.data.vehicles).filter((v) => v.default);
+  }
+
+  public getCustomActiveVehicles(): Vehicle[] {
+    return Object.values(this.data.vehicles).filter((v) => !v.default && v.active);
   }
 
   // CO2

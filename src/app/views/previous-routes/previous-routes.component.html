@@ -1,28 +1,73 @@
-<app-nav-bar title="Previous Routes"></app-nav-bar>
+<app-nav-bar title="Previous Routes" #navBar></app-nav-bar>
 
-<ngb-accordion [closeOthers]="true" class="test">
-    <ngb-panel  *ngFor="let Route of prevRoutes; index as i" id="{{i}}">
-        <ng-template ngbPanelTitle>
-            <div>
-                <table class="table table-borderless">
-                    <tbody>
-                        <tr>
-                            <td rowspan="2">
-                                <app-vehicle-icon [vehicle]="getVehicleType(Route)"></app-vehicle-icon>
-                            </td>
-                            <td>{{getRouteCO2(Route) | number: '1.2-2'}} kg</td>
-                            <td>{{Route.from.name}}</td>
-                        </tr>
-                        <tr>
-                            <td>{{Route.time}}</td>
-                            <td>{{Route.to.name}}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </ng-template>
-        <ng-template ngbPanelContent>
-          TODO: Add fancy stuff here...
-        </ng-template>
+<div class="navigation-gap">
+  <ngb-accordion [closeOthers]="true">
+    <ngb-panel cardClass="previous-routes__card" *ngFor="let route of prevRoutes">
+      <ng-template ngbPanelTitle>
+        <div>
+          <table class="table table-borderless table-margin__header">
+            <tbody>
+              <tr>
+                <td rowspan="2">
+                  <app-vehicle-icon [vehicle]="getVehicleType(route)"></app-vehicle-icon>
+                </td>
+                <td>{{getRouteCO2(route) | number: '1.2-2'}} kg</td>
+                <td>{{route.from.name}}</td>
+              </tr>
+              <tr>
+                <td>{{route.time}}</td>
+                <td>{{route.to.name}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </ng-template>
+      <ng-template ngbPanelContent>
+        <div class="previous-routes__route-info">
+          <div class="previous-routes__route-info-details">
+            <fa-icon class="previous-routes__route-info-details-icon" [icon]="icons.clock"></fa-icon>
+            <span>{{getRouteDuration(route)}}h</span>
+          </div>
+          <div class="previous-routes__route-info-details">
+            <fa-icon class="previous-routes__route-info-details-icon" [icon]="icons.distance"></fa-icon>
+            <span>{{getRouteDistance(route)}}km</span>
+          </div>
+          <div class="previous-routes__route-info-details">
+            <fa-icon class="previous-routes__route-info-details-icon" [icon]="icons.users"></fa-icon>
+            <input class="form-control previous-routes__route-info-details-input" min="1"
+              (change)="validatePassengerInput($event, route)" type="number" [(ngModel)]="route.passengers">
+          </div>
+        </div>
+        <div class="previous-routes__action-buttons">
+          <button class="btn btn-outline-danger" (click)="deleteRoute(route)">
+            <fa-icon [icon]="icons.delete"></fa-icon>
+          </button>
+          <button class="btn btn-outline-primary" (click)="open(content, route)">Change Vehicle</button>
+          <a [hidden]="hasRouteMap(route)" [href]="getRouteMapLink(route)" class="btn btn-outline-primary">
+            <fa-icon [icon]="icons.map"></fa-icon>
+            <span> Map</span>
+          </a>
+        </div>
+      </ng-template>
     </ngb-panel>
-</ngb-accordion>
+  </ngb-accordion>
+</div>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" ngbAutoFocus id="modal-basic-title">Change Vehicle</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="previous-routes__custom-vehicle-selection">
+      <div class="previous-routes__custom-vehicle-selection-item" *ngFor="let vehicle of getActiveVehicles()"
+        (click)="setVehicleType(vehicle)">
+        <app-vehicle-icon class="previous-routes__custom-vehicle-selection-icon" [vehicle]="vehicle.type">
+        </app-vehicle-icon>
+        <span>{{vehicle.name.substring(0, 30)}}</span>
+      </div>
+    </div>
+  </div>
+</ng-template>
