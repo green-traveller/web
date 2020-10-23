@@ -1,6 +1,7 @@
 import { formatDate } from '@angular/common';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MapsSdkService } from '../../services/maps-sdk.service';
+import {} from 'googlemaps';
 
 @Component({
   selector: 'app-search-route',
@@ -19,7 +20,6 @@ export class SearchRouteComponent implements OnInit {
   passengerAmount = 1;
   from: google.maps.places.PlaceResult;
   to: google.maps.places.PlaceResult;
-  directionsService: google.maps.DirectionsService;
   mapsSdkLoaded = false;
   toInputValid = false;
   fromInputValid = false;

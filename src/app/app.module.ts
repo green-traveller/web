@@ -18,7 +18,6 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { PreferencesComponent } from './views/preferences/preferences.component';
 import { SearchRouteComponent } from './views/search-route/search-route.component';
 import { VehicleIconComponent } from './components/vehicle-icon/vehicle-icon.component';
-import { PlacesSearchComponent } from './components/places-search/places-search.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +28,6 @@ import { PlacesSearchComponent } from './components/places-search/places-search.
     EditVehicleComponent,
     ManageDataComponent,
     NavBarComponent,
-    PlacesSearchComponent,
     PreferencesComponent,
     SearchRouteComponent,
     VehicleIconComponent
