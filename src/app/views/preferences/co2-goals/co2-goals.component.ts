@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { DataService } from '../../../services/data.service';
 import { Co2 } from '../../../models/co2';
 
@@ -8,6 +8,8 @@ import { Co2 } from '../../../models/co2';
   styleUrls: ['./co2-goals.component.css']
 })
 export class Co2GoalsComponent implements OnInit {
+
+  @ViewChild('customInput') customInput: ElementRef;
 
   // https://www.worldometers.info/co2-emissions/germany-co2-emissions/
   defaultValues = {
@@ -35,7 +37,14 @@ export class Co2GoalsComponent implements OnInit {
   }
 
   handleCustomAmountChange(): void {
+    if (!this.customInput.nativeElement.validity.valid) {
+      this.customAmount = 1;
+    }
     this.co2.value = this.customAmount;
     this.dataService.setStorage();
+  }
+
+  focusOnCustomInput(): void {
+    this.customInput.nativeElement.focus();
   }
 }

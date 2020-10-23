@@ -1,5 +1,5 @@
 <app-nav-bar title="CO2 Goals"></app-nav-bar>
-<div class="goals">
+<div class="goals navigation-gap">
   <div class="goals__subtitle"><b>CO<sub>2</sub>-Goal per Month</b></div>
   <div class="goals__list">
     <label class="goals__list-item">
@@ -22,7 +22,7 @@
         class="goals__item-input"
         (change)="handleRadioChange()"
       >
-      Lower Average ({{ defaultValues.lower }} kg/month)
+      Challenge ({{ defaultValues.lower }} kg/month)
     </label>
     <label class="goals__list-item">
       <input
@@ -33,17 +33,24 @@
         class="goals__item-input"
         (change)="handleRadioChange()"
       >
-      Custom
+      Custom Challenge
     </label>
   </div>
   <div *ngIf="co2.mode === 'custom'" class="goals__custom">
-    <input
-      id="custom-input"
-      type="number"
-      [(ngModel)]="customAmount"
-      min="1" (change)="handleCustomAmountChange()"
-      class="form-control goals__custom-input">
-    <label for="custom-input">kg/month</label>
+    <div class="input-group goals__custom-input-group">
+      <input
+        id="custom-input"
+        type="number"
+        [(ngModel)]="customAmount"
+        min="1" (change)="handleCustomAmountChange()"
+        class="form-control goals__custom-input"
+        #customInput
+      >
+      <div class="input-group-append" (click)="focusOnCustomInput()">
+        <span class="input-group-text">kg/month</span>
+      </div>
+    </div>
+    <label for="custom-input"></label>
   </div>
   <small class="goals__info">Some more explanation. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</small>
 </div>

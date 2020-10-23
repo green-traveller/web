@@ -1,4 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  --primary: #26C281 !important;
+}
+
+.navigation-gap {
+  margin-top: 3.5rem;
+}
+
 .previous-routes__card > .card-header {
-    padding: 0;
+  padding: 0;
 }

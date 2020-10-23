@@ -1,6 +1,6 @@
 <app-nav-bar title="Edit Vehicle"></app-nav-bar>
 
-<div class="edit-vehicle">
+<div class="edit-vehicle navigation-gap">
   <div class="edit-vehicle__input">
     <label for="vehicleName" class="edit-vehicle__input-title">Name or License plate</label>
     <input type="text" [(ngModel)]="vehicle.name" id="vehicleName" class="form-control">
@@ -23,17 +23,17 @@
     </div>
   </div>
   <div class="edit-vehicle__input">
-    <div class="edit-vehicle__input-title">Carbon Emissions</div>
-    <div class="edit-vehicle__carbon-label-input">
-      <input type="number" [(ngModel)]="vehicle.co2" id="vehicleCo2" class="form-control edit-vehicle__carbon-input">
-      <label for="vehicleCo2">g/km</label>
+    <label class="edit-vehicle__input-title" for="vehicleCo2">Carbon Emissions</label>
+    <div class="input-group goals__custom-input-group">
+      <input type="number" [(ngModel)]="vehicle.co2" id="vehicleCo2" class="form-control edit-vehicle__carbon-input" #carbonInput>
+      <div class="input-group-append" (click)="focusOnCarbonInput()">
+        <span class="input-group-text">g/km</span>
+      </div>
     </div>
     <small>Unsure about your car? Lookup your car <a href="https://example.com" target="_blank">here</a>!</small>
   </div>
   <div>
     <button class="btn btn-primary btn-block edit-vehicle__action" (click)="handleSaveClick()">Save</button>
-    <a routerLink=".." class="edit-vehicle__action">
-      <button class="btn btn-outline-primary btn-block">Cancel</button>
-    </a>
+    <button class="btn btn-outline-primary btn-block" (click)="handleCancelClick()">Cancel</button>
   </div>
 </div>

@@ -2,7 +2,7 @@ import { Inject, Injectable } from '@angular/core';
 import { LOCAL_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { Storage } from '../models/storage';
 import { Co2 } from '../models/co2';
-import {Vehicle} from '../models/vehicle';
+import { Vehicle } from '../models/vehicle';
 
 const STORAGE_KEY = 'TEST';
 
