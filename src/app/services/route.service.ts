@@ -8,7 +8,7 @@ import { Route } from '../models/route';
 import { RouteOption } from '../models/route-option';
 import { Vehicle } from '../models/vehicle';
 
-const baseUrl = 'https://www.google.com/maps/dir/?api=1';
+const BASE_MAPS_URL = 'https://www.google.com/maps/dir/?api=1';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +23,7 @@ export class RouteService {
     const originPlaceId = route.from.place_id;
     const destinationPlaceId = route.to.place_id;
     const travelmode = this.getVehicle(route).travelmode;
-    return encodeURI(`${baseUrl}&origin=${origin}&destination=${destination}&origin_place_id=${originPlaceId}&destination_place_id=${destinationPlaceId}&travelmode=${travelmode}`);
+    return encodeURI(`${BASE_MAPS_URL}&origin=${origin}&destination=${destination}&origin_place_id=${originPlaceId}&destination_place_id=${destinationPlaceId}&travelmode=${travelmode}`);
   }
 
   getDuration(route: Route): number {
