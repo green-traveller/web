@@ -43,7 +43,7 @@
             <fa-icon [icon]="iconService.getIcon('delete')"></fa-icon>
           </button>
           <button class="btn btn-outline-primary" (click)="open(content, route)">Change Vehicle</button>
-          <a [hidden]="hasRouteMap(route)" [href]="getRouteMapLink(route)" class="btn btn-outline-primary">
+          <a [href]="getRouteMapLink(route)" class="btn btn-outline-primary" target="_blank">
             <fa-icon [icon]="iconService.getIcon('map')"></fa-icon>
             <span> Map</span>
           </a>
