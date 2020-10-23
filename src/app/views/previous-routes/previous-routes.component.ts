@@ -4,6 +4,7 @@ import { DataService } from 'src/app/services/data.service';
 import { APP_ICONS } from 'src/app/models/app-icons';
 import { Vehicle } from 'src/app/models/vehicle';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { IconService } from 'src/app/services/icon.service';
 
 @Component({
   selector: 'app-previous-routes',
@@ -32,7 +33,7 @@ export class PreviousRoutesComponent implements OnInit {
 
   private modalRoute: Route;
 
-  constructor(private dataService: DataService, private modalService: NgbModal) { }
+  constructor(private dataService: DataService, private iconService: IconService, private modalService: NgbModal) { }
 
   open(content: any, route: Route): any {
     this.modalRoute = route;

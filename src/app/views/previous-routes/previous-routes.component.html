@@ -25,26 +25,26 @@
       <ng-template ngbPanelContent>
         <div class="previous-routes__route-info">
           <div class="previous-routes__route-info-details">
-            <fa-icon class="previous-routes__route-info-details-icon" [icon]="icons.clock"></fa-icon>
+            <fa-icon class="previous-routes__route-info-details-icon" [icon]="iconService.getIcon('clock')"></fa-icon>
             <span>{{getRouteDuration(route)}}h</span>
           </div>
           <div class="previous-routes__route-info-details">
-            <fa-icon class="previous-routes__route-info-details-icon" [icon]="icons.distance"></fa-icon>
+            <fa-icon class="previous-routes__route-info-details-icon" [icon]="iconService.getIcon('distance')"></fa-icon>
             <span>{{getRouteDistance(route)}}km</span>
           </div>
           <div class="previous-routes__route-info-details">
-            <fa-icon class="previous-routes__route-info-details-icon" [icon]="icons.users"></fa-icon>
+            <fa-icon class="previous-routes__route-info-details-icon" [icon]="iconService.getIcon('users')"></fa-icon>
             <input class="form-control previous-routes__route-info-details-input" min="1"
               (change)="validatePassengerInput($event, route)" type="number" [(ngModel)]="route.passengers">
           </div>
         </div>
         <div class="previous-routes__action-buttons">
           <button class="btn btn-outline-danger" (click)="deleteRoute(route)">
-            <fa-icon [icon]="icons.delete"></fa-icon>
+            <fa-icon [icon]="iconService.getIcon('delete')"></fa-icon>
           </button>
           <button class="btn btn-outline-primary" (click)="open(content, route)">Change Vehicle</button>
           <a [hidden]="hasRouteMap(route)" [href]="getRouteMapLink(route)" class="btn btn-outline-primary">
-            <fa-icon [icon]="icons.map"></fa-icon>
+            <fa-icon [icon]="iconService.getIcon('map')"></fa-icon>
             <span> Map</span>
           </a>
         </div>
@@ -61,10 +61,10 @@
     </button>
   </div>
   <div class="modal-body">
-    <div class="previous-routes__custom-vehicle-selection">
-      <div class="previous-routes__custom-vehicle-selection-item" *ngFor="let vehicle of getActiveVehicles()"
+    <div class="previous-routes__modal-list">
+      <div class="previous-routes__modal-item" *ngFor="let vehicle of getActiveVehicles()"
         (click)="setVehicleType(vehicle)">
-        <app-vehicle-icon class="previous-routes__custom-vehicle-selection-icon" [vehicle]="vehicle.type">
+        <app-vehicle-icon class="previous-routes__modal-icon" [vehicle]="vehicle.type">
         </app-vehicle-icon>
         <span>{{vehicle.name.substring(0, 30)}}</span>
       </div>

@@ -26,19 +26,13 @@
   width: 5rem;
 }
 
-.previous-routes__default-vehicle-selection {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 0.5rem;
-}
-
-.previous-routes__custom-vehicle-selection {
+.previous-routes__modal-list {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
 }
 
-.previous-routes__custom-vehicle-selection-item {
+.previous-routes__modal-item {
   display: flex;
   align-items: center;
   border-bottom: 1px solid lightgray;
@@ -46,10 +40,10 @@
   cursor: pointer;
 }
 
-.previous-routes__custom-vehicle-selection-item:last-child {
+.previous-routes__modal-item:last-child {
   border-bottom: 0;
 }
 
-.previous-routes__custom-vehicle-selection-icon {
+.previous-routes__modal-icon {
   margin-right: 0.5rem;
 }
