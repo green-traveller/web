@@ -25,8 +25,7 @@
               "src/manifest.webmanifest"
             ],
             "styles": [
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": []
           },
@@ -93,7 +92,7 @@
               "src/manifest.webmanifest"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": []
           }
@@ -130,5 +129,10 @@
       }
     }
   },
-  "defaultProject": "green-traveller"
+  "defaultProject": "green-traveller",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }

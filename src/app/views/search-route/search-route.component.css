@@ -1,5 +1,19 @@
 .search-route {
   padding: 0.5rem;
+  margin-bottom: 7rem;
+}
+
+.search-route__passenger-input-group {
+  width: 8rem;
+}
+
+.search-route__passenger-input {
+  text-align: center;
+}
+
+.search-route__timing {
+  display: flex;
+  flex-direction: column;
 }
 
 .search-route__time-select {
@@ -7,10 +21,25 @@
   display: flex;
 }
 
+.search-route__time-input {
+  text-align: center;
+  margin: 0 0.5rem;
+}
+
+.search-route__time-input:first-child {
+  margin-left: 0;
+}
+
+.search-route__time-input:last-child {
+  margin-right: 0;
+}
+
 .search-route__action {
-  position: absolute;
+  background-color: white;
+  box-shadow: 0 2px 12px 0 rgba(0,0,0,.2);
+  position: fixed;
   width: 100%;
   bottom: 0;
   right: 0;
-  padding: 0.5rem;
+  padding: 0.5rem 0.5rem 1.5rem;
 }
