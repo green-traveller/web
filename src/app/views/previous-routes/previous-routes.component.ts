@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Route } from 'src/app/models/route';
 import { DataService } from 'src/app/services/data.service';
-import { APP_ICONS } from 'src/app/models/app-icons';
 import { Vehicle } from 'src/app/models/vehicle';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { IconService } from 'src/app/services/icon.service';
@@ -31,7 +30,7 @@ export class PreviousRoutesComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getRoutes() {
+  getRoutes(): Route[] {
     return Object.values(this.dataService.getRoutes());
   }
 
