@@ -68,10 +68,36 @@ export class DataService {
         }
       },
       routes: {
-        // tslint:disable-next-line: max-line-length
-        a: { id: 'a', from: { name: 'start', place_id: '1'}, to: { name: 'destination', place_id: '2'}, time: '01-01-1970 00:00', vehicleId: 'walking', passengers: 1, options: {}},
-        // tslint:disable-next-line: max-line-length
-        b: { id: 'b', from: { name: 'start', place_id: '1'}, to: { name: 'destination', place_id: '2'}, time: '01-01-1970 00:00', vehicleId: 'walking', passengers: 1, options: { walking: { distance: 43.3, duration: 44.4 } } }
+        '7c3173f6-d0a4-4d8f-9f6e-c26322fbc2aa': {
+          id: '7c3173f6-d0a4-4d8f-9f6e-c26322fbc2aa',
+          from: {
+            name: 'start',
+            place_id: '1'},
+          to: {
+            name: 'destination',
+            place_id: '2'},
+          time: '01-01-1970 00:00',
+          vehicleId: 'walking',
+          passengers: 1,
+          options: {
+            walking: {
+              distance: 5000,
+              duration: 5000,
+            },
+            bicycling: {
+              distance: 5000,
+              duration: 2000,
+            },
+            transit: {
+              distance: 4000,
+              duration: 1500,
+            },
+            driving: {
+              distance: 6000,
+              duration: 3000,
+            },
+          }
+        },
       }
     }));
   }
@@ -85,6 +111,10 @@ export class DataService {
 
   // Routes
 
+  public getRoutes(): { [id: string]: Route} {
+    return this.data.routes;
+  }
+
   public setRoute(route: Route): void {
     if (route.id === 'new') {
       route.id = DataService.uuidv4();
@@ -95,6 +125,11 @@ export class DataService {
 
   public setRouteVehicle(route: Route, vehicleId: string): void {
     this.data.routes[route.id].vehicleId = vehicleId;
+    this.setStorage();
+  }
+
+  public setRoutePassengers(route: Route, passengers: number): void {
+    this.data.routes[route.id].passengers = passengers;
     this.setStorage();
   }
 
