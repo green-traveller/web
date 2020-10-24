@@ -1,5 +1,6 @@
 import { Inject, Injectable } from '@angular/core';
 import { LOCAL_STORAGE, StorageService } from 'ngx-webstorage-service';
+import { formatNumber } from '@angular/common';
 
 import { Storage } from '../models/storage';
 import { Co2 } from '../models/co2';
@@ -147,8 +148,15 @@ export class DataService {
     this.setStorage();
   }
 
-  setStorageManually(result: Storage): void {
+  public setStorageManually(result: Storage): void {
     this.data = result;
     this.setStorage();
+  }
+
+  public getStorageSize(): string {
+    const size = new TextEncoder().encode(JSON.stringify(this.data)).length;
+    const kiloBytes = size / 1024;
+    const kiloBytesString = formatNumber(kiloBytes, 'en_US', '1.1-1');
+    return `${kiloBytesString} kB`;
   }
 }
