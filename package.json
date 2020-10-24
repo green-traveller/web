@@ -6,7 +6,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --open",
-    "prepareEnv": "ts-node set-env.ts",
+    "prepareEnv": "node set-env.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
