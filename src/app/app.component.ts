@@ -22,7 +22,7 @@ export class AppComponent {
   checkLandingPage(): void {
     const finished = this.dataService.getSetupCompleted();
     if (finished) {
-      this.navigate('/');
+      this.navigate('');
     } else {
       this.navigate('/initial-setup-info');
     }

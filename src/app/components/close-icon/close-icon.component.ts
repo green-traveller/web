@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-close-icon',
@@ -12,9 +13,12 @@ export class CloseIconComponent implements OnInit {
     close: faTimes
   };
 
-  constructor() { }
+  constructor(private dataservice: DataService) { }
 
   ngOnInit(): void {
   }
 
+  setupCompleted() {
+    this.dataservice.setSetupCompleted(true);
+  }
 }
