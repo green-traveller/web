@@ -13,7 +13,5 @@ export class AppComponent implements OnInit {
   constructor(private dataService: DataService, private mapsSdkService: MapsSdkService) {
   }
 
-  ngOnInit(): void {
-    // this.dataService.addItem('Niklas isset');
-  }
+  ngOnInit(): void { }
 }

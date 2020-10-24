@@ -1,17 +1,18 @@
 import { Injectable } from '@angular/core';
 import {
-  faCarSide,
-  faMotorcycle,
   faBicycle,
-  faWalking,
-  faSubway,
-  faQuestion,
-  faEdit,
-  faTrashAlt,
-  faMapMarked,
+  faCarSide,
+  faChartPie,
   faClock,
-  faUsers,
+  faEdit,
+  faMapMarked,
+  faMotorcycle,
+  faQuestion,
   faRoute,
+  faSubway,
+  faTrashAlt,
+  faUsers,
+  faWalking,
   IconDefinition
 } from '@fortawesome/free-solid-svg-icons';
 
@@ -22,21 +23,22 @@ import {
 export class IconService {
 
   APP_ICONS = {
-    unknown: faQuestion,
-    car: faCarSide,
-    motorcycle: faMotorcycle,
     bicycle: faBicycle,
-    train: faSubway,
-    walking: faWalking,
-    edit: faEdit,
-    delete: faTrashAlt,
-    map: faMapMarked,
+    car: faCarSide,
     clock: faClock,
+    delete: faTrashAlt,
+    distance: faRoute,
+    edit: faEdit,
+    map: faMapMarked,
+    motorcycle: faMotorcycle,
+    statistics: faChartPie,
+    train: faSubway,
+    unknown: faQuestion,
     users: faUsers,
-    distance: faRoute
+    walking: faWalking
   };
 
-  getIcon(name: string): IconDefinition{
+  getIcon(name: string): IconDefinition {
     if (this.APP_ICONS[name]) {
       return this.APP_ICONS[name];
     } else {
