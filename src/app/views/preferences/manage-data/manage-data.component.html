@@ -1,5 +1,6 @@
 <app-nav-bar title="Manage Data"></app-nav-bar>
 <div class="manage-data navigation-gap">
+  <div class="manage-data__info">Currently using {{ storageSize() }} in your browser storage.</div>
   <div *ngIf="alert">
     <ngb-alert [type]="alert.type" (close)="closeAlert()">{{ alert.message }}</ngb-alert>
   </div>
