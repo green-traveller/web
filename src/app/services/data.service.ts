@@ -51,7 +51,7 @@ export class DataService {
           id: 'transit',
           name: 'Public Transportation',
           type: 'train',
-          co2: 50,
+          co2: 65, // https://www.co2nnect.org/help_sheets/?op_id=602&opt_id=98
           active: true,
           default: true,
           travelmode: 'transit'
@@ -60,7 +60,7 @@ export class DataService {
           id: 'driving',
           name: 'Average Car',
           type: 'car',
-          co2: 251,
+          co2: 175,
           active: true,
           default: true,
           travelmode: 'driving'
