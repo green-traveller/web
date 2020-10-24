@@ -30,12 +30,10 @@
         <span class="input-group-text">g/km</span>
       </div>
     </div>
-    <small>Unsure about your car? Lookup your car <a href="https://example.com" target="_blank">here</a>!</small>
+    <small>Unsure about your car? Lookup your car <a href="https://www.which.co.uk/reviews/new-and-used-cars/article/car-emissions/car-co2-emissions-aRVNW9t0zLu6#headline_free-car-co2-tool-check-by-make-and-model" target="_blank">here</a>!</small>
   </div>
   <div>
     <button class="btn btn-primary btn-block edit-vehicle__action" (click)="handleSaveClick()">Save</button>
-    <a routerLink=".." class="edit-vehicle__action">
-      <button class="btn btn-outline-primary btn-block">Cancel</button>
-    </a>
+    <button class="btn btn-outline-primary btn-block" (click)="handleCancelClick()">Cancel</button>
   </div>
 </div>

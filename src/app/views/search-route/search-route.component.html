@@ -1,32 +1,65 @@
 <app-nav-bar title="Search Routes"></app-nav-bar>
 
 <div class="search-route navigation-gap">
+
+  <div class="search-route__statistics" routerLink="/about">
+    <fa-icon [icon]="icons.getIcon('statistics')"></fa-icon> View your Balance Sheet.
+  </div>
+
   <div class="form-group">
     <label for="inputFrom">From: </label>
-    <input class="form-control" id="inputFrom" type="text" placeholder="From" >
+    <input class="form-control" id="inputFrom" type="text" placeholder="From" (input)="handleFromInputKeypress()" #fromInput>
   </div>
 
   <div class="form-group">
     <label for="inputTo">To: </label>
-    <input class="form-control" id="inputTo" type="text" placeholder="To">
+    <input class="form-control" id="inputTo" type="text" placeholder="To" (input)="handleToInputKeypress()" #toInput>
   </div>
 
-  <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" [(ngModel)]="departureArrival">
-    <label ngbButtonLabel class="btn-primary">
-      <input ngbButton type="radio" value="Departure">Departure
-    </label>
-    <label ngbButtonLabel class="btn-primary">
-      <input ngbButton type="radio" value="Arrival">Arrival
-    </label>
+  <div class="form-group">
+    <label for="passengers">Passengers: </label>
+    <div class="input-group search-route__passenger-input-group">
+      <div class="input-group-prepend">
+        <button class="btn btn-primary" (click)="changePassengerAmount(-1)">-</button>
+      </div>
+      <input class="form-control search-route__passenger-input" id="passengers" type="number" min="1" [(ngModel)]="passengerAmount" #passengerInput (change)="handlePassengerAmountChange()">
+      <div class="input-group-append">
+        <button class="btn btn-primary" (click)="changePassengerAmount(1)">+</button>
+      </div>
+    </div>
   </div>
 
-  <div class="search-route__time-select">
-    <input type="time" class="form-control" #timeInput>
-    <input type="date" class="form-control" #dateInput>
-    <button class="btn btn-primary" #nowButton (click)="handleNowButtonClick()">Now</button>
+  <div class="form-group search-route__timing">
+    <label>Timing:</label>
+    <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" [(ngModel)]="timeMode">
+      <label ngbButtonLabel class="btn-primary">
+        <input ngbButton type="radio" value="now">Leave now
+      </label>
+      <label ngbButtonLabel class="btn-primary">
+        <input ngbButton type="radio" value="departure">Depart at
+      </label>
+      <label ngbButtonLabel class="btn-primary">
+        <input ngbButton type="radio" value="arrival">Arrive at
+      </label>
+    </div>
   </div>
+
+  <div class="search-route__time-select" *ngIf="timeMode !== 'now'">
+    <input type="time" class="form-control search-route__time-input" [value]="currentTimeString()" (change)="handleTimeChange()" #timeInput>
+    <input type="date" class="form-control search-route__time-input" [value]="currentDateString()" (change)="handleDateChange()" #dateInput>
+  </div>
+  <small class="search-route__state-info" *ngIf="!mapsSdkLoaded">Maps SDK not loaded.</small>
 
   <div class="search-route__action">
-    <button class="btn btn-primary btn-block" type="button">Search</button>
+    <button
+      class="btn btn-primary btn-block"
+      [class.disabled]="!mapsSdkLoaded || !fromInputValid || !toInputValid"
+      type="button"
+      (click)="searchRoutes()"
+    >Search</button>
+  </div>
+
+  <div class="search-route__loading" *ngIf="searching">
+    <div class="lds-dual-ring"></div>
   </div>
 </div>
