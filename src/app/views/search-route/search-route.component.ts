@@ -29,7 +29,7 @@ export class SearchRouteComponent implements OnInit, AfterViewInit {
   changeDetectorRef: ChangeDetectorRef;
   icons: IconService;
 
-  constructor(private mapsSdkService: MapsSdkService, changeDetectorRef: ChangeDetectorRef, iconService: IconService) {
+  constructor(private mapsSdkService: MapsSdkService, changeDetectorRef: ChangeDetectorRef, iconService: IconService, private router: Router) {
     this.changeDetectorRef = changeDetectorRef;
     this.icons = iconService;
   }
@@ -107,8 +107,7 @@ export class SearchRouteComponent implements OnInit, AfterViewInit {
       if (Object.keys(r.options).length < 1) {
         window.alert('No results found.');
       } else {
-        // TODO navigate to result view
-        // this.router.navigateByUrl('/result');
+        this.router.navigateByUrl('/results');
       }
     });
   }
