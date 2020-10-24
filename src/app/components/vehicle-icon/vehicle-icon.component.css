@@ -1,6 +1,7 @@
 .vehicle-icon {
   border: 1px solid #dfe2e1;
   border-radius: 1rem;
+  display: inline-block;
   padding: 0.25rem 0.375rem;
   text-align: center;
   min-width: 2.125rem;

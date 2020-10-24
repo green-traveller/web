@@ -14,6 +14,9 @@ import {
   faRoute,
   IconDefinition
 } from '@fortawesome/free-solid-svg-icons';
+import {
+  faCircle
+} from '@fortawesome/free-regular-svg-icons';
 
 
 @Injectable({
@@ -24,6 +27,7 @@ export class IconService {
   APP_ICONS = {
     unknown: faQuestion,
     car: faCarSide,
+    circle: faCircle,
     motorcycle: faMotorcycle,
     bicycle: faBicycle,
     train: faSubway,

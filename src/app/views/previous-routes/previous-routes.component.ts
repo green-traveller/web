@@ -14,15 +14,19 @@ import { RouteService } from 'src/app/services/route.service';
 export class PreviousRoutesComponent implements OnInit {
 
   private modalRoute: Route;
+  iconS: IconService;
+  routeS: RouteService;
 
   constructor(
     private dataService: DataService,
     private iconService: IconService,
     private routeService: RouteService,
-    private modalService: NgbModal)
-    { }
+    private modalService: NgbModal
+  ) { }
 
   ngOnInit(): void {
+    this.iconS = this.iconService;
+    this.routeS = this.routeService;
   }
 
   openModalWindow(content: any, route: Route): any {
@@ -32,7 +36,19 @@ export class PreviousRoutesComponent implements OnInit {
   }
 
   getRoutes(): Route[] {
-    return this.dataService.getRoutesArray();
+    return this.dataService.getRoutes();
+  }
+
+  getRoutesByDate(): { [date: string]: Route[] } {
+    return this.dataService.getRoutesByDate();
+  }
+
+  getRoutesDates(): string[] {
+    return this.dataService.getRoutesDates();
+  }
+
+  formatDate(d: string): string {
+    return new Date(d).toLocaleDateString('en-US', { weekday: 'short', day: '2-digit', month: 'short', year: 'numeric' });
   }
 
   deleteRoute(route: Route): void {
@@ -58,5 +74,9 @@ export class PreviousRoutesComponent implements OnInit {
   setVehicleType(vehicle: Vehicle): void {
     this.dataService.setRouteVehicle(this.modalRoute, vehicle.id);
     this.modalService.dismissAll();
+  }
+
+  getVerticalSpaceBetween(firstElement: HTMLDivElement, secondElement: HTMLDivElement): number {
+    return secondElement.children[0].getBoundingClientRect().top - (firstElement.children[0].getBoundingClientRect().top + 14);
   }
 }
