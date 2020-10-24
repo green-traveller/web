@@ -1,0 +1,96 @@
+<app-nav-bar title="Previous Routes" #navBar></app-nav-bar>
+
+<div class="navigation-gap">
+  <div *ngFor="let date of getRoutesDates()">
+    <div class="previous-routes__date">{{ formatDate(date) }}</div>
+    <ngb-accordion>
+      <ngb-panel cardClass="previous-routes__card" *ngFor="let route of getRoutesByDate()[date]">
+        <!-- Title for each card -->
+        <ng-template ngbPanelTitle>
+          <div class="previous-routes__header">
+            <div class="previous-routes__header-meta">
+              <app-vehicle-icon [vehicle]="routeS.getVehicleIconString(route)"></app-vehicle-icon>
+              <div>{{routeS.getCo2Kilograms(route) | number: '1.2-2'}} kg</div>
+            </div>
+            <div class="previous-routes__header-locations">
+              <div class="previous-routes__header-location-wrapper">
+                <div #firstCircle>
+                  <fa-icon [icon]="iconS.getIcon('circle')"></fa-icon>
+                </div>
+                <div class="previous-routes__header-location">
+                  <span>{{routeS.getMainFrom(route)}}</span>
+                  <small>{{routeS.getSecondaryFrom(route)}}</small>
+                </div>
+              </div>
+              <div class="previous-routes__header-location-wrapper">
+                <div #secondCircle>
+                  <fa-icon [icon]="iconS.getIcon('circle')"></fa-icon>
+                </div>
+                <div class="previous-routes__header-location">
+                  <span>{{routeS.getMainTo(route)}}</span>
+                  <small>{{routeS.getSecondaryTo(route)}}</small>
+                </div>
+              </div>
+              <div class="previous-routes__header-location-line" [style]="'height: ' + getVerticalSpaceBetween(firstCircle, secondCircle) + 'px'"></div>
+            </div>
+          </div>
+        </ng-template>
+        <!-- Content for each card -->
+        <ng-template ngbPanelContent>
+          <div class="previous-routes__route-info">
+            <div class="previous-routes__route-info-details">
+              <fa-icon class="previous-routes__route-info-details-icon" [icon]="routeS.getVehicleIcon(route)"></fa-icon>
+              <span>{{routeS.getVehicle(route).name}}</span>
+            </div>
+          </div>
+          <div class="previous-routes__route-info">
+            <div class="previous-routes__route-info-details">
+              <fa-icon class="previous-routes__route-info-details-icon" [icon]="iconS.getIcon('clock')"></fa-icon>
+              <span>{{routeS.getDurationString(route)}}</span>
+            </div>
+            <div class="previous-routes__route-info-details">
+              <fa-icon class="previous-routes__route-info-details-icon" [icon]="iconS.getIcon('distance')">
+              </fa-icon>
+              <span>{{routeS.getDistanceString(route)}}km</span>
+            </div>
+            <div class="previous-routes__route-info-details">
+              <fa-icon class="previous-routes__route-info-details-icon" [icon]="iconS.getIcon('users')"></fa-icon>
+              <input class="form-control previous-routes__route-info-details-input" min="1"
+                (change)="validatePassengerInput($event, route)" type="number" [(ngModel)]="route.passengers">
+            </div>
+          </div>
+          <div class="previous-routes__action-buttons">
+            <button class="btn btn-outline-danger" (click)="deleteRoute(route)">
+              <fa-icon [icon]="iconS.getIcon('delete')"></fa-icon>
+            </button>
+            <button class="btn btn-outline-primary" (click)="openModalWindow(content, route)">Change Vehicle</button>
+            <a [href]="routeS.getMapsLink(route)" class="btn btn-outline-primary" target="_blank">
+              <fa-icon [icon]="iconS.getIcon('map')"></fa-icon>
+              <span> Map</span>
+            </a>
+          </div>
+        </ng-template>
+      </ngb-panel>
+    </ngb-accordion>
+  </div>
+</div>
+
+<!-- Modal dialogue for changing vehicles -->
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" ngbAutoFocus id="modal-basic-title">Change Vehicle</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="previous-routes__modal-list">
+      <div class="previous-routes__modal-item" *ngFor="let vehicle of getActiveVehicles()"
+        (click)="setVehicleType(vehicle)">
+        <app-vehicle-icon class="previous-routes__modal-icon" [vehicle]="vehicle.type">
+        </app-vehicle-icon>
+        <span>{{vehicle.name.substring(0, 30)}}</span>
+      </div>
+    </div>
+  </div>
+</ng-template>

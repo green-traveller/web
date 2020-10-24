@@ -89,7 +89,7 @@ export class SearchRouteComponent implements OnInit, AfterViewInit {
         name: this.to.name,
         place_id: this.to.place_id
       },
-      time: formatDate(new Date(), 'yyyy-MM-dd HH:mm:ss', 'en_US'),
+      time: formatDate(new Date(), 'yyyy-MM-dd HH:mm', 'en_US'),
       vehicleId: 'unknown',
       passengers: this.passengerAmount,
       options: {}
@@ -98,7 +98,8 @@ export class SearchRouteComponent implements OnInit, AfterViewInit {
     const tInput = this.timeInput;
     let customTime = new Date();
     if (dInput && tInput) {
-      customTime = new Date(`${this.dateInput.nativeElement.value} ${this.timeInput.nativeElement.value}`);
+      route.time = `${this.dateInput.nativeElement.value} ${this.timeInput.nativeElement.value}`;
+      customTime = new Date(route.time);
     }
     this.mapsSdkService.searchRoute(route, this.timeMode, customTime, r => {
       this.searching = false;

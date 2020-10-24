@@ -16,6 +16,7 @@ import { EditVehicleComponent } from './views/preferences/custom-vehicles/edit-v
 import { ManageDataComponent } from './views/preferences/manage-data/manage-data.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { PreferencesComponent } from './views/preferences/preferences.component';
+import { PreviousRoutesComponent } from './views/previous-routes/previous-routes.component';
 import { SearchRouteComponent } from './views/search-route/search-route.component';
 import { VehicleIconComponent } from './components/vehicle-icon/vehicle-icon.component';
 
@@ -30,7 +31,8 @@ import { VehicleIconComponent } from './components/vehicle-icon/vehicle-icon.com
     NavBarComponent,
     PreferencesComponent,
     SearchRouteComponent,
-    VehicleIconComponent
+    VehicleIconComponent,
+    PreviousRoutesComponent
   ],
   imports: [
     AppRoutingModule,

@@ -51,7 +51,7 @@ export class MapsSdkService {
       const variable = {
         travelMode
       };
-      if (travelMode === 'TRANSPORT') {
+      if (travelMode === 'driving') {
         if (timeMode === 'departure') {
           // @ts-ignore
           variable.departureTime = time;
@@ -61,7 +61,7 @@ export class MapsSdkService {
           variable.arrivalTime = time;
         }
       }
-      if (travelMode === 'DRIVING') {
+      if (travelMode === 'driving') {
         if (timeMode === 'departure') {
           // @ts-ignore
           variable.departureTime = time;
