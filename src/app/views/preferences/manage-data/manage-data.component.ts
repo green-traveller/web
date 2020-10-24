@@ -17,6 +17,10 @@ export class ManageDataComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  storageSize(): string {
+    return this.dataService.getStorageSize();
+  }
+
   import(): void {
     const importElement = document.createElement('input');
     importElement.setAttribute('type', 'file');

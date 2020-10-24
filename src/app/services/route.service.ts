@@ -39,7 +39,7 @@ export class RouteService {
    */
   getDurationString(route: Route): string {
     const totalMinutes = Math.round(this.getDuration(route) / 60);
-    const hours = totalMinutes / 60;
+    const hours = Math.floor(totalMinutes / 60);
     const minutes = totalMinutes % 60;
     const hoursString = hours < 10 ? '0' + hours : '' + hours;
     const minutesString = minutes < 10 ? '0' + minutes : '' + minutes;
@@ -57,7 +57,7 @@ export class RouteService {
    * return distance in km as string with two decimal digits.
    */
   getDistanceString(route: Route): string {
-    return formatNumber(this.getDistance(route) / 1000, 'US-en', '1.2-2');
+    return formatNumber(this.getDistance(route) / 1000, 'en_US', '1.2-2');
   }
 
   getActiveRouteOption(route: Route): RouteOption {
