@@ -5,55 +5,65 @@
     <ngb-panel cardClass="previous-routes__card" *ngFor="let route of getRoutes()">
       <!-- Title for each card -->
       <ng-template ngbPanelTitle>
-        <div>
-          <table class="table table-borderless table-margin__header">
-            <tbody>
-              <tr>
-                <td rowspan="2">
-                  <app-vehicle-icon [vehicle]="routeService.getVehicleIconString(route)"></app-vehicle-icon>
-                </td>
-                <td>{{routeService.getCo2Kilograms(route) | number: '1.2-2'}} kg</td>
-                <td>{{route.from.name}}</td>
-              </tr>
-              <tr>
-                <td>{{route.time}}</td>
-                <td>{{route.to.name}}</td>
-              </tr>
-            </tbody>
-          </table>
+        <div class="previous-routes__header">
+          <div class="previous-routes__header-meta">
+            <app-vehicle-icon [vehicle]="routeS.getVehicleIconString(route)"></app-vehicle-icon>
+            <div>{{routeS.getCo2Kilograms(route) | number: '1.2-2'}} kg</div>
+          </div>
+          <div class="previous-routes__header-locations">
+            <div class="previous-routes__header-location-wrapper">
+              <div #firstCircle>
+                <fa-icon [icon]="iconS.getIcon('circle')"></fa-icon>
+              </div>
+              <div class="previous-routes__header-location">
+                <span>{{routeS.getMainFrom(route)}}</span>
+                <small>{{routeS.getSecondaryFrom(route)}}</small>
+              </div>
+            </div>
+            <div class="previous-routes__header-location-wrapper">
+              <div #secondCircle>
+                <fa-icon [icon]="iconS.getIcon('circle')"></fa-icon>
+              </div>
+              <div class="previous-routes__header-location">
+                <span>{{routeS.getMainTo(route)}}</span>
+                <small>{{routeS.getSecondaryTo(route)}}</small>
+              </div>
+            </div>
+            <div class="previous-routes__header-location-line" [style]="'height: ' + getVerticalSpaceBetween(firstCircle, secondCircle) + 'px'"></div>
+          </div>
         </div>
       </ng-template>
       <!-- Content for each card -->
       <ng-template ngbPanelContent>
         <div class="previous-routes__route-info">
           <div class="previous-routes__route-info-details">
-            <fa-icon class="previous-routes__route-info-details-icon" [icon]="routeService.getVehicleIcon(route)"></fa-icon>
-            <span>{{routeService.getVehicle(route).name}}</span>
+            <fa-icon class="previous-routes__route-info-details-icon" [icon]="routeS.getVehicleIcon(route)"></fa-icon>
+            <span>{{routeS.getVehicle(route).name}}</span>
           </div>
         </div>
         <div class="previous-routes__route-info">
           <div class="previous-routes__route-info-details">
-            <fa-icon class="previous-routes__route-info-details-icon" [icon]="iconService.getIcon('clock')"></fa-icon>
-            <span>{{routeService.getDurationString(route)}}</span>
+            <fa-icon class="previous-routes__route-info-details-icon" [icon]="iconS.getIcon('clock')"></fa-icon>
+            <span>{{routeS.getDurationString(route)}}</span>
           </div>
           <div class="previous-routes__route-info-details">
-            <fa-icon class="previous-routes__route-info-details-icon" [icon]="iconService.getIcon('distance')">
+            <fa-icon class="previous-routes__route-info-details-icon" [icon]="iconS.getIcon('distance')">
             </fa-icon>
-            <span>{{routeService.getDistanceString(route)}}km</span>
+            <span>{{routeS.getDistanceString(route)}}km</span>
           </div>
           <div class="previous-routes__route-info-details">
-            <fa-icon class="previous-routes__route-info-details-icon" [icon]="iconService.getIcon('users')"></fa-icon>
+            <fa-icon class="previous-routes__route-info-details-icon" [icon]="iconS.getIcon('users')"></fa-icon>
             <input class="form-control previous-routes__route-info-details-input" min="1"
               (change)="validatePassengerInput($event, route)" type="number" [(ngModel)]="route.passengers">
           </div>
         </div>
         <div class="previous-routes__action-buttons">
           <button class="btn btn-outline-danger" (click)="deleteRoute(route)">
-            <fa-icon [icon]="iconService.getIcon('delete')"></fa-icon>
+            <fa-icon [icon]="iconS.getIcon('delete')"></fa-icon>
           </button>
           <button class="btn btn-outline-primary" (click)="open(content, route)">Change Vehicle</button>
-          <a [href]="routeService.getMapsLink(route)" class="btn btn-outline-primary" target="_blank">
-            <fa-icon [icon]="iconService.getIcon('map')"></fa-icon>
+          <a [href]="routeS.getMapsLink(route)" class="btn btn-outline-primary" target="_blank">
+            <fa-icon [icon]="iconS.getIcon('map')"></fa-icon>
             <span> Map</span>
           </a>
         </div>

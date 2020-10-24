@@ -14,6 +14,8 @@ import { RouteService } from 'src/app/services/route.service';
 export class PreviousRoutesComponent implements OnInit {
 
   private modalRoute: Route;
+  iconS: IconService;
+  routeS: RouteService;
 
   constructor(
     private dataService: DataService,
@@ -28,6 +30,8 @@ export class PreviousRoutesComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.iconS = this.iconService;
+    this.routeS = this.routeService;
   }
 
   getRoutes(): Route[] {
@@ -55,5 +59,9 @@ export class PreviousRoutesComponent implements OnInit {
   setVehicleType(vehicle: Vehicle): void {
     this.dataService.setRouteVehicle(this.modalRoute, vehicle.id);
     this.modalService.dismissAll();
+  }
+
+  getVerticalSpaceBetween(firstElement: HTMLDivElement, secondElement: HTMLDivElement): number {
+    return secondElement.children[0].getBoundingClientRect().top - (firstElement.children[0].getBoundingClientRect().top + 16);
   }
 }
