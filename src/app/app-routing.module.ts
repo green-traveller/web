@@ -9,6 +9,7 @@ import { ManageDataComponent } from './views/preferences/manage-data/manage-data
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { PreferencesComponent } from './views/preferences/preferences.component';
 import { SearchRouteComponent } from './views/search-route/search-route.component';
+import { PreviousRoutesComponent } from './views/previous-routes/previous-routes.component';
 import { RouteSearchResultsComponent } from './views/route-search-results/route-search-results.component';
 
 const routes: Routes = [
@@ -20,8 +21,9 @@ const routes: Routes = [
   { path: 'preferences/co2-goals', component: Co2GoalsComponent },
   { path: 'preferences/vehicles', component: CustomVehiclesComponent },
   { path: 'preferences/vehicles/:id', component: EditVehicleComponent },
-  { path: 'nav', component: NavBarComponent },
-  { path: 'results', component: RouteSearchResultsComponent },
+  { path: 'previous-routes', component: PreviousRoutesComponent},
+  { path: 'preferences/vehicles/:id', component: EditVehicleComponent },
+  { path: 'results', component: RouteSearchResultsComponent }
 ];
 
 @NgModule({

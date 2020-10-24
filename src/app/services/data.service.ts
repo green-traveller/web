@@ -67,7 +67,8 @@ export class DataService {
           travelmode: 'driving'
         }
       },
-      routes: {}
+      routes: {
+      }
     }));
   }
 
@@ -80,6 +81,35 @@ export class DataService {
 
   // Routes
 
+  public getRoutes(): Route[] {
+    return Object.values(this.data.routes);
+  }
+
+  public getRoutesByDate(): { [date: string]: Route[] } {
+    const routes = this.getRoutes().reverse();
+    const result = {};
+    for (const route of routes) {
+      const date = route.time.split(' ')[0];
+      if (!result[date]) {
+        result[date] = [];
+      }
+      result[date].push(route);
+    }
+    return result;
+  }
+
+  public getRoutesDates(): string[] {
+    const routes = this.getRoutes().reverse();
+    const result = {};
+    for (const route of routes) {
+      const date = route.time.split(' ')[0];
+      if (!result[date]) {
+        result[date] = undefined;
+      }
+    }
+    return Object.keys(result).sort().reverse();
+  }
+
   public setRoute(route: Route): void {
     if (route.id === 'new') {
       route.id = DataService.uuidv4();
@@ -90,6 +120,11 @@ export class DataService {
 
   public setRouteVehicle(route: Route, vehicleId: string): void {
     this.data.routes[route.id].vehicleId = vehicleId;
+    this.setStorage();
+  }
+
+  public setRoutePassengers(route: Route, passengers: number): void {
+    this.data.routes[route.id].passengers = passengers;
     this.setStorage();
   }
 
@@ -114,6 +149,18 @@ export class DataService {
 
   public getVehicles(): Vehicle[] {
     return Object.values(this.data.vehicles);
+  }
+
+  public getActiveVehicles(): Vehicle[] {
+    return Object.values(this.data.vehicles).filter((v) => v.active);
+  }
+
+  public getDefaultVehicles(): Vehicle[] {
+    return Object.values(this.data.vehicles).filter((v) => v.default);
+  }
+
+  public getCustomActiveVehicles(): Vehicle[] {
+    return Object.values(this.data.vehicles).filter((v) => !v.default && v.active);
   }
 
   public getActiveTransportModes(): string[] {
