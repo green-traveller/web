@@ -1,24 +1,27 @@
 <app-close-icon></app-close-icon>
-<div class="navigation-gap">
-    <div class="initial-setup-vehicle__text">
-        <h3>Hi {{username}}!</h3>
-        <b>Choose from the list below if you're owning a bicycle or a car. This helps us showing you routes which fit your personal vehicles. Just click on it!</b>
+<div class="initial-setup-vehicle">
+  <div class="initial-setup-vehicle__text">
+    <h3>Hi {{username}}!</h3>
+    <b>
+      Choose from the list below if you're owning a bicycle or a car. 
+      This helps us showing you routes which fit your personal vehicles. Just click on it!
+    </b>
+  </div>
+</div>
+<div *ngFor="let vehicle of defaultVehicles" class="initial-setup-vehicle__list-item" (click)="handleDefaultVehicleClick(vehicle)">
+  <div>
+    <app-vehicle-icon [vehicle]="vehicle.type"></app-vehicle-icon>
+  </div>
+  <div class="initial-setup-vehicle__item-details">
+    <div>{{ vehicle.name }}</div>
+  </div>
+  <div class="initial-setup-vehicle__item-actions">
+    <div class="custom-control custom-switch initial-setup-vehicle__item-switch">
+      <input type="checkbox" class="custom-control-input" id="defaultVehicleSwitch" [(ngModel)]="vehicle.active">
+      <label class="custom-control-label" for="defaultVehicleSwitch"></label>
     </div>
-    <div *ngFor="let vehicle of defaultVehicles" class="initial-setup-vehicle__list-item" (click)="handleDefaultVehicleClick(vehicle)">
-        <div>
-            <app-vehicle-icon [vehicle]="vehicle.type"></app-vehicle-icon>
-        </div>
-        <div class="initial-setup-vehicle__item-details">
-            <div>{{ vehicle.name }}</div>
-        </div>
-        <div class="initial-setup-vehicle__item-actions">
-            <div class="custom-control custom-switch initial-setup-vehicle__item-switch">
-                <input type="checkbox" class="custom-control-input" id="defaultVehicleSwitch" [(ngModel)]="vehicle.active">
-                <label class="custom-control-label" for="defaultVehicleSwitch"></label>
-            </div>
-        </div>
-    </div>
-    <div class="initial-setup-vehicle__action">
-        <button class="btn btn-primary btn-block" type="button" [routerLink]="['/initial-setup-tips']">Become a Green Traveller!</button>
-    </div>
+  </div>
+</div>
+<div class="initial-setup-vehicle__action">
+  <button class="btn btn-primary btn-block" type="button" (click)="handleActionButtonClick()">Become a Green Traveller!</button>
 </div>

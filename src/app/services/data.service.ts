@@ -149,4 +149,3 @@ export class DataService {
     return this.data.setupCompleted;
   }
 }
-

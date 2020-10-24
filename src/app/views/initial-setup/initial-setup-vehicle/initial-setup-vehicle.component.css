@@ -1,19 +1,16 @@
+.initial-setup-vehicle {
+  background-color: lightgreen;
+  width: 100%;
+  height: 100%;
+  border-bottom: 1px solid #dfe2e1;
+}
+
 .initial-setup-vehicle__action {
-  position: absolute;
+  position: fixed;
   width: 100%;
   bottom: 0;
   right: 0;
   padding: 0.5rem;
-}
-
-.initial-setup-info__close {
-  position: fixed;
-  top: 0;
-  right: 0;
-  margin: 1rem;
-  margin-right: 1.5rem;
-  color: lightgreen;
-  font-size: 200%;
 }
 
 .initial-setup-vehicle__item-actions {
@@ -38,8 +35,6 @@
 }
 
 .initial-setup-vehicle__text {
-  width: 100%;
-  right: 0;
-  padding: 0.5rem;
-  border-bottom: 1px solid #dfe2e1;
+  padding: 1rem;
+  padding-top: 4rem;
 }

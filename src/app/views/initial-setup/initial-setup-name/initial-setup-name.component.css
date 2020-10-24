@@ -1,5 +1,5 @@
 .initial-setup-name {
-  margin: 0.5rem;
+  background-color: lightgreen;
 }
 
 .initial-setup-name__action {
@@ -22,7 +22,5 @@
 }
 
 .initial-setup-name__text {
-  width: 100%;
-  right: 0;
   padding: 1rem;
 }

@@ -1,9 +1,9 @@
-.initial-setup-tips {
+.initial-setup-tips-android {
   background-color: lightgreen;
   padding-top: 5.5rem;
 }
 
-.initial-setup-tips__action {
+.initial-setup-tips-android__action {
   position: fixed;
   width: 100%;
   bottom: 0;
@@ -11,7 +11,7 @@
   padding: 0.5rem;
 }
 
-.initial-setup-tips__icon {
+.initial-setup-tips-android__icon {
   position: relative;
   justify-content: center;
   text-align: center;
@@ -19,7 +19,7 @@
   padding-top: 0rem;
 }
   
-.initial-setup-tips__text {
+.initial-setup-tips-android__text {
   margin: 1rem;
 }
   

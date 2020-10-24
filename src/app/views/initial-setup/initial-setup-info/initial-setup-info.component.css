@@ -1,11 +1,12 @@
 .initial-setup-info {
+  background-color: lightgreen;
   width: 100%;
-  height: 500px;
+  height: 100%;
   padding: 1rem;
 }
 
 .initial-setup-info__action {
-  position: absolute;
+  position: fixed;
   width: 100%;
   bottom: 0;
   right: 0;
@@ -14,12 +15,19 @@
 }
 
 .initial-setup-info__text {
-  margin: 1rem;  
-  background-color:lightgreen;
+  margin: 2rem;
+  margin-top: 1rem;
+  margin-bottom:5rem;
+  background-color:white;
   border-radius: 5px;
+}
+
+.initial-setup-info__textarea {
+  background-color:white;
 }
 
 .initial-setup-info__text-headline {
   text-align: center; 
-  margin: 3rem; 
+  margin: 4rem;
+  text-decoration: underline; 
 }

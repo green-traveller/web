@@ -1,16 +1,14 @@
 <app-close-icon></app-close-icon>
-<div class="navigation-gap">
-  <div class="initial-setup-name">
-        <div class="initial-setup-name__logo">
-            <img alt="Green Traveller Logo" src="assets/icons/android-chrome-512x512.png" height="128" width="128">
-        </div>
-        <h3 class="initial-setup-name__text">
-            Hello! Type in your name  
-            <span class="initial-setup-name__input" id="inputName" contenteditable="true" autofocus></span>
-            and we can continue setting up your profile! 
-        </h3>
-        <div class="initial-setup-name__action">
-            <button class="btn btn-primary btn-block" type="button" [routerLink]="['/initial-setup-vehicle']" (click)="clickChangeName()">On on on</button>
-        </div>
-    </div>
+<div class="initial-setup-name">
+  <div class="initial-setup-name__logo">
+    <img alt="Green Traveller Logo" src="assets/logo.png" height="128" width="128">
+  </div>
+</div>
+<h4 class="initial-setup-name__text">
+  Hi  
+  <span class="initial-setup-name__input" id="inputName" contenteditable="true" autofocus></span>,<br>
+  why don't you tell us your name and we personalize this process a little bit!
+</h4>
+<div class="initial-setup-name__action">
+  <button class="btn btn-primary btn-block" type="button" [routerLink]="['/initial-setup-vehicle']" (click)="clickChangeName()">Next</button>
 </div>

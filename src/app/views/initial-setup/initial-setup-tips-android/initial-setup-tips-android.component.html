@@ -1,0 +1,14 @@
+<app-close-icon></app-close-icon>
+<div class="initial-setup-tips-android"></div>
+<h5 class="initial-setup-tips-android__text">
+  You can add this app to your homescreen. Press the button on the bottom of this page that looks like this:
+</h5>
+<div class="initial-setup-tips-android__icon"> 
+  <fa-icon [icon]="icons.share"></fa-icon>
+</div>
+<h5 class="initial-setup-tips-android__text">
+  Now scroll down a litte bit and press the "add to homescreen" button.
+</h5>
+<div class="initial-setup-tips-android__action">
+  <button class="btn btn-primary btn-block" type="button" (click)="finishSetup()" [routerLink]="['/']">Become a Green Traveller!</button>
+</div>
