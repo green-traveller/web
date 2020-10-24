@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Route } from 'src/app/models/route';
 import { Vehicle } from 'src/app/models/vehicle';
+import { RouteService } from 'src/app/services/route.service';
 import { DataService } from 'src/app/services/data.service';
 import {
   faCarSide,
