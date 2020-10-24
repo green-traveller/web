@@ -39,6 +39,18 @@ export class PreviousRoutesComponent implements OnInit {
     return this.dataService.getRoutes();
   }
 
+  getRoutesByDate(): { [date: string]: Route[] } {
+    return this.dataService.getRoutesByDate();
+  }
+
+  getRoutesDates(): string[] {
+    return this.dataService.getRoutesDates();
+  }
+
+  formatDate(d: string): string {
+    return new Date(d).toLocaleDateString('en-US', { weekday: 'short', day: '2-digit', month: 'short', year: 'numeric' });
+  }
+
   deleteRoute(route: Route): void {
     this.dataService.deleteRoute(route);
   }
@@ -65,6 +77,6 @@ export class PreviousRoutesComponent implements OnInit {
   }
 
   getVerticalSpaceBetween(firstElement: HTMLDivElement, secondElement: HTMLDivElement): number {
-    return secondElement.children[0].getBoundingClientRect().top - (firstElement.children[0].getBoundingClientRect().top + 16);
+    return secondElement.children[0].getBoundingClientRect().top - (firstElement.children[0].getBoundingClientRect().top + 14);
   }
 }

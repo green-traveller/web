@@ -1,3 +1,7 @@
+.previous-routes__date {
+  padding: 0.5rem;
+}
+
 .previous-routes__header {
   display: flex;
   color: black;
@@ -27,7 +31,7 @@
 
 .previous-routes__header-location-line {
   left: 0.475rem;
-  top: 1.25rem;
+  top: 1.2rem;
   position: absolute;
   border-left: 0.125rem solid black;
 }

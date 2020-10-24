@@ -85,6 +85,31 @@ export class DataService {
     return Object.values(this.data.routes);
   }
 
+  public getRoutesByDate(): { [date: string]: Route[] } {
+    const routes = this.getRoutes().reverse();
+    const result = {};
+    for (const route of routes) {
+      const date = route.time.split(' ')[0];
+      if (!result[date]) {
+        result[date] = [];
+      }
+      result[date].push(route);
+    }
+    return result;
+  }
+
+  public getRoutesDates(): string[] {
+    const routes = this.getRoutes().reverse();
+    const result = {};
+    for (const route of routes) {
+      const date = route.time.split(' ')[0];
+      if (!result[date]) {
+        result[date] = undefined;
+      }
+    }
+    return Object.keys(result).sort().reverse();
+  }
+
   public setRoute(route: Route): void {
     if (route.id === 'new') {
       route.id = DataService.uuidv4();
