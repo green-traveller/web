@@ -1,5 +1,5 @@
 // @ts-ignore
-import { env } from './environment.ts';
+import { env } from './env.ts';
 
 export const environment = {
   production: true,
