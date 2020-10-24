@@ -2,6 +2,10 @@
   padding: 0.5rem;
 }
 
+.manage-data__info {
+  padding-bottom: 0.5rem;
+}
+
 .manage-data__content {
   position: absolute;
   width: 100%;
