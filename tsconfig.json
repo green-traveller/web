@@ -16,6 +16,7 @@
       "es2018",
       "dom"
     ],
+    "types": ["googlemaps"],
     "resolveJsonModule": true,
     "esModuleInterop": true
   }

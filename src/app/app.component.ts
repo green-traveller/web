@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from './services/data.service';
 import { Location } from '@angular/common';
+import { MapsSdkService } from './services/maps-sdk.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,10 +9,14 @@ import { Router } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = '🚴🌳 Green Traveller';
 
-  constructor(private dataService: DataService, private location: Location, private router: Router) {
+  constructor(
+    private dataService: DataService,
+    private location: Location,
+    private router: Router,
+    private mapsSdkService: MapsSdkService) {
   }
 
   // tslint:disable-next-line: use-lifecycle-interface

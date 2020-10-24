@@ -1,8 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 
-:root {
-  --primary: #26C281 !important;
-}
+$primary: #26C281;
+
+@import "../node_modules/bootstrap/scss/bootstrap";
 
 .navigation-gap {
   margin-top: 3.5rem;

@@ -1,5 +1,28 @@
 .search-route {
   padding: 0.5rem;
+  margin-bottom: 7rem;
+}
+
+.search-route__statistics {
+  background-color: rgba(38, 194, 129, 0.1);
+  border-radius: 0.5rem;
+  color: var(--primary);
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+}
+
+.search-route__passenger-input-group {
+  width: 8rem;
+}
+
+.search-route__passenger-input {
+  text-align: center;
+}
+
+.search-route__timing {
+  display: flex;
+  flex-direction: column;
 }
 
 .search-route__time-select {
@@ -7,10 +30,68 @@
   display: flex;
 }
 
+.search-route__time-input {
+  text-align: center;
+  margin: 0 0.5rem;
+}
+
+.search-route__time-input:first-child {
+  margin-left: 0;
+}
+
+.search-route__time-input:last-child {
+  margin-right: 0;
+}
+
+.search-route__state-info {
+  color: rgba(0,0,0,.5);
+}
+
 .search-route__action {
-  position: absolute;
+  background-color: white;
+  box-shadow: 0 2px 12px 0 rgba(0,0,0,.2);
+  position: fixed;
   width: 100%;
   bottom: 0;
   right: 0;
-  padding: 0.5rem;
+  padding: 0.5rem 0.5rem 1.5rem;
+  z-index: 50;
+}
+
+.search-route__loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background-color: rgba(0,0,0,.2);
+}
+
+.lds-dual-ring {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+}
+.lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid #FFF;
+  border-color: #FFF transparent #FFF transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
