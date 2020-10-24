@@ -61,7 +61,7 @@
           <button class="btn btn-outline-danger" (click)="deleteRoute(route)">
             <fa-icon [icon]="iconS.getIcon('delete')"></fa-icon>
           </button>
-          <button class="btn btn-outline-primary" (click)="open(content, route)">Change Vehicle</button>
+          <button class="btn btn-outline-primary" (click)="openModalWindow(content, route)">Change Vehicle</button>
           <a [href]="routeS.getMapsLink(route)" class="btn btn-outline-primary" target="_blank">
             <fa-icon [icon]="iconS.getIcon('map')"></fa-icon>
             <span> Map</span>
@@ -76,7 +76,7 @@
 <ng-template #content let-modal>
   <div class="modal-header">
     <h4 class="modal-title" ngbAutoFocus id="modal-basic-title">Change Vehicle</h4>
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
