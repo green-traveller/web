@@ -1,7 +1,7 @@
 // @ts-ignore
-import { apiKey } from './environment.ts';
+import { env } from './environment.ts';
 
 export const environment = {
   production: true,
-  apiKey
+  apiKey: env.apiKey
 };

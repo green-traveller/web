@@ -3,7 +3,7 @@ const fs = require('fs');
 // Configure Angular `environment.ts` file path
 const targetPath = './src/environments/environment.ts';
 // `environment.ts` file structure
-const envConfigFile = `export const environment = {
+const envConfigFile = `export const env = {
    apiKey: '${process.env.MAPS_API_KEY}'
 };
 `;
