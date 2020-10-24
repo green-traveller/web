@@ -1,4 +1,7 @@
+// @ts-ignore
+import { apiKey } from './environment.ts';
+
 export const environment = {
   production: true,
-  apiKey: process.env.MAPS_API_KEY
+  apiKey
 };
