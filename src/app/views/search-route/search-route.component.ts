@@ -1,8 +1,9 @@
 import { formatDate } from '@angular/common';
-import {Component, ElementRef, OnInit, ViewChild, ChangeDetectorRef, AfterViewInit} from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, ChangeDetectorRef, AfterViewInit } from '@angular/core';
 import { MapsSdkService } from '../../services/maps-sdk.service';
 import { Router } from '@angular/router';
 import {} from 'googlemaps';
+import { IconService } from '../../services/icon.service';
 
 @Component({
   selector: 'app-search-route',
@@ -26,9 +27,11 @@ export class SearchRouteComponent implements OnInit, AfterViewInit {
   fromInputValid = false;
   searching = false;
   changeDetectorRef: ChangeDetectorRef;
+  icons: IconService;
 
-  constructor(private mapsSdkService: MapsSdkService, changeDetectorRef: ChangeDetectorRef) {
+  constructor(private mapsSdkService: MapsSdkService, changeDetectorRef: ChangeDetectorRef, iconService: IconService) {
     this.changeDetectorRef = changeDetectorRef;
+    this.icons = iconService;
   }
 
   ngOnInit(): void {
@@ -56,7 +59,6 @@ export class SearchRouteComponent implements OnInit, AfterViewInit {
       this.from = autocompleteOrigin.getPlace();
       this.fromInputValid = true;
     });
-
     // dest
     const autocompleteDestination = new google.maps.places.Autocomplete(
       (this.toInput.nativeElement as HTMLInputElement),
