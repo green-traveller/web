@@ -1,5 +1,6 @@
 import { formatDate } from '@angular/common';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { IconService } from '../../services/icon.service';
 
 @Component({
   selector: 'app-search-route',
@@ -15,7 +16,7 @@ export class SearchRouteComponent implements OnInit {
   timeMode = 'now';
   passengerAmount = 1;
 
-  constructor() { }
+  constructor(private iconService: IconService) { }
 
   ngOnInit(): void { }
 

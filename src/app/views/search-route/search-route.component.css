@@ -3,6 +3,15 @@
   margin-bottom: 7rem;
 }
 
+.search-route__statistics {
+  background-color: rgba(38, 194, 129, 0.1);
+  border-radius: 0.5rem;
+  color: var(--primary);
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+}
+
 .search-route__passenger-input-group {
   width: 8rem;
 }
