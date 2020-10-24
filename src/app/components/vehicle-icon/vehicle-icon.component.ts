@@ -1,11 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {
+  faBicycle,
   faCarSide,
   faMotorcycle,
-  faBicycle,
-  faWalking,
   faSubway,
-  faQuestion
+  faWalking
 } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -19,10 +18,9 @@ export class VehicleIconComponent implements OnInit {
   @Input() active: boolean;
 
   icons = {
-    unknown: faQuestion,
+    bicycle: faBicycle,
     car: faCarSide,
     motorcycle: faMotorcycle,
-    bicycle: faBicycle,
     train: faSubway,
     walking: faWalking
   };

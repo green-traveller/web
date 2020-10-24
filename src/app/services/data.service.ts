@@ -68,66 +68,6 @@ export class DataService {
         }
       },
       routes: {
-        '7c3173f6-d0a4-4d8f-9f6e-c26322fbc2aa': {
-          id: '7c3173f6-d0a4-4d8f-9f6e-c26322fbc2aa',
-          from: {
-            name: 'start',
-            place_id: '1'},
-          to: {
-            name: 'destination',
-            place_id: '2'},
-          time: '01-01-1970 00:00',
-          vehicleId: 'walking',
-          passengers: 1,
-          options: {
-            walking: {
-              distance: 5000,
-              duration: 5000,
-            },
-            bicycling: {
-              distance: 5000,
-              duration: 2000,
-            },
-            transit: {
-              distance: 4000,
-              duration: 1500,
-            },
-            driving: {
-              distance: 6000,
-              duration: 3000,
-            },
-          }
-        },
-        'f1bbd0b2-8dfb-407b-884a-86b2a9f3e821': {
-          id: 'f1bbd0b2-8dfb-407b-884a-86b2a9f3e821',
-          from: {
-            name: 'start',
-            place_id: '1'},
-          to: {
-            name: 'destination',
-            place_id: '2'},
-          time: '01-01-1970 00:00',
-          vehicleId: 'driving',
-          passengers: 1,
-          options: {
-            walking: {
-              distance: 50000,
-              duration: 50000,
-            },
-            bicycling: {
-              distance: 50000,
-              duration: 20000,
-            },
-            transit: {
-              distance: 40000,
-              duration: 15000,
-            },
-            driving: {
-              distance: 60000,
-              duration: 30000,
-            },
-          }
-        },
       }
     }));
   }
@@ -143,6 +83,10 @@ export class DataService {
 
   public getRoutes(): { [id: string]: Route} {
     return this.data.routes;
+  }
+
+  public getRoutesArray(): Route[]{
+    return Object.values(this.getRoutes());
   }
 
   public setRoute(route: Route): void {

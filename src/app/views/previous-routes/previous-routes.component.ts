@@ -19,19 +19,20 @@ export class PreviousRoutesComponent implements OnInit {
     private dataService: DataService,
     private iconService: IconService,
     private routeService: RouteService,
-    private modalService: NgbModal) { }
+    private modalService: NgbModal)
+    { }
 
-  open(content: any, route: Route): any {
+  ngOnInit(): void {
+  }
+
+  openModalWindow(content: any, route: Route): any {
     this.modalRoute = route;
 
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title', centered: true});
   }
 
-  ngOnInit(): void {
-  }
-
   getRoutes(): Route[] {
-    return Object.values(this.dataService.getRoutes());
+    return this.dataService.getRoutesArray();
   }
 
   deleteRoute(route: Route): void {
@@ -39,13 +40,15 @@ export class PreviousRoutesComponent implements OnInit {
   }
 
   validatePassengerInput(event: any, route: Route): void {
-    if (!event.target.validity.valid) {
-      event.target.value = 1;
+    const target = event.target;
+
+    if (!target.validity.valid) {
+      target.value = 1;
     }
 
-    route.passengers = event.target.value;
+    route.passengers = target.value;
 
-    this.dataService.setRoutePassengers(route, event.target.value);
+    this.dataService.setRoutePassengers(route, target.value);
   }
 
   getActiveVehicles(): Vehicle[] {
