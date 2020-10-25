@@ -1,14 +1,28 @@
 <app-nav-bar title="Personal CO₂-Balance"></app-nav-bar>
 
 <div class="navigation-gap">
+  
+  <div class="progressbar-personal-goal">
+    <h4>Personal Goal</h4>
+    <p>
+      <ngb-progressbar [showValue]="true" type="danger" [value]="currentCo2Sum" [max]="personalGoal"></ngb-progressbar>
+    </p>
+    <div *ngIf="!personalGoalAlertClosed">
+      <ngb-alert [dismissible]="true" [type]="personalGoalAlert.type" (close)="personalGoalAlertClosed=true">
+        {{personalGoalAlert.message}}
+      </ngb-alert>
+    </div>
+  </div>
+
+  <hr>
   <!-- Section I Co2-Emissions vs. Goals (Pie Chart + Progress bar)  -->
   <div class="pie-chart-CO₂">
     <h4>CO₂-Emissions (kg/day)</h4>
     
     <app-pie-chart [pieChartLabels]="co2PieChartLabels" [pieChartData]="currentCo2Data"
       [pieChartColors]="co2PieChartColors"></app-pie-chart>
-    <div *ngIf="!closedAlert">
-      <ngb-alert [dismissible]="true" [type]="co2Alert.type" (close)="closedAlert=true">
+    <div *ngIf="!co2AlertClosed">
+      <ngb-alert [dismissible]="true" [type]="co2Alert.type" (close)="co2AlertClosed=true">
         {{co2Alert.message}}
       </ngb-alert>    
     </div>
@@ -22,19 +36,6 @@
 
   <hr>
 
-  <div class="progressbar-personal-goal">
-    <h4>Personal Goal</h4>
-    <p>
-      <ngb-progressbar [showValue]="true" type="danger" [value]="currentCo2Sum" [max]="personalGoal"></ngb-progressbar>
-    </p>
-    <p>
-      <ngb-alert [dismissible]="true" [type]="personalGoalAlertType">
-        {{personalGoalAlertMessage}}
-      </ngb-alert>
-    </p>
-  </div>
-
-  <hr>
 
   <!-- Section II Means of transport by km travelled (Pie Chart) -->
   <div class="pie-chart-km">

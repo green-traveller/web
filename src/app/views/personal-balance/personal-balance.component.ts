@@ -45,7 +45,16 @@ export class PersonalBalanceComponent implements OnInit {
     message: this.getCo2AlertMessage()
   };
 
-  // co2AlertMessage: string = this.getCo2AlertMessage();
+  getCo2AlertType(): string {
+    if (this.currentCo2RestBudget > 0) {
+      return 'success'
+    } else if (this.currentCo2RestBudget = 0){
+      return 'warning'
+    }
+    else {
+      return 'danger'
+    }
+  }
 
   getCo2AlertMessage(): string {
     if (this.currentCo2RestBudget > 0) {
@@ -58,26 +67,27 @@ export class PersonalBalanceComponent implements OnInit {
     }
   }
   
-  // co2AlertType: string = this.getCo2AlertType();
-
-  getCo2AlertType(): string {
-    if (this.currentCo2RestBudget > 0) {
-      return 'success'
-    } else if (this.currentCo2RestBudget = 0){
-      return 'warning'
-    }
-    else {
-      return 'danger'
-    }
-  }
-  
-  closedAlert = false;
+  co2AlertClosed = false;
 
   personalGoal: number = 3; // meaning 3 kg per day from transport, average German emmits around 4.4 kg a day from transport (not including air travel)
 
   personalGoalBarStatus: number = (this.currentCo2Sum / this.personalGoal) ;
 
-  personalGoalAlertMessage: string = this.getPersonalGoalAlertMessage();
+  personalGoalAlert: Alert = {
+    type: this.getPersonalGoalAlertType(),
+    message: this.getPersonalGoalAlertMessage()
+  };
+
+  getPersonalGoalAlertType(): string {
+    if (this.personalGoalBarStatus < 1) {
+      return 'success'
+    } else if (this.personalGoalBarStatus  = 1){
+      return 'warning'
+    }
+    else {
+      return 'danger'
+    }
+  }  
 
   getPersonalGoalAlertMessage(): string {
     if (this.personalGoalBarStatus < 1) {
@@ -90,19 +100,7 @@ export class PersonalBalanceComponent implements OnInit {
     }
   }
 
-  personalGoalAlertType: string = this.getPersonalGoalAlertType();
-
-  getPersonalGoalAlertType(): string {
-    if (this.personalGoalBarStatus < 1) {
-      return 'success'
-    } else if (this.personalGoalBarStatus  = 1){
-      return 'warning'
-    }
-    else {
-      return 'danger'
-    }
-  }
-
+  personalGoalAlertClosed = false;
 
   // Distance-PieChart
   
