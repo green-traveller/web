@@ -12,6 +12,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { AboutComponent } from './views/about/about.component';
 import { AppComponent } from './app.component';
 import { BarChartComponent } from './components/bar-chart/bar-chart.component';
+import { Co2BarChartComponent } from './components/co2-bar-chart/co2-bar-chart.component';
 import { Co2GoalsComponent } from './views/preferences/co2-goals/co2-goals.component';
 import { Co2PieChartComponent } from './components/co2-pie-chart/co2-pie-chart.component';
 import { CustomVehiclesComponent } from './views/preferences/custom-vehicles/custom-vehicles.component';
@@ -30,6 +31,7 @@ import { VehicleIconComponent } from './components/vehicle-icon/vehicle-icon.com
     AboutComponent,
     AppComponent,
     BarChartComponent,
+    Co2BarChartComponent,
     Co2GoalsComponent,
     Co2PieChartComponent,
     CustomVehiclesComponent,

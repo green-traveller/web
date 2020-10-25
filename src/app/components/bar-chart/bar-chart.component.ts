@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
-import { Label } from 'ng2-charts';
+import { Colors, Label } from 'ng2-charts';
 
 @Component({
   selector: 'app-bar-chart',
@@ -9,8 +9,14 @@ import { Label } from 'ng2-charts';
 })
 export class BarChartComponent implements OnInit {
 
-  public barChartOptions: ChartOptions = {
+  barChartType: ChartType = 'bar';
+
+  @Input() barChartOptions: ChartOptions = {
     responsive: true,
+    legend: {
+        display: true,
+        position: 'bottom'
+      },
     scales: { xAxes: 
                 [{ticks: 
                   {
@@ -32,19 +38,16 @@ export class BarChartComponent implements OnInit {
       }
     }
   };
-  public barChartLabels: Label[] = ['May', 'June', 'July', 'August', 'September', 'October'];
-  public barChartType: ChartType = 'bar';
-  public barChartLegend = true;
-  public barChartPlugins = [];
 
-  public barChartData: ChartDataSets[] = [
-    { data: [2.5, 2.25, 1.9, 2.7, 2.55, 2.1], label: 'CO₂ (kg/day)' },
-  ];
+  @Input() barChartLabels: Label[];
+
+  @Input() barChartPlugins = [];
   
-  barChartColors = [] = [
-    { backgroundColor: '#ff3311' },
-    { backgroundColor: 'green' },
-  ];
+  @Input() barChartLegend = true;
+
+  @Input() barChartData: ChartDataSets[];
+  
+  @Input() barChartColors: Colors;
 
   constructor() { }
 

@@ -5,7 +5,7 @@
   <div class="progressbar-personal-goal">
     <h4>Personal Goal</h4>
     <p>
-      <ngb-progressbar [showValue]="true" type="danger" [value]="currentCo2Sum" [max]="personalGoal"></ngb-progressbar>
+      <ngb-progressbar type="danger" [value]="currentCo2Sum" [max]="personalGoal"></ngb-progressbar>
     </p>
     <div class="personal-goal-alert" *ngIf="!personalGoalAlertClosed">
       <ngb-alert [dismissible]="true" [type]="personalGoalAlert.type" (close)="personalGoalAlertClosed=true">
@@ -26,9 +26,6 @@
   <hr>
 
   <!-- Section III Co2-Emissions over time (Bar Chart) -->
-  <div class="bar-chart-CO₂">
-    <h4>CO₂-Emissions (avg kg/day)</h4>
-    <h5>Last 6 months</h5>
-    <app-bar-chart></app-bar-chart>
-  </div>
+  <app-co2-bar-chart></app-co2-bar-chart>
+
 </div>
