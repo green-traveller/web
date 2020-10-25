@@ -39,32 +39,39 @@
         <ng-template ngbPanelContent>
           <div class="previous-routes__route-info">
             <div class="previous-routes__route-info-details">
-              <fa-icon class="previous-routes__route-info-details-icon" [icon]="routeS.getVehicleIcon(route)"></fa-icon>
-              <span>{{routeS.getVehicle(route).name}}</span>
-            </div>
-          </div>
-          <div class="previous-routes__route-info">
-            <div class="previous-routes__route-info-details">
               <fa-icon class="previous-routes__route-info-details-icon" [icon]="iconS.getIcon('clock')"></fa-icon>
               <span>{{routeS.getDurationString(route)}}</span>
             </div>
             <div class="previous-routes__route-info-details">
-              <fa-icon class="previous-routes__route-info-details-icon" [icon]="iconS.getIcon('distance')">
-              </fa-icon>
-              <span>{{routeS.getDistanceString(route)}}km</span>
+              <fa-icon class="previous-routes__route-info-details-icon" [icon]="iconS.getIcon('users')"></fa-icon>
+              <div class="input-group input-group-sm">
+                <div class="input-group-prepend">
+                  <button class="btn btn-primary">-</button>
+                </div>
+                <input class="form-control previous-routes__route-info-details-input" min="1"
+                       (change)="validatePassengerInput($event, route)" type="number" [(ngModel)]="route.passengers">
+                <div class="input-group-append">
+                  <button class="btn btn-primary">+</button>
+                </div>
+              </div>
+
             </div>
             <div class="previous-routes__route-info-details">
-              <fa-icon class="previous-routes__route-info-details-icon" [icon]="iconS.getIcon('users')"></fa-icon>
-              <input class="form-control previous-routes__route-info-details-input" min="1"
-                (change)="validatePassengerInput($event, route)" type="number" [(ngModel)]="route.passengers">
+              <fa-icon class="previous-routes__route-info-details-icon" [icon]="iconS.getIcon('distance')">
+              </fa-icon>
+              <span>{{ routeS.getDistanceString(route) }} km</span>
+            </div>
+            <div class="previous-routes__route-info-details" (click)="openModalWindow(content, route)">
+              <fa-icon class="previous-routes__route-info-details-icon" [icon]="routeS.getVehicleIcon(route)"></fa-icon>
+              <span>{{routeS.getVehicle(route).name}}</span>
+              <button class="btn btn-primary btn-sm"><fa-icon [icon]="iconS.getIcon('edit')"></fa-icon></button>
             </div>
           </div>
           <div class="previous-routes__action-buttons">
             <button class="btn btn-outline-danger" (click)="deleteRoute(route)">
               <fa-icon [icon]="iconS.getIcon('delete')"></fa-icon>
             </button>
-            <button class="btn btn-outline-primary" (click)="openModalWindow(content, route)">Change Vehicle</button>
-            <a [href]="routeS.getMapsLink(route)" class="btn btn-outline-primary" target="_blank">
+            <a [href]="routeS.getMapsLink(route)" class="btn btn-secondary" target="_blank">
               <fa-icon [icon]="iconS.getIcon('map')"></fa-icon>
               <span> Map</span>
             </a>

@@ -13,6 +13,7 @@
 .previous-routes__header-meta {
   text-align: center;
   margin-right: 1rem;
+  width: 4rem;
 }
 
 .previous-routes__header-locations {
@@ -30,10 +31,10 @@
 }
 
 .previous-routes__header-location-line {
-  left: 0.475rem;
+  left: 0.45rem;
   top: 1.2rem;
   position: absolute;
-  border-left: 0.125rem solid black;
+  border: 0.0625rem dashed black;
 }
 
 .table-margin__header {
@@ -46,14 +47,18 @@
 }
 
 .previous-routes__route-info {
-  display: flex;
-  justify-content: space-between;
-  padding-bottom: 0.5rem;
+  display: grid;
+  grid-template-columns: 0.65fr 1fr;
+  grid-template-rows: repeat(2, 1fr);
+  grid-row-gap: 0.25rem;
+  margin-bottom: 0.25rem;
+  margin-left: 0.75rem;
 }
 
 .previous-routes__route-info-details {
   display: flex;
   align-items: center;
+  flex-grow: 2;
 }
 
 .previous-routes__route-info-details-icon {

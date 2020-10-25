@@ -48,7 +48,7 @@ export class PreviousRoutesComponent implements OnInit {
   }
 
   formatDate(d: string): string {
-    return new Date(d).toLocaleDateString('en-US', { weekday: 'short', day: '2-digit', month: 'short', year: 'numeric' });
+    return new Date(d).toLocaleDateString('en-US', { weekday: 'long', day: '2-digit', month: 'long', year: 'numeric' });
   }
 
   deleteRoute(route: Route): void {
@@ -57,13 +57,10 @@ export class PreviousRoutesComponent implements OnInit {
 
   validatePassengerInput(event: any, route: Route): void {
     const target = event.target;
-
     if (!target.validity.valid) {
       target.value = 1;
     }
-
     route.passengers = target.value;
-
     this.dataService.setRoutePassengers(route, target.value);
   }
 
@@ -77,6 +74,6 @@ export class PreviousRoutesComponent implements OnInit {
   }
 
   getVerticalSpaceBetween(firstElement: HTMLDivElement, secondElement: HTMLDivElement): number {
-    return secondElement.children[0].getBoundingClientRect().top - (firstElement.children[0].getBoundingClientRect().top + 14);
+    return Math.round(secondElement.children[0].getBoundingClientRect().top - (firstElement.children[0].getBoundingClientRect().top + 14));
   }
 }
