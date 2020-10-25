@@ -8,6 +8,6 @@
 }
 
 .vehicle-icon--active {
-  background-color: #26C281;
-  border-color: #26C281;
+  background-color: var(--primary);
+  border-color: var(--primary);
 }
