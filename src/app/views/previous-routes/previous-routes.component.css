@@ -13,7 +13,8 @@
 .previous-routes__header-meta {
   text-align: center;
   margin-right: 1rem;
-  width: 4rem;
+  flex-basis: 4rem;
+  flex-shrink: 0;
 }
 
 .previous-routes__header-locations {
