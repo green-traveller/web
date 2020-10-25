@@ -25,7 +25,7 @@
   <div class="edit-vehicle__input">
     <label class="edit-vehicle__input-title" for="vehicleCo2">Carbon Emissions</label>
     <div class="input-group goals__custom-input-group">
-      <input type="number" [(ngModel)]="vehicle.co2" id="vehicleCo2" class="form-control edit-vehicle__carbon-input" #carbonInput>
+      <input type="number" [(ngModel)]="vehicle.co2" id="vehicleCo2" class="form-control edit-vehicle__carbon-input" #carbonInput (change)="handleCarbonInputChange()" min="1">
       <div class="input-group-append" (click)="focusOnCarbonInput()">
         <span class="input-group-text">g/km</span>
       </div>

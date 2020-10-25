@@ -31,7 +31,7 @@ export class EditVehicleComponent implements OnInit {
         id: 'new',
         name: 'My own vehicle',
         type: 'car',
-        co2: 251,
+        co2: 175,
         active: true,
         default: false,
         travelmode: 'driving'
@@ -51,5 +51,11 @@ export class EditVehicleComponent implements OnInit {
 
   focusOnCarbonInput(): void {
     this.carbonInput.nativeElement.focus();
+  }
+
+  handleCarbonInputChange(): void {
+    if (!this.carbonInput.nativeElement.validity.valid || this.vehicle.co2 === null) {
+      this.vehicle.co2 = 175;
+    }
   }
 }
