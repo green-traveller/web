@@ -64,12 +64,12 @@
               <fa-icon class="previous-routes__route-info-details-icon" [icon]="iconS.getIcon('users')"></fa-icon>
               <div class="input-group previous-routes__passengers-input-group">
                 <div class="input-group-prepend">
-                  <button class="btn btn-primary">-</button>
+                  <button class="btn btn-primary" (click)="handlePassengerChangeButton(route, -1)">-</button>
                 </div>
                 <input class="form-control previous-routes__route-info-details-input" min="1"
                        (change)="validatePassengerInput($event, route)" type="number" [(ngModel)]="route.passengers">
                 <div class="input-group-append">
-                  <button class="btn btn-primary">+</button>
+                  <button class="btn btn-primary" (click)="handlePassengerChangeButton(route, 1)">+</button>
                 </div>
               </div>
             </div>

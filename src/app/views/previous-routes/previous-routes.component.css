@@ -61,6 +61,10 @@
   margin-right: 0.5rem;
 }
 
+.previous-routes__route-info-details-input {
+  text-align: center;
+}
+
 .previous-routes__passengers-input-group {
   width: 8rem;
 }

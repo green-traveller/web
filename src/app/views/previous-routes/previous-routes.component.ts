@@ -55,13 +55,22 @@ export class PreviousRoutesComponent implements OnInit {
     this.dataService.deleteRoute(route);
   }
 
+  handlePassengerChangeButton(route: Route, x: number): void {
+    let passengerCount = route.passengers;
+    passengerCount = x + passengerCount;
+    if (passengerCount < 1) {
+      passengerCount = 1;
+    }
+    this.dataService.setRoutePassengers(route, passengerCount);
+  }
+
   validatePassengerInput(event: any, route: Route): void {
     const target = event.target;
-    if (!target.validity.valid) {
-      target.value = 1;
+    if (!target.validity.valid || target.value === '') {
+      target.valueAsNumber = 1;
     }
-    route.passengers = target.value;
-    this.dataService.setRoutePassengers(route, target.value);
+    route.passengers = target.valueAsNumber;
+    this.dataService.setRoutePassengers(route, target.valueAsNumber);
   }
 
   getActiveVehicles(): Vehicle[] {
