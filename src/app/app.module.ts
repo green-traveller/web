@@ -13,13 +13,13 @@ import { AppComponent } from './app.component';
 import { Co2GoalsComponent } from './views/preferences/co2-goals/co2-goals.component';
 import { CustomVehiclesComponent } from './views/preferences/custom-vehicles/custom-vehicles.component';
 import { EditVehicleComponent } from './views/preferences/custom-vehicles/edit-vehicle/edit-vehicle.component';
+import { EmptyResultsComponent } from './components/empty-results/empty-results.component';
 import { ManageDataComponent } from './views/preferences/manage-data/manage-data.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { PreferencesComponent } from './views/preferences/preferences.component';
 import { PreviousRoutesComponent } from './views/previous-routes/previous-routes.component';
 import { SearchRouteComponent } from './views/search-route/search-route.component';
 import { VehicleIconComponent } from './components/vehicle-icon/vehicle-icon.component';
-import { EmptyResultsComponent } from './components/empty-results/empty-results.component';
 
 @NgModule({
   declarations: [
@@ -28,13 +28,13 @@ import { EmptyResultsComponent } from './components/empty-results/empty-results.
     Co2GoalsComponent,
     CustomVehiclesComponent,
     EditVehicleComponent,
+    EmptyResultsComponent,
     ManageDataComponent,
     NavBarComponent,
     PreferencesComponent,
     SearchRouteComponent,
     VehicleIconComponent,
-    PreviousRoutesComponent,
-    EmptyResultsComponent
+    PreviousRoutesComponent
   ],
   imports: [
     AppRoutingModule,
