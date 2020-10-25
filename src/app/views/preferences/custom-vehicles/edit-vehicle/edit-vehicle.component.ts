@@ -29,7 +29,7 @@ export class EditVehicleComponent implements OnInit {
     if (!vehicle) {
       vehicle = {
         id: 'new',
-        name: 'My own fancy car',
+        name: 'My own vehicle',
         type: 'car',
         co2: 251,
         active: true,
