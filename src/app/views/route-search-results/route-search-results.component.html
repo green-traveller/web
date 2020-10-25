@@ -16,7 +16,10 @@
 
       <ng-template ngbPanelContent>
         <div class="route-search-results__item-content">
-          <button type="button" class="btn btn-outline-primary w-25">Map</button>
+          <a [href]="routeService.getMapsLink(route)" class="btn btn-outline-primary" target="_blank">
+            <fa-icon [icon]="iconService.getIcon('map')"></fa-icon>
+            <span> Map</span>
+          </a>
           <button type="button" class="btn btn-outline-primary w-25" (click)="saveRoute(route)">Save</button>
         </div>
       </ng-template>

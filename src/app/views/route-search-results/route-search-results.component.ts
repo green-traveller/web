@@ -41,7 +41,7 @@ export class RouteSearchResultsComponent implements OnInit {
   public routeResults: Route[] = [
   ];
 
-  constructor(private dataService: DataService, private routeService: RouteService, private resultService: ResultService) {
+  constructor(private dataService: DataService, private routeService: RouteService, private resultService: ResultService, private iconService: IconService) {
   }
 
   ngOnInit(): void {
