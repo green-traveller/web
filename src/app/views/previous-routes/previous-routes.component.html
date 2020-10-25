@@ -82,6 +82,10 @@
       </ngb-panel>
     </ngb-accordion>
   </div>
+  <div *ngIf="getRoutesDates().length < 1" class="previous-routes__empty">
+    <app-empty-results></app-empty-results>
+    <div class="previous-routes__empty-text">No routes here yet. Start by searching for one.</div>
+  </div>
 </div>
 
 <!-- Modal dialogue for changing vehicles -->

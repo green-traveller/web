@@ -19,6 +19,7 @@ import { PreferencesComponent } from './views/preferences/preferences.component'
 import { PreviousRoutesComponent } from './views/previous-routes/previous-routes.component';
 import { SearchRouteComponent } from './views/search-route/search-route.component';
 import { VehicleIconComponent } from './components/vehicle-icon/vehicle-icon.component';
+import { EmptyResultsComponent } from './components/empty-results/empty-results.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { VehicleIconComponent } from './components/vehicle-icon/vehicle-icon.com
     PreferencesComponent,
     SearchRouteComponent,
     VehicleIconComponent,
-    PreviousRoutesComponent
+    PreviousRoutesComponent,
+    EmptyResultsComponent
   ],
   imports: [
     AppRoutingModule,

@@ -90,3 +90,12 @@
 .previous-routes__modal-icon {
   margin-right: 0.5rem;
 }
+
+.previous-routes__empty {
+  padding: 3rem 0.5rem;
+  text-align: center;
+}
+
+.previous-routes__empty-text {
+  margin-top: 1rem;
+}
