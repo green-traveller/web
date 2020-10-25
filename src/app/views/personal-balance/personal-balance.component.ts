@@ -54,23 +54,6 @@ export class PersonalBalanceComponent implements OnInit {
 
   personalGoalAlertClosed = false;
 
-  // Distance-PieChart
-  
-  distancePieChartLabels: string[] = ['Car', 'Motorbike', 'Public Transport', 'Bicycle', 'By Foot'];
-
-  distancePieChartData: number[] = [150, 70, 380, 200, 110];
-
-  distancePieChartColors: object[] = [
-    {
-      backgroundColor: ["#ff4233", "#ff8c00", "#e6ff33", "#52f73d", "#009933"],
-      borderColor: '#fff',
-      pointBackgroundColor: '#fff',
-      pointBorderColor: '#fff',
-      pointHoverBackgroundColor: '#9ffcb',
-      pointHoverBorderColor: '#52f75d'
-    } 
-  ];
-
   constructor() { }
 
   ngOnInit(): void {

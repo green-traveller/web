@@ -16,6 +16,7 @@ import { Co2GoalsComponent } from './views/preferences/co2-goals/co2-goals.compo
 import { Co2PieChartComponent } from './components/co2-pie-chart/co2-pie-chart.component';
 import { CustomVehiclesComponent } from './views/preferences/custom-vehicles/custom-vehicles.component';
 import { EditVehicleComponent } from './views/preferences/custom-vehicles/edit-vehicle/edit-vehicle.component';
+import { KmPieChartComponent } from './components/km-pie-chart/km-pie-chart.component';
 import { ManageDataComponent } from './views/preferences/manage-data/manage-data.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { PersonalBalanceComponent } from './views/personal-balance/personal-balance.component';
@@ -33,6 +34,7 @@ import { VehicleIconComponent } from './components/vehicle-icon/vehicle-icon.com
     Co2PieChartComponent,
     CustomVehiclesComponent,
     EditVehicleComponent,
+    KmPieChartComponent,
     ManageDataComponent,
     NavBarComponent,
     PersonalBalanceComponent,
