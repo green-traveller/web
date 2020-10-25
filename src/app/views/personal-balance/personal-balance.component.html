@@ -15,17 +15,17 @@
   </div>
 
   <hr>
-  <!-- Section I Co2-Emissions (Pie Chart)  -->
-  <app-co2-pie-chart></app-co2-pie-chart>
 
-  <hr>
-
-  <!-- Section II Means of transport by km travelled (Pie Chart) -->
-  <app-km-pie-chart></app-km-pie-chart>
-
-  <hr>
-
-  <!-- Section III Co2-Emissions over time (Bar Chart) -->
-  <app-co2-bar-chart></app-co2-bar-chart>
+  <ngb-carousel interval="false" showNavigationIndicators="false">
+    <ng-template ngbSlide>
+      <app-co2-pie-chart></app-co2-pie-chart>
+    </ng-template>
+    <ng-template ngbSlide>
+      <app-km-pie-chart></app-km-pie-chart>      
+    </ng-template>
+    <ng-template ngbSlide>
+      <app-co2-bar-chart></app-co2-bar-chart>
+    </ng-template>
+  </ngb-carousel>
 
 </div>
