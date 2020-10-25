@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { Alert } from 'src/app/models/alert';
 
 @Component({
   selector: 'app-personal-balance',
   templateUrl: './personal-balance.component.html',
   styleUrls: ['./personal-balance.component.css']
 })
-export class PersonalBalanceComponent implements OnInit {
+export class PersonalBalanceComponent implements OnInit {  
 
   avgTranspCO2German: number = 4.4; // average co2-emissions [kg] per day caused by transport (excluding air travel) by a German
   
@@ -39,7 +40,12 @@ export class PersonalBalanceComponent implements OnInit {
     } 
   ];
 
-  co2AlertMessage: string = this.getCo2AlertMessage();
+  co2Alert: Alert = {
+    type: this.getCo2AlertType(),
+    message: this.getCo2AlertMessage()
+  };
+
+  // co2AlertMessage: string = this.getCo2AlertMessage();
 
   getCo2AlertMessage(): string {
     if (this.currentCo2RestBudget > 0) {
@@ -52,7 +58,7 @@ export class PersonalBalanceComponent implements OnInit {
     }
   }
   
-  co2AlertType: string = this.getCo2AlertType();
+  // co2AlertType: string = this.getCo2AlertType();
 
   getCo2AlertType(): string {
     if (this.currentCo2RestBudget > 0) {
@@ -64,6 +70,8 @@ export class PersonalBalanceComponent implements OnInit {
       return 'danger'
     }
   }
+  
+  closedAlert = false;
 
   personalGoal: number = 3; // meaning 3 kg per day from transport, average German emmits around 4.4 kg a day from transport (not including air travel)
 
@@ -100,11 +108,11 @@ export class PersonalBalanceComponent implements OnInit {
   
   distancePieChartLabels: string[] = ['Car', 'Motorbike', 'Public Transport', 'Bicycle', 'By Foot'];
 
-  distancePieChartData: number[] = [150, 70, 60, 100, 20, 200, 200, 110];
+  distancePieChartData: number[] = [150, 70, 380, 200, 110];
 
   distancePieChartColors: object[] = [
     {
-      backgroundColor: ["#ff3311", "#ee7700","#ff8c00", "#ffa500", "#f3c318", "#e6ff33", "#9fffcb", "#47c3a0"], //, "#25a18e"
+      backgroundColor: ["#ff4233", "#ff8c00", "#e6ff33", "#52f73d", "#009933"], //, "#25a18e", "#9fffcb", "#47c3a0"
       borderColor: '#fff',
       pointBackgroundColor: '#fff',
       pointBorderColor: '#fff',
