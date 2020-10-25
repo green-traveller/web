@@ -1,13 +1,5 @@
-.pie-chart-CO₂{
-    margin: 5%;
-    width: 90%;    
-    text-align: center;
-}
-
-.pie-chart-km{
-    margin: 5%;
-    width: 90%;      
-    text-align: center;
+.personal-goal-alert{
+  text-align: left;
 }
 
 .progressbar-personal-goal{
@@ -18,4 +10,10 @@
 
 ::ng-deep .progress {
   background-color: green !important;
+}
+
+.pie-chart-km{
+  margin: 5%;
+  width: 90%;      
+  text-align: center;
 }

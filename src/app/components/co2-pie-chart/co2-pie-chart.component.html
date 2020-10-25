@@ -1,0 +1,38 @@
+<div class="pie-chart-CO₂">
+  <h4>CO₂-Emissions (kg/day)</h4>
+  
+  <div *ngIf="!showDetails; else viewDetails">
+    <app-pie-chart [pieChartLabels]="co2PieChartLabels" [pieChartData]="co2PieChartData"
+      [pieChartColors]="co2PieChartColors"></app-pie-chart>
+    <div class="co2-alert" *ngIf="!co2AlertClosed">
+      <ngb-alert [dismissible]="true" [type]="co2Alert.type" (close)="co2AlertClosed=true">
+        {{co2Alert.message}}
+      </ngb-alert>    
+    </div>
+    <div>
+      <button type="button" class="details-btn" (click)="showDetails=true">
+        View Details
+      </button>
+    </div>
+  </div>
+
+  <ng-template #viewDetails>
+    <app-pie-chart [pieChartLabels]="co2PieChartDetailsLabels" [pieChartData]="co2PieChartDetailsData"
+      [pieChartColors]="co2PieChartDetailsColors"></app-pie-chart>
+    <div class="co2-alert" *ngIf="!co2AlertClosed">
+      <ngb-alert [dismissible]="true" [type]="co2Alert.type" (close)="co2AlertClosed=true">
+        {{co2Alert.message}}
+      </ngb-alert>    
+    </div>
+    <div class="co2-chart-description">
+      This chart shows your tracked 
+      CO₂-emissions from transport in kg/day measured over the last 30 days. 
+      The full pie represents what 4.4 kg/day, which is the current average of what each citizen of Germany emits.
+    </div>
+    <div>
+      <button type="button" class="details-btn" (click)="showDetails=false">
+        Hide Details
+      </button>
+    </div>
+  </ng-template>
+</div>

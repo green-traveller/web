@@ -7,7 +7,7 @@
     <p>
       <ngb-progressbar [showValue]="true" type="danger" [value]="currentCo2Sum" [max]="personalGoal"></ngb-progressbar>
     </p>
-    <div *ngIf="!personalGoalAlertClosed">
+    <div class="personal-goal-alert" *ngIf="!personalGoalAlertClosed">
       <ngb-alert [dismissible]="true" [type]="personalGoalAlert.type" (close)="personalGoalAlertClosed=true">
         {{personalGoalAlert.message}}
       </ngb-alert>
@@ -15,27 +15,10 @@
   </div>
 
   <hr>
-  <!-- Section I Co2-Emissions vs. Goals (Pie Chart + Progress bar)  -->
-  <div class="pie-chart-CO₂">
-    <h4>CO₂-Emissions (kg/day)</h4>
-    
-    <app-pie-chart [pieChartLabels]="co2PieChartLabels" [pieChartData]="currentCo2Data"
-      [pieChartColors]="co2PieChartColors"></app-pie-chart>
-    <div *ngIf="!co2AlertClosed">
-      <ngb-alert [dismissible]="true" [type]="co2Alert.type" (close)="co2AlertClosed=true">
-        {{co2Alert.message}}
-      </ngb-alert>    
-    </div>
-    <button type="button" class="btn btn-outline-secondary" ngbTooltip="This chart shows your tracked 
-    CO₂-emissions from transport in kg/day measured over the last 30 days. 
-    The full pie represents the current German average."
-      triggers="click:blur">
-      More Info
-    </button>
-  </div>
+  <!-- Section I Co2-Emissions (Pie Chart)  -->
+  <app-co2-pie-chart></app-co2-pie-chart>
 
   <hr>
-
 
   <!-- Section II Means of transport by km travelled (Pie Chart) -->
   <div class="pie-chart-km">

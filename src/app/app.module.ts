@@ -13,6 +13,7 @@ import { AboutComponent } from './views/about/about.component';
 import { AppComponent } from './app.component';
 import { BarChartComponent } from './components/bar-chart/bar-chart.component';
 import { Co2GoalsComponent } from './views/preferences/co2-goals/co2-goals.component';
+import { Co2PieChartComponent } from './components/co2-pie-chart/co2-pie-chart.component';
 import { CustomVehiclesComponent } from './views/preferences/custom-vehicles/custom-vehicles.component';
 import { EditVehicleComponent } from './views/preferences/custom-vehicles/edit-vehicle/edit-vehicle.component';
 import { ManageDataComponent } from './views/preferences/manage-data/manage-data.component';
@@ -29,6 +30,7 @@ import { VehicleIconComponent } from './components/vehicle-icon/vehicle-icon.com
     AppComponent,
     BarChartComponent,
     Co2GoalsComponent,
+    Co2PieChartComponent,
     CustomVehiclesComponent,
     EditVehicleComponent,
     ManageDataComponent,
@@ -37,7 +39,7 @@ import { VehicleIconComponent } from './components/vehicle-icon/vehicle-icon.com
     PieChartComponent,
     PreferencesComponent,
     SearchRouteComponent,
-    VehicleIconComponent
+    VehicleIconComponent,
   ],
   imports: [
     AppRoutingModule,
