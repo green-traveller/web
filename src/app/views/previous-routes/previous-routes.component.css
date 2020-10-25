@@ -47,26 +47,22 @@
 }
 
 .previous-routes__route-info {
-  display: grid;
-  grid-template-columns: 0.65fr 1fr;
-  grid-template-rows: repeat(2, 1fr);
-  grid-row-gap: 0.25rem;
+  display: flex;
+  justify-content: space-between;
   margin-bottom: 0.25rem;
-  margin-left: 0.75rem;
 }
 
 .previous-routes__route-info-details {
   display: flex;
   align-items: center;
-  flex-grow: 2;
 }
 
 .previous-routes__route-info-details-icon {
   margin-right: 0.5rem;
 }
 
-.previous-routes__route-info-details-input {
-  width: 5rem;
+.previous-routes__passengers-input-group {
+  width: 8rem;
 }
 
 .previous-routes__modal-list {

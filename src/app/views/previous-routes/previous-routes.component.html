@@ -38,13 +38,31 @@
         <!-- Content for each card -->
         <ng-template ngbPanelContent>
           <div class="previous-routes__route-info">
-            <div class="previous-routes__route-info-details">
-              <fa-icon class="previous-routes__route-info-details-icon" [icon]="iconS.getIcon('clock')"></fa-icon>
-              <span>{{routeS.getDurationString(route)}}</span>
+            <div>
+              <div class="previous-routes__route-info-details">
+                <fa-icon class="previous-routes__route-info-details-icon" [icon]="iconS.getIcon('clock')"></fa-icon>
+                <span>{{routeS.getDurationString(route)}}</span>
+              </div>
+              <div class="previous-routes__route-info-details">
+                <fa-icon class="previous-routes__route-info-details-icon" [icon]="iconS.getIcon('distance')">
+                </fa-icon>
+                <span>{{ routeS.getDistanceString(route) }} km</span>
+              </div>
             </div>
+            <div class="previous-routes__route-info-details" (click)="openModalWindow(content, route)">
+              <button class="btn btn-outline-primary">
+                <fa-icon class="previous-routes__route-info-details-icon" [icon]="routeS.getVehicleIcon(route)"></fa-icon>
+                <span>{{routeS.getVehicle(route).name}}</span>
+              </button>
+            </div>
+          </div>
+          <div class="previous-routes__action-buttons">
+            <button class="btn btn-outline-danger" (click)="deleteRoute(route)">
+              <fa-icon [icon]="iconS.getIcon('delete')"></fa-icon>
+            </button>
             <div class="previous-routes__route-info-details">
               <fa-icon class="previous-routes__route-info-details-icon" [icon]="iconS.getIcon('users')"></fa-icon>
-              <div class="input-group input-group-sm">
+              <div class="input-group previous-routes__passengers-input-group">
                 <div class="input-group-prepend">
                   <button class="btn btn-primary">-</button>
                 </div>
@@ -54,23 +72,7 @@
                   <button class="btn btn-primary">+</button>
                 </div>
               </div>
-
             </div>
-            <div class="previous-routes__route-info-details">
-              <fa-icon class="previous-routes__route-info-details-icon" [icon]="iconS.getIcon('distance')">
-              </fa-icon>
-              <span>{{ routeS.getDistanceString(route) }} km</span>
-            </div>
-            <div class="previous-routes__route-info-details" (click)="openModalWindow(content, route)">
-              <fa-icon class="previous-routes__route-info-details-icon" [icon]="routeS.getVehicleIcon(route)"></fa-icon>
-              <span>{{routeS.getVehicle(route).name}}</span>
-              <button class="btn btn-primary btn-sm"><fa-icon [icon]="iconS.getIcon('edit')"></fa-icon></button>
-            </div>
-          </div>
-          <div class="previous-routes__action-buttons">
-            <button class="btn btn-outline-danger" (click)="deleteRoute(route)">
-              <fa-icon [icon]="iconS.getIcon('delete')"></fa-icon>
-            </button>
             <a [href]="routeS.getMapsLink(route)" class="btn btn-secondary" target="_blank">
               <fa-icon [icon]="iconS.getIcon('map')"></fa-icon>
               <span> Map</span>
