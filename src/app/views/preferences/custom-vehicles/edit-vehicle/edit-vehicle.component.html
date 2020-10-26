@@ -3,7 +3,7 @@
 <div class="edit-vehicle navigation-gap">
   <div class="edit-vehicle__input">
     <label for="vehicleName" class="edit-vehicle__input-title">Name or License plate</label>
-    <input type="text" [(ngModel)]="vehicle.name" id="vehicleName" class="form-control">
+    <input type="text" [(ngModel)]="vehicle.name" id="vehicleName" class="form-control" (change)="handleNameInputChange()">
   </div>
   <div class="edit-vehicle__input">
     <div class="edit-vehicle__input-title">Icon</div>

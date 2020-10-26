@@ -5,6 +5,8 @@ import { Location } from '@angular/common';
 import { Vehicle } from '../../../../models/vehicle';
 import { DataService } from '../../../../services/data.service';
 
+const DEFAULT_VEHICLE_NAME = 'My own vehicle';
+
 @Component({
   selector: 'app-edit-vehicle',
   templateUrl: './edit-vehicle.component.html',
@@ -13,6 +15,7 @@ import { DataService } from '../../../../services/data.service';
 export class EditVehicleComponent implements OnInit {
 
   @ViewChild('carbonInput') carbonInput: ElementRef;
+  @ViewChild('nameInput') nameInput: ElementRef;
 
   id: string;
   vehicle: Vehicle;
@@ -29,7 +32,7 @@ export class EditVehicleComponent implements OnInit {
     if (!vehicle) {
       vehicle = {
         id: 'new',
-        name: 'My own vehicle',
+        name: DEFAULT_VEHICLE_NAME,
         type: 'car',
         co2: 175,
         active: true,
@@ -56,6 +59,12 @@ export class EditVehicleComponent implements OnInit {
   handleCarbonInputChange(): void {
     if (!this.carbonInput.nativeElement.validity.valid || this.vehicle.co2 === null) {
       this.vehicle.co2 = 175;
+    }
+  }
+
+  handleNameInputChange(): void {
+    if (this.vehicle.name === '') {
+      this.vehicle.name = DEFAULT_VEHICLE_NAME;
     }
   }
 }
