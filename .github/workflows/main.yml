@@ -7,9 +7,9 @@ name: Deploy to GitHub Pages via angular-cli-ghpages
 on:
   push:
     branches: [ develop ]
-  pull_request:
-    branches: [ develop ]
-    types: [ closed ]
+#  pull_request:
+#    branches: [ develop ]
+#    types: [ closed ]
 
 jobs:
   build-and-deploy:
