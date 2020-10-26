@@ -5,7 +5,9 @@
 }
 
 .co2-alert{      
-  text-align: left;
+  text-align: left;    
+  margin-top: 1rem;  
+  margin-bottom: 1.25rem;     
 }
 
 .co2-chart-description{      

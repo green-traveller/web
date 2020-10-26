@@ -1,11 +1,21 @@
-.personal-goal-alert{
-  text-align: left;
+.personal-goal{    
+  width: 90%;     
+  margin-left: 5%;
+  margin-right: 5%;  
+  margin-bottom: 1.25rem;   
+  text-align: center;
+}
+
+.personal-goal-heading{   
+  margin-bottom: 1.25rem; 
 }
 
 .progressbar-personal-goal{
-    margin: 5%;
-    width: 90%;      
-    text-align: center;
+  margin-bottom: 1.5rem;     
+}
+
+::ng-deep .progress-bar {
+  background-color: var(--primary) !important;
 }
 
 ::ng-deep .progress {
@@ -16,8 +26,6 @@
   background-color: #ff4233 !important;
 }
 
-.pie-chart-km{
-  margin: 5%;
-  width: 90%;      
-  text-align: center;
+.personal-goal-alert{
+  text-align: left;  
 }

@@ -2,11 +2,11 @@
 
 <div class="navigation-gap">
   
-  <div class="progressbar-personal-goal">
-    <h4>Personal Goal</h4>
-    <p>
+  <div class="personal-goal">
+    <h4 class="personal-goal-heading">Personal Goal</h4>
+    <div class="progressbar-personal-goal">
       <ngb-progressbar type="danger" [value]="currentCo2Sum" [max]="personalGoal"></ngb-progressbar>
-    </p>
+    </div>
     <div class="personal-goal-alert" *ngIf="!personalGoalAlertClosed">
       <ngb-alert [dismissible]="true" [type]="personalGoalAlert.type" (close)="personalGoalAlertClosed=true">
         {{personalGoalAlert.message}}
