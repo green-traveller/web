@@ -13,6 +13,7 @@ import { AppComponent } from './app.component';
 import { Co2GoalsComponent } from './views/preferences/co2-goals/co2-goals.component';
 import { CustomVehiclesComponent } from './views/preferences/custom-vehicles/custom-vehicles.component';
 import { EditVehicleComponent } from './views/preferences/custom-vehicles/edit-vehicle/edit-vehicle.component';
+import { EmptyResultsComponent } from './components/empty-results/empty-results.component';
 import { ManageDataComponent } from './views/preferences/manage-data/manage-data.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { PreferencesComponent } from './views/preferences/preferences.component';
@@ -28,6 +29,7 @@ import { RouteSearchResultsComponent } from './views/route-search-results/route-
     Co2GoalsComponent,
     CustomVehiclesComponent,
     EditVehicleComponent,
+    EmptyResultsComponent,
     ManageDataComponent,
     NavBarComponent,
     PreferencesComponent,

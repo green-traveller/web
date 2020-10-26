@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DataService } from './services/data.service';
-import {MapsSdkService} from './services/maps-sdk.service';
+import { MapsSdkService } from './services/maps-sdk.service';
 
 @Component({
   selector: 'app-root',
