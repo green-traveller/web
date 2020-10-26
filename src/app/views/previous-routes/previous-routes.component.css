@@ -100,3 +100,12 @@
 .previous-routes__empty-text {
   margin-top: 1rem;
 }
+
+.previous-routes__empty-link {
+  color: var(--primary);
+  cursor: pointer;
+}
+
+.previous-routes__empty-link:hover {
+  text-decoration: underline;
+}

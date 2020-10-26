@@ -5,6 +5,8 @@ import { Vehicle } from 'src/app/models/vehicle';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { IconService } from 'src/app/services/icon.service';
 import { RouteService } from 'src/app/services/route.service';
+import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-previous-routes',
@@ -21,7 +23,9 @@ export class PreviousRoutesComponent implements OnInit {
     private dataService: DataService,
     private iconService: IconService,
     private routeService: RouteService,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private location: Location,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -84,5 +88,10 @@ export class PreviousRoutesComponent implements OnInit {
 
   getVerticalSpaceBetween(firstElement: HTMLDivElement, secondElement: HTMLDivElement): number {
     return Math.round(secondElement.children[0].getBoundingClientRect().top - (firstElement.children[0].getBoundingClientRect().top + 14));
+  }
+
+  handleBackToSearchClick(): void {
+    this.router.navigateByUrl('/');
+    this.location.replaceState('/');
   }
 }

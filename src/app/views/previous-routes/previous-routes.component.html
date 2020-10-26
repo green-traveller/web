@@ -84,7 +84,7 @@
   </div>
   <div *ngIf="getRoutesDates().length < 1" class="previous-routes__empty">
     <app-empty-results></app-empty-results>
-    <div class="previous-routes__empty-text">No routes here yet. Start by searching for one.</div>
+    <div class="previous-routes__empty-text">No routes here yet. Start by <span class="previous-routes__empty-link" (click)="handleBackToSearchClick()">searching</span> for one.</div>
   </div>
 </div>
 
