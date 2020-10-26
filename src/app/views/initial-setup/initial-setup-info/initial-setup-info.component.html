@@ -1,17 +1,32 @@
-<app-close-icon></app-close-icon>
 <div class="initial-setup-info">
-  <div class="initial-setup-info__text-headline">
-    <h4>Green Traveller</h4>
+  <app-close-icon></app-close-icon>
+  <div class="initial-setup-info">
+    <div class="initial-setup-info__text-headline">
+      <h4>Green Traveller</h4>
+    </div>
+  </div>
+  <div class="initial-setup-info__text">
+    <h5>
+      We are here to help you have an oversight on what you're travelling with and how much CO2 is produced by that. 
+      With this application you can set your own goals or limits on how much you want to produce per month und keep track of how much you have already used.
+      With a better understanding of your own behaviour you can already make a change for the better.<br>
+      This application is made for you, so all the data will be stored locally on your device.<br>
+      Click on the Button below and you will be guided through a small initital setup.
+    </h5>
   </div>
 </div>
-<div class="initial-setup-info__text">
-  <h5>
-    We are here to help you have an oversight on what you're travelling with and how much CO2 is produced by that. 
-    With this application you can set your own goals or limits on how much you want to produce per month und keep track of how much you have already used.
-    We want to give people the opportunity to make an impact with just sometimes thinking to take a different way of transportation to save some CO2. Data only saved locally on device.
-    Click on "Become a Green Traveller" and you will be guided through a small explanation setup...
-  </h5>
-</div>
-<div class="initial-setup-info__action">
-  <button class="btn btn-primary btn-block" type="button" [routerLink]="['/initial-setup-name']">Become a Green Traveller!</button>
-</div>
+<app-initial-setup-nav class="parent__init-nav" [dotsActive]="1" [nextPage]="'/initial-setup-name'" buttonName="Become a Green Traveller!"></app-initial-setup-nav>
+
+<!--
+
+    <div class="initial-setup-info__dots-outter">
+    <span class="initial-setup-info__dot-active"></span>
+    <span class="initial-setup-info__dot"></span>
+    <span class="initial-setup-info__dot"></span>
+    <span class="initial-setup-info__dot"></span>
+  </div>
+  <div class="initial-setup-info__action">
+    <button class="btn btn-primary btn-block" type="button" [routerLink]="['/initial-setup-name']">Next!</button>
+  </div>
+
+-->

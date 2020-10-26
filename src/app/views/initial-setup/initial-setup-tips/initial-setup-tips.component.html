@@ -1,17 +1,35 @@
-<app-close-icon></app-close-icon>
-<div class="initial-setup-tips"></div>
-<h5 class="initial-setup-tips__text">
-  You can add this app to your homescreen. Press the button on the bottom of this page that looks like this:
-</h5>
-<div class="initial-setup-tips__icon"> 
-  <fa-icon [icon]="icons.share"></fa-icon>
+<div class="initial-setup-tips">
+  <app-close-icon></app-close-icon>
+    <div *ngIf="os==='iOS'">
+    <h5>
+      Create Shortcut:
+    </h5>
+    <h5>
+      Step1:
+    </h5>
+    <div class="initial-setup-tips__icon"> 
+      <img src="assets/share_apple.png" class="initial-setup-tips__image">
+    </div>
+    <h5 class="initial-setup-tips__text">
+      Step 2:
+    </h5>
+    <div class="initial-setup-tips__icon">
+      <img src="assets/add_apple.png" class="initial-setup-tips__image">
+    </div>
+  </div>
+  <div *ngIf="os!=='iOS'">
+    <h5 class="initial-setup-tips__text">
+      You can add this app to your homescreen. Press the button on the bottom of this page that looks like this:
+    </h5>
+    <div class="initial-setup-tips__icon"> 
+      <img src="assets/share_android.png" class="initial-setup-tips__image">
+    </div>
+    <h5 class="initial-setup-tips__text">
+      Now scroll down a litte bit and press the "to homescreen" button that is labeled with this:
+    </h5>
+    <div class="initial-setup-tips__icon">
+      <img src="assets/add_android.png" class="initial-setup-tips__image initial-setup-tips__image--small">
+    </div>
+  </div>
 </div>
-<h5 class="initial-setup-tips__text">
-  Now scroll down a litte bit and press the "to homescreen" button that is labeled with this:
-</h5>
-<div class="initial-setup-tips__icon">
-  <fa-icon [icon]="icons.add"></fa-icon>
-</div>
-<div class="initial-setup-tips__action">
-  <button class="btn btn-primary btn-block" type="button" (click)="finishSetup()" [routerLink]="['/']">Become a Green Traveller!</button>
-</div>
+<app-initial-setup-nav class="parent__init-nav" [dotsActive]="4" [nextPage]="'/'" buttonName="Become a Green Traveller!"></app-initial-setup-nav>

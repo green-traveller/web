@@ -10,3 +10,7 @@
   background-color: #5DFFA6;
   border-color: #5DFFA6;
 }
+
+.vehicle-icon--whiteBorder {
+  border-color: white;
+}

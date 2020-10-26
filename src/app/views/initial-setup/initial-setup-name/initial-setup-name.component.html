@@ -1,14 +1,12 @@
-<app-close-icon></app-close-icon>
 <div class="initial-setup-name">
-  <div class="initial-setup-name__logo">
-    <img alt="Green Traveller Logo" src="assets/logo.png" height="128" width="128">
-  </div>
+  <app-close-icon></app-close-icon>
+    <div class="initial-setup-name__logo">
+      <img alt="Green Traveller Logo" src="assets/logo.png" height="128" width="128">
+    </div>
+  <h4 class="initial-setup-name__text">
+    Hi  
+    <span class="initial-setup-name__input" id="inputName" contenteditable="true" autofocus></span>,<br>
+    why don't you tell us your name and we personalize this process a little bit!
+  </h4>
 </div>
-<h4 class="initial-setup-name__text">
-  Hi  
-  <span class="initial-setup-name__input" id="inputName" contenteditable="true" autofocus></span>,<br>
-  why don't you tell us your name and we personalize this process a little bit!
-</h4>
-<div class="initial-setup-name__action">
-  <button class="btn btn-primary btn-block" type="button" [routerLink]="['/initial-setup-vehicle']" (click)="clickChangeName()">Next</button>
-</div>
+<app-initial-setup-nav class="parent__init-nav" [dotsActive]="2" [nextPage]="'/initial-setup-vehicle'" buttonName="Next!"></app-initial-setup-nav>

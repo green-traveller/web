@@ -16,6 +16,7 @@ export class VehicleIconComponent implements OnInit {
 
   @Input() vehicle: string;
   @Input() active: boolean;
+  @Input() whiteBorder: boolean;
 
   icons = {
     car: faCarSide,

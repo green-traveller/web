@@ -1,25 +1,22 @@
 .initial-setup-tips {
+  position: absolute;
   background-color: lightgreen;
-  padding-top: 5.5rem;
-}
-
-.initial-setup-tips__action {
-  position: fixed;
-  width: 100%;
-  bottom: 0;
-  right: 0;
-  padding: 0.5rem;
+  min-height: 100%;  
+  padding: 5.5rem 1rem 6rem;
 }
 
 .initial-setup-tips__icon {
   position: relative;
   justify-content: center;
   text-align: center;
-  padding: 1rem;
-  padding-top: 0rem;
+  padding: 2rem;
 }
-  
-.initial-setup-tips__text {
-  margin: 1rem;
+
+.initial-setup-tips__image {
+  border-radius: 10px;
+  width: 90%;
 }
-  
+
+.initial-setup-tips__image--small {
+  width: 50%;
+}

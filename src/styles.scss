@@ -7,3 +7,10 @@ $primary: #26C281;
 .navigation-gap {
   margin-top: 3.5rem;
 }
+
+.parent__init-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
