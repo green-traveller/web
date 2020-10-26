@@ -10,12 +10,5 @@
 
 .co2-chart-description{      
   text-align: left;
-}
-
-.details-btn{ 
-  color:#fff;  
-  background-color: #009933;
-  border-color: #009933;
-  border-radius: 8px;
-  box-shadow: none !important;
+  margin-bottom: 1rem;
 }

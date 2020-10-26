@@ -9,7 +9,11 @@
 }
 
 ::ng-deep .progress {
-  background-color: green !important;
+  background-color: var(--primary) !important;
+}
+
+::ng-deep .bg-danger {
+  background-color: #ff4233 !important;
 }
 
 .pie-chart-km{

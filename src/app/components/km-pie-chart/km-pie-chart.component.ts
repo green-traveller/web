@@ -13,7 +13,7 @@ export class KmPieChartComponent implements OnInit {
 
   kmPieChartColors: object[] = [
     {
-      backgroundColor: ["#ff4233", "#ff8c00", "#e6ff33", "#52f73d", "#009933"],
+      backgroundColor: ["#ff4233", "#ff8c00", "#e6ff33", "#56f2c1", "#26c281"],
       borderColor: '#fff',
       pointBackgroundColor: '#fff',
       pointBorderColor: '#fff',
