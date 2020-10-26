@@ -11,3 +11,16 @@ $primary: #26C281;
 .previous-routes__card > .card-header {
   padding: 0;
 }
+
+.previous-routes__card > .card-header > .btn {
+  width: 100%;
+}
+
+.previous-routes__card > .card-header > .btn:hover,
+.previous-routes__card > .card-header > .btn:focus {
+  text-decoration: none;
+}
+
+.previous-routes__card > * > .card-body {
+  padding: 0.5rem 1rem 0.5rem;
+}

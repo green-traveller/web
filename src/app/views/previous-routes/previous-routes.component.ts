@@ -5,6 +5,8 @@ import { Vehicle } from 'src/app/models/vehicle';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { IconService } from 'src/app/services/icon.service';
 import { RouteService } from 'src/app/services/route.service';
+import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-previous-routes',
@@ -21,7 +23,9 @@ export class PreviousRoutesComponent implements OnInit {
     private dataService: DataService,
     private iconService: IconService,
     private routeService: RouteService,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private location: Location,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -48,23 +52,29 @@ export class PreviousRoutesComponent implements OnInit {
   }
 
   formatDate(d: string): string {
-    return new Date(d).toLocaleDateString('en-US', { weekday: 'short', day: '2-digit', month: 'short', year: 'numeric' });
+    return new Date(d).toLocaleDateString('en-US', { weekday: 'long', day: '2-digit', month: 'long', year: 'numeric' });
   }
 
   deleteRoute(route: Route): void {
     this.dataService.deleteRoute(route);
   }
 
+  handlePassengerChangeButton(route: Route, x: number): void {
+    let passengerCount = route.passengers;
+    passengerCount = x + passengerCount;
+    if (passengerCount < 1) {
+      passengerCount = 1;
+    }
+    this.dataService.setRoutePassengers(route, passengerCount);
+  }
+
   validatePassengerInput(event: any, route: Route): void {
     const target = event.target;
-
-    if (!target.validity.valid) {
-      target.value = 1;
+    if (!target.validity.valid || target.value === '') {
+      target.valueAsNumber = 1;
     }
-
-    route.passengers = target.value;
-
-    this.dataService.setRoutePassengers(route, target.value);
+    route.passengers = target.valueAsNumber;
+    this.dataService.setRoutePassengers(route, target.valueAsNumber);
   }
 
   getActiveVehicles(): Vehicle[] {
@@ -77,6 +87,11 @@ export class PreviousRoutesComponent implements OnInit {
   }
 
   getVerticalSpaceBetween(firstElement: HTMLDivElement, secondElement: HTMLDivElement): number {
-    return secondElement.children[0].getBoundingClientRect().top - (firstElement.children[0].getBoundingClientRect().top + 14);
+    return Math.round(secondElement.children[0].getBoundingClientRect().top - (firstElement.children[0].getBoundingClientRect().top + 14));
+  }
+
+  handleBackToSearchClick(): void {
+    this.router.navigateByUrl('/');
+    this.location.replaceState('/');
   }
 }

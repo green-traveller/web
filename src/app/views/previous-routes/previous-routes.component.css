@@ -13,6 +13,8 @@
 .previous-routes__header-meta {
   text-align: center;
   margin-right: 1rem;
+  flex-basis: 4rem;
+  flex-shrink: 0;
 }
 
 .previous-routes__header-locations {
@@ -30,10 +32,10 @@
 }
 
 .previous-routes__header-location-line {
-  left: 0.475rem;
+  left: 0.45rem;
   top: 1.2rem;
   position: absolute;
-  border-left: 0.125rem solid black;
+  border: 0.0625rem dashed black;
 }
 
 .table-margin__header {
@@ -48,7 +50,7 @@
 .previous-routes__route-info {
   display: flex;
   justify-content: space-between;
-  padding-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
 }
 
 .previous-routes__route-info-details {
@@ -61,7 +63,11 @@
 }
 
 .previous-routes__route-info-details-input {
-  width: 5rem;
+  text-align: center;
+}
+
+.previous-routes__passengers-input-group {
+  width: 8rem;
 }
 
 .previous-routes__modal-list {
@@ -84,4 +90,22 @@
 
 .previous-routes__modal-icon {
   margin-right: 0.5rem;
+}
+
+.previous-routes__empty {
+  padding: 3rem 0.5rem;
+  text-align: center;
+}
+
+.previous-routes__empty-text {
+  margin-top: 1rem;
+}
+
+.previous-routes__empty-link {
+  color: var(--primary);
+  cursor: pointer;
+}
+
+.previous-routes__empty-link:hover {
+  text-decoration: underline;
 }
