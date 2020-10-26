@@ -53,7 +53,7 @@ export class RouteSearchResultsComponent implements OnInit {
   }
 
   test(): void {
-    const activeVehicles = this.dataService.getActiveVehicles();
+    const activeVehicles = this.routeService.getPossibleVehicles(this.route);
     for (const vehicle of activeVehicles) {
       this.route.vehicleId = vehicle.id;
       this.routeResults.push(JSON.parse(JSON.stringify(this.route)));
@@ -63,5 +63,11 @@ export class RouteSearchResultsComponent implements OnInit {
 
   saveRoute(route: Route): void {
     this.dataService.setRoute(JSON.parse(JSON.stringify(route)));
+  }
+
+  getCustomVehicleName(route: Route): string {
+    if (this.dataService.getDefaultVehicles().indexOf(this.dataService.getVehicle(route.vehicleId)) < 0) {
+      return this.dataService.getVehicle(route.vehicleId).name;
+    }
   }
 }

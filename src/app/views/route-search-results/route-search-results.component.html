@@ -8,7 +8,10 @@
       <ng-template ngbPanelHeader>
         <div class="route-search-results__item-header"
              (click)="acc.toggle(route.vehicleId)">
-          <app-vehicle-icon [vehicle]="routeService.getVehicleIconString(route)"></app-vehicle-icon>
+          <div>
+            <app-vehicle-icon [vehicle]="routeService.getVehicleIconString(route)"></app-vehicle-icon>
+            <div>{{getCustomVehicleName(route)}}</div>
+          </div>
           <div>CO<sub>2</sub>: {{ routeService.getCo2Kilograms(route) }}</div>
           <div>{{ routeService.getDurationString(route) }}</div>
         </div>
