@@ -1,6 +1,18 @@
 <app-nav-bar title="Results"></app-nav-bar>
 
-<div class="navigation-gap">
+<div class="big-navigation-gap">
+  <div class="route-search-results__route-information">
+    <div>
+      <div>A</div>
+      <div>B</div>
+    </div>
+    <div>
+      <div>{{ route.from.name }}</div>
+      <div>{{ route.to.name }}</div>
+    </div>
+    <div>edit</div>
+  </div>
+
   <ngb-accordion [closeOthers]="true" #acc="ngbAccordion">
 
     <ngb-panel *ngFor="let route of routeResults" id="{{route.vehicleId}}">
