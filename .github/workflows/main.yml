@@ -29,6 +29,8 @@ jobs:
     - name: Prepare and deploy
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        MAPS_API_KEY: ${{ secrets.MAPS_API_KEY }}
       run: |
         npm install
+        npm run prepareEnv
         npm run ng -- deploy --base-href=/web/ --name="Fabian Bucher" --email="git@fabianbucher.de" --no-silent

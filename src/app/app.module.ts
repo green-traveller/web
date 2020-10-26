@@ -17,12 +17,14 @@ import { Co2GoalsComponent } from './views/preferences/co2-goals/co2-goals.compo
 import { Co2PieChartComponent } from './components/co2-pie-chart/co2-pie-chart.component';
 import { CustomVehiclesComponent } from './views/preferences/custom-vehicles/custom-vehicles.component';
 import { EditVehicleComponent } from './views/preferences/custom-vehicles/edit-vehicle/edit-vehicle.component';
+import { EmptyResultsComponent } from './components/empty-results/empty-results.component';
 import { KmPieChartComponent } from './components/km-pie-chart/km-pie-chart.component';
 import { ManageDataComponent } from './views/preferences/manage-data/manage-data.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { PersonalBalanceComponent } from './views/personal-balance/personal-balance.component';
 import { PieChartComponent } from './components/pie-chart/pie-chart.component';
 import { PreferencesComponent } from './views/preferences/preferences.component';
+import { PreviousRoutesComponent } from './views/previous-routes/previous-routes.component';
 import { SearchRouteComponent } from './views/search-route/search-route.component';
 import { VehicleIconComponent } from './components/vehicle-icon/vehicle-icon.component';
 
@@ -36,12 +38,14 @@ import { VehicleIconComponent } from './components/vehicle-icon/vehicle-icon.com
     Co2PieChartComponent,
     CustomVehiclesComponent,
     EditVehicleComponent,
+    EmptyResultsComponent,
     KmPieChartComponent,
     ManageDataComponent,
     NavBarComponent,
     PersonalBalanceComponent,
     PieChartComponent,
     PreferencesComponent,
+    PreviousRoutesComponent,
     SearchRouteComponent,
     VehicleIconComponent,
   ],
