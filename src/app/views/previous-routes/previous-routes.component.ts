@@ -77,8 +77,8 @@ export class PreviousRoutesComponent implements OnInit {
     this.dataService.setRoutePassengers(route, target.valueAsNumber);
   }
 
-  getActiveVehicles(): Vehicle[] {
-    return this.dataService.getActiveVehicles();
+  getPossibleVehicles(): Vehicle[] {
+    return this.routeService.getPossibleVehicles(this.modalRoute);
   }
 
   setVehicleType(vehicle: Vehicle): void {

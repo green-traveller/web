@@ -98,7 +98,7 @@
   </div>
   <div class="modal-body">
     <div class="previous-routes__modal-list">
-      <div class="previous-routes__modal-item" *ngFor="let vehicle of getActiveVehicles()"
+      <div class="previous-routes__modal-item" *ngFor="let vehicle of getPossibleVehicles()"
         (click)="setVehicleType(vehicle)">
         <app-vehicle-icon class="previous-routes__modal-icon" [vehicle]="vehicle.type">
         </app-vehicle-icon>

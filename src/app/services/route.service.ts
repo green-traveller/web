@@ -123,4 +123,10 @@ export class RouteService {
   getVehicleIconString(route: Route): string {
     return this.getVehicle(route).type;
   }
+
+  getPossibleVehicles(route: Route): Vehicle[] {
+    const activeVehicles = this.dataService.getActiveVehicles();
+    const validTravelmodes = Object.keys(route.options);
+    return activeVehicles.filter(v => validTravelmodes.includes(v.travelmode));
+  }
 }
