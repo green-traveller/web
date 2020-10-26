@@ -38,7 +38,7 @@ export class Co2GoalsComponent implements OnInit {
 
   handleCustomAmountChange(): void {
     if (!this.customInput.nativeElement.validity.valid || this.customAmount === null) {
-      this.customAmount = 1;
+      this.customAmount = 148;
     }
     this.co2.value = this.customAmount;
     this.dataService.setStorage();
