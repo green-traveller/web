@@ -1,0 +1,21 @@
+.pie-chart-CO₂{
+  margin: 5%;
+  width: 90%;    
+  text-align: center;
+}
+
+.co2-alert{      
+  text-align: left;    
+  margin-top: 1rem;  
+  margin-bottom: 1.25rem;     
+}
+
+.co2-chart-description{      
+  text-align: left;
+  margin-bottom: 1rem;
+}
+
+.detail-btn{
+  margin-top: 0.75rem;
+  margin-bottom: 3.5rem;
+}

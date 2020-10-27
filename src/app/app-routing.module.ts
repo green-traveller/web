@@ -7,6 +7,7 @@ import { CustomVehiclesComponent } from './views/preferences/custom-vehicles/cus
 import { EditVehicleComponent } from './views/preferences/custom-vehicles/edit-vehicle/edit-vehicle.component';
 import { ManageDataComponent } from './views/preferences/manage-data/manage-data.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { PersonalBalanceComponent } from './views/personal-balance/personal-balance.component'
 import { PreferencesComponent } from './views/preferences/preferences.component';
 import { SearchRouteComponent } from './views/search-route/search-route.component';
 import { PreviousRoutesComponent } from './views/previous-routes/previous-routes.component';
@@ -14,6 +15,7 @@ import { PreviousRoutesComponent } from './views/previous-routes/previous-routes
 const routes: Routes = [
   { path: '', component: SearchRouteComponent },
   { path: 'about', component: AboutComponent },
+  { path: 'balance', component: PersonalBalanceComponent },
   { path: 'nav', component: NavBarComponent },
   { path: 'preferences', component: PreferencesComponent },
   { path: 'preferences/manage-data', component: ManageDataComponent },
