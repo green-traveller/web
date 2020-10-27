@@ -1,5 +1,5 @@
 import { formatDate } from '@angular/common';
-import { Component, ElementRef, OnInit, ViewChild, ChangeDetectorRef, AfterViewInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, ChangeDetectorRef, AfterViewInit, NgZone } from '@angular/core';
 import { MapsSdkService } from '../../services/maps-sdk.service';
 import { Router } from '@angular/router';
 import {} from 'googlemaps';
@@ -29,7 +29,13 @@ export class SearchRouteComponent implements OnInit, AfterViewInit {
   changeDetectorRef: ChangeDetectorRef;
   icons: IconService;
 
-  constructor(private mapsSdkService: MapsSdkService, changeDetectorRef: ChangeDetectorRef, iconService: IconService, private router: Router) {
+  constructor(
+    private mapsSdkService: MapsSdkService,
+    changeDetectorRef: ChangeDetectorRef,
+    iconService: IconService,
+    private router: Router,
+    private ngZone: NgZone
+  ) {
     this.changeDetectorRef = changeDetectorRef;
     this.icons = iconService;
   }
@@ -107,7 +113,9 @@ export class SearchRouteComponent implements OnInit, AfterViewInit {
       if (Object.keys(r.options).length < 1) {
         window.alert('No results found.');
       } else {
-        this.router.navigateByUrl('/results');
+        this.ngZone.run(() => {
+          this.router.navigateByUrl('/results');
+        });
       }
     });
   }

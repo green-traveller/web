@@ -9,6 +9,27 @@ import {ResultService} from 'src/app/services/result.service';
 import {Location} from '@angular/common';
 import {Router} from '@angular/router';
 
+const debuggingRoute = {
+  id: 'new',
+  from: {
+    name: 'Barfusstraße, Berlin, Germany',
+    place_id: 'Eh5CYXJmdXNzdHJhw59lLCBCZXJsaW4sIEdlcm1hbnkiLiosChQKEglzgT720FOoRxHasA8z8yq-_BIUChIJAVkDPzdOqEcRcDteW0YgIQQ'
+  },
+  to: {
+    name: 'Friedrichstraße, Berlin, Germany',
+    place_id: 'EiFGcmllZHJpY2hzdHJhw59lLCBCZXJsaW4sIEdlcm1hbnkiLiosChQKEglVWz7E2lGoRxHsjBgdN9ws7RIUChIJAVkDPzdOqEcRcDteW0YgIQQ'
+  },
+  time: '2020-10-24 19:32',
+  vehicleId: 'bicycling',
+  passengers: 1,
+  options: {
+    walking: {distance: 6077, duration: 4562},
+    driving: {distance: 8048, duration: 1107},
+    bicycling: {distance: 7585, duration: 1571},
+    transit: {distance: 6860, duration: 1671}
+  }
+};
+
 @Component({
   selector: 'app-route-search-results',
   templateUrl: './route-search-results.component.html',
@@ -17,27 +38,7 @@ import {Router} from '@angular/router';
 export class RouteSearchResultsComponent implements OnInit {
 
 
-  public route: Route =
-    {
-      "id": "new",
-      "from": {
-        "name": "Barfusstraße, Berlin, Germany",
-        "place_id": "Eh5CYXJmdXNzdHJhw59lLCBCZXJsaW4sIEdlcm1hbnkiLiosChQKEglzgT720FOoRxHasA8z8yq-_BIUChIJAVkDPzdOqEcRcDteW0YgIQQ"
-      },
-      "to": {
-        "name": "Friedrichstraße, Berlin, Germany",
-        "place_id": "EiFGcmllZHJpY2hzdHJhw59lLCBCZXJsaW4sIEdlcm1hbnkiLiosChQKEglVWz7E2lGoRxHsjBgdN9ws7RIUChIJAVkDPzdOqEcRcDteW0YgIQQ"
-      },
-      "time": "2020-10-24 19:32",
-      "vehicleId": "bicycling",
-      "passengers": 1,
-      "options": {
-        "walking": {"distance": 6077, "duration": 4562},
-        "driving": {"distance": 8048, "duration": 1107},
-        "bicycling": {"distance": 7585, "duration": 1571},
-        "transit": {"distance": 6860, "duration": 1671}
-      }
-    }
+  public route: Route;
 
 
   public routeResults: Route[] = [];
@@ -55,6 +56,8 @@ export class RouteSearchResultsComponent implements OnInit {
   ngOnInit(): void {
     if (this.resultService.getRoute()) {
       this.route = this.resultService.getRoute();
+    } else {
+      this.route = debuggingRoute;
     }
 
     this.getRouteOptions();
