@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../../services/data.service';
-import { Storage } from '../../../models/storage';
 import { Vehicle } from '../../../models/vehicle';
 
 @Component({
@@ -11,29 +10,23 @@ import { Vehicle } from '../../../models/vehicle';
 
 export class InitialSetupVehicleComponent implements OnInit {
 
-  data: Storage;
   username: string;
 
   defaultVehicles: Vehicle[];
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataservice: DataService) { }
 
   ngOnInit(): void {
-    this.getStorage();
     this.getDefaultVehicles();
-    this.username = this.data.username;
-  }
-
-  getStorage(): void {
-    this.data = this.dataService.getStorage();
+    this.username = this.dataservice.getUsername();
   }
 
   getDefaultVehicles(): void {
-    this.defaultVehicles = this.dataService.getVehicles().filter((v) => v.init);
+    this.defaultVehicles = this.dataservice.getVehicles().filter((v) => v.init);
   }
 
   handleDefaultVehicleClick(vehicle): void {
     vehicle.active = !vehicle.active;
-    this.dataService.setStorage();
+    this.dataservice.setStorage();
   }
 }

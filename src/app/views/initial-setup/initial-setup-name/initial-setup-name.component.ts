@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../../../services/data.service';
 
 @Component({
   selector: 'app-initial-setup-name',
@@ -8,14 +7,8 @@ import { DataService } from '../../../services/data.service';
 })
 export class InitialSetupNameComponent implements OnInit {
 
-  constructor(private dataService: DataService) { }
+  constructor() { }
 
   ngOnInit(): void {
-  }
-
-  clickChangeName(): void {
-    const input = document.getElementById('inputName');
-    const text = input.innerHTML;
-    this.dataService.setUsername(text);
   }
 }

@@ -8,7 +8,6 @@ import { EditVehicleComponent } from './views/preferences/custom-vehicles/edit-v
 import { InitialSetupInfoComponent } from './views/initial-setup/initial-setup-info/initial-setup-info.component';
 import { InitialSetupNameComponent } from './views/initial-setup/initial-setup-name/initial-setup-name.component';
 import { InitialSetupTipsComponent } from './views/initial-setup/initial-setup-tips/initial-setup-tips.component';
-import { InitialSetupTipsAndroidComponent } from './views/initial-setup/initial-setup-tips-android/initial-setup-tips-android.component';
 import { InitialSetupVehicleComponent } from './views/initial-setup/initial-setup-vehicle/initial-setup-vehicle.component';
 import { ManageDataComponent } from './views/preferences/manage-data/manage-data.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
@@ -22,7 +21,6 @@ const routes: Routes = [
   { path: 'initial-setup-name', component: InitialSetupNameComponent },
   { path: 'initial-setup-vehicle', component: InitialSetupVehicleComponent },
   { path: 'initial-setup-tips', component: InitialSetupTipsComponent },
-  { path: 'initial-setup-tips-android', component: InitialSetupTipsAndroidComponent },
   { path: 'nav', component: NavBarComponent },
   { path: 'preferences', component: PreferencesComponent },
   { path: 'preferences/manage-data', component: ManageDataComponent },

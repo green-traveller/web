@@ -4,52 +4,8 @@
   padding: 1rem;
 }
 
-.initial-setup-info__action {
-  position: fixed;
-  width: 100%;
-  bottom: 0;
-  right: 0;
-  padding: 0.5rem;
-  background-color: lightgreen;
-}
-
-.initial-setup-info__dots-outter {
-  background-color: lightgreen;
-  position: fixed;
-  right:0;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  bottom: 3rem;
-}
-
-.initial-setup-info__dot-active {
-  height: 10px;
-  width: 10px;
-  margin: 0.5rem;
-  background-color: grey;
-  border-radius: 50%;
-  display: inline-block;
-}
-
-.initial-setup-info__dot {
-  height: 10px;
-  width: 10px;
-  margin: 0.5rem;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-}
-
 .initial-setup-info__text {
-  margin: 2rem;
-  margin-top: 1rem;
-  margin-bottom:5rem;
-  background-color:lightgreen;
-  border-radius: 5px;
-}
-
-.initial-setup-info__textarea {
+  margin: 1rem 1rem 5rem;
   background-color:lightgreen;
 }
 

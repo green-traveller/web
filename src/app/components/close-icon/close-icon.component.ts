@@ -18,7 +18,7 @@ export class CloseIconComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  setupCompleted() {
+  setupCompleted(): void {
     this.dataservice.setSetupCompleted(true);
   }
 }

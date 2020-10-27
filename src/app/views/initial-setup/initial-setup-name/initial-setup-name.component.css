@@ -2,43 +2,7 @@
   position: absolute;
   background-color: lightgreen;
   height: 100%;
-}
-
-.initial-setup-name__action {
-  position: fixed;
-  width: 100%;
-  bottom: 0;
-  right: 0;
-  padding: 0.5rem;
-  background-color: lightgreen;
-}
-
-.initial-setup-name__dots-outter {
-  background-color: lightgreen;
-  position: fixed;
-  right:0;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  bottom: 3rem;
-}
-
-.initial-setup-name__dot-active {
-  height: 10px;
-  width: 10px;
-  margin: 0.5rem;
-  background-color: grey;
-  border-radius: 50%;
-  display: inline-block;
-}
-
-.initial-setup-name__dot {
-  height: 10px;
-  width: 10px;
-  margin: 0.5rem;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
+  z-index: -2;
 }
 
 .initial-setup-name__input {
@@ -50,6 +14,7 @@
   justify-content: center;
   text-align: center;
   padding: 5rem;
+  z-index: -1;
 }
 
 .initial-setup-name__text {

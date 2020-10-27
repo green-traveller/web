@@ -157,6 +157,13 @@ export class DataService {
     this.setStorage();
   }
 
+  public getStorageSize(): string {
+    const size = new TextEncoder().encode(JSON.stringify(this.data)).length;
+    const kiloBytes = size / 1024;
+    const kiloBytesString = formatNumber(kiloBytes, 'en_US', '1.1-1');
+    return `${kiloBytesString} kB`;
+  }
+
   // Initial Setup
 
   public setUsername(s: string): void {
@@ -175,12 +182,5 @@ export class DataService {
 
   public getSetupCompleted(): boolean {
     return this.data.setupCompleted;
-  }
-
-  public getStorageSize(): string {
-    const size = new TextEncoder().encode(JSON.stringify(this.data)).length;
-    const kiloBytes = size / 1024;
-    const kiloBytesString = formatNumber(kiloBytes, 'en_US', '1.1-1');
-    return `${kiloBytesString} kB`;
   }
 }

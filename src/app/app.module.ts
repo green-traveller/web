@@ -19,7 +19,6 @@ import { InitialSetupNameComponent } from './views/initial-setup/initial-setup-n
 import { InitialSetupNavComponent } from './components/initial-setup-nav/initial-setup-nav.component';
 import { InitialSetupVehicleComponent } from './views/initial-setup/initial-setup-vehicle/initial-setup-vehicle.component';
 import { InitialSetupTipsComponent } from './views/initial-setup/initial-setup-tips/initial-setup-tips.component';
-import { InitialSetupTipsAndroidComponent } from './views/initial-setup/initial-setup-tips-android/initial-setup-tips-android.component';
 import { ManageDataComponent } from './views/preferences/manage-data/manage-data.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { PreferencesComponent } from './views/preferences/preferences.component';
@@ -39,7 +38,6 @@ import { VehicleIconComponent } from './components/vehicle-icon/vehicle-icon.com
     InitialSetupNavComponent,
     InitialSetupVehicleComponent,
     InitialSetupTipsComponent,
-    InitialSetupTipsAndroidComponent,
     ManageDataComponent,
     NavBarComponent,
     PreferencesComponent,

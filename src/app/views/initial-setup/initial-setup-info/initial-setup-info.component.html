@@ -1,9 +1,7 @@
 <div class="initial-setup-info">
   <app-close-icon></app-close-icon>
-  <div class="initial-setup-info">
-    <div class="initial-setup-info__text-headline">
-      <h4>Green Traveller</h4>
-    </div>
+  <div class="initial-setup-info__text-headline">
+    <h4>Green Traveller</h4>
   </div>
   <div class="initial-setup-info__text">
     <h5>
@@ -15,18 +13,4 @@
     </h5>
   </div>
 </div>
-<app-initial-setup-nav class="parent__init-nav" [dotsActive]="1" [nextPage]="'/initial-setup-name'" buttonName="Become a Green Traveller!"></app-initial-setup-nav>
-
-<!--
-
-    <div class="initial-setup-info__dots-outter">
-    <span class="initial-setup-info__dot-active"></span>
-    <span class="initial-setup-info__dot"></span>
-    <span class="initial-setup-info__dot"></span>
-    <span class="initial-setup-info__dot"></span>
-  </div>
-  <div class="initial-setup-info__action">
-    <button class="btn btn-primary btn-block" type="button" [routerLink]="['/initial-setup-name']">Next!</button>
-  </div>
-
--->
+<app-initial-setup-nav class="parent__init-nav" [dotsActive]="1" [nextPage]="'/initial-setup-name'" [username]="false" buttonName="Become a Green Traveller!"></app-initial-setup-nav>

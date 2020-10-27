@@ -2,10 +2,10 @@
   <app-close-icon></app-close-icon>
     <div class="initial-setup-vehicle__text">
       <h3>Hi {{username}}!</h3>
-      <b>
-        Choose from the list below if you're owning a bicycle or a car. 
-        This helps us showing you routes which fit your personal vehicles. Just click on it!
-      </b>
+        <b>
+          Choose from the list below if you're owning a bicycle or a car. 
+          This helps us showing you routes which fit your personal vehicles. Just click on it!
+        </b>
     </div>
   <div *ngFor="let vehicle of defaultVehicles" class="initial-setup-vehicle__list-item" (click)="handleDefaultVehicleClick(vehicle)">
     <div>
@@ -22,4 +22,4 @@
     </div>
   </div>
 </div>
-<app-initial-setup-nav class="parent__init-nav" [dotsActive]="3" [nextPage]="'/initial-setup-tips'" buttonName="Next!"></app-initial-setup-nav>
+<app-initial-setup-nav class="parent__init-nav" [dotsActive]="3" [nextPage]="'/initial-setup-tips'" [username]="false" buttonName="Next!"></app-initial-setup-nav>

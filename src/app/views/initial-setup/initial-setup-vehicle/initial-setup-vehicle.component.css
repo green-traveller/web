@@ -7,42 +7,6 @@
   border-bottom: 1px solid #dfe2e1;
 }
 
-.initial-setup-vehicle__action {
-  position: fixed;
-  width: 100%;
-  bottom: 0;
-  right: 0;
-  padding: 0.5rem;
-  background-color: lightgreen;
-}
-.initial-setup-vehicle__dots-outter {
-  background-color: lightgreen;
-  position: fixed;
-  right:0;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  bottom: 3rem;
-}
-
-.initial-setup-vehicle__dot-active {
-  height: 10px;
-  width: 10px;
-  margin: 0.5rem;
-  background-color: grey;
-  border-radius: 50%;
-  display: inline-block;
-}
-
-.initial-setup-vehicle__dot {
-  height: 10px;
-  width: 10px;
-  margin: 0.5rem;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-}
-
 .initial-setup-vehicle__item-actions {
   flex-grow: 2;
   text-align: right;
@@ -66,6 +30,5 @@
 
 .initial-setup-vehicle__text {
   border-bottom: 1px solid white;
-  padding: 1rem;
-  padding-top: 4rem;
+  padding: 4rem 1rem 1rem;
 }
