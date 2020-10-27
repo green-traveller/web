@@ -2,7 +2,6 @@
   position: absolute;
   background-color: lightgreen;
   height: 100%;
-  z-index: -2;
 }
 
 .initial-setup-name__input {
@@ -13,8 +12,7 @@
   position: relative;
   justify-content: center;
   text-align: center;
-  padding: 5rem;
-  z-index: -1;
+  margin: 6rem 1rem 2rem;
 }
 
 .initial-setup-name__text {
