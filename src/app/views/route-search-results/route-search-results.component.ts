@@ -6,8 +6,8 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {IconService} from 'src/app/services/icon.service';
 import {RouteService} from 'src/app/services/route.service';
 import {ResultService} from 'src/app/services/result.service';
-import { Location } from '@angular/common';
-import { Router } from '@angular/router';
+import {Location} from '@angular/common';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-route-search-results',
@@ -40,8 +40,7 @@ export class RouteSearchResultsComponent implements OnInit {
     }
 
 
-  public routeResults: Route[] = [
-  ];
+  public routeResults: Route[] = [];
 
   constructor(
     private dataService: DataService,
@@ -50,7 +49,8 @@ export class RouteSearchResultsComponent implements OnInit {
     private iconService: IconService,
     private location: Location,
     private router: Router
-  ){}
+  ) {
+  }
 
   ngOnInit(): void {
     if (this.resultService.getRoute()) {
@@ -71,6 +71,7 @@ export class RouteSearchResultsComponent implements OnInit {
 
   saveRoute(route: Route): void {
     this.dataService.setRoute(JSON.parse(JSON.stringify(route)));
+    this.navigate('previous-routes');
   }
 
   getCustomVehicleName(route: Route): string {
@@ -80,7 +81,7 @@ export class RouteSearchResultsComponent implements OnInit {
   }
 
   getSortedRoute() {
-    this.routeResults.sort((a,b) =>
+    this.routeResults.sort((a, b) =>
       (this.routeService.getCo2Grams(a) > this.routeService.getCo2Grams(b)) ? 1 :
         ((this.routeService.getCo2Grams(b) > this.routeService.getCo2Grams(a)) ? -1 : 0));
   }
@@ -88,5 +89,14 @@ export class RouteSearchResultsComponent implements OnInit {
   handleBackToSearchClick(): void {
     this.router.navigateByUrl('/');
     this.location.replaceState('/');
-}
+  }
+
+  navigate(s: string): void {
+    if (s === '/') {
+      this.router.navigateByUrl(s);
+      this.location.replaceState(s);
+    } else {
+      this.router.navigateByUrl(s);
+    }
+  }
 }
