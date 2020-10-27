@@ -1,17 +1,18 @@
 .big-navigation-gap {
-  margin-top: 7rem;
+  margin-top: 8rem;
 }
 
 .route-search-results__route-information {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  height: 3.5rem;
-  background-color: #44DA9B;
+  height: 4.5rem;
+  background-color: #3DD495;
+  box-shadow: 0 2px 12px 0 rgba(0,0,0,.2);
   position: fixed;
   top: 3.5rem;
   width: 100%;
-  z-index: 101;
+  z-index: 100;
 }
 
 .route-search-results__item {

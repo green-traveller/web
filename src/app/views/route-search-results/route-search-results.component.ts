@@ -50,6 +50,8 @@ export class RouteSearchResultsComponent implements OnInit {
     }
 
     this.test();
+    // this.routeResults nach CO2 sortieren
+    // Also zunächst CO2-Werte bestimmen
   }
 
   test(): void {
