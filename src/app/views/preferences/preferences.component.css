@@ -10,3 +10,8 @@
   padding: 1rem 0.5rem;
   width: 100%;
 }
+
+.preferences__item:focus,
+.preferences__item:hover {
+  text-decoration: none;
+}

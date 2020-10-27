@@ -1,0 +1,20 @@
+.co2-bar-chart{
+  margin: 5%;
+  width: 90%;      
+  text-align: center;
+}
+
+.co2-bar-chart-chart{
+  margin-left: 2rem;   
+  margin-right: 2rem; 
+}
+
+.co2-chart-description{      
+  text-align: left;
+  margin-bottom: 1rem;
+}
+
+.detail-btn{
+  margin-top: 0.75rem;
+  margin-bottom: 3.5rem;
+}
