@@ -74,16 +74,11 @@ export class RouteSearchResultsComponent implements OnInit {
   }
 
   handleBackToSearchClick(): void {
-    this.router.navigateByUrl('/');
-    this.location.replaceState('/');
+    this.navigate('/');
   }
 
   navigate(s: string): void {
-    if (s === '/') {
-      this.router.navigateByUrl(s);
-      this.location.replaceState(s);
-    } else {
-      this.router.navigateByUrl(s);
-    }
+    this.router.navigateByUrl(s);
+    this.location.replaceState(s);
   }
 }
