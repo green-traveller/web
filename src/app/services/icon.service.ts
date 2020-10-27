@@ -15,6 +15,9 @@ import {
   faWalking,
   IconDefinition
 } from '@fortawesome/free-solid-svg-icons';
+import {
+  faCircle
+} from '@fortawesome/free-regular-svg-icons';
 
 
 @Injectable({
@@ -26,6 +29,7 @@ export class IconService {
     bicycle: faBicycle,
     car: faCarSide,
     clock: faClock,
+    circle: faCircle,
     delete: faTrashAlt,
     distance: faRoute,
     edit: faEdit,

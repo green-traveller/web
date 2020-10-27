@@ -19,9 +19,11 @@ import { InitialSetupNameComponent } from './views/initial-setup/initial-setup-n
 import { InitialSetupNavComponent } from './components/initial-setup-nav/initial-setup-nav.component';
 import { InitialSetupVehicleComponent } from './views/initial-setup/initial-setup-vehicle/initial-setup-vehicle.component';
 import { InitialSetupTipsComponent } from './views/initial-setup/initial-setup-tips/initial-setup-tips.component';
+import { EmptyResultsComponent } from './components/empty-results/empty-results.component';
 import { ManageDataComponent } from './views/preferences/manage-data/manage-data.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { PreferencesComponent } from './views/preferences/preferences.component';
+import { PreviousRoutesComponent } from './views/previous-routes/previous-routes.component';
 import { SearchRouteComponent } from './views/search-route/search-route.component';
 import { VehicleIconComponent } from './components/vehicle-icon/vehicle-icon.component';
 
@@ -38,12 +40,14 @@ import { VehicleIconComponent } from './components/vehicle-icon/vehicle-icon.com
     InitialSetupNavComponent,
     InitialSetupVehicleComponent,
     InitialSetupTipsComponent,
+    EmptyResultsComponent,
     ManageDataComponent,
     NavBarComponent,
     PreferencesComponent,
     SearchRouteComponent,
     NavBarComponent,
-    VehicleIconComponent
+    VehicleIconComponent,
+    PreviousRoutesComponent
   ],
   imports: [
     AppRoutingModule,

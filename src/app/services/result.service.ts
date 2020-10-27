@@ -15,7 +15,7 @@ export class ResultService {
 
   setRoute(route: Route): void {
     // TODO remove once result view is merged
-    const activeVehicles = this.dataService.getVehicles().filter(v => v.active);
+    const activeVehicles = this.routeService.getPossibleVehicles(route);
     const randomNumber = Math.floor(activeVehicles.length * Math.random());
     route.vehicleId = activeVehicles[randomNumber].id;
     this.dataService.setRoute(route);

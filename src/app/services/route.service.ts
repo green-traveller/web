@@ -18,6 +18,20 @@ export class RouteService {
 
   constructor(private dataService: DataService, private iconService: IconService) {}
 
+  static getLocationFirstPart(s: string): string {
+    return s.split(',')[0];
+  }
+
+  static getLocationRest(s: string): string {
+    let array = s.split(', ');
+    if (array.length > 1) {
+      array = array.splice(1, array.length);
+    } else {
+      array = [' '];
+    }
+    return array.join(', ');
+  }
+
   getMapsLink(route: Route): string {
     const origin = route.from.name;
     const destination = route.to.name;
@@ -82,6 +96,22 @@ export class RouteService {
     return this.getCo2Grams(route) / 1000;
   }
 
+  getMainTo(route: Route): string {
+    return RouteService.getLocationFirstPart(route.to.name);
+  }
+
+  getMainFrom(route: Route): string {
+    return RouteService.getLocationFirstPart(route.from.name);
+  }
+
+  getSecondaryTo(route: Route): string {
+    return RouteService.getLocationRest(route.to.name);
+  }
+
+  getSecondaryFrom(route: Route): string {
+    return RouteService.getLocationRest(route.from.name);
+  }
+
   getVehicle(route: Route): Vehicle {
     return this.dataService.getVehicle(route.vehicleId);
   }
@@ -92,5 +122,11 @@ export class RouteService {
 
   getVehicleIconString(route: Route): string {
     return this.getVehicle(route).type;
+  }
+
+  getPossibleVehicles(route: Route): Vehicle[] {
+    const activeVehicles = this.dataService.getActiveVehicles();
+    const validTravelmodes = Object.keys(route.options);
+    return activeVehicles.filter(v => validTravelmodes.includes(v.travelmode));
   }
 }

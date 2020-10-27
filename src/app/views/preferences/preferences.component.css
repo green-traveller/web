@@ -6,6 +6,7 @@
 .preferences__item {
   border-bottom: 1px solid #dfe2e1;
   color: #000000;
+  cursor: pointer;
   padding: 1rem 0.5rem;
   width: 100%;
 }
