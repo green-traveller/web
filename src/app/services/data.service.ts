@@ -23,7 +23,7 @@ export class DataService {
   static defaultStorage(): Storage {
     return JSON.parse(JSON.stringify({
       version: 0,
-      name: 'User',
+      username: 'User',
       setupCompleted: false,
       co2: {
         mode: 'average',
@@ -37,6 +37,7 @@ export class DataService {
           co2: 0,
           active: true,
           default: true,
+          init: false,
           travelmode: 'walking'
         },
         bicycling: {
@@ -46,6 +47,7 @@ export class DataService {
           co2: 0,
           active: true,
           default: true,
+          init: true,
           travelmode: 'bicycling'
         },
         transit: {
@@ -55,6 +57,7 @@ export class DataService {
           co2: 65, // https://www.co2nnect.org/help_sheets/?op_id=602&opt_id=98
           active: true,
           default: true,
+          init: false,
           travelmode: 'transit'
         },
         driving: {
@@ -64,6 +67,7 @@ export class DataService {
           co2: 175,
           active: true,
           default: true,
+          init: true,
           travelmode: 'driving'
         }
       },
@@ -205,5 +209,25 @@ export class DataService {
     const kiloBytes = size / 1024;
     const kiloBytesString = formatNumber(kiloBytes, 'en_US', '1.1-1');
     return `${kiloBytesString} kB`;
+  }
+
+  // Initial Setup
+
+  public setUsername(s: string): void {
+    this.data.username = s;
+    this.setStorage();
+  }
+
+  public getUsername(): string {
+    return this.data.username;
+  }
+
+  public setSetupCompleted(b: boolean): void {
+    this.data.setupCompleted = b;
+    this.setStorage();
+  }
+
+  public getSetupCompleted(): boolean {
+    return this.data.setupCompleted;
   }
 }

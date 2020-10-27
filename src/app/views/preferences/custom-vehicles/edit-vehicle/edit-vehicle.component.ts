@@ -37,6 +37,7 @@ export class EditVehicleComponent implements OnInit {
         co2: 175,
         active: true,
         default: false,
+        init: false,
         travelmode: 'driving'
       };
     }

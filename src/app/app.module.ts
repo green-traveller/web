@@ -11,12 +11,17 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 
 import { AboutComponent } from './views/about/about.component';
 import { AppComponent } from './app.component';
+import { CloseIconComponent } from './components/close-icon/close-icon.component';
 import { BarChartComponent } from './components/bar-chart/bar-chart.component';
 import { Co2BarChartComponent } from './components/co2-bar-chart/co2-bar-chart.component';
 import { Co2GoalsComponent } from './views/preferences/co2-goals/co2-goals.component';
 import { Co2PieChartComponent } from './components/co2-pie-chart/co2-pie-chart.component';
 import { CustomVehiclesComponent } from './views/preferences/custom-vehicles/custom-vehicles.component';
 import { EditVehicleComponent } from './views/preferences/custom-vehicles/edit-vehicle/edit-vehicle.component';
+import { InitialSetupNameComponent } from './views/initial-setup/initial-setup-name/initial-setup-name.component';
+import { InitialSetupNavComponent } from './components/initial-setup-nav/initial-setup-nav.component';
+import { InitialSetupVehicleComponent } from './views/initial-setup/initial-setup-vehicle/initial-setup-vehicle.component';
+import { InitialSetupTipsComponent } from './views/initial-setup/initial-setup-tips/initial-setup-tips.component';
 import { EmptyResultsComponent } from './components/empty-results/empty-results.component';
 import { KmPieChartComponent } from './components/km-pie-chart/km-pie-chart.component';
 import { ManageDataComponent } from './views/preferences/manage-data/manage-data.component';
@@ -34,11 +39,16 @@ import { RouteSearchResultsComponent } from './views/route-search-results/route-
     AboutComponent,
     AppComponent,
     BarChartComponent,
+    CloseIconComponent,
     Co2BarChartComponent,
     Co2GoalsComponent,
     Co2PieChartComponent,
     CustomVehiclesComponent,
     EditVehicleComponent,
+    InitialSetupNameComponent,
+    InitialSetupNavComponent,
+    InitialSetupVehicleComponent,
+    InitialSetupTipsComponent,
     EmptyResultsComponent,
     KmPieChartComponent,
     ManageDataComponent,
@@ -47,9 +57,9 @@ import { RouteSearchResultsComponent } from './views/route-search-results/route-
     PieChartComponent,
     PreferencesComponent,
     PreviousRoutesComponent,
-    SearchRouteComponent,
     RouteSearchResultsComponent,
-    VehicleIconComponent,
+    SearchRouteComponent,
+    VehicleIconComponent
   ],
   imports: [
     AppRoutingModule,
