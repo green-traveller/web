@@ -14,7 +14,6 @@ import { CloseIconComponent } from './components/close-icon/close-icon.component
 import { Co2GoalsComponent } from './views/preferences/co2-goals/co2-goals.component';
 import { CustomVehiclesComponent } from './views/preferences/custom-vehicles/custom-vehicles.component';
 import { EditVehicleComponent } from './views/preferences/custom-vehicles/edit-vehicle/edit-vehicle.component';
-import { InitialSetupInfoComponent } from './views/initial-setup/initial-setup-info/initial-setup-info.component';
 import { InitialSetupNameComponent } from './views/initial-setup/initial-setup-name/initial-setup-name.component';
 import { InitialSetupNavComponent } from './components/initial-setup-nav/initial-setup-nav.component';
 import { InitialSetupVehicleComponent } from './views/initial-setup/initial-setup-vehicle/initial-setup-vehicle.component';
@@ -35,7 +34,6 @@ import { VehicleIconComponent } from './components/vehicle-icon/vehicle-icon.com
     Co2GoalsComponent,
     CustomVehiclesComponent,
     EditVehicleComponent,
-    InitialSetupInfoComponent,
     InitialSetupNameComponent,
     InitialSetupNavComponent,
     InitialSetupVehicleComponent,
