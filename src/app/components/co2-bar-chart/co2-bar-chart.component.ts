@@ -11,7 +11,7 @@ export class Co2BarChartComponent implements OnInit {
   co2BarChartLabels: string[] = ['May', 'June', 'July', 'August', 'September', 'October'];
 
   co2BarChartData: ChartDataSets[] = [
-    { data: [2.5, 2.25, 1.9, 2.7, 2.55, 2.1], label: 'CO₂ (kg/day)' },
+    { data: [2.5, 2.25, 1.9, 2.7, 2.55, 2.1], label: 'CO₂ (avg kg/day)' },
   ];
   
   co2BarChartColors = [

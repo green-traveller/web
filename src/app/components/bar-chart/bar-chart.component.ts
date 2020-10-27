@@ -21,13 +21,21 @@ export class BarChartComponent implements OnInit {
                 [{ticks: 
                   {
                     display:true,
+                  },
+                  scaleLabel: {
+                    display: false,
+                    labelString: 'Last 6 Months'
                   }
                 }], 
               yAxes: 
-                [{ticks: 
-                  {
+                [{
+                  ticks: {
                     display:true,
                     beginAtZero:true,
+                  },
+                  scaleLabel: {
+                    display: false,
+                    labelString: 'avg kg / day'
                   }
                 }] 
               },
