@@ -60,11 +60,11 @@ export class RouteSearchResultsComponent implements OnInit {
       this.route = debuggingRoute;
     }
 
-    this.getRouteOptions();
-    this.getSortedRoute();
+    this.setRoutePerOptions();
+    // this.getSortedRoute();
   }
 
-  getRouteOptions(): void {
+  setRoutePerOptions(): void {
     const activeVehicles = this.routeService.getPossibleVehicles(this.route);
     for (const vehicle of activeVehicles) {
       this.route.vehicleId = vehicle.id;
@@ -83,8 +83,12 @@ export class RouteSearchResultsComponent implements OnInit {
     }
   }
 
-  getSortedRoute() {
-    this.routeResults.sort((a, b) =>
+  getRoute(): Route[] {
+    return this.routeResults;
+  }
+
+  getSortedRoute(): Route[] {
+    return this.routeResults.sort((a, b) =>
       (this.routeService.getCo2Grams(a) > this.routeService.getCo2Grams(b)) ? 1 :
         ((this.routeService.getCo2Grams(b) > this.routeService.getCo2Grams(a)) ? -1 : 0));
   }

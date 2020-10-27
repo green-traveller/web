@@ -15,7 +15,7 @@
 
   <ngb-accordion [closeOthers]="true" #acc="ngbAccordion">
 
-    <ngb-panel *ngFor="let route of routeResults" id="{{route.vehicleId}}">
+    <ngb-panel *ngFor="let route of getSortedRoute()" id="{{route.vehicleId}}">
 
       <ng-template ngbPanelHeader>
         <div class="route-search-results__item-header"
