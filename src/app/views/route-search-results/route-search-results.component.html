@@ -22,7 +22,7 @@
              (click)="acc.toggle(route.vehicleId)">
           <div>
             <app-vehicle-icon [vehicle]="routeS.getVehicleIconString(route)"></app-vehicle-icon>
-            <div>{{getCustomVehicleName(route)}}</div>
+            <div>{{ getCustomVehicleName(route) }}</div>
           </div>
           <div>CO<sub>2</sub>: {{ routeS.getCo2Kilograms(route) | number: '1.2-2' }}</div>
           <div>{{ routeS.getDurationString(route) }}</div>
@@ -31,11 +31,11 @@
 
       <ng-template ngbPanelContent>
         <div class="route-search-results__item-content">
-          <a [href]="routeS.getMapsLink(route)" class="btn btn-primary" target="_blank">
+          <a [href]="routeS.getMapsLink(route)" class="btn btn-secondary" target="_blank">
             <fa-icon [icon]="iconS.getIcon('map')"></fa-icon>
             <span> Map</span>
           </a>
-          <button type="button" class="btn btn-primary w-25" (click)="saveRoute(route)">Save</button>
+          <button type="button" class="btn btn-secondary" (click)="saveRoute(route)">Save</button>
         </div>
       </ng-template>
 

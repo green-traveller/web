@@ -27,7 +27,7 @@ export class SearchRouteComponent implements OnInit, AfterViewInit {
   fromInputValid = false;
   searching = false;
   changeDetectorRef: ChangeDetectorRef;
-  icons: IconService;
+  iconS: IconService;
 
   constructor(
     private mapsSdkService: MapsSdkService,
@@ -37,7 +37,7 @@ export class SearchRouteComponent implements OnInit, AfterViewInit {
     private ngZone: NgZone
   ) {
     this.changeDetectorRef = changeDetectorRef;
-    this.icons = iconService;
+    this.iconS = iconService;
   }
 
   ngOnInit(): void {

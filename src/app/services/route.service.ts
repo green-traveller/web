@@ -92,7 +92,7 @@ export class RouteService {
   /**
    * returns co2 amount (*kilograms*) for route, taking passengers into consideration.
    */
-  getCo2Kilograms(route: Route, decimal: number): number {
+  getCo2Kilograms(route: Route): number {
     return this.getCo2Grams(route) / 1000;
   }
 
