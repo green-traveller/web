@@ -43,6 +43,9 @@ export class RouteSearchResultsComponent implements OnInit {
 
   public routeResults: Route[] = [];
 
+  routeS: RouteService;
+  iconS: IconService;
+
   constructor(
     private dataService: DataService,
     private routeService: RouteService,
@@ -54,17 +57,18 @@ export class RouteSearchResultsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.iconS = this.iconService;
+    this.routeS = this.routeService;
+
     if (this.resultService.getRoute()) {
       this.route = this.resultService.getRoute();
+      this.setRoutePerOption();
     } else {
-      this.route = debuggingRoute;
+      this.navigate('/');
     }
-
-    this.setRoutePerOptions();
-    // this.getSortedRoute();
   }
 
-  setRoutePerOptions(): void {
+  setRoutePerOption(): void {
     const activeVehicles = this.routeService.getPossibleVehicles(this.route);
     for (const vehicle of activeVehicles) {
       this.route.vehicleId = vehicle.id;
@@ -74,6 +78,7 @@ export class RouteSearchResultsComponent implements OnInit {
 
   saveRoute(route: Route): void {
     this.dataService.setRoute(JSON.parse(JSON.stringify(route)));
+    this.resultService.resetRoute();
     this.navigate('previous-routes');
   }
 

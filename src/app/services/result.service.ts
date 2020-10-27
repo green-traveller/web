@@ -20,4 +20,8 @@ export class ResultService {
   getRoute(): Route {
     return this.route;
   }
+
+  resetRoute(): void {
+    this.route = null;
+  }
 }
