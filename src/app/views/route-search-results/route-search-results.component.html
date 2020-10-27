@@ -7,8 +7,8 @@
       <div>B</div>
     </div>
     <div>
-      <div>{{ route.from.name }}</div>
-      <div>{{ route.to.name }}</div>
+      <div>{{ routeService.getMainFrom(route) }}</div>
+      <div>{{ routeService.getMainTo(route) }}</div>
     </div>
     <div><span (click)="handleBackToSearchClick()">change</span></div>
   </div>
