@@ -1,0 +1,45 @@
+<app-nav-bar title="Results"></app-nav-bar>
+
+<div class="big-navigation-gap">
+  <div class="route-search-results__route-information">
+    <div>
+      <div>A</div>
+      <div>B</div>
+    </div>
+    <div>
+      <div>{{ routeS.getMainFrom(route) }}</div>
+      <div>{{ routeS.getMainTo(route) }}</div>
+    </div>
+    <div><span (click)="handleBackToSearchClick()">change</span></div>
+  </div>
+
+  <ngb-accordion [closeOthers]="true" #acc="ngbAccordion">
+
+    <ngb-panel *ngFor="let route of getSortedRoute()" id="{{route.vehicleId}}">
+
+      <ng-template ngbPanelHeader>
+        <div class="route-search-results__item-header"
+             (click)="acc.toggle(route.vehicleId)">
+          <div>
+            <app-vehicle-icon [vehicle]="routeS.getVehicleIconString(route)"></app-vehicle-icon>
+            <div>{{ getCustomVehicleName(route) }}</div>
+          </div>
+          <div>CO<sub>2</sub>: {{ routeS.getCo2Kilograms(route) | number: '1.2-2' }}</div>
+          <div>{{ routeS.getDurationString(route) }}</div>
+        </div>
+      </ng-template>
+
+      <ng-template ngbPanelContent>
+        <div class="route-search-results__item-content">
+          <a [href]="routeS.getMapsLink(route)" class="btn btn-secondary" target="_blank">
+            <fa-icon [icon]="iconS.getIcon('map')"></fa-icon>
+            <span> Map</span>
+          </a>
+          <button type="button" class="btn btn-secondary" (click)="saveRoute(route)">Save</button>
+        </div>
+      </ng-template>
+
+    </ngb-panel>
+
+  </ngb-accordion>
+</div>
