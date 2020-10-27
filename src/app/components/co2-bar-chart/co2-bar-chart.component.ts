@@ -18,6 +18,8 @@ export class Co2BarChartComponent implements OnInit {
     { backgroundColor: '#ff3311' },
     { backgroundColor: 'green' },
   ];
+  
+  showDetails = false;
 
   constructor() { }
 

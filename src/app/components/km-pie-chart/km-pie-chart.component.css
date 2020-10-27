@@ -3,3 +3,12 @@
   width: 90%;      
   text-align: center;
 }
+
+.km-chart-description{      
+  text-align: left;
+  margin-bottom: 1rem;
+}
+
+.detail-btn{
+  margin-top: 0.75rem;
+}

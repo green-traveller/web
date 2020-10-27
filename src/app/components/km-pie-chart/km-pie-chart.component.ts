@@ -21,6 +21,8 @@ export class KmPieChartComponent implements OnInit {
       pointHoverBorderColor: '#52f75d'
     } 
   ];
+  
+  showDetails = false;
 
   constructor() { }
 
