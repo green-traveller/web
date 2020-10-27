@@ -5,7 +5,6 @@ import { AboutComponent } from './views/about/about.component';
 import { Co2GoalsComponent } from './views/preferences/co2-goals/co2-goals.component';
 import { CustomVehiclesComponent } from './views/preferences/custom-vehicles/custom-vehicles.component';
 import { EditVehicleComponent } from './views/preferences/custom-vehicles/edit-vehicle/edit-vehicle.component';
-import { InitialSetupInfoComponent } from './views/initial-setup/initial-setup-info/initial-setup-info.component';
 import { InitialSetupNameComponent } from './views/initial-setup/initial-setup-name/initial-setup-name.component';
 import { InitialSetupTipsComponent } from './views/initial-setup/initial-setup-tips/initial-setup-tips.component';
 import { InitialSetupVehicleComponent } from './views/initial-setup/initial-setup-vehicle/initial-setup-vehicle.component';
@@ -18,10 +17,9 @@ import { PreviousRoutesComponent } from './views/previous-routes/previous-routes
 const routes: Routes = [
   { path: '', component: SearchRouteComponent },
   { path: 'about', component: AboutComponent },
-  { path: 'initial-setup-info', component: InitialSetupInfoComponent },
-  { path: 'initial-setup-name', component: InitialSetupNameComponent },
-  { path: 'initial-setup-vehicle', component: InitialSetupVehicleComponent },
-  { path: 'initial-setup-tips', component: InitialSetupTipsComponent },
+  { path: 'setup/name', component: InitialSetupNameComponent },
+  { path: 'setup/vehicle', component: InitialSetupVehicleComponent },
+  { path: 'setup/tips', component: InitialSetupTipsComponent },
   { path: 'nav', component: NavBarComponent },
   { path: 'preferences', component: PreferencesComponent },
   { path: 'preferences/manage-data', component: ManageDataComponent },

@@ -10,7 +10,7 @@ export class InitialSetupNavComponent implements OnInit {
 
   @Input() dotsActive: number;
   @Input() nextPage: string;
-  @Input() username: boolean;
+  @Input() username: string;
   @Input() buttonName: string;
 
   constructor(private dataservice: DataService) { }
@@ -22,10 +22,10 @@ export class InitialSetupNavComponent implements OnInit {
     if (this.nextPage === '/initial-setup-tips') {
       this.dataservice.setSetupCompleted(true);
     }
-    if (this.username === true) {
-      const input = document.getElementById('inputName');
-      const text = input.innerHTML;
-      this.dataservice.setUsername(text);
+    if (this.username) {
+    const input = document.getElementById('inputName');
+    const text = input.innerHTML;
+    this.dataservice.setUsername(text);
     }
   }
 }
