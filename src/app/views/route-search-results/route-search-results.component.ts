@@ -49,18 +49,16 @@ export class RouteSearchResultsComponent implements OnInit {
       this.route = this.resultService.getRoute();
     }
 
-    this.test();
-    // this.routeResults nach CO2 sortieren
-    // Also zunächst CO2-Werte bestimmen
+    this.getRouteOptions();
+    this.getSortedRoute();
   }
 
-  test(): void {
+  getRouteOptions(): void {
     const activeVehicles = this.routeService.getPossibleVehicles(this.route);
     for (const vehicle of activeVehicles) {
       this.route.vehicleId = vehicle.id;
       this.routeResults.push(JSON.parse(JSON.stringify(this.route)));
     }
-    console.log(this.route);
   }
 
   saveRoute(route: Route): void {
@@ -71,5 +69,11 @@ export class RouteSearchResultsComponent implements OnInit {
     if (this.dataService.getDefaultVehicles().indexOf(this.dataService.getVehicle(route.vehicleId)) < 0) {
       return this.dataService.getVehicle(route.vehicleId).name;
     }
+  }
+
+  getSortedRoute() {
+    this.routeResults.sort((a,b) =>
+      (this.routeService.getCo2Grams(a) > this.routeService.getCo2Grams(b)) ? 1 :
+        ((this.routeService.getCo2Grams(b) > this.routeService.getCo2Grams(a)) ? -1 : 0));
   }
 }
