@@ -1,28 +1,29 @@
 <div class="initial-setup-tips">
   <app-close-icon></app-close-icon>
-    <div *ngIf="os==='iOS'">
-    <h5>Create Shortcut:</h5>
-    <h5>Step 1:</h5>
+  <h5>Great you made it!</h5>
+  <h6>Here is a tip for creating a shortcut:</h6>
+  <div>
+    <h6>Step 1:</h6>
     <div class="initial-setup-tips__icon"> 
-      <img src="assets/share_apple.png" class="initial-setup-tips__image">
-    </div>
-    <h5 class="initial-setup-tips__text">
-      Step 2:
-    </h5>
-    <div class="initial-setup-tips__icon">
-      <img src="assets/add_apple.png" class="initial-setup-tips__image">
-    </div>
-  </div>
-  <div *ngIf="os!=='iOS'">
-    <h5>Create Shortcut:</h5>
-    <h5>Step 1:</h5>
+      <div *ngIf="os==='iOS'">
+        <img src="assets/share_apple.png" class="initial-setup-tips__image">
+      </div>
+      <div *ngIf="os==='Samsung'">
+        <img src="assets/add_samsung.png" class="initial-setup-tips__image">
+      </div>
+      <div *ngIf="os!=='iOS' && os!=='Samsung'">
+        <img src="assets/share_android.png" class="initial-setup-tips__image">
+      </div>
+    </div>  
+    <h6 class="initial-setup-tips__text">Step 2:</h6>
     <div class="initial-setup-tips__icon"> 
-      <img src="assets/share_android.png" class="initial-setup-tips__image">
-    </div>
-    <h5>Step 2:</h5>
-    <div class="initial-setup-tips__icon">
-      <img src="assets/add_android.png" class="initial-setup-tips__image initial-setup-tips__image--small">
-    </div>
+      <div *ngIf="os==='iOS'">
+        <img src="assets/add_apple.png" class="initial-setup-tips__image">
+      </div>
+      <div *ngIf="os!=='iOS' && os!=='Samsung'">
+        <img src="assets/add_android.png" class="initial-setup-tips__image--small">
+      </div>
+    </div>  
   </div>
 </div>
 <app-initial-setup-nav class="parent__init-nav" [dotsActive]="3" [nextPage]="'/'" [username]="false" buttonName="Become a Green Traveller!"></app-initial-setup-nav>

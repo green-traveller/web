@@ -14,6 +14,7 @@ export class InitialSetupNameComponent implements OnInit {
 
   ngOnInit(): void {
     this.username = this.dataservice.getUsername();
+    this.setFocusInput();
   }
 
   setFocusInput(): void {

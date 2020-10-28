@@ -1,6 +1,7 @@
 .initial-setup-tips {
   position: absolute;
-  background-color: lightgreen;
+  background-color: var(--secondary);
+  color: white;
   min-height: 100%;  
   padding: 5.5rem 1rem 6rem;
 }
