@@ -13,9 +13,13 @@ export class Co2PieChartComponent implements OnInit {
 
   avgTranspCO2German: number = 4.4; // average co2-emissions [kg] per day caused by transport (excluding air travel) by a German
 
-  currentCo2Car = this.dataService.getCo2Last30DaysByVehicle(this.routeService, 'car');
+  currentCo2Car = this.dataService.getCo2Last30DaysByVehicle(this.routeService, 'car')/30;  
+
+  currentCo2Motorcycle = this.dataService.getCo2Last30DaysByVehicle(this.routeService, 'motorcycle')/30;  
+
+  currentCo2PublicTransport = this.dataService.getCo2Last30DaysByVehicle(this.routeService, 'train')/30;
   
-  currentCo2Data: number[] = [0.81, 0.23, 1.26]; // average co2 emissions per day in kg over the last 30 days from different means of transport
+  currentCo2Data: number[] = [this.currentCo2Car,this.currentCo2Motorcycle, this.currentCo2PublicTransport]; // average co2 emissions per day in kg over the last 30 days from different means of transport
 
   currentCo2Sum = this.dataService.getTotalCo2Last30Days(this.routeService)/30; 
 
@@ -27,7 +31,9 @@ export class Co2PieChartComponent implements OnInit {
     console.log(this.dataService.getLast30DaysStrings());
     console.log(this.dataService.getRoutes());  
     console.log(this.dataService.getRoutesLast30Days());      
-    console.log(this.dataService.getTotalCo2Last30Days(this.routeService));
+    console.log(this.currentCo2Sum);         
+    console.log(this.currentCo2Car + this.currentCo2Motorcycle + this.currentCo2PublicTransport);
+    console.log(this.currentCo2Data);
   }
 
   // General Co2-PieChart (All co2 summed up)
