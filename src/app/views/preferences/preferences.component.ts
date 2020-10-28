@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { IconService } from '../../services/icon.service';
 
 @Component({
   selector: 'app-preferences',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PreferencesComponent implements OnInit {
 
-  constructor() { }
+  iconS: IconService;
+
+  constructor(private iconService: IconService) { }
 
   ngOnInit(): void {
+    this.iconS = this.iconService;
   }
 
 }
