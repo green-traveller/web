@@ -21,11 +21,18 @@
         <div class="route-search-results__item-header"
              (click)="acc.toggle(route.vehicleId)">
           <div>
+            <div class="route-search-results__column-name"> </div>
             <app-vehicle-icon [vehicle]="routeS.getVehicleIconString(route)"></app-vehicle-icon>
-            <div>{{ getCustomVehicleName(route) }}</div>
+            <div class="route-search-results__column-name">{{ getCustomVehicleName(route) }}</div>
           </div>
-          <div>CO<sub>2</sub>: {{ routeS.getCo2Kilograms(route) | number: '1.2-2' }}</div>
-          <div>{{ routeS.getDurationString(route) }}</div>
+          <div>
+            <div class="route-search-results__column-name">CO<sub>2</sub></div>
+            {{ routeS.getCo2Kilograms(route) | number: '1.2-2' }}
+          </div>
+          <div>
+            <div class="route-search-results__column-name">Time</div>
+            {{ routeS.getDurationString(route) }}
+          </div>
         </div>
       </ng-template>
 

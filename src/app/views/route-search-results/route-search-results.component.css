@@ -20,20 +20,18 @@
 }
 
 .route-search-results__item-header {
-  display: flex;
+  display: grid;
+  grid-template-columns: 2fr 2fr 1fr;
+  grid-template-rows: 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
   align-items: center;
-  justify-content: space-around;
-  height: 5rem;
-  cursor: pointer;
 }
 
-.route-search-results__item-icon {
-}
-
-.route-search-results__item-co2 {
-}
-
-.route-search-results__item-time {
+.route-search-results__column-name {
+  font-size: 0.7rem;
+  color: darkgrey;
+  /*opacity: 80%;*/
 }
 
 .route-search-results__item-content {
