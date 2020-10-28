@@ -25,13 +25,13 @@ const routes: Routes = [
   { path: 'preferences', component: PreferencesComponent },
   { path: 'preferences/manage-data', component: ManageDataComponent },
   { path: 'preferences/co2-goals', component: Co2GoalsComponent },
-  { path: 'preferences/install-tips', component: InstallTipsComponent },
+  { path: 'preferences/add-to-home-screen', component: InstallTipsComponent },
   { path: 'preferences/vehicles', component: CustomVehiclesComponent },
   { path: 'preferences/vehicles/:id', component: EditVehicleComponent },
   { path: 'previous-routes', component: PreviousRoutesComponent},
   { path: 'preferences/vehicles/:id', component: EditVehicleComponent },
   { path: 'results', component: RouteSearchResultsComponent },
-  { path: 'setup/name', component: InitialSetupNameComponent },
+  { path: 'setup', component: InitialSetupNameComponent },
   { path: 'setup/vehicle', component: InitialSetupVehicleComponent },
   { path: 'setup/tips', component: InitialSetupTipsComponent }
 ];

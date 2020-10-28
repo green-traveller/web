@@ -29,7 +29,7 @@ export class AppComponent implements OnInit {
     if (finished) {
       this.navigate('/');
     } else {
-      this.navigate('/setup/name');
+      this.navigate('/setup');
     }
   }
 

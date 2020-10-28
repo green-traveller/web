@@ -2,27 +2,7 @@
   position: absolute;
   background-color: var(--secondary);
   color: white;
-  min-height: 100%; 
-  width: 100%; 
+  min-height: 100%;
+  width: 100%;
   padding: 5.5rem 1rem 6rem;
-}
-
-.initial-setup-tips__icon {
-  position: relative;
-  justify-content: center;
-  text-align: center;
-  padding: 2rem;
-}
-
-.initial-setup-tips__image {
-  border-radius: 10px;
-  width: 90%;
-}
-
-.initial-setup-tips__image--small {
-  width: 50%;
-}
-
-.initial-setup-tips__steps {
-  padding-top: 1rem;
 }

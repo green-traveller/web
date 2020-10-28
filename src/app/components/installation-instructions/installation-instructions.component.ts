@@ -21,7 +21,7 @@ export class InstallationInstructionsComponent implements OnInit {
   ngOnInit(): void {
     this.os = this.getMobileOperatingSystem();
     if (this.os === 'unknown') {
-      this.steps = STEPS.samsung;
+      this.steps = STEPS.android;
     } else {
       this.steps = STEPS[this.os];
     }
