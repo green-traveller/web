@@ -6,6 +6,7 @@ import { Storage } from '../models/storage';
 import { Co2 } from '../models/co2';
 import { Vehicle } from '../models/vehicle';
 import { Route } from '../models/route';
+import { RouteService } from 'src/app/services/route.service';
 
 const STORAGE_KEY = 'TEST';
 
@@ -17,6 +18,8 @@ export class DataService {
   constructor(@Inject(LOCAL_STORAGE) private storage: StorageService) {
     this.getStorage();
   }
+
+  private routeService: RouteService
 
   data: Storage;
 
@@ -109,14 +112,15 @@ export class DataService {
     }
     return Object.keys(result).sort().reverse();
   }
-
+  
   public getRoutesLast30Days(): Route[] {    
-    const routesLast30Days = [];
+    var routesLast30Days = [];
     const routes = this.getRoutes();
+    //TO DO: use object instead of array
     const last30DaysStrings = this.getLast30DaysStrings();
-    for (const date in last30DaysStrings) {   
-      for (const route of routes) {
-        const routeDate = route.time.split(' ')[0];
+    for (var date of last30DaysStrings) {   
+      for (var route of routes) {
+        var routeDate = route.time.split(' ')[0];
         if (date === routeDate) {
           routesLast30Days.push(route);
         }
@@ -126,7 +130,7 @@ export class DataService {
   }
 
   public getDateString(date: Date): string {    
-    const dateStr = date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate();
+    const dateStr = date.getFullYear()+'-'+formatNumber((date.getMonth()+1), 'en_US', '2.0-0')+'-'+formatNumber(date.getDate(), 'en_US', '2.0-0');
     return dateStr;
   }
 
@@ -140,6 +144,29 @@ export class DataService {
       last30DaysStrings.push(dateStr);    
     }
     return last30DaysStrings;
+  }
+
+  public getTotalCo2Last30Days(routeService: RouteService): number { 
+    var totalCo2Last30Days = 0;  
+    const routesLast30Days = this.getRoutesLast30Days();
+    for (const route of routesLast30Days) {
+      var co2Route = routeService.getCo2Kilograms(route);
+      totalCo2Last30Days += co2Route;      
+      }    
+    return totalCo2Last30Days;
+  }
+
+  public getCo2Last30DaysByVehicle(routeService: RouteService, vehicleType: string): number { 
+    var co2Last30DaysByVehicle = 0;  
+    const routesLast30Days = this.getRoutesLast30Days();
+    for (const route of routesLast30Days) {
+      var routeVehicleType = routeService.getVehicle(route).type;
+      if (routeVehicleType === vehicleType) {
+        var co2Route = routeService.getCo2Kilograms(route);
+        co2Last30DaysByVehicle += co2Route; 
+      }           
+    }    
+    return co2Last30DaysByVehicle;
   }
 
   public setRoute(route: Route): void {

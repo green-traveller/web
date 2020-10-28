@@ -9,21 +9,26 @@ import { RouteService } from 'src/app/services/route.service';
   templateUrl: './co2-pie-chart.component.html',
   styleUrls: ['./co2-pie-chart.component.css']
 })
-export class Co2PieChartComponent implements OnInit {  
-
-  constructor(private dataService: DataService, private routeService: RouteService) { }
-
-  ngOnInit(): void {    
-    this.dataService.getRoutesByDate();
-  }
+export class Co2PieChartComponent implements OnInit {
 
   avgTranspCO2German: number = 4.4; // average co2-emissions [kg] per day caused by transport (excluding air travel) by a German
+
+  currentCo2Car = this.dataService.getCo2Last30DaysByVehicle(this.routeService, 'car');
   
   currentCo2Data: number[] = [0.81, 0.23, 1.26]; // average co2 emissions per day in kg over the last 30 days from different means of transport
 
-  currentCo2Sum = this.currentCo2Data.reduce((pv, cv) => pv + cv, 0); 
+  currentCo2Sum = this.dataService.getTotalCo2Last30Days(this.routeService)/30; 
 
   currentCo2RestBudget: number = this.avgTranspCO2German - this.currentCo2Sum;
+  
+  constructor(private dataService: DataService, private routeService: RouteService) { }
+
+  ngOnInit(): void {
+    console.log(this.dataService.getLast30DaysStrings());
+    console.log(this.dataService.getRoutes());  
+    console.log(this.dataService.getRoutesLast30Days());      
+    console.log(this.dataService.getTotalCo2Last30Days(this.routeService));
+  }
 
   // General Co2-PieChart (All co2 summed up)
   
