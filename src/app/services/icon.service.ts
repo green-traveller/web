@@ -3,7 +3,9 @@ import {
   faBicycle,
   faCarSide,
   faChartPie,
+  faChevronLeft,
   faClock,
+  faCog,
   faDatabase,
   faEdit,
   faInfoCircle,
@@ -13,6 +15,7 @@ import {
   faQuestionCircle,
   faRedoAlt,
   faRoute,
+  faSearch,
   faSubway,
   faTrashAlt,
   faUser,
@@ -31,6 +34,7 @@ import {
 export class IconService {
 
   APP_ICONS = {
+    back: faChevronLeft,
     bicycle: faBicycle,
     car: faCarSide,
     clock: faClock,
@@ -42,8 +46,10 @@ export class IconService {
     info: faInfoCircle,
     map: faMapMarked,
     motorcycle: faMotorcycle,
+    preferences: faCog,
     question: faQuestionCircle,
     redo: faRedoAlt,
+    search: faSearch,
     statistics: faChartPie,
     train: faSubway,
     unknown: faQuestion,
