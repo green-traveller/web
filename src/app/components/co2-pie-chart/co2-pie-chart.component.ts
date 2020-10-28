@@ -13,9 +13,9 @@ export class Co2PieChartComponent implements OnInit {
   avgTranspCO2German = 4.4;
 
   // average co2 emissions per day in kg over the last 30 days from different means of transport
-  currentCo2Data: number[] = [0.81, 0.23, 1.26]; 
+  currentCo2Data: number[] = [0.81, 0.23, 1.26];
 
-  currentCo2Sum = this.currentCo2Data.reduce((pv, cv) => pv + cv, 0); 
+  currentCo2Sum = this.currentCo2Data.reduce((pv, cv) => pv + cv, 0);
 
   currentCo2RestBudget: number = this.avgTranspCO2German - this.currentCo2Sum;
 
@@ -111,13 +111,13 @@ export class Co2PieChartComponent implements OnInit {
 
   getCo2AlertMessage(): string {
     if (this.currentCo2RestBudget > 0) {
-      return 'Great! Over the last 30 days you have been emitting less CO₂ from transport per day than the average citizen!'
+      return 'Great! Over the last 30 days you have been emitting less CO₂ from transport per day than the average citizen!';
     }
     else if (this.currentCo2RestBudget === 0) {
-      return 'No improvement... Over the last 30 days you have been emitting just as much CO₂ from transport as the average citizen.'
+      return 'No improvement... Over the last 30 days you have been emitting just as much CO₂ from transport as the average citizen.';
     }
     else {
-      return 'Oh no... Over the last 30 days you have been emitting MORE CO₂ from transport than the average citizen!'
+      return 'Oh no... Over the last 30 days you have been emitting MORE CO₂ from transport than the average citizen!';
     }
   }
 }
