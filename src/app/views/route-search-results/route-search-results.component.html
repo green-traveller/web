@@ -1,16 +1,20 @@
 <app-nav-bar title="Results"></app-nav-bar>
 
 <div class="big-navigation-gap">
-  <div class="route-search-results__route-information">
-    <div>
+  <div class="route-search-results__route-information center-center">
+    <div class="center-center">
       <div>A</div>
       <div>B</div>
     </div>
-    <div>
+    <div class="route-search-results__nowrap-hidden center-center">
       <div>{{ routeS.getMainFrom(route) }}</div>
       <div>{{ routeS.getMainTo(route) }}</div>
     </div>
-    <div><span (click)="handleBackToSearchClick()">change</span></div>
+    <div class="center-center">
+      <span (click)="handleBackToSearchClick()">
+        <fa-icon [icon]="iconS.getIcon('edit')"></fa-icon>
+      </span>
+    </div>
   </div>
 
   <ngb-accordion [closeOthers]="true" #acc="ngbAccordion">
@@ -18,7 +22,7 @@
     <ngb-panel *ngFor="let route of getSortedRoute()" id="{{route.vehicleId}}">
 
       <ng-template ngbPanelHeader>
-        <div class="route-search-results__item-header"
+        <div class="route-search-results__item-header center-center"
              (click)="acc.toggle(route.vehicleId)">
           <div>
             <div class="route-search-results__column-name"> </div>

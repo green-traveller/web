@@ -3,16 +3,31 @@
 }
 
 .route-search-results__route-information {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
   height: 4.5rem;
-  background-color: #3DD495;
+  background-color: var(--secondary);
+  color: white;
   box-shadow: 0 2px 12px 0 rgba(0,0,0,.2);
   position: fixed;
   top: 3.5rem;
   width: 100%;
   z-index: 100;
+}
+
+.center-center {
+  text-align: center;
+  vertical-align: middle;
+  align-items: center;
+}
+
+.route-search-results__nowrap-hidden {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .route-search-results__item {
@@ -21,7 +36,7 @@
 
 .route-search-results__item-header {
   display: grid;
-  grid-template-columns: 2fr 2fr 1fr;
+  grid-template-columns: 1fr 2fr 1fr;
   grid-template-rows: 1fr;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
