@@ -14,7 +14,7 @@ import { AppComponent } from './app.component';
 import { CloseIconComponent } from './components/close-icon/close-icon.component';
 import { BarChartComponent } from './components/bar-chart/bar-chart.component';
 import { Co2BarChartComponent } from './components/co2-bar-chart/co2-bar-chart.component';
-import { Co2GoalsComponent } from './views/preferences/co2-goals/co2-goals.component';
+import { CustomisationComponent } from './views/preferences/customisation/customisation.component';
 import { Co2PieChartComponent } from './components/co2-pie-chart/co2-pie-chart.component';
 import { CustomVehiclesComponent } from './views/preferences/custom-vehicles/custom-vehicles.component';
 import { EditVehicleComponent } from './views/preferences/custom-vehicles/edit-vehicle/edit-vehicle.component';
@@ -43,7 +43,7 @@ import { InstallationInstructionsComponent } from './components/installation-ins
     BarChartComponent,
     CloseIconComponent,
     Co2BarChartComponent,
-    Co2GoalsComponent,
+    CustomisationComponent,
     Co2PieChartComponent,
     CustomVehiclesComponent,
     EditVehicleComponent,
