@@ -34,6 +34,7 @@ import { PreviousRoutesComponent } from './views/previous-routes/previous-routes
 import { SearchRouteComponent } from './views/search-route/search-route.component';
 import { VehicleIconComponent } from './components/vehicle-icon/vehicle-icon.component';
 import { RouteSearchResultsComponent } from './views/route-search-results/route-search-results.component';
+import { InstallationInstructionsComponent } from './components/installation-instructions/installation-instructions.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { RouteSearchResultsComponent } from './views/route-search-results/route-
     PreviousRoutesComponent,
     RouteSearchResultsComponent,
     SearchRouteComponent,
-    VehicleIconComponent
+    VehicleIconComponent,
+    InstallationInstructionsComponent
   ],
   imports: [
     AppRoutingModule,

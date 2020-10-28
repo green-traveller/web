@@ -1,0 +1,29 @@
+.install-instructions {
+}
+
+.install-instructions__border {
+  border-bottom: 1px solid #dfe2e1;
+  padding: 2rem;
+}
+
+.install-instructions__icon {
+  position: relative;
+  justify-content: center;
+  text-align: center;
+}
+
+.install-instructions__image {
+  border-radius: 10px;
+  width: 90%;
+}
+
+.install-instructions__image--small {
+  width: 50%;
+  border-radius: 10px;
+  border: 2px solid #dfe2e1;
+}
+
+.install-instructions__text {
+  padding: 1rem 1rem 0;
+  margin: 0;
+}

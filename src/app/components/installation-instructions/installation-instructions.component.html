@@ -1,0 +1,23 @@
+<div class="install-instructions">
+  <h6 class="install-instructions__text">Step 1</h6>
+  <div class="install-instructions__icon">
+    <div *ngIf="os==='iOS'" class="install-instructions__border">
+      <img src="assets/share_apple.png" class="install-instructions__image">
+    </div>
+    <div *ngIf="os==='Samsung'" class="install-instructions__border">
+      <img src="assets/add_samsung.png" class="install-instructions__image">
+    </div>
+    <div *ngIf="os!=='iOS' && os!=='Samsung'" class="install-instructions__border">
+      <img src="assets/share_android.png" class="install-instructions__image">
+    </div>
+  </div>
+  <h6 class="install-instructions__text">Step 2</h6>
+  <div class="install-instructions__icon">
+    <div *ngIf="os==='iOS'" class="install-instructions__border">
+      <img src="assets/add_apple.png" class="install-instructions__image">
+    </div>
+    <div *ngIf="os!=='iOS' && os!=='Samsung'" class="install-instructions__border">
+      <img src="assets/add_android.png" class="install-instructions__image--small">
+    </div>
+  </div>
+</div>
