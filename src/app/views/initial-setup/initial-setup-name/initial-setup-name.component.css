@@ -1,0 +1,20 @@
+.initial-setup-name {
+  position: absolute;
+  background-color: var(--secondary);
+  height: 100%;
+}
+
+.initial-setup-name__input {
+  text-decoration: underline;
+}
+
+.initial-setup-name__logo {
+  position: relative;
+  justify-content: center;
+  text-align: center;
+  margin: 6rem 1rem 2rem;
+}
+
+.initial-setup-name__text {
+  padding: 1rem;
+}

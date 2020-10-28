@@ -2,18 +2,18 @@
 
 <div class="search-route navigation-gap">
 
-  <div class="search-route__statistics" routerLink="/about">
-    <fa-icon [icon]="icons.getIcon('statistics')"></fa-icon> View your Balance Sheet.
+  <div class="search-route__statistics" routerLink="/balance">
+    <fa-icon [icon]="iconS.getIcon('statistics')"></fa-icon> View your Balance Sheet.
   </div>
 
   <div class="form-group">
     <label for="inputFrom">From: </label>
-    <input class="form-control" id="inputFrom" type="text" placeholder="From" (input)="handleFromInputKeypress()" #fromInput>
+    <input class="form-control" id="inputFrom" type="text" placeholder="Any address or location" (keydown)="handleFromInputKeypress()" (blur)="handleFromInputKeypress()" #fromInput>
   </div>
 
   <div class="form-group">
     <label for="inputTo">To: </label>
-    <input class="form-control" id="inputTo" type="text" placeholder="To" (input)="handleToInputKeypress()" #toInput>
+    <input class="form-control" id="inputTo" type="text" placeholder="Any address or location" (keydown)="handleToInputKeypress()" (blur)="handleToInputKeypress()" #toInput>
   </div>
 
   <div class="form-group">

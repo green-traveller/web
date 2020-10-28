@@ -11,3 +11,7 @@
   background-color: var(--primary);
   border-color: var(--primary);
 }
+
+.vehicle-icon--whiteBorder {
+  border-color: white;
+}

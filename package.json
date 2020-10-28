@@ -2,7 +2,7 @@
   "name": "green-traveller",
   "version": "0.0.0",
   "homepage": "https://github.com/green-traveller/web",
-  "license": "unset",
+  "license": "GPL-3.0-or-later",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --open",
@@ -39,7 +39,7 @@
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.1001.4",
+    "@angular-devkit/build-angular": "^0.1002.0",
     "@angular/cli": "~10.1.4",
     "@angular/compiler-cli": "~10.1.4",
     "@types/googlemaps": "^3.40.0",

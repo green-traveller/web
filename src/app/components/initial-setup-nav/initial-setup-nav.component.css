@@ -1,0 +1,25 @@
+.init-nav {
+  background-color: var(--secondary);
+  padding: 0rem 0.5rem 0.5rem;
+  box-shadow: 0 2px 12px 0 rgba(0,0,0,.2);
+}
+
+.init-nav__dotbox {
+  right:0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.init-nav__dot {
+  height: 10px;
+  width: 10px;
+  margin: 1rem 0.5rem;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.init-nav__dot--active {
+  background-color: grey;
+}

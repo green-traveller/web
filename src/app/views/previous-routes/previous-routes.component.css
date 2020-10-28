@@ -45,12 +45,13 @@
 .previous-routes__action-buttons {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 0.75rem;
 }
 
 .previous-routes__route-info {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.5rem;
 }
 
 .previous-routes__route-info-details {
@@ -58,8 +59,20 @@
   align-items: center;
 }
 
+.previous-routes__vehicle-button {
+  max-width: 12.5rem;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
 .previous-routes__route-info-details-icon {
   margin-right: 0.5rem;
+}
+
+.previous-routes__route-info-details-vehicle {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .previous-routes__route-info-details-input {
@@ -80,8 +93,9 @@
   display: flex;
   align-items: center;
   border-bottom: 1px solid #dfe2e1;
-  padding: 0.5rem 0;
+  padding: 0.5rem;
   cursor: pointer;
+  max-width: 100%;
 }
 
 .previous-routes__modal-item:last-child {
@@ -90,6 +104,12 @@
 
 .previous-routes__modal-icon {
   margin-right: 0.5rem;
+}
+
+.previous-routes__modal-vehicle-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .previous-routes__empty {

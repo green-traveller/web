@@ -1,0 +1,10 @@
+<div class="init-nav">
+  <div class="init-nav__dotbox">
+    <span class="init-nav__dot" [class.init-nav__dot--active]="dotsActive >= 1"></span>
+    <span class="init-nav__dot" [class.init-nav__dot--active]="dotsActive >= 2"></span>
+    <span class="init-nav__dot" [class.init-nav__dot--active]="dotsActive >= 3"></span>
+  </div>
+  <div class="init-nav__action">
+    <button class="btn btn-primary btn-block" type="button" [routerLink]="nextPage" (click)="handleButtonClick()">{{buttonName}}</button>
+  </div>
+</div>
