@@ -13,6 +13,7 @@ import {
   faTrashAlt,
   faUsers,
   faWalking,
+  faCloud,
   IconDefinition
 } from '@fortawesome/free-solid-svg-icons';
 import {
@@ -29,6 +30,7 @@ export class IconService {
     bicycle: faBicycle,
     car: faCarSide,
     clock: faClock,
+    cloud: faCloud,
     circle: faCircle,
     delete: faTrashAlt,
     distance: faRoute,

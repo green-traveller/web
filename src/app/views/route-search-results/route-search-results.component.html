@@ -30,11 +30,13 @@
             <div class="route-search-results__column-name">{{ getCustomVehicleName(route) }}</div>
           </div>
           <div>
-            <div class="route-search-results__column-name">CO<sub>2</sub></div>
-            {{ routeS.getCo2Kilograms(route) | number: '1.2-2' }}
+            <div class="route-search-results__column-name">
+              <fa-icon *ngFor="let i of getClouds(route)" [icon]="iconS.getIcon('cloud')"></fa-icon>
+            </div>
+            {{ routeS.getCo2Kilograms(route) | number: '1.2-2' }} kg
           </div>
           <div>
-            <div class="route-search-results__column-name">Time</div>
+            <div class="route-search-results__column-name"><fa-icon [icon]="iconS.getIcon('clock')"></fa-icon></div>
             {{ routeS.getDurationString(route) }}
           </div>
         </div>
