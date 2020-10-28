@@ -1,6 +1,6 @@
 .initial-setup-name {
   position: absolute;
-  background-color: lightgreen;
+  background-color: var(--secondary);
   height: 100%;
 }
 
