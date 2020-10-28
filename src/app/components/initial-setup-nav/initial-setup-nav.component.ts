@@ -19,13 +19,12 @@ export class InitialSetupNavComponent implements OnInit {
   }
 
   handleButtonClick(): void {
-    if (this.nextPage === '/initial-setup-tips') {
+    if (this.nextPage === '/setup/tips') {
       this.dataservice.setSetupCompleted(true);
     }
     if (this.username) {
-    const input = document.getElementById('inputName');
-    const text = input.innerHTML;
-    this.dataservice.setUsername(text);
+    const input = (document.getElementById('inputUsername') as HTMLInputElement).value;
+    this.dataservice.setUsername(input);
     }
   }
 }

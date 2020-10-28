@@ -4,9 +4,10 @@
     <img alt="Green Traveller Logo" src="assets\icons\android-chrome-512x512.png" height="128" width="128">
     <h3 class="initial-setup-name__headline">Green Traveller</h3>
   </div>
-  <div class="initial-setup-name__text" id="textField" (click)="setFocusInput()">
+  <div class="initial-setup-name__text" id="textField">
     <h5>Great to see you here.</h5>
-    <h5>Lets start with your name: <span class="initial-setup-name__input" id="inputName" contenteditable="true" autofocus>{{username}}</span></h5> 
+    <h6>Lets start with your name:</h6>
+    <input class="form-control initial-setup-name__input" id="inputUsername" type="text" placeholder="{{username}}" #inputUsername>
   </div>
 </div>
-<app-initial-setup-nav class="parent__init-nav" [dotsActive]="1" [nextPage]="'/setup/vehicle'" [username]="true" buttonName="Next!"></app-initial-setup-nav>
+<app-initial-setup-nav class="parent__init-nav" [dotsActive]="1" [nextPage]="'/setup/vehicle'" [username]="inputUsername" buttonName="Next!"></app-initial-setup-nav>

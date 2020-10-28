@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({
@@ -8,13 +8,14 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class InitialSetupNameComponent implements OnInit {
 
+  @ViewChild('inputUsername') inputUsername: string;
+
   username: string;
 
   constructor(private dataservice: DataService) { }
 
   ngOnInit(): void {
     this.username = this.dataservice.getUsername();
-    this.setFocusInput();
   }
 
   setFocusInput(): void {
