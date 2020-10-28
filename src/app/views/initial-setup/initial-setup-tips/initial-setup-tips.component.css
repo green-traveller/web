@@ -2,7 +2,8 @@
   position: absolute;
   background-color: var(--secondary);
   color: white;
-  min-height: 100%;  
+  min-height: 100%; 
+  width: 100%; 
   padding: 5.5rem 1rem 6rem;
 }
 
@@ -20,4 +21,8 @@
 
 .initial-setup-tips__image--small {
   width: 50%;
+}
+
+.initial-setup-tips__steps {
+  padding-top: 1rem;
 }

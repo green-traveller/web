@@ -7,17 +7,16 @@
 }
 
 .initial-setup-name__input {
-  padding: 0.1rem 0.5rem 0.2rem 0.5rem;
-  border-style: solid;
-  border-width: 1px;
-  border-radius: 3px;
-  border-color: white;
-  margin-left: 0.5rem;
+  font-size: 1.1em;
+  margin: 1.67em 0;
+  font-weight: bold; 
+  background-color: var(--secondary);
+  text-align: center;
+  color: white;
 }
 
 .initial-setup-name__headline {
   text-align: center;
-  text-decoration: underline;
   margin: 1rem 0rem 2rem;
 }
 

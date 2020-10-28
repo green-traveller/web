@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
+import { IconService } from '../../services/icon.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -10,13 +10,9 @@ import { Router } from '@angular/router';
 })
 export class NavBarComponent implements OnInit {
 
-  icons = {
-    leftArrow: faChevronLeft
-  };
-
   hideBackButton = false;
 
-  constructor(private location: Location, private router: Router) { }
+  constructor(private location: Location, private router: Router, public iconService: IconService) { }
 
   @Input() title = 'default title';
 
