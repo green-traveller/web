@@ -19,7 +19,6 @@ export class AppComponent implements OnInit {
     private mapsSdkService: MapsSdkService) {
   }
 
-  // tslint:disable-next-line: use-lifecycle-interface
   ngOnInit(): void {
     this.checkLandingPage();
   }
