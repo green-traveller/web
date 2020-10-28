@@ -9,10 +9,10 @@ import { Colors, Label } from 'ng2-charts';
 })
 export class BarChartComponent implements OnInit {
 
-  barChartType: ChartType = 'horizontalBar';
+  barChartType: ChartType = 'bar';
 
   @Input() barChartOptions: ChartOptions = {
-    aspectRatio: 0.75,
+    aspectRatio: 1.25,
     responsive: true,
     legend: {
         display: true,
