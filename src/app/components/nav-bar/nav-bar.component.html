@@ -1,5 +1,5 @@
 <nav class="nav-bar">
-  <div class="nav-bar__item"><button class="btn nav-bar__back-button" (click)="back()" [class.nav-bar__back-button--hidden]="hideBackButton"><fa-icon [icon]="iconS.getIcon('back')"></fa-icon></button> </div>
+  <div class="nav-bar__item"><button class="btn nav-bar__back-button" (click)="back()" [class.nav-bar__back-button--hidden]="hideBackButton"><fa-icon [icon]="iconService.getIcon('back')"></fa-icon></button> </div>
   <div class="nav-bar__item"><span class="nav-bar__title">{{ title }}</span></div>
   <div class="nav-bar__item">
     <div ngbDropdown class="d-inline-block navbar-light">
@@ -8,16 +8,16 @@
       </button>
       <div ngbDropdownMenu>
         <button class="nav-bar__menu-item" (click)="navigate('/')" ngbDropdownItem>
-          <fa-icon [icon]="iconS.getIcon('search')"></fa-icon> Search
+          <fa-icon [icon]="iconService.getIcon('search')"></fa-icon> Search
         </button>
         <button class="nav-bar__menu-item" (click)="navigate('/balance')" ngbDropdownItem>
-          <fa-icon [icon]="iconS.getIcon('statistics')"></fa-icon> Balance
+          <fa-icon [icon]="iconService.getIcon('statistics')"></fa-icon> Balance
         </button>
         <button class="nav-bar__menu-item" (click)="navigate('/previous-routes')" ngbDropdownItem>
-          <fa-icon [icon]="iconS.getIcon('distance')"></fa-icon> Routes
+          <fa-icon [icon]="iconService.getIcon('distance')"></fa-icon> Routes
         </button>
         <button class="nav-bar__menu-item" (click)="navigate('/preferences')" ngbDropdownItem>
-          <fa-icon [icon]="iconS.getIcon('preferences')"></fa-icon> Preferences
+          <fa-icon [icon]="iconService.getIcon('preferences')"></fa-icon> Preferences
         </button>
       </div>
     </div>

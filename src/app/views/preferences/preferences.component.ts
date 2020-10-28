@@ -8,12 +8,8 @@ import { IconService } from '../../services/icon.service';
 })
 export class PreferencesComponent implements OnInit {
 
-  iconS: IconService;
+  constructor(public iconService: IconService) { }
 
-  constructor(private iconService: IconService) { }
-
-  ngOnInit(): void {
-    this.iconS = this.iconService;
-  }
+  ngOnInit(): void { }
 
 }

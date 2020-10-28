@@ -10,16 +10,13 @@ import { IconService } from '../../services/icon.service';
 })
 export class NavBarComponent implements OnInit {
 
-  iconS: IconService;
-
   hideBackButton = false;
 
-  constructor(private location: Location, private router: Router, private iconService: IconService) { }
+  constructor(private location: Location, private router: Router, public iconService: IconService) { }
 
   @Input() title = 'default title';
 
   ngOnInit(): void {
-    this.iconS = this.iconService;
     if (this.location.path() === '') {
       this.hideBackButton = true;
     }
