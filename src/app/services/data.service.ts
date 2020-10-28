@@ -60,6 +60,16 @@ export class DataService {
           init: false,
           travelmode: 'transit'
         },
+        motorcycle: {
+          id: 'motorcycle',
+          name: 'Average Motorcycle',
+          type: 'motorcycle',
+          co2: 95,
+          active: true,
+          default: true,
+          init: true,
+          travelmode: 'driving'
+        },
         driving: {
           id: 'driving',
           name: 'Average Car',
