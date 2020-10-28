@@ -31,6 +31,8 @@
 
 .initial-setup-vehicle__text {
   padding: 1rem;
+  background-color: var(--secondary);
+  margin-bottom: 5rem;
 }
 
 .initial-setup-vehicle__text--border {
