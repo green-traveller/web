@@ -1,0 +1,25 @@
+.install-tips__border {
+  border-bottom: 1px solid #dfe2e1;
+  padding: 2rem;
+}
+
+.install-tips__icon {
+  position: relative;
+  justify-content: center;
+  text-align: center;
+}
+
+.install-tips__image {
+  border-radius: 10px;
+  width: 90%;
+}
+
+.install-tips__image--small {
+  width: 50%;
+  border-radius: 10px;
+  border: 2px solid #dfe2e1;
+}
+
+.install-tips__text {
+  padding: 1rem;
+}

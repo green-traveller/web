@@ -8,9 +8,10 @@ import { EditVehicleComponent } from './views/preferences/custom-vehicles/edit-v
 import { InitialSetupNameComponent } from './views/initial-setup/initial-setup-name/initial-setup-name.component';
 import { InitialSetupTipsComponent } from './views/initial-setup/initial-setup-tips/initial-setup-tips.component';
 import { InitialSetupVehicleComponent } from './views/initial-setup/initial-setup-vehicle/initial-setup-vehicle.component';
+import { InstallTipsComponent } from './views/preferences/install-tips/install-tips.component';
 import { ManageDataComponent } from './views/preferences/manage-data/manage-data.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
-import { PersonalBalanceComponent } from './views/personal-balance/personal-balance.component'
+import { PersonalBalanceComponent } from './views/personal-balance/personal-balance.component';
 import { PreferencesComponent } from './views/preferences/preferences.component';
 import { SearchRouteComponent } from './views/search-route/search-route.component';
 import { PreviousRoutesComponent } from './views/previous-routes/previous-routes.component';
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'preferences', component: PreferencesComponent },
   { path: 'preferences/manage-data', component: ManageDataComponent },
   { path: 'preferences/co2-goals', component: Co2GoalsComponent },
+  { path: 'preferences/install-tips', component: InstallTipsComponent },
   { path: 'preferences/vehicles', component: CustomVehiclesComponent },
   { path: 'preferences/vehicles/:id', component: EditVehicleComponent },
   { path: 'previous-routes', component: PreviousRoutesComponent},

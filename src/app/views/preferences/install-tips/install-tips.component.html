@@ -1,0 +1,24 @@
+<app-nav-bar title="Install Tips"></app-nav-bar>
+<div class="navigation-gap">
+  <h6 class="install-tips__text">Step 1:</h6>
+  <div class="install-tips__icon"> 
+    <div *ngIf="os==='iOS'" class="install-tips__border">
+      <img src="assets/share_apple.png" class="install-tips__image">
+    </div>
+    <div *ngIf="os==='Samsung'" class="install-tips__border">
+      <img src="assets/add_samsung.png" class="install-tips__image">
+    </div>
+    <div *ngIf="os!=='iOS' && os!=='Samsung'" class="install-tips__border">
+      <img src="assets/share_android.png" class="install-tips__image">
+    </div>
+  </div>  
+  <h6 class="install-tips__text">Step 2:</h6>
+  <div class="install-tips__icon"> 
+    <div *ngIf="os==='iOS'" class="install-tips__border">
+      <img src="assets/add_apple.png" class="install-tips__image">
+    </div>
+    <div *ngIf="os!=='iOS' && os!=='Samsung'" class="install-tips__border">
+      <img src="assets/add_android.png" class="install-tips__image--small">
+    </div>
+  </div>  
+</div>
