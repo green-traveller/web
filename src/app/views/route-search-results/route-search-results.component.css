@@ -50,10 +50,11 @@
 }
 
 .route-search-results__item-content {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  height: 5rem;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: 2fr 1fr 2fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
 }
 
 

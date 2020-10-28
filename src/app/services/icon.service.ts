@@ -11,6 +11,7 @@ import {
   faRoute,
   faSubway,
   faTrashAlt,
+  faUser,
   faUsers,
   faWalking,
   faCloud,
@@ -40,6 +41,7 @@ export class IconService {
     statistics: faChartPie,
     train: faSubway,
     unknown: faQuestion,
+    user: faUser,
     users: faUsers,
     walking: faWalking
   };

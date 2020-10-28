@@ -36,19 +36,53 @@
             {{ routeS.getCo2Kilograms(route) | number: '1.2-2' }} kg
           </div>
           <div>
-            <div class="route-search-results__column-name"><fa-icon [icon]="iconS.getIcon('clock')"></fa-icon></div>
+            <div class="route-search-results__column-name">
+              <fa-icon [icon]="iconS.getIcon('clock')"></fa-icon>
+            </div>
             {{ routeS.getDurationString(route) }}
           </div>
         </div>
       </ng-template>
 
       <ng-template ngbPanelContent>
-        <div class="route-search-results__item-content">
-          <a [href]="routeS.getMapsLink(route)" class="btn btn-secondary" target="_blank">
-            <fa-icon [icon]="iconS.getIcon('map')"></fa-icon>
-            <span> Map</span>
-          </a>
-          <button type="button" class="btn btn-secondary" (click)="saveRoute(route)">Save</button>
+        <div class="route-search-results__item-content center-center">
+          <div>
+            <div class="route-search-results__column-name">
+              <fa-icon [icon]="iconS.getIcon('distance')"></fa-icon>
+            </div>
+            <span>{{ routeS.getDistanceString(route) }} km</span>
+          </div>
+          <div>
+            <div class="route-search-results__column-name">
+              <fa-icon [icon]="iconS.getIcon('cloud')"></fa-icon>
+              /
+              <fa-icon [icon]="iconS.getIcon('distance')"></fa-icon>
+            </div>
+            {{ routeS.getCo2PerKm(route) | number: '1.2-2' }} kg
+          </div>
+          <div>
+            <div class="route-search-results__column-name">
+              <fa-icon [icon]="iconS.getIcon('cloud')"></fa-icon>
+              /
+              <fa-icon [icon]="iconS.getIcon('clock')"></fa-icon>
+            </div>
+            {{ routeS.getCo2PerHour(route) | number: '1.2-2' }} kg
+          </div>
+          <div></div><div></div><div></div>
+          <div>
+            <a [href]="routeS.getMapsLink(route)" class="btn btn-secondary" target="_blank">
+              <fa-icon [icon]="iconS.getIcon('map')"></fa-icon>
+            </a>
+          </div>
+          <div>
+            <a [href]="routeS.getMapsLink(route)" class="btn btn-secondary" target="_blank" >
+              <fa-icon [icon]="iconS.getIcon('map')"></fa-icon>
+              <span> Map & Save</span>
+            </a>
+          </div>
+          <div>
+            <button type="button" class="btn btn-secondary" (click)="saveRoute(route)">Save</button>
+          </div>
         </div>
       </ng-template>
 

@@ -96,6 +96,35 @@ export class RouteService {
     return this.getCo2Grams(route) / 1000;
   }
 
+  getCo2(route: Route): (number | string) {
+
+    let value = (this.getDistance(route) / 1000) * this.getVehicle(route).co2;
+    if (value) {
+      return value / 1000;
+    }
+    return "--";
+
+  }
+
+  getCo2PerKm(route): number {
+    return this.getCo2Grams(route) / this.getDistance(route);
+  }
+
+  getCo2PerHour(route):number {
+    return this.getCo2Grams(route) / this.getDuration(route);
+  }
+
+  getCo2PerPassenger(route): number {
+    if (this.getVehicle(route).travelmode === 'transit' && route.passengers === 0) {
+      return this.getCo2Kilograms(route);
+    }
+    return this.getCo2Kilograms(route) / this.getPassengers(route);
+  }
+
+  getPassengers(route): number {
+    return route.passengers;
+  }
+
   getMainTo(route: Route): string {
     return RouteService.getLocationFirstPart(route.to.name);
   }
