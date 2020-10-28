@@ -29,4 +29,6 @@
 
 .initial-setup-name__text {
   padding: 1rem;
+  background-color: var(--secondary);
+  margin-bottom: 5rem;
 }
