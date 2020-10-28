@@ -45,12 +45,13 @@
 .previous-routes__action-buttons {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 0.75rem;
 }
 
 .previous-routes__route-info {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.5rem;
 }
 
 .previous-routes__route-info-details {
