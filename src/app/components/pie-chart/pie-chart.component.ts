@@ -13,16 +13,21 @@ export class PieChartComponent implements OnInit {
 
   pieChartOptions: ChartOptions = {
     responsive: true,
-    rotation: 30,
     legend: { position: 'bottom' },
 
     tooltips: {
       enabled: true,
+      bodyFontSize: 20,
+      xPadding: 10,
+      yPadding: 10,
+      backgroundColor: 'rgba(38, 194, 129, 0.8)',
+      bodyFontColor: '#000',
       callbacks: {
-       label(tooltipItem, data): string {
+       label(tooltipItem, data): string[] {
         const label = data.labels[tooltipItem.index];
         const value = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index].valueOf().toString();
-        return `${label} ${formatNumber(Number(value), 'en_US', '1.2-2')} kg`;
+
+        return [` ${label} ${formatNumber(Number(value), 'en_US', '1.2-2')} kg`];
        },
       },
      },
