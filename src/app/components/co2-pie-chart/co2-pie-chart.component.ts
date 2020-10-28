@@ -1,3 +1,4 @@
+import { formatNumber } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Alert } from 'src/app/models/alert';
 import { DataService } from 'src/app/services/data.service';
@@ -8,7 +9,13 @@ import { RouteService } from 'src/app/services/route.service';
   templateUrl: './co2-pie-chart.component.html',
   styleUrls: ['./co2-pie-chart.component.css']
 })
-export class Co2PieChartComponent implements OnInit {
+export class Co2PieChartComponent implements OnInit {  
+
+  constructor(private dataService: DataService, private routeService: RouteService) { }
+
+  ngOnInit(): void {    
+    this.dataService.getRoutesByDate();
+  }
 
   avgTranspCO2German: number = 4.4; // average co2-emissions [kg] per day caused by transport (excluding air travel) by a German
   
@@ -20,7 +27,7 @@ export class Co2PieChartComponent implements OnInit {
 
   // General Co2-PieChart (All co2 summed up)
   
-  co2PieChartData: number[]  = this.getCo2PieChartData();
+  co2PieChartData: number[]  = this.getCo2PieChartData();  
   
   getCo2PieChartData(): number[] { 
     if (this.currentCo2RestBudget > 0) {
@@ -116,11 +123,5 @@ export class Co2PieChartComponent implements OnInit {
   co2AlertClosed = false;
 
   showDetails = false;
-
-  constructor(private dataService: DataService) { }
-
-  ngOnInit(): void {
-    this.dataService.getRoutesByDate();
-  }
 
 }

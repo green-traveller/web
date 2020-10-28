@@ -110,6 +110,38 @@ export class DataService {
     return Object.keys(result).sort().reverse();
   }
 
+  public getRoutesLast30Days(): Route[] {    
+    const routesLast30Days = [];
+    const routes = this.getRoutes();
+    const last30DaysStrings = this.getLast30DaysStrings();
+    for (const date in last30DaysStrings) {   
+      for (const route of routes) {
+        const routeDate = route.time.split(' ')[0];
+        if (date === routeDate) {
+          routesLast30Days.push(route);
+        }
+      }
+    }
+    return routesLast30Days;
+  }
+
+  public getDateString(date: Date): string {    
+    const dateStr = date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate();
+    return dateStr;
+  }
+
+  public getLast30DaysStrings(): string[] {
+    const today = Date.now();
+    const days = 24*3600*1000;
+    var last30DaysStrings = [];
+    for (var i=30; i>=1; i--) {
+      const date = new Date(today - (i*days));
+      const dateStr = this.getDateString(date);
+      last30DaysStrings.push(dateStr);    
+    }
+    return last30DaysStrings;
+  }
+
   public setRoute(route: Route): void {
     if (route.id === 'new') {
       route.id = DataService.uuidv4();
