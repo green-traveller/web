@@ -26,7 +26,7 @@ export class SearchRouteComponent implements OnInit, AfterViewInit {
   toInputValid = false;
   fromInputValid = false;
   searching = false;
-  changeDetectorRef: ChangeDetectorRef;
+  changeDetector: ChangeDetectorRef;
   iconS: IconService;
 
   constructor(
@@ -36,7 +36,7 @@ export class SearchRouteComponent implements OnInit, AfterViewInit {
     private router: Router,
     private ngZone: NgZone
   ) {
-    this.changeDetectorRef = changeDetectorRef;
+    this.changeDetector = changeDetectorRef;
     this.iconS = iconService;
   }
 
@@ -64,6 +64,7 @@ export class SearchRouteComponent implements OnInit, AfterViewInit {
     google.maps.event.addListenerOnce(autocompleteOrigin, 'place_changed', () => {
       this.from = autocompleteOrigin.getPlace();
       this.fromInputValid = true;
+      this.fromInput.nativeElement.setCustomValidity('');
     });
     // dest
     const autocompleteDestination = new google.maps.places.Autocomplete(
@@ -74,6 +75,7 @@ export class SearchRouteComponent implements OnInit, AfterViewInit {
     autocompleteDestination.addListener('place_changed', () => {
       this.to = autocompleteDestination.getPlace();
       this.toInputValid = true;
+      this.toInput.nativeElement.setCustomValidity('');
     });
 
     // search button
@@ -109,7 +111,7 @@ export class SearchRouteComponent implements OnInit, AfterViewInit {
     }
     this.mapsSdkService.searchRoute(route, this.timeMode, customTime, r => {
       this.searching = false;
-      this.changeDetectorRef.detectChanges();
+      this.changeDetector.detectChanges();
       if (Object.keys(r.options).length < 1) {
         window.alert('No results found.');
       } else {
@@ -121,11 +123,27 @@ export class SearchRouteComponent implements OnInit, AfterViewInit {
   }
 
   handleFromInputKeypress(): void {
-    this.fromInputValid = false;
+    setTimeout(() => {
+      if (this.from && this.from.name === this.fromInput.nativeElement.value) {
+        this.fromInputValid = true;
+        this.fromInput.nativeElement.setCustomValidity('');
+      } else {
+        this.fromInputValid = false;
+        this.fromInput.nativeElement.setCustomValidity('Only selected input allowed.');
+      }
+    }, 0);
   }
 
   handleToInputKeypress(): void {
-    this.toInputValid = false;
+    setTimeout(() => {
+      if (this.to && this.to.name === this.toInput.nativeElement.value) {
+        this.toInputValid = true;
+        this.toInput.nativeElement.setCustomValidity('');
+      } else {
+        this.toInputValid = false;
+        this.toInput.nativeElement.setCustomValidity('Only selected input allowed.');
+      }
+    }, 0);
   }
 
   currentTimeString(): string {

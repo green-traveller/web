@@ -20,6 +20,13 @@
 .vehicles__item-details {
   margin-left: 1rem;
   margin-top: 0.25rem;
+  max-width: 12rem;
+}
+
+.vehicles__item-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .vehicles__list-item--default > .vehicles__item-details {
