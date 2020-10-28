@@ -1,7 +1,13 @@
-<app-nav-bar title="CO2 Goals"></app-nav-bar>
+<app-nav-bar title="Customisation"></app-nav-bar>
 <div class="goals navigation-gap">
   <div>
-    <div class="goals__subtitle"><b>CO<sub>2</sub>-Goal per Month</b></div>
+    <label class="goals__subtitle" for="username"><b>Username</b></label>
+    <div class="goals__username">
+      <input type="text" class="form-control" id="username" [(ngModel)]="username" (change)="handleUsernameChange()">
+    </div>
+  </div>
+  <div>
+    <div class="goals__subtitle goals__subtitle--co2"><b>CO<sub>2</sub>-Challenge per Month</b></div>
     <div class="goals__list">
       <label class="goals__list-item">
         <input
