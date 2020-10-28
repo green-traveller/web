@@ -1,14 +1,19 @@
 <div class="pie-chart-CO₂">
   <h4>CO₂-Emissions</h4>
   <h6>Compared with Average</h6>
-  
+
   <div *ngIf="!showDetails; else viewDetails">
-    <app-pie-chart [pieChartLabels]="co2PieChartLabels" [pieChartData]="co2PieChartData"
-      [pieChartColors]="co2PieChartColors"></app-pie-chart>
-    <div class="co2-alert" *ngIf="!co2AlertClosed">
+    <div class="co2-pie-chart--overlay-parent">
+      <app-pie-chart [pieChartLabels]="co2PieChartLabels" [pieChartData]="co2PieChartData"
+        [pieChartColors]="co2PieChartColors"></app-pie-chart>
+      <div class="co2-pie-chart--overlay-child" *ngIf="currentCo2RestBudget < 0">
+        <span>{{ getBudgetPercent() }}</span>
+      </div>
+    </div>
+    <div class="co2-alert">
       <ngb-alert [dismissible]="true" [type]="co2Alert.type" (close)="co2AlertClosed=true">
-        {{co2Alert.message}}
-      </ngb-alert>    
+        {{ co2Alert.message }}
+      </ngb-alert>
     </div>
     <div>
       <button class="btn btn-outline-primary btn-block detail-btn" (click)="showDetails=true">
@@ -22,11 +27,12 @@
       [pieChartColors]="co2PieChartDetailsColors"></app-pie-chart>
     <div class="co2-alert" *ngIf="!co2AlertClosed">
       <ngb-alert [dismissible]="true" [type]="co2Alert.type" (close)="co2AlertClosed=true">
-        {{co2Alert.message}}
-      </ngb-alert>    
+        {{ co2Alert.message }}
+      </ngb-alert>
     </div>
     <div class="co2-chart-description">
-      <p class="small">This chart shows your tracked CO₂-emissions from transport in kg per day measured over the last 30 days. 
+      <p class="small">This chart shows your tracked CO₂-emissions from transport in kg per day measured over the last
+        30 days.
         The full pie represents 4.4 kg per day, which is the current average of what each citizen of Germany emits.</p>
       <p class="small">Source: Federal Ministry of the Environment</p>
     </div>
