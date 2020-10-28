@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1603897950676,
+  "timestamp": 1603900295318,
   "index": "/web/index.html",
   "assetGroups": [
     {
@@ -13,7 +13,7 @@
       "urls": [
         "/web/favicon.ico",
         "/web/index.html",
-        "/web/main.8df635bd01ef9de9c2e9.js",
+        "/web/main.08b9fb6ae348560a635a.js",
         "/web/manifest.webmanifest",
         "/web/polyfills.5c8033dfb7c3b4aa1601.js",
         "/web/runtime.acf0dec4155e77772545.js",
@@ -31,6 +31,7 @@
       "urls": [
         "/web/assets/add_android.png",
         "/web/assets/add_apple.png",
+        "/web/assets/add_samsung.png",
         "/web/assets/icons/android-chrome-192x192.png",
         "/web/assets/icons/android-chrome-512x512.png",
         "/web/assets/icons/apple-touch-icon.png",
@@ -54,6 +55,7 @@
   "hashTable": {
     "/web/assets/add_android.png": "72bd21aafe423803ef5e010c8e650078bd27c47a",
     "/web/assets/add_apple.png": "009026e17ceebeee9c37e92fed2381bdcdb58b34",
+    "/web/assets/add_samsung.png": "b618251301ce0dc5b2ceb5b0b5c16b57f08492f7",
     "/web/assets/icons/android-chrome-192x192.png": "4b8f7c48a97f92417e800646774e3a8e1557c0db",
     "/web/assets/icons/android-chrome-512x512.png": "1036e93817721ee9ab07863cb78662bed57bf6c5",
     "/web/assets/icons/apple-touch-icon.png": "ccf6dafcedcd0514152ba6f9fc2182f0c9fd26f8",
@@ -70,8 +72,8 @@
     "/web/assets/share_android.png": "2acaf1074a2b8c7cf5d1120b31b85b63613755b1",
     "/web/assets/share_apple.png": "c494f998681ddca954f984dcf48bdb93d6ba6b49",
     "/web/favicon.ico": "aae98fe04400405294821d83de397c5d9458e983",
-    "/web/index.html": "6d86afe36023d75e6f623cdef161fdaf732bcdde",
-    "/web/main.8df635bd01ef9de9c2e9.js": "48987474904907ee489fa63bfcf320c58bb9f931",
+    "/web/index.html": "f6ed1a5de6f3949543af31f433cfe3ef222ead80",
+    "/web/main.08b9fb6ae348560a635a.js": "08071634ef6766bccf5482f5fc28f68d70d81c27",
     "/web/manifest.webmanifest": "26a70468104bc0e12aa7d303145b4ddf0ff8fc3c",
     "/web/polyfills.5c8033dfb7c3b4aa1601.js": "dbc502f030c7bb83c7caa1feee7aff990831f7d9",
     "/web/runtime.acf0dec4155e77772545.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
