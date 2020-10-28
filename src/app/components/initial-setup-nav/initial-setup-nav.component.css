@@ -15,11 +15,11 @@
   height: 10px;
   width: 10px;
   margin: 1rem 0.5rem;
-  background-color: #bbb;
+  background-color: grey;
   border-radius: 50%;
   display: inline-block;
 }
 
 .init-nav__dot--active {
-  background-color: grey;
+  background-color: #bbb;
 }
