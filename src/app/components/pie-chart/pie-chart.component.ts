@@ -32,14 +32,7 @@ export class PieChartComponent implements OnInit {
       },
      },
 
-    plugins: {
-     datalabels: {
-      formatter: (value, ctx) => {
-       const label = '0.00';
-       return label;
-      },
-     },
-    },
+    plugins: {},
     maintainAspectRatio: false
    };
 
