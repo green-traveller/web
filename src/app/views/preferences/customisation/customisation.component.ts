@@ -17,6 +17,7 @@ export class CustomisationComponent implements OnInit {
     lower: 100
   };
 
+  username: string;
   co2: Co2;
 
   customAmount: number;
@@ -26,6 +27,7 @@ export class CustomisationComponent implements OnInit {
   ngOnInit(): void {
     this.co2 = this.dataService.getCo2();
     this.customAmount = this.co2.value;
+    this.username = this.dataService.getUsername();
   }
 
   handleRadioChange(): void {
@@ -46,5 +48,12 @@ export class CustomisationComponent implements OnInit {
 
   focusOnCustomInput(): void {
     this.customInput.nativeElement.focus();
+  }
+
+  handleUsernameChange(): void {
+    if (this.username === '') {
+      this.username = 'User';
+    }
+    this.dataService.setUsername(this.username);
   }
 }
