@@ -147,6 +147,11 @@ export class DataService {
     const dateStr = date.getFullYear()+'-'+formatNumber((date.getMonth()+1), 'en_US', '2.0-0')+'-'+formatNumber(date.getDate(), 'en_US', '2.0-0');
     return dateStr;
   }
+  
+  public getMonthString(date: Date): string {    
+    const monthStr = formatNumber((date.getMonth()+1), 'en_US', '2.0-0');
+    return monthStr;
+  }
 
   public getLast30DaysStrings(): string[] {
     const today = Date.now();
@@ -158,6 +163,17 @@ export class DataService {
       last30DaysStrings.push(dateStr);    
     }
     return last30DaysStrings;
+  }
+
+  public getLast6MonthsStrings(): string[] {
+    const today = new Date();
+    const thisMonth: number = today.getMonth()+1;
+    var last6MonthsStrings = [];
+    for (var i=5; i>=0; i--) {
+      var monthStr: string = (thisMonth - i).toString();
+      last6MonthsStrings.push(monthStr);
+    }
+    return last6MonthsStrings;
   }
 
   public getTotalCo2Last30Days(routeService: RouteService): number { 
@@ -181,6 +197,19 @@ export class DataService {
       }           
     }    
     return co2Last30DaysByVehicle;
+  }
+
+  public getDistanceLast30DaysByVehicle(routeService: RouteService, vehicleType: string): number { 
+    var distLast30DaysByVehicle = 0;  
+    const routesLast30Days = this.getRoutesLast30Days();
+    for (const route of routesLast30Days) {
+      var routeVehicleType = routeService.getVehicle(route).type;
+      if (routeVehicleType === vehicleType) {
+        var kmRoute = routeService.getDistance(route) / 1000;
+        distLast30DaysByVehicle += kmRoute; 
+      }           
+    }    
+    return distLast30DaysByVehicle;
   }
 
   public setRoute(route: Route): void {
