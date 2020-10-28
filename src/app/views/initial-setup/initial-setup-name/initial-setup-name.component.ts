@@ -18,7 +18,10 @@ export class InitialSetupNameComponent implements OnInit {
     this.username = this.dataservice.getUsername();
   }
 
-  setFocusInput(): void {
-    document.getElementById('inputName').focus();
+  handleUsernameInput(): void {
+    const username = this.inputUsername;
+    if (username !== '') {
+      this.dataservice.setUsername(username);
     }
   }
+}

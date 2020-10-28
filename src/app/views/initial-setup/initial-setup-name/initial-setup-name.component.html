@@ -7,7 +7,7 @@
   <div class="initial-setup-name__text" id="textField">
     <h5>Great to see you here.</h5>
     <h6>Lets start with your name:</h6>
-    <input class="form-control initial-setup-name__input" id="inputUsername" type="text" placeholder="{{username}}" #inputUsername>
+    <input class="form-control initial-setup-name__input" id="inputUsername" type="text" placeholder="{{username}}" [(ngModel)]="inputUsername" (change)="handleUsernameInput()">
   </div>
 </div>
-<app-initial-setup-nav class="parent__init-nav" [dotsActive]="1" [nextPage]="'/setup/vehicle'" [username]="inputUsername" buttonName="Next!"></app-initial-setup-nav>
+<app-initial-setup-nav class="parent__init-nav" [dotsActive]="1" [nextPage]="'/setup/vehicle'" buttonName="Next!"></app-initial-setup-nav>
