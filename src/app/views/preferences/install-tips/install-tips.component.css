@@ -21,5 +21,6 @@
 }
 
 .install-tips__text {
-  padding: 1rem;
+  padding: 1rem 1rem 0rem;
+  margin: 0rem;
 }
