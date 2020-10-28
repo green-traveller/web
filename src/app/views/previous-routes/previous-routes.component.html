@@ -10,7 +10,7 @@
           <div class="previous-routes__header">
             <div class="previous-routes__header-meta">
               <app-vehicle-icon [vehicle]="routeS.getVehicleIconString(route)"></app-vehicle-icon>
-              <div>{{routeS.getCo2Kilograms(route) | number: '1.2-2'}} kg</div>
+              <div>{{ routeS.getCo2Kilograms(route) | number: '1.2-2' }} kg</div>
             </div>
             <div class="previous-routes__header-locations">
               <div class="previous-routes__header-location-wrapper">
@@ -18,8 +18,8 @@
                   <fa-icon [icon]="iconS.getIcon('circle')"></fa-icon>
                 </div>
                 <div class="previous-routes__header-location">
-                  <div>{{routeS.getMainFrom(route)}}</div>
-                  <small>{{routeS.getSecondaryFrom(route)}}</small>
+                  <div>{{ routeS.getMainFrom(route) }}</div>
+                  <small>{{ routeS.getSecondaryFrom(route) }}</small>
                 </div>
               </div>
               <div class="previous-routes__header-location-wrapper">
@@ -27,8 +27,8 @@
                   <fa-icon [icon]="iconS.getIcon('circle')"></fa-icon>
                 </div>
                 <div class="previous-routes__header-location">
-                  <div>{{routeS.getMainTo(route)}}</div>
-                  <small>{{routeS.getSecondaryTo(route)}}</small>
+                  <div>{{ routeS.getMainTo(route) }}</div>
+                  <small>{{ routeS.getSecondaryTo(route) }}</small>
                 </div>
               </div>
               <div class="previous-routes__header-location-line" [style]="'height: ' + getVerticalSpaceBetween(firstCircle, secondCircle) + 'px'"></div>
@@ -41,7 +41,7 @@
             <div>
               <div class="previous-routes__route-info-details">
                 <fa-icon class="previous-routes__route-info-details-icon" [icon]="iconS.getIcon('clock')"></fa-icon>
-                <span>{{routeS.getDurationString(route)}}</span>
+                <span>{{ routeS.getDurationString(route) }}</span>
               </div>
               <div class="previous-routes__route-info-details">
                 <fa-icon class="previous-routes__route-info-details-icon" [icon]="iconS.getIcon('distance')">
@@ -50,9 +50,9 @@
               </div>
             </div>
             <div class="previous-routes__route-info-details" (click)="openModalWindow(content, route)">
-              <button class="btn btn-outline-primary">
+              <button class="btn btn-outline-primary previous-routes__vehicle-button">
                 <fa-icon class="previous-routes__route-info-details-icon" [icon]="routeS.getVehicleIcon(route)"></fa-icon>
-                <span>{{routeS.getVehicle(route).name}}</span>
+                <span class="previous-routes__route-info-details-vehicle">{{routeS.getVehicle(route).name}}</span>
               </button>
             </div>
           </div>
@@ -100,9 +100,8 @@
     <div class="previous-routes__modal-list">
       <div class="previous-routes__modal-item" *ngFor="let vehicle of getPossibleVehicles()"
         (click)="setVehicleType(vehicle)">
-        <app-vehicle-icon class="previous-routes__modal-icon" [vehicle]="vehicle.type">
-        </app-vehicle-icon>
-        <span>{{vehicle.name.substring(0, 30)}}</span>
+        <app-vehicle-icon class="previous-routes__modal-icon" [vehicle]="vehicle.type"></app-vehicle-icon>
+        <span class="previous-routes__modal-vehicle-name">{{ vehicle.name }}</span>
       </div>
     </div>
   </div>
