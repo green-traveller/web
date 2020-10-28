@@ -4,7 +4,7 @@
 
 .route-search-results__route-information {
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-columns: 1fr 4fr 1fr;
   grid-template-rows: 1fr;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
@@ -36,7 +36,7 @@
 
 .route-search-results__item-header {
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-columns: 4fr 7fr 1fr 4fr;
   grid-template-rows: 1fr;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
@@ -44,9 +44,18 @@
 }
 
 .route-search-results__column-name {
-  font-size: 0.7rem;
+  font-size: .7rem;
   color: darkgrey;
   /*opacity: 80%;*/
+}
+
+.route-search-results__location-secondary {
+  opacity: .7;
+  font-size: .8rem;
+}
+
+.route-search-results__green {
+  color: var(--primary);
 }
 
 .route-search-results__item-content {

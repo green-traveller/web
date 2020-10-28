@@ -59,7 +59,7 @@ export class RouteSearchResultsComponent implements OnInit {
 
   getClouds(route: Route): number[] {
     const co2Kilograms = this.routeService.getCo2Kilograms(route);
-    let result: number[] = [1];
+    let result: number[] = [];
     if (co2Kilograms > 10) {
       result.push(1);
       result.push(1);

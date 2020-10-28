@@ -5,10 +5,12 @@ import {
   faChartPie,
   faChevronLeft,
   faClock,
+  faCloud,
   faCog,
   faDatabase,
   faEdit,
   faInfoCircle,
+  faLeaf,
   faMapMarked,
   faMotorcycle,
   faQuestion,
@@ -21,7 +23,6 @@ import {
   faUser,
   faUsers,
   faWalking,
-  faCloud,
   IconDefinition
 } from '@fortawesome/free-solid-svg-icons';
 import {
@@ -46,6 +47,7 @@ export class IconService {
     distance: faRoute,
     edit: faEdit,
     info: faInfoCircle,
+    leaf: faLeaf,
     map: faMapMarked,
     motorcycle: faMotorcycle,
     preferences: faCog,
