@@ -3,11 +3,11 @@ import { DataService } from '../../../services/data.service';
 import { Co2 } from '../../../models/co2';
 
 @Component({
-  selector: 'app-co2-goals',
-  templateUrl: './co2-goals.component.html',
-  styleUrls: ['./co2-goals.component.css']
+  selector: 'app-customisation',
+  templateUrl: './customisation.component.html',
+  styleUrls: ['./customisation.component.css']
 })
-export class Co2GoalsComponent implements OnInit {
+export class CustomisationComponent implements OnInit {
 
   @ViewChild('customInput') customInput: ElementRef;
 
