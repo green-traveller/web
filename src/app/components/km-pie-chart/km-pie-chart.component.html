@@ -2,7 +2,7 @@
   <h4>Means of Transport</h4>  
   <h6>Distance in km</h6>
   <app-pie-chart [pieChartLabels]="kmPieChartLabels" [pieChartData]="kmPieChartData"
-    [pieChartColors]="kmPieChartColors">
+    [pieChartColors]="kmPieChartColors" [pieChartOptions]="kmPieChartOptions">
   </app-pie-chart>
   <div *ngIf="!showDetails; else viewDetails">
     <button class="btn btn-outline-primary btn-block detail-btn" (click)="showDetails=true">

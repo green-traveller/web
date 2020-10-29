@@ -11,7 +11,7 @@ export class PieChartComponent implements OnInit {
 
   pieChartType: ChartType = 'pie';
 
-  pieChartOptions: ChartOptions = {
+  @Input() pieChartOptions: ChartOptions = {
     responsive: true,
     legend: { position: 'bottom' },
 
@@ -27,7 +27,7 @@ export class PieChartComponent implements OnInit {
         const label = data.labels[tooltipItem.index];
         const value = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index].valueOf().toString();
 
-        return [` ${label}: ${formatNumber(Number(value), 'en_US', '1.2-2')} kg`];
+        return [` ${label}: ${formatNumber(Number(value), 'en_US', '1.2-2')} kg/day`];
        },
       },
      },
