@@ -19,26 +19,19 @@ export class AppComponent implements OnInit {
     private mapsSdkService: MapsSdkService) {
   }
 
-  // tslint:disable-next-line: use-lifecycle-interface
   ngOnInit(): void {
     this.checkLandingPage();
   }
 
   checkLandingPage(): void {
     const finished = this.dataService.getSetupCompleted();
-    if (finished) {
-      this.navigate('/');
-    } else {
-      this.navigate('/setup/name');
+    if (!finished) {
+      this.navigate('/setup');
     }
   }
 
   navigate(s: string): void {
-    if (s === '/') {
-      this.router.navigateByUrl(s);
-      this.location.replaceState(s);
-    } else {
-      this.router.navigateByUrl(s);
-    }
+    this.router.navigateByUrl(s);
+    this.location.replaceState(s);
   }
 }
