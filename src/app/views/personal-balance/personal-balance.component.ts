@@ -14,7 +14,7 @@ export class PersonalBalanceComponent implements OnInit {
 
   // Personal Goal  
 
-  personalGoal: number = this.dataService.getCo2().value;
+  personalGoal: number = this.dataService.getCo2PersonalGoal().value;
 
   personalGoalBarStatus: number = (this.currentCo2Sum / this.personalGoal) ;
 

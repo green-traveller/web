@@ -362,7 +362,7 @@ export class DataService {
     this.setStorage();
   }
 
-  public getCo2(): Co2 {
+  public getCo2PersonalGoal(): Co2 {
     return this.data.co2;
   }
 
