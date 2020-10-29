@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
   checkLandingPage(): void {
     const finished = this.dataService.getSetupCompleted();
     if (!finished) {
-      this.navigate('/setup/name');
+      this.navigate('/setup');
     }
   }
 
