@@ -28,12 +28,6 @@ export class Co2PieChartComponent implements OnInit {
   constructor(private dataService: DataService, private routeService: RouteService) { }
 
   ngOnInit(): void {
-    console.log(this.dataService.getLast30DaysStrings());
-    console.log(this.dataService.getRoutes());  
-    console.log(this.dataService.getRoutesLast30Days());      
-    console.log(this.currentCo2Sum);         
-    console.log(this.currentCo2Car + this.currentCo2Motorcycle + this.currentCo2PublicTransport);
-    console.log(this.currentCo2Data);
   }
 
   // General Co2-PieChart (All co2 summed up)

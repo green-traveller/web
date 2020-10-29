@@ -39,7 +39,6 @@ export class KmPieChartComponent implements OnInit {
   constructor(private dataService: DataService, private routeService: RouteService) { }
 
   ngOnInit(): void {
-    console.log(this.kmPieChartData);
   }
 
 }

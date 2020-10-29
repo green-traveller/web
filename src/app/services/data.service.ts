@@ -142,6 +142,21 @@ export class DataService {
     }
     return routesLast30Days;
   }
+  public getRoutesLast6MonthsInclCurrent(): Route[] {    
+    var routesLast6Months = [];
+    const routes = this.getRoutes();
+    //TO DO: use object instead of array
+    const last6MonthsStrings = this.getLastXMonthsStrings(6);
+    for (var month of last6MonthsStrings) {   
+      for (var route of routes) {
+        var routeMonth = route.time.substring(0,7);
+        if (month === routeMonth) {
+          routesLast6Months.push(route);
+        }
+      }
+    }
+    return routesLast6Months;
+  }
 
   public getDateString(date: Date): string {    
     const dateStr = date.getFullYear()+'-'+formatNumber((date.getMonth()+1), 'en_US', '2.0-0')+'-'+formatNumber(date.getDate(), 'en_US', '2.0-0');
@@ -149,7 +164,7 @@ export class DataService {
   }
   
   public getMonthString(date: Date): string {    
-    const monthStr = formatNumber((date.getMonth()+1), 'en_US', '2.0-0');
+    const monthStr = date.getFullYear()+'-'+formatNumber((date.getMonth()+1), 'en_US', '2.0-0');
     return monthStr;
   }
 
@@ -165,15 +180,24 @@ export class DataService {
     return last30DaysStrings;
   }
 
-  public getLast6MonthsStrings(): string[] {
+  public getLastXMonthsStrings(x: number): string[] {
     const today = new Date();
+    const thisYear: number = today.getFullYear();
     const thisMonth: number = today.getMonth()+1;
-    var last6MonthsStrings = [];
-    for (var i=5; i>=0; i--) {
-      var monthStr: string = (thisMonth - i).toString();
-      last6MonthsStrings.push(monthStr);
+    var lastXMonthsStrings = [];
+    for (var i=0; i<x; i++) {
+      var month: number = thisMonth - i;
+      var year: number = thisYear;
+      var monthStr: string;
+      while (month <= 0) {
+        month += 12;
+        year--;
+        }     
+      monthStr = year.toString()+'-'+formatNumber(month, 'en_US', '2.0-0');
+      lastXMonthsStrings.push(monthStr);
     }
-    return last6MonthsStrings;
+    lastXMonthsStrings.reverse();
+    return lastXMonthsStrings;
   }
 
   public getTotalCo2Last30Days(routeService: RouteService): number { 
@@ -197,6 +221,67 @@ export class DataService {
       }           
     }    
     return co2Last30DaysByVehicle;
+  }
+
+  public getAvgCo2PerDayLast6MonthsArr(routeService: RouteService): number[] { 
+    var avgCo2PerDayLast6MonthsArray = [];  
+    const routesLast6Months = this.getRoutesLast6MonthsInclCurrent();
+    const last6MonthsStrings = this.getLastXMonthsStrings(6);
+    for (var month of last6MonthsStrings) {
+      var co2ThisMonth: number = 0;   
+      for (var route of routesLast6Months) {
+        var routeMonth = route.time.substring(0,7);
+        if (month === routeMonth) {
+          var co2Route = routeService.getCo2Kilograms(route);
+          co2ThisMonth += co2Route; 
+        }
+      }
+      var avgCo2PerDayThisMonth = this.divideByDaysInMonth(co2ThisMonth, month)
+      avgCo2PerDayLast6MonthsArray.push(avgCo2PerDayThisMonth)
+    }     
+    return avgCo2PerDayLast6MonthsArray;
+  }
+
+  public divideByDaysInMonth(value: number, monthStr: string): number {    
+    const year = monthStr.substring(0,4)
+    const month = monthStr.substring(5,7)    
+    var days : number;
+    switch(month) { 
+      case '01':
+      case '03':      
+      case '05':
+      case '07':
+      case '08':      
+      case '10':
+      case '12':  
+        days = 31;
+        break; 
+      case '04':
+      case '06':      
+      case '09':
+      case '11':  
+        days = 30;
+        break;
+      case '02':
+        var y = Number(year)
+        var days = 28
+        if (y%4===0) {
+          if (y%100===0) {
+            if (y%400===0) {
+              days = 29;
+            }
+          }
+          else {
+            days = 29;
+          }
+        }
+        break;      
+      default: 
+        days = 30;
+        break;
+    }
+    var result = value / days; 
+    return result;
   }
 
   public getDistanceLast30DaysByVehicle(routeService: RouteService, vehicleType: string): number { 
