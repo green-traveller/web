@@ -30,10 +30,10 @@ export class Co2BarChartComponent implements OnInit {
   }
 
   getCo2BarChartLabels(): string[] {
-    var labels = [];
+    const labels = [];
     const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     const today = new Date;
-    var index: number = (today.getMonth() - 5);
+    let index: number = (today.getMonth() - 5);
     while (index < 0) {
       index += 12;
       }     

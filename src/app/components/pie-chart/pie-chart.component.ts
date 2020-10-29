@@ -42,16 +42,14 @@ export class PieChartComponent implements OnInit {
 
   @Input() pieChartColors: Array<any>;
 
-  @Input() pieChartLegend: boolean;
-
-  // events
-  public chartClicked(e: any): void {
-    console.log(e);
-  }
+  @Input() pieChartLegend: boolean;  
 
   constructor() { }
 
   ngOnInit(): void {
   }
+
+  // events
+  public chartClicked(e: any): void {}
 
 }
