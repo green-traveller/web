@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Alert } from 'src/app/models/alert';
+import { DataService } from 'src/app/services/data.service';
+import { RouteService } from 'src/app/services/route.service';
 
 @Component({
   selector: 'app-personal-balance',
@@ -7,18 +9,12 @@ import { Alert } from 'src/app/models/alert';
   styleUrls: ['./personal-balance.component.css']
 })
 export class PersonalBalanceComponent implements OnInit {  
-
-  avgTranspCO2German: number = 4.4; // average co2-emissions [kg] per day caused by transport (excluding air travel) by a German
   
-  currentCo2Data: number[] = [0.81, 0.23, 1.26]; // average co2 emissions per day in kg over the last 30 days from different means of transport
-  
-  currentCo2Sum = this.currentCo2Data.reduce((pv, cv) => pv + cv, 0); 
-
-  currentCo2RestBudget: number = this.avgTranspCO2German - this.currentCo2Sum;
+  currentCo2Sum = this.dataService.getTotalCo2Last30Days(this.routeService); 
 
   // Personal Goal  
 
-  personalGoal: number = 3; // meaning 3 kg per day from transport, average German emmits around 4.4 kg a day from transport (not including air travel)
+  personalGoal: number = this.dataService.getCo2().value;
 
   personalGoalBarStatus: number = (this.currentCo2Sum / this.personalGoal) ;
 
@@ -54,7 +50,7 @@ export class PersonalBalanceComponent implements OnInit {
 
   personalGoalAlertClosed = false;
 
-  constructor() { }
+  constructor(private dataService: DataService, private routeService: RouteService) { }
 
   ngOnInit(): void {
   }
