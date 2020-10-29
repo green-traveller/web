@@ -1,6 +1,6 @@
 <app-nav-bar title="Preferences"></app-nav-bar>
 <div class="preferences__list navigation-gap">
-  <div routerLink="/preferences/co2-goals" class="preferences__item">
+  <div routerLink="/preferences/customisation" class="preferences__item">
     <div class="preferences__icon"><fa-icon [icon]="iconService.getIcon('user')"></fa-icon></div> Customisation
   </div>
   <div routerLink="/preferences/vehicles" class="preferences__item">
@@ -9,8 +9,8 @@
   <div routerLink="/preferences/manage-data" class="preferences__item">
     <div class="preferences__icon"><fa-icon [icon]="iconService.getIcon('data')"></fa-icon></div> Manage Data
   </div>
-  <div routerLink="/setup/name" class="preferences__item">
-    <div class="preferences__icon"><fa-icon [icon]="iconService.getIcon('redo')"></fa-icon></div> Initial Setup
+  <div routerLink="/preferences/add-to-home-screen" class="preferences__item">
+    <div class="preferences__icon"><fa-icon [icon]="iconService.getIcon('tip')"></fa-icon></div> Add to your Home screen
   </div>
   <a href="https://green-traveller.github.io/#faq" class="preferences__item" target="_blank">
     <div class="preferences__icon"><fa-icon [icon]="iconService.getIcon('question')"></fa-icon></div> FAQ

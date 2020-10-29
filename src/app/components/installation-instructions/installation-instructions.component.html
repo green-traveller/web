@@ -1,0 +1,9 @@
+<div class="install-instructions">
+  <div *ngFor="let step of steps; let index=index;" class="install-instructions__step">
+    <div class="install-instructions__title"><b>Step {{ index + 1 }}</b></div>
+    <div class="install-instructions__image-wrapper">
+      <img [src]="'assets/' + step.image + '.png'" class="install-instructions__image" [class.install-instructions__image--small]="step.small">
+    </div>
+  </div>
+  <div><b>And done.</b></div>
+</div>
