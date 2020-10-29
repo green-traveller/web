@@ -24,6 +24,7 @@
   position: relative;
   justify-content: center;
   text-align: center;
+  background-color: var(--secondary);
 }
 
 .initial-setup-name__qr {
@@ -39,21 +40,27 @@
 }
 
 .initial-setup-name__text {
-  padding: 1rem;
   background-color: var(--secondary);
+  padding: 1rem;
   margin-bottom: 5rem;
 }
 
 .initial-setup-name__text--qr {
+  background-color: var(--secondary);
   text-align: center;
-  margin: 1rem;
+}
+
+.initial-setup-name__text--link {
+  background-color: var(--secondary);
+  font-size: 0.7em;
+  padding-bottom: 1rem;
 }
 
 .initial-setup-name__desktop {
   display: none;
 }
 
-@media only screen and (min-width: 800px) {
+@media only screen and (min-width: 600px) {
   .initial-setup-name__desktop {
     display: block;
   }
