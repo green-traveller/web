@@ -37,18 +37,19 @@ export class RouteSearchResultsComponent implements OnInit {
 
     if (this.resultService.getRoute()) {
       this.route = this.resultService.getRoute();
-      this.setRoutePerOption();
+      this.setRouteResults();
     } else {
       this.navigate('/');
     }
   }
 
-  setRoutePerOption(): void {
+  setRouteResults(): void {
     const activeVehicles = this.routeService.getPossibleVehicles(this.route);
     for (const vehicle of activeVehicles) {
       this.route.vehicleId = vehicle.id;
       this.routeResults.push(JSON.parse(JSON.stringify(this.route)));
     }
+    // set dataservice-lastsearch
   }
 
   saveRoute(route: Route): void {

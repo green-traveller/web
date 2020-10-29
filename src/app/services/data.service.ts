@@ -6,6 +6,8 @@ import { Storage } from '../models/storage';
 import { Co2 } from '../models/co2';
 import { Vehicle } from '../models/vehicle';
 import { Route } from '../models/route';
+import {RouteLocation} from "../models/route-location";
+import {RouteOption} from "../models/route-option";
 
 const STORAGE_KEY = 'TEST';
 
@@ -83,6 +85,15 @@ export class DataService {
       },
       routes: {
       },
+      lastUnconfirmedRoute: {
+        id: "new",
+        from: {} as RouteLocation,
+        to: {} as RouteLocation,
+        time: "",
+        vehicleId: "",
+        passengers: 0,
+        options: []
+      }
     }));
   }
 
