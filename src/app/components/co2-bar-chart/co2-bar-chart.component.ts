@@ -10,7 +10,7 @@ import { RouteService } from 'src/app/services/route.service';
 })
 export class Co2BarChartComponent implements OnInit {
   
-  co2BarChartLabels: string[] = ['May', 'June', 'July', 'August', 'September', 'October'];
+  co2BarChartLabels: string[] = this.getCo2BarChartLabels();
 
   co2BarChartData: ChartDataSets[] = [
     { data: this.dataService.getAvgCo2PerDayLast6MonthsArr(this.routeService), label: 'CO₂ (avg kg/day)' },
@@ -26,6 +26,25 @@ export class Co2BarChartComponent implements OnInit {
   constructor(private dataService: DataService, private routeService: RouteService) { }
 
   ngOnInit(): void {
+    
+  }
+
+  getCo2BarChartLabels(): string[] {
+    var labels = [];
+    const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    const today = new Date;
+    var index: number = (today.getMonth() - 5);
+    while (index < 0) {
+      index += 12;
+      }     
+    for (let i=1; i<=6; i++) {
+      labels.push(monthNames[index])
+      index = index + 1;
+      while (index > 11) {
+        index -= 12;
+        }   
+    }    
+    return labels
   }
 
 }
