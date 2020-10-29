@@ -18,7 +18,6 @@ import { CustomisationComponent } from './views/preferences/customisation/custom
 import { Co2PieChartComponent } from './components/co2-pie-chart/co2-pie-chart.component';
 import { CustomVehiclesComponent } from './views/preferences/custom-vehicles/custom-vehicles.component';
 import { EditVehicleComponent } from './views/preferences/custom-vehicles/edit-vehicle/edit-vehicle.component';
-import { InitialSetupDesktopComponent } from './views/initial-setup/initial-setup-desktop/initial-setup-desktop.component';
 import { InitialSetupNameComponent } from './views/initial-setup/initial-setup-name/initial-setup-name.component';
 import { InitialSetupNavComponent } from './components/initial-setup-nav/initial-setup-nav.component';
 import { InitialSetupVehicleComponent } from './views/initial-setup/initial-setup-vehicle/initial-setup-vehicle.component';
@@ -46,7 +45,6 @@ import { RouteSearchResultsComponent } from './views/route-search-results/route-
     Co2PieChartComponent,
     CustomVehiclesComponent,
     EditVehicleComponent,
-    InitialSetupDesktopComponent,
     InitialSetupNameComponent,
     InitialSetupNavComponent,
     InitialSetupVehicleComponent,

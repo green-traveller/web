@@ -5,7 +5,6 @@ import { AboutComponent } from './views/about/about.component';
 import { CustomisationComponent } from './views/preferences/customisation/customisation.component';
 import { CustomVehiclesComponent } from './views/preferences/custom-vehicles/custom-vehicles.component';
 import { EditVehicleComponent } from './views/preferences/custom-vehicles/edit-vehicle/edit-vehicle.component';
-import { InitialSetupDesktopComponent } from './views/initial-setup/initial-setup-desktop/initial-setup-desktop.component';
 import { InitialSetupNameComponent } from './views/initial-setup/initial-setup-name/initial-setup-name.component';
 import { InitialSetupTipsComponent } from './views/initial-setup/initial-setup-tips/initial-setup-tips.component';
 import { InitialSetupVehicleComponent } from './views/initial-setup/initial-setup-vehicle/initial-setup-vehicle.component';
@@ -31,7 +30,6 @@ const routes: Routes = [
   { path: 'preferences/vehicles/:id', component: EditVehicleComponent },
   { path: 'results', component: RouteSearchResultsComponent },
   { path: 'setup/name', component: InitialSetupNameComponent },
-  { path: 'setup/desktop', component: InitialSetupDesktopComponent },
   { path: 'setup/vehicle', component: InitialSetupVehicleComponent },
   { path: 'setup/tips', component: InitialSetupTipsComponent }
 ];

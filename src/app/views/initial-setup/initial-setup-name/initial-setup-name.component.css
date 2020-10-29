@@ -20,6 +20,17 @@
   margin: 1rem 0rem 2rem;
 }
 
+.initial-setup-name__image {
+  position: relative;
+  justify-content: center;
+  text-align: center;
+}
+
+.initial-setup-name__qr {
+  min-width: 200px;
+  width: 10%;
+}
+
 .initial-setup-name__logo {
   position: relative;
   justify-content: center;
@@ -32,3 +43,20 @@
   background-color: var(--secondary);
   margin-bottom: 5rem;
 }
+
+.initial-setup-name__text--qr {
+  text-align: center;
+  margin: 1rem;
+}
+
+.initial-setup-name__desktop {
+  display: none;
+}
+
+@media only screen and (min-width: 800px) {
+  .initial-setup-name__desktop {
+    display: block;
+  }
+}
+
+
