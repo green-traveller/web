@@ -2,7 +2,7 @@
   background-color: var(--secondary);
   position: absolute;
   z-index: -2;
-  height: 100%;
+  min-height: 100%;
   width: 100%;
   color: white;
   border-bottom: 1px solid #dfe2e1;
@@ -31,6 +31,8 @@
 
 .initial-setup-vehicle__text {
   padding: 1rem;
+  background-color: var(--secondary);
+  margin-bottom: 5rem;
 }
 
 .initial-setup-vehicle__text--border {

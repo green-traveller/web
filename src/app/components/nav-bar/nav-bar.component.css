@@ -15,6 +15,14 @@
   padding: 0.5rem;
 }
 
+.nav-bar__item--title {
+  flex-shrink: 1;
+  font-size: 1.2rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .nav-bar__back-button {
   color: rgba(0,0,0,.5);
   width: 3.375rem;
@@ -23,10 +31,6 @@
 .nav-bar__back-button--hidden {
   opacity: 0;
   cursor: default !important;
-}
-
-.nav-bar__title {
-  font-size: 1.2rem;
 }
 
 .nav-bar__menu-item {
