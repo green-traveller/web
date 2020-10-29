@@ -20,14 +20,14 @@ export class PieChartComponent implements OnInit {
       bodyFontSize: 20,
       xPadding: 10,
       yPadding: 10,
-      backgroundColor: 'rgba(38, 194, 129, 0.8)',
-      bodyFontColor: '#000',
+      backgroundColor: 'rgba(32, 75, 87, 0.8)',
+      bodyFontColor: '#fff',
       callbacks: {
        label(tooltipItem, data): string[] {
         const label = data.labels[tooltipItem.index];
         const value = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index].valueOf().toString();
 
-        return [` ${label} ${formatNumber(Number(value), 'en_US', '1.2-2')} kg`];
+        return [` ${label}: ${formatNumber(Number(value), 'en_US', '1.2-2')} kg`];
        },
       },
      },
