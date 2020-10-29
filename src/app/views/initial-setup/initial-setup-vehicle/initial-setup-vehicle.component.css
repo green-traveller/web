@@ -2,7 +2,7 @@
   background-color: var(--secondary);
   position: absolute;
   z-index: -2;
-  height: 100%;
+  min-height: 100%;
   width: 100%;
   color: white;
   border-bottom: 1px solid #dfe2e1;
