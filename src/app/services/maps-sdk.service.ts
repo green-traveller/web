@@ -4,6 +4,9 @@ import { Route } from '../models/route';
 import { DataService } from './data.service';
 import { ResultService } from './result.service';
 import {} from 'googlemaps';
+import { Search } from '../models/search';
+import { formatDate } from '@angular/common';
+import { SearchResult } from '../models/search-result';
 
 @Injectable({
   providedIn: 'root'
@@ -44,7 +47,22 @@ export class MapsSdkService {
     }
   }
 
-  searchRoute(route: Route, timeMode: string, time: Date, callback: (route: Route) => void): void {
+  searchRoute(search: Search, callback: (searchResult: SearchResult) => void): void {
+    const route: Route = {
+      id: 'new',
+      from: {
+        name: search.from.name,
+        place_id: search.from.place_id
+      },
+      to: {
+        name: search.to.name,
+        place_id: search.to.place_id
+      },
+      time: formatDate(search.time, 'yyyy-MM-dd HH:mm', 'en_US'),
+      vehicleId: 'unknown',
+      passengers: search.passengerAmount,
+      options: {}
+    };
     const activeTransportModes = this.dataService.getActiveTransportModes();
     const requestVariables = [];
     for (const travelMode of activeTransportModes) {
@@ -52,17 +70,17 @@ export class MapsSdkService {
         travelMode
       };
       if (travelMode === 'driving') {
-        if (timeMode === 'departure') {
+        if (search.timeMode === 'departure') {
           // @ts-ignore
           variable.departureTime = time;
         }
-        if (timeMode === 'arrival') {
+        if (search.timeMode === 'arrival') {
           // @ts-ignore
           variable.arrivalTime = time;
         }
       }
       if (travelMode === 'driving') {
-        if (timeMode === 'departure') {
+        if (search.timeMode === 'departure') {
           // @ts-ignore
           variable.departureTime = time;
         }
@@ -86,8 +104,13 @@ export class MapsSdkService {
           };
         }
         if (requestCount === requestVariables.length) {
-          this.resultService.setRoute(route);
-          callback(route);
+          if (Object.keys(route.options).length < 1) {
+            callback({ success: false, message: 'No results found.' });
+          } else {
+            this.resultService.setRoute(route);
+            this.resultService.setSearch(search);
+            callback({ success: true, message: 'Success.' });
+          }
         }
       });
     }
