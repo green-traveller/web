@@ -34,7 +34,7 @@ export class Co2PieChartComponent implements OnInit {
 
   co2PieChartColors: object[] =  [
     {
-        backgroundColor: ['#ff4233', '#f0f0f0'],
+        backgroundColor: ['#ff4233e6', '#f0f0f0'],
         borderColor: '#fff',
         pointBackgroundColor: '#fff',
         pointBorderColor: '#fff'
@@ -48,20 +48,21 @@ export class Co2PieChartComponent implements OnInit {
 
   co2PieChartDetailsColors: object[] =  [
     {
-      backgroundColor: ['#ff4233', '#ff8c00', '#e6ff33', '#f0f0f0'],
+      backgroundColor: ['#ff4233e6', '#ff8c00e6', '#e6ff33e6', '#f0f0f0'],
       borderColor: '#fff',
       pointBackgroundColor: '#fff',
       pointBorderColor: '#fff'
     }
   ];
 
+  // Properties: Co2-Alert
   co2Alert: Alert = {
     type: this.getCo2AlertType(),
     message: this.getCo2AlertMessage()
   };
-
-  // Properties: Co2-Alert
-  co2AlertClosed = false;
+  
+  // Flag for Co2-Alert
+  showCo2Alert = true;
 
   // Flag for Details-View
   showDetails = false;

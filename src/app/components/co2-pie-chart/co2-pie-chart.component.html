@@ -10,8 +10,8 @@
         <span>{{ getBudgetPercent() }}</span>
       </div>
     </div>
-    <div class="co2-alert">
-      <ngb-alert [dismissible]="true" [type]="co2Alert.type" (close)="co2AlertClosed=true">
+    <div class="co2-alert" *ngIf="showCo2Alert">
+      <ngb-alert [dismissible]="true" [type]="co2Alert.type" (close)="showCo2Alert=false">
         {{ co2Alert.message }}
       </ngb-alert>
     </div>
