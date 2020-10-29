@@ -25,7 +25,7 @@ export class CustomisationComponent implements OnInit {
   constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
-    this.co2 = this.dataService.getCo2();
+    this.co2 = this.dataService.getCo2PersonalChallenge();
     this.customAmount = this.co2.value;
     this.username = this.dataService.getUsername();
   }

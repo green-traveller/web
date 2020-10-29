@@ -19,3 +19,23 @@
   margin-top: 0.75rem;
   margin-bottom: 3.5rem;
 }
+
+.co2-pie-chart--overlay-child {
+  background-color: rgba(0,0,0,0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  font-size: 40pt;
+  color: red;
+  font-weight: bold;
+}
+
+.co2-pie-chart--overlay-parent {
+  position: relative;
+}

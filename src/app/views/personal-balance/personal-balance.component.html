@@ -1,14 +1,14 @@
-<app-nav-bar title="Personal CO₂-Balance"></app-nav-bar>
+<app-nav-bar title="Personal CO₂ Balance"></app-nav-bar>
 
 <div class="navigation-gap">
   
   <div class="personal-goal">
-    <h4 class="personal-goal-heading">Personal Goal</h4>
+    <h4 class="personal-goal-heading">Personal Challenge</h4>
     <div class="progressbar-personal-goal">
       <ngb-progressbar type="danger" [value]="currentCo2Sum" [max]="personalGoal"></ngb-progressbar>
     </div>
-    <div class="personal-goal-alert" *ngIf="!personalGoalAlertClosed">
-      <ngb-alert [dismissible]="true" [type]="personalGoalAlert.type" (close)="personalGoalAlertClosed=true">
+    <div class="personal-goal-alert" *ngIf="showPersonalChallengeAlert">
+      <ngb-alert [dismissible]="true" [type]="personalGoalAlert.type" (close)="showPersonalChallengeAlert=false">
         {{personalGoalAlert.message}}
       </ngb-alert>
     </div>

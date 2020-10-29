@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from 'src/app/services/data.service';
+import { RouteService } from 'src/app/services/route.service';
 
 @Component({
   selector: 'app-km-pie-chart',
@@ -6,14 +8,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./km-pie-chart.component.css']
 })
 export class KmPieChartComponent implements OnInit {
+
+  kmCar = this.dataService.getDistanceLast30DaysByVehicle(this.routeService, 'car');  
+
+  kmMotorcycle = this.dataService.getDistanceLast30DaysByVehicle(this.routeService, 'motorcycle');  
+
+  kmPublicTransport = this.dataService.getDistanceLast30DaysByVehicle(this.routeService, 'train');
+
+  kmBicycle = this.dataService.getDistanceLast30DaysByVehicle(this.routeService, 'bicycle');  
+
+  kmWalking = this.dataService.getDistanceLast30DaysByVehicle(this.routeService, 'walking');
+
+  kmPieChartData: number[] = [this.kmCar, this.kmMotorcycle, this.kmPublicTransport, this.kmBicycle, this.kmWalking];
   
   kmPieChartLabels: string[] = ['Car', 'Motorbike', 'Public Transport', 'Bicycle', 'By Foot'];
 
-  kmPieChartData: number[] = [150, 70, 380, 200, 110];
-
   kmPieChartColors: object[] = [
     {
-      backgroundColor: ["#ff4233", "#ff8c00", "#e6ff33", "#56f2c1", "#26c281"],
+      backgroundColor: ["#ff4233d8", "#ff6c00d8", "#efd600d8", "#56f2c1d8", "#26c281d8"],
       borderColor: '#fff',
       pointBackgroundColor: '#fff',
       pointBorderColor: '#fff',
@@ -24,7 +36,7 @@ export class KmPieChartComponent implements OnInit {
   
   showDetails = false;
 
-  constructor() { }
+  constructor(private dataService: DataService, private routeService: RouteService) { }
 
   ngOnInit(): void {
   }
