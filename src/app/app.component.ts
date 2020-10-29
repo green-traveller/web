@@ -23,10 +23,25 @@ export class AppComponent implements OnInit {
     this.checkLandingPage();
   }
 
+  checkMobileDevice(): boolean {
+    if (screen.width < 500 ||
+        navigator.userAgent.match(/Android/i) ||
+        navigator.userAgent.match(/webOS/i) ||
+        navigator.userAgent.match(/iPhone/i) ||
+        navigator.userAgent.match(/iPod/i)) {
+          return true;
+        }
+    return false;
+  }
+
   checkLandingPage(): void {
     const finished = this.dataService.getSetupCompleted();
     if (!finished) {
-      this.navigate('/setup/name');
+      if (this.checkMobileDevice() !== true) {
+        this.navigate('/setup/desktop');
+        } else {
+        this.navigate('/setup/name');
+      }
     }
   }
 
