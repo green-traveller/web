@@ -85,7 +85,7 @@ export class DataService {
       },
       routes: {
       },
-      lastUnconfirmedRoute: {
+      lastRoute: {
         id: "new",
         from: {} as RouteLocation,
         to: {} as RouteLocation,
@@ -156,6 +156,32 @@ export class DataService {
   public deleteRoute(route: Route): void {
     delete this.data.routes[route.id];
     this.setStorage();
+  }
+
+  setLastRoute(route: Route): void {
+    this.data.lastRoute = route;
+  }
+
+  getLastRoute(): Route {
+    return this.data.lastRoute;
+  }
+
+  deleteLastRoute(): void {
+    delete this.data.lastRoute;
+  }
+
+  hasUnconfirmedRoute(): boolean {
+    if (this.getLastRoute() && this.getRoutes().indexOf(this.getLastRoute()) < 0) {
+      return true
+    }
+    return false;
+  }
+
+  getUnconfirmedRoute(): Route {
+    if (!this.hasUnconfirmedRoute()) {
+      return null;
+    }
+    return this.getLastRoute();
   }
 
   // Vehicles
