@@ -1,11 +1,11 @@
-<div class="pie-chart" style="display: block">
-    <canvas baseChart
-            [data]="pieChartData"
-            [labels]= "pieChartLabels"
-            [chartType]="pieChartType"
-            [colors]="pieChartColors"
-            [legend]="pieChartLegend"
-            [options]="pieChartOptions"
-            (chartClick)="chartClicked($event)">
-        </canvas>
-  </div>
+<div class="pie-chart">
+  <canvas baseChart
+    [data]="pieChartData"
+    [labels]= "pieChartLabels"
+    [chartType]="pieChartType"
+    [colors]="pieChartColors"
+    [legend]="pieChartLegend"
+    [options]="pieChartOptions"
+    (chartClick)="chartClicked($event)">
+  </canvas>
+</div>
