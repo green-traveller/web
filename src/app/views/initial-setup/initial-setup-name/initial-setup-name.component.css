@@ -47,16 +47,5 @@
 .initial-setup-name__text--qr {
   text-align: center;
   margin: 1rem;
+  font-size: 0.2em;
 }
-
-.initial-setup-name__desktop {
-  display: none;
-}
-
-@media only screen and (min-width: 800px) {
-  .initial-setup-name__desktop {
-    display: block;
-  }
-}
-
-
