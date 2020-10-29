@@ -12,7 +12,7 @@ import { NgbModal, NgbModalConfig, NgbActiveModal, ModalDismissReasons } from '@
     </div>
     <div class="modal-body text-center initial-setup-name__text--qr">
       <div>
-        Glad to see that you are interested! 
+        Glad to see that you are interested!
       </div>
       <div>
         For the best experience we suggest, that you use this app on a smartphone. Just scan the QR Code.
@@ -53,6 +53,7 @@ export class InitialSetupNameComponent implements OnInit {
     this.username = this.dataservice.getUsername();
   }
 
+  // tslint:disable-next-line: use-lifecycle-interface
   ngAfterViewInit(): void {
     if (this.checkMobileDevice() !== true) {
       this.open();
