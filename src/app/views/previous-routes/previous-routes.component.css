@@ -59,6 +59,16 @@
   align-items: center;
 }
 
+.previous-routes__unconfirmed-route {
+  background-color: rgba(38, 194, 129, 0.1);
+  border-radius: 0.5rem;
+  color: var(--primary);
+  cursor: pointer;
+  margin: 0.5rem;
+  padding: 0.5rem;
+
+}
+
 .previous-routes__vehicle-button {
   max-width: 12.5rem;
   display: flex;

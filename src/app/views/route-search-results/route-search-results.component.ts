@@ -35,8 +35,8 @@ export class RouteSearchResultsComponent implements OnInit {
     this.iconS = this.iconService;
     this.routeS = this.routeService;
 
-    if (this.resultService.getRoute()) {
-      this.route = this.resultService.getRoute();
+    if (this.dataService.getLastRoute()) {
+      this.route = this.dataService.getLastRoute();
       this.setRouteResults();
     } else {
       this.navigate('/');

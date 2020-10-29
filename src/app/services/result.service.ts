@@ -15,6 +15,7 @@ export class ResultService {
 
   setRoute(route: Route): void {
     this.route = route;
+    this.dataService.setLastRoute(route);
   }
 
   getRoute(): Route {
@@ -23,5 +24,6 @@ export class ResultService {
 
   resetRoute(): void {
     this.route = null;
+    this.dataService.resetLastRoute();
   }
 }

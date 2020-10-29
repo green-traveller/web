@@ -85,15 +85,7 @@ export class DataService {
       },
       routes: {
       },
-      lastRoute: {
-        id: "new",
-        from: {} as RouteLocation,
-        to: {} as RouteLocation,
-        time: "",
-        vehicleId: "",
-        passengers: 0,
-        options: []
-      }
+      lastRoute: null
     }));
   }
 
@@ -159,19 +151,22 @@ export class DataService {
   }
 
   setLastRoute(route: Route): void {
-    this.data.lastRoute = route;
+    this.data.lastRoute = JSON.parse(JSON.stringify(route));
+    this.setStorage();
   }
 
   getLastRoute(): Route {
     return this.data.lastRoute;
   }
 
-  deleteLastRoute(): void {
+  resetLastRoute(): void {
     delete this.data.lastRoute;
+    this.setStorage();
   }
 
   hasUnconfirmedRoute(): boolean {
     if (this.getLastRoute() && this.getRoutes().indexOf(this.getLastRoute()) < 0) {
+      console.log(this.getLastRoute());
       return true
     }
     return false;

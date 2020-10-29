@@ -1,6 +1,10 @@
 <app-nav-bar title="Previous Routes" #navBar></app-nav-bar>
 
 <div class="navigation-gap">
+  <div *ngIf="routeS.hasUnconfirmedRoute();" class="previous-routes__unconfirmed-route" routerLink="/results">
+    <fa-icon [icon]="iconS.getIcon('info')"></fa-icon> You have 1 unconfirmed route!
+  </div>
+
   <div *ngFor="let date of getRoutesDates()">
     <div class="previous-routes__date">{{ formatDate(date) }}</div>
     <ngb-accordion>

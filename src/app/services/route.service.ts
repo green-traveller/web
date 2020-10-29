@@ -137,4 +137,8 @@ export class RouteService {
     const validTravelmodes = Object.keys(route.options);
     return activeVehicles.filter(v => validTravelmodes.includes(v.travelmode));
   }
+
+  hasUnconfirmedRoute(): boolean {
+    return this.dataService.hasUnconfirmedRoute()
+  }
 }
