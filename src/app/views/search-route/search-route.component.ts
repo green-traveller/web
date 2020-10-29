@@ -4,6 +4,8 @@ import { MapsSdkService } from '../../services/maps-sdk.service';
 import { Router } from '@angular/router';
 import {} from 'googlemaps';
 import { IconService } from '../../services/icon.service';
+import { Search } from '../../models/search';
+import {ResultService} from '../../services/result.service';
 
 @Component({
   selector: 'app-search-route',
@@ -18,30 +20,36 @@ export class SearchRouteComponent implements OnInit, AfterViewInit {
   @ViewChild('timeInput') timeInput: ElementRef;
   @ViewChild('passengerInput') passengerInput: ElementRef;
 
-  timeMode = 'now';
-  passengerAmount = 1;
-  from: google.maps.places.PlaceResult;
-  to: google.maps.places.PlaceResult;
+  data: Search;
   mapsSdkLoaded: boolean;
-  toInputValid = false;
-  fromInputValid = false;
+  toInputValid: boolean;
+  fromInputValid: boolean;
   searching = false;
-  changeDetector: ChangeDetectorRef;
-  iconS: IconService;
 
   constructor(
     private mapsSdkService: MapsSdkService,
-    changeDetectorRef: ChangeDetectorRef,
-    iconService: IconService,
+    public changeDetectorRef: ChangeDetectorRef,
+    public iconService: IconService,
+    private resultService: ResultService,
     private router: Router,
     private ngZone: NgZone
-  ) {
-    this.changeDetector = changeDetectorRef;
-    this.iconS = iconService;
-  }
+  ) { }
 
   ngOnInit(): void {
+    this.data = this.resultService.getSearch() || this.defaultData();
+    this.toInputValid = typeof this.data.to !== 'undefined';
+    this.fromInputValid = typeof this.data.from !== 'undefined';
     this.mapsSdkLoaded = this.mapsSdkService.isLoaded();
+  }
+
+  defaultData(): Search {
+    return {
+      to: undefined,
+      from: undefined,
+      passengerAmount: 1,
+      timeMode: 'now',
+      time: undefined
+    };
   }
 
   ngAfterViewInit(): void {
@@ -49,6 +57,12 @@ export class SearchRouteComponent implements OnInit, AfterViewInit {
       this.setUpMapsApiComponents();
     } else {
       this.mapsSdkService.onload(this.setUpMapsApiComponents.bind(this));
+    }
+    if (this.data.to) {
+      this.toInput.nativeElement.value = this.data.to.name;
+    }
+    if (this.data.from) {
+      this.fromInput.nativeElement.value = this.data.from.name;
     }
   }
 
@@ -62,7 +76,7 @@ export class SearchRouteComponent implements OnInit, AfterViewInit {
     autocompleteOrigin.setFields(['place_id', 'name']);
     // When the user selects an address from the drop-down
     google.maps.event.addListenerOnce(autocompleteOrigin, 'place_changed', () => {
-      this.from = autocompleteOrigin.getPlace();
+      this.data.from = autocompleteOrigin.getPlace();
       this.fromInputValid = true;
       this.fromInput.nativeElement.setCustomValidity('');
     });
@@ -73,7 +87,7 @@ export class SearchRouteComponent implements OnInit, AfterViewInit {
     );
     autocompleteDestination.setFields(['place_id', 'name']);
     autocompleteDestination.addListener('place_changed', () => {
-      this.to = autocompleteDestination.getPlace();
+      this.data.to = autocompleteDestination.getPlace();
       this.toInputValid = true;
       this.toInput.nativeElement.setCustomValidity('');
     });
@@ -82,49 +96,38 @@ export class SearchRouteComponent implements OnInit, AfterViewInit {
     this.mapsSdkLoaded = true;
   }
 
+  searchNotReady(): boolean {
+    return !this.mapsSdkLoaded || !this.fromInputValid || !this.toInputValid;
+  }
+
   searchRoutes(): void {
-    if (!this.mapsSdkLoaded || !this.fromInputValid || !this.toInputValid) {
+    if (this.searchNotReady()) {
       return;
     }
     this.searching = true;
-    const route = {
-      id: 'new',
-      from: {
-        name: this.from.name,
-        place_id: this.from.place_id
-      },
-      to: {
-        name: this.to.name,
-        place_id: this.to.place_id
-      },
-      time: formatDate(new Date(), 'yyyy-MM-dd HH:mm', 'en_US'),
-      vehicleId: 'unknown',
-      passengers: this.passengerAmount,
-      options: {}
-    };
     const dInput = this.dateInput;
     const tInput = this.timeInput;
-    let customTime = new Date();
     if (dInput && tInput) {
-      route.time = `${this.dateInput.nativeElement.value} ${this.timeInput.nativeElement.value}`;
-      customTime = new Date(route.time);
+      this.data.time = new Date(`${this.dateInput.nativeElement.value} ${this.timeInput.nativeElement.value}`);
+    } else {
+      this.data.time = new Date();
     }
-    this.mapsSdkService.searchRoute(route, this.timeMode, customTime, r => {
+    this.mapsSdkService.searchRoute(this.data, searchResult => {
       this.searching = false;
-      this.changeDetector.detectChanges();
-      if (Object.keys(r.options).length < 1) {
-        window.alert('No results found.');
-      } else {
+      this.changeDetectorRef.detectChanges();
+      if (searchResult.success) {
         this.ngZone.run(() => {
           this.router.navigateByUrl('/results');
         });
+      } else {
+        window.alert(searchResult.message);
       }
     });
   }
 
   handleFromInputKeypress(): void {
     setTimeout(() => {
-      if (this.from && this.from.name === this.fromInput.nativeElement.value) {
+      if (this.data.from && this.data.from.name === this.fromInput.nativeElement.value) {
         this.fromInputValid = true;
         this.fromInput.nativeElement.setCustomValidity('');
       } else {
@@ -136,7 +139,7 @@ export class SearchRouteComponent implements OnInit, AfterViewInit {
 
   handleToInputKeypress(): void {
     setTimeout(() => {
-      if (this.to && this.to.name === this.toInput.nativeElement.value) {
+      if (this.data.to && this.data.to.name === this.toInput.nativeElement.value) {
         this.toInputValid = true;
         this.toInput.nativeElement.setCustomValidity('');
       } else {
@@ -147,11 +150,17 @@ export class SearchRouteComponent implements OnInit, AfterViewInit {
   }
 
   currentTimeString(): string {
-    return formatDate(new Date(), 'HH:mm', 'en-US');
+    return formatDate(this.data.time || new Date(), 'HH:mm', 'en-US');
   }
 
   currentDateString(): string {
-    return formatDate(new Date(), 'yyyy-MM-dd', 'en-US');
+    return formatDate(this.data.time || new Date(), 'yyyy-MM-dd', 'en-US');
+  }
+
+  handleTimeModeChange(): void {
+    if (this.data.timeMode === 'now') {
+      this.data.time = new Date();
+    }
   }
 
   handleTimeChange(): void {
@@ -167,13 +176,13 @@ export class SearchRouteComponent implements OnInit, AfterViewInit {
   }
 
   handlePassengerAmountChange(): void {
-    if (!this.passengerInput.nativeElement.validity.valid || this.passengerAmount < 1) {
-      this.passengerAmount = 1;
+    if (!this.passengerInput.nativeElement.validity.valid || this.data.passengerAmount < 1) {
+      this.data.passengerAmount = 1;
     }
   }
 
   changePassengerAmount(n: number): void {
-    this.passengerAmount += n;
+    this.data.passengerAmount += n;
     this.handlePassengerAmountChange();
   }
 }
