@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1604080624180,
+  "timestamp": 1604091304316,
   "index": "/web/index.html",
   "assetGroups": [
     {
@@ -13,7 +13,7 @@
       "urls": [
         "/web/favicon.ico",
         "/web/index.html",
-        "/web/main.ddf632b171da38a73575.js",
+        "/web/main.df7df6a00ff0a7ca949e.js",
         "/web/manifest.webmanifest",
         "/web/polyfills.5c8033dfb7c3b4aa1601.js",
         "/web/runtime.acf0dec4155e77772545.js",
@@ -74,8 +74,8 @@
     "/web/assets/share_android.png": "2acaf1074a2b8c7cf5d1120b31b85b63613755b1",
     "/web/assets/share_apple.png": "c494f998681ddca954f984dcf48bdb93d6ba6b49",
     "/web/favicon.ico": "aae98fe04400405294821d83de397c5d9458e983",
-    "/web/index.html": "3fd2f7a1bf8908d41dd545a900dc2cae23869271",
-    "/web/main.ddf632b171da38a73575.js": "d392107c1d2f61a66f40ebc30d8c89ca6428e1a6",
+    "/web/index.html": "9f0ab4e6843eeb4b3fa6b0da428e624c6d03a504",
+    "/web/main.df7df6a00ff0a7ca949e.js": "db95f3f0751aad8b015e4893a38b8e30985ec3b4",
     "/web/manifest.webmanifest": "26a70468104bc0e12aa7d303145b4ddf0ff8fc3c",
     "/web/polyfills.5c8033dfb7c3b4aa1601.js": "dbc502f030c7bb83c7caa1feee7aff990831f7d9",
     "/web/runtime.acf0dec4155e77772545.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
