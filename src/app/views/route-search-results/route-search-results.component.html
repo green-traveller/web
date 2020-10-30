@@ -1,19 +1,32 @@
 <app-nav-bar title="Results"></app-nav-bar>
 
-<div class="big-navigation-gap">
+<div class="big-navigation-gap" *ngIf="route">
   <div class="route-search-results__route-information">
-    <div>
-      <div>A</div>
-      <div>B</div>
+    <div class="route-search-results__route-visualisation">
+      <div>
+        <fa-icon [icon]="iconS.getIcon('circle')"></fa-icon>
+      </div>
+      <div>
+        <fa-icon [icon]="iconS.getIcon('circle')"></fa-icon>
+      </div>
+      <div class="route-search-results__route-visualisation-line"></div>
     </div>
-    <div>
-      <div>{{ routeS.getMainFrom(route) }}</div>
-      <div>{{ routeS.getMainTo(route) }}</div>
+    <div class="route-search-results__locations">
+      <div class="route-search-results__nowrap-hidden">
+        <span>{{ routeS.getMainFrom(route) }}</span>
+        <span class="route-search-results__location-secondary">, {{ routeS.getSecondaryFrom(route) }}</span>
+      </div>
+      <div class="route-search-results__nowrap-hidden">
+        <span>{{ routeS.getMainTo(route) }}</span>
+        <span class="route-search-results__location-secondary">, {{ routeS.getSecondaryTo(route) }}</span>
+      </div>
     </div>
-    <div><span (click)="handleBackToSearchClick()">change</span></div>
+    <div class="route-search-results__btn-edit" (click)="handleBackToSearchClick()">
+      <fa-icon [icon]="iconS.getIcon('edit')"></fa-icon>
+    </div>
   </div>
 
-  <ngb-accordion [closeOthers]="true" #acc="ngbAccordion">
+  <ngb-accordion [closeOthers]="false" #acc="ngbAccordion">
 
     <ngb-panel *ngFor="let route of getSortedRoute()" id="{{route.vehicleId}}">
 
@@ -21,21 +34,79 @@
         <div class="route-search-results__item-header"
              (click)="acc.toggle(route.vehicleId)">
           <div>
+            <div class="route-search-results__column-name"> </div>
             <app-vehicle-icon [vehicle]="routeS.getVehicleIconString(route)"></app-vehicle-icon>
-            <div>{{ getCustomVehicleName(route) }}</div>
+            <div class="route-search-results__column-name">{{ getCustomVehicleName(route) }}</div>
           </div>
-          <div>CO<sub>2</sub>: {{ routeS.getCo2Kilograms(route) | number: '1.2-2' }}</div>
-          <div>{{ routeS.getDurationString(route) }}</div>
+          <div *ngIf="routeS.getCo2Kilograms(route); else elseBlock">
+            <div class="route-search-results__co2-numbers"
+                 [class.route-search-results__co2-numbers--darkred]="highlightCo2Value(route)"
+            >
+              {{ routeS.getCo2Kilograms(route) | number: '1.2-2' }} kg
+            </div>
+          </div>
+          <ng-template #elseBlock>
+            <div class="route-search-results__green">
+              <fa-icon [icon]="iconS.getIcon('leaf')"></fa-icon>
+            </div>
+          </ng-template>
+          <div>
+            <div class="route-search-results__meta">
+              <span class="route-search-results__column-name route-search-results__meta-icon route-search-results__meta-icon--duration ">
+                <fa-icon [icon]="iconS.getIcon('clock')"></fa-icon>
+              </span>
+              <div>
+                {{ routeS.getDurationString(route) }}
+              </div>
+            </div>
+            <div class="route-search-results__meta">
+              <span class="route-search-results__column-name route-search-results__meta-icon">
+                <fa-icon [icon]="iconS.getIcon('distance')"></fa-icon>
+              </span>
+              <div class="route-search-results__column-name route-search-results__meta-km-value">
+                {{ routeS.getDistanceString(route) }} <span>km</span>
+              </div>
+            </div>
+          </div>
         </div>
       </ng-template>
 
       <ng-template ngbPanelContent>
         <div class="route-search-results__item-content">
-          <a [href]="routeS.getMapsLink(route)" class="btn btn-secondary" target="_blank">
-            <fa-icon [icon]="iconS.getIcon('map')"></fa-icon>
-            <span> Map</span>
-          </a>
-          <button type="button" class="btn btn-secondary" (click)="saveRoute(route)">Save</button>
+          <div>
+            <div class="route-search-results__column-name">
+              {{ route.passengers }} x <fa-icon [icon]="iconS.getIcon('user')"></fa-icon>
+            </div>
+            <div>
+                {{ routeS.getCo2Kilograms(route) * route.passengers | number: '1.2-2' }} kg
+            </div>
+          </div>
+          <div>
+            <div class="route-search-results__column-name">
+              CO<sub>2</sub>/km
+            </div>
+            {{ routeS.getCo2KgPerKm(route) | number: '1.2-2' }} kg
+          </div>
+          <div>
+            <div class="route-search-results__column-name">
+              CO<sub>2</sub>/h
+            </div>
+            {{ routeS.getCo2KgPerHour(route) | number: '1.2-2' }} kg
+          </div>
+          <div>
+            <a [href]="routeS.getMapsLink(route)" class="btn btn-secondary" target="_blank">
+              <fa-icon [icon]="iconS.getIcon('map')"></fa-icon>
+            </a>
+          </div>
+          <div>
+            <a [href]="routeS.getMapsLink(route)" class="btn btn-secondary" target="_blank" (click)="saveRoute(route)">
+              <fa-icon [icon]="iconS.getIcon('map')"></fa-icon>
+              <span> Map & Save</span>
+            </a>
+          </div>
+          <div>
+            <button type="button" class="btn btn-secondary" (click)="saveRoute(route)">Save</button>
+          </div>
         </div>
       </ng-template>
 
