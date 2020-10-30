@@ -45,3 +45,34 @@ $secondary: #204B57;
 .previous-routes__card > * > .card-body {
   padding: 0.5rem 1rem 0.5rem;
 }
+
+@media only screen and (min-width: 500px) {
+  body,
+  .manage-data__content {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .manage-data__content {
+    right: 50% !important;
+    transform: translate(250px);
+  }
+
+  .initial-setup-tips,
+  .initial-setup-vehicle,
+  .initial-setup-name {
+    left: 50% !important;
+    transform: translate(-250px);
+    max-width: 500px;
+  }
+
+  .initial-setup__meta {
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: var(--secondary);
+  }
+}

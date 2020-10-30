@@ -1,5 +1,7 @@
 .initial-setup-name {
   position: absolute;
+  left: 0;
+  top: 0;
   background-color: var(--secondary);
   min-height: 100%;
   width: 100%;
@@ -9,7 +11,7 @@
 .initial-setup-name__input {
   font-size: 1.1em;
   margin: 1.67em 0;
-  font-weight: bold; 
+  font-weight: bold;
   background-color: var(--secondary);
   text-align: center;
   color: white;
