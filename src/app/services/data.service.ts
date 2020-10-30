@@ -30,7 +30,7 @@ export class DataService {
       setupCompleted: false,
       co2: {
         mode: 'average',
-        value: 148
+        value: 132
       },
       vehicles: {
         walking: {
