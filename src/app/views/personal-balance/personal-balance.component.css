@@ -33,3 +33,7 @@
 .personal-goal-alert{
   text-align: left;  
 }
+
+.slide:focus {
+  outline: none;
+}
