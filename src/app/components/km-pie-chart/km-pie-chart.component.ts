@@ -22,8 +22,14 @@ export class KmPieChartComponent implements OnInit {
   kmWalking = this.dataService.getDistanceLast30DaysByVehicle(this.routeService, 'walking');
 
   kmPieChartData: number[] = [this.kmCar, this.kmMotorcycle, this.kmPublicTransport, this.kmBicycle, this.kmWalking];
+
+  kmSum: number = this.kmPieChartData.reduce((pv, cv) => pv + cv, 0);
+  
+  emptyPieChartData: number[] = [1];
   
   kmPieChartLabels: string[] = ['Car', 'Motorbike', 'Public Transport', 'Bicycle', 'By Foot'];
+
+  emptyPieChartLabels: string[] = ['No routes in the last 30 days'];
 
   kmPieChartColors: object[] = [
     {
@@ -33,6 +39,12 @@ export class KmPieChartComponent implements OnInit {
       pointBorderColor: '#fff',
       pointHoverBackgroundColor: '#9ffcb',
       pointHoverBorderColor: '#52f75d'
+    } 
+  ];
+
+  emptyPieChartColors:  object[] = [
+    {
+      backgroundColor: '#f0f0f0',
     } 
   ];
 
