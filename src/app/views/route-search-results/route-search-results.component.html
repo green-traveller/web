@@ -39,7 +39,7 @@
                 <fa-icon *ngFor="let i of getClouds(route)" [icon]="iconS.getIcon('cloud')"></fa-icon>
               </span>
             </div>
-            <div [ngClass]="(routeS.getCo2Kilograms(route) < 10)?
+            <div [ngClass]="(routeS.getVehicle(route).co2 < 100)?
                 'route-search-results__co2-numbers':
                   'route-search-results__co2-numbers--darkred'">
               {{ routeS.getCo2Kilograms(route) | number: '1.2-2' }} kg
@@ -78,10 +78,18 @@
               {{ route.passengers }} x <fa-icon [icon]="iconS.getIcon('user')"></fa-icon>
             </div>
             <span *ngIf="(routeS.getVehicle(route).travelmode !== 'transit' && route.passengers !== 0); else elseBlock">
-              {{ routeS.getCo2Kilograms(route) * route.passengers | number: '1.2-2' }} kg
+              <div [ngClass]="(routeS.getVehicle(route).co2 < 100)?
+                'route-search-results__co2-numbers':
+                  'route-search-results__co2-numbers--darkred'">
+                {{ routeS.getCo2Kilograms(route) * route.passengers | number: '1.2-2' }} kg
+              </div>
             </span>
             <ng-template #elseBlock>
-              {{ routeS.getCo2Kilograms(route) | number: '1.2-2' }} kg
+              <div [ngClass]="(routeS.getVehicle(route).co2 < 100)?
+                'route-search-results__co2-numbers':
+                  'route-search-results__co2-numbers--darkred'">
+                {{ routeS.getCo2Kilograms(route) | number: '1.2-2' }} kg
+              </div>
             </ng-template>
           </div>
           <div>
@@ -90,7 +98,7 @@
               /
               <fa-icon [icon]="iconS.getIcon('distance')"></fa-icon>
             </div>
-            {{ routeS.getCo2KgPerKm(route) | number: '1.2-2' }} kg
+            {{ routeS.getCo2GramsPerKm(route) | number: '1.2-2' }} kg
           </div>
           <div>
             <div class="route-search-results__column-name">
@@ -98,7 +106,7 @@
               /
               <fa-icon [icon]="iconS.getIcon('clock')"></fa-icon>
             </div>
-            {{ routeS.getCo2KgPerHour(route) | number: '1.2-2' }} kg
+            {{ routeS.getCo2GramsPerHour(route) | number: '1.2-2' }} kg
           </div>
           <div>
             <a [href]="routeS.getMapsLink(route)" class="btn btn-secondary" target="_blank">
