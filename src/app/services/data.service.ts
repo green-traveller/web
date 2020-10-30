@@ -19,7 +19,7 @@ export class DataService {
     this.getStorage();
   }
 
-  private routeService: RouteService
+  private routeService: RouteService;
 
   data: Storage;
 
@@ -159,21 +159,21 @@ export class DataService {
   }
 
   public getDateString(date: Date): string {
-    const dateStr = date.getFullYear()+'-'+formatNumber((date.getMonth()+1), 'en_US', '2.0-0')+'-'+formatNumber(date.getDate(), 'en_US', '2.0-0');
+    const dateStr = date.getFullYear() + '-' + formatNumber((date.getMonth() + 1), 'en_US', '2.0-0') + '-' + formatNumber(date.getDate(), 'en_US', '2.0-0');
     return dateStr;
   }
 
   public getMonthString(date: Date): string {
-    const monthStr = date.getFullYear()+'-'+formatNumber((date.getMonth()+1), 'en_US', '2.0-0');
+    const monthStr = date.getFullYear() + '-' + formatNumber((date.getMonth() + 1), 'en_US', '2.0-0');
     return monthStr;
   }
 
   public getLast30DaysStrings(): string[] {
     const today = Date.now();
-    const days = 24*3600*1000;
+    const days = 24 * 3600 * 1000;
     const last30DaysStrings = [];
-    for (let i=30; i>=1; i--) {
-      const date = new Date(today - (i*days));
+    for (let i = 30; i >= 1; i--) {
+      const date = new Date(today - (i * days));
       const dateStr = this.getDateString(date);
       last30DaysStrings.push(dateStr);
     }
@@ -183,16 +183,16 @@ export class DataService {
   public getLastXMonthsStrings(x: number): string[] {
     const today = new Date();
     const thisYear: number = today.getFullYear();
-    const thisMonth: number = today.getMonth()+1;
+    const thisMonth: number = today.getMonth() + 1;
     const lastXMonthsStrings = [];
-    for (let i=0; i<x; i++) {
+    for (let i = 0; i < x; i++) {
       let month: number = thisMonth - i;
       let year: number = thisYear;
       while (month <= 0) {
         month += 12;
         year--;
         }
-      const monthStr = year.toString()+'-'+formatNumber(month, 'en_US', '2.0-0');
+      const monthStr = year.toString() + '-' + formatNumber(month, 'en_US', '2.0-0');
       lastXMonthsStrings.push(monthStr);
     }
     lastXMonthsStrings.reverse();
@@ -227,25 +227,25 @@ export class DataService {
     const routesLast6Months = this.getRoutesLast6MonthsInclCurrent();
     const last6MonthsStrings = this.getLastXMonthsStrings(6);
     for (const month of last6MonthsStrings) {
-      let co2ThisMonth: number = 0;
+      let co2ThisMonth = 0;
       for (const route of routesLast6Months) {
-        const routeMonth = route.time.substring(0,7);
+        const routeMonth = route.time.substring(0, 7);
         if (month === routeMonth) {
           const co2Route = routeService.getCo2Kilograms(route);
           co2ThisMonth += co2Route;
         }
       }
-      const avgCo2PerDayThisMonth = this.divideByDaysInMonth(co2ThisMonth, month)
-      avgCo2PerDayLast6MonthsArray.push(avgCo2PerDayThisMonth)
+      const avgCo2PerDayThisMonth = this.divideByDaysInMonth(co2ThisMonth, month);
+      avgCo2PerDayLast6MonthsArray.push(avgCo2PerDayThisMonth);
     }
     return avgCo2PerDayLast6MonthsArray;
   }
 
   public divideByDaysInMonth(value: number, monthStr: string): number {
-    const year = monthStr.substring(0,4)
-    const month = monthStr.substring(5,7)
-    let days : number;
-    switch(month) {
+    const year = monthStr.substring(0, 4);
+    const month = monthStr.substring(5, 7);
+    let days: number;
+    switch (month) {
       case '01':
       case '03':
       case '05':
@@ -264,11 +264,11 @@ export class DataService {
       case '02':
         days = 28;
         const y = Number(year);
-        if (y%4===0) {
+        if (y % 4 === 0) {
           days = 29;
-          if (y%100===0) {
+          if (y % 100 === 0) {
             days = 28;
-            if (y%400===0) {
+            if (y % 400 === 0) {
               days = 29;
             }
           }
