@@ -1,13 +1,7 @@
 .initial-setup-vehicle {
-  background-color: var(--secondary);
-  position: absolute;
-  z-index: -2;
   min-height: 100%;
   width: 100%;
   color: white;
-  border-bottom: 1px solid #dfe2e1;
-  left: 0;
-  top: 0;
 }
 
 .initial-setup-vehicle__item-actions {
