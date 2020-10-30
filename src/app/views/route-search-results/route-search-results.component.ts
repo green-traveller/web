@@ -16,8 +16,9 @@ import {Router} from '@angular/router';
 })
 export class RouteSearchResultsComponent implements OnInit {
 
-  public route: Route;
-  public routeResults: Route[] = [];
+  route: Route;
+  routeResults: Route[] = [];
+  co2Threshold: number;
 
   routeS: RouteService;
   iconS: IconService;
@@ -38,6 +39,7 @@ export class RouteSearchResultsComponent implements OnInit {
     if (this.resultService.getRoute()) {
       this.route = this.resultService.getRoute();
       this.setRoutePerOption();
+      this.co2Threshold = this.getThresholdCo2();
     } else {
       this.navigate('/');
     }
@@ -57,26 +59,10 @@ export class RouteSearchResultsComponent implements OnInit {
     this.navigate('previous-routes');
   }
 
-  getClouds(route: Route): number[] {
-    const co2Kilograms = this.routeService.getCo2Kilograms(route);
-    let result: number[] = [];
-    if (co2Kilograms > 10) {
-      result.push(1);
-      result.push(1);
-    } else if (co2Kilograms > 1) {
-      result.push(1);
-    }
-    return result;
-  }
-
   getCustomVehicleName(route: Route): string {
     if (this.dataService.getDefaultVehicles().indexOf(this.dataService.getVehicle(route.vehicleId)) < 0) {
       return this.dataService.getVehicle(route.vehicleId).name;
     }
-  }
-
-  getRoute(): Route[] {
-    return this.routeResults;
   }
 
   getSortedRoute(): Route[] {
@@ -88,6 +74,23 @@ export class RouteSearchResultsComponent implements OnInit {
   handleBackToSearchClick(): void {
     this.navigate('/');
   }
+
+  highlightCo2Value(route: Route): boolean {
+    return this.routeService.getCo2Grams(route) > this.co2Threshold;
+  }
+
+  getThresholdCo2(): number {
+    let max: number = 0;
+    for (const route of this.routeResults) {
+      const co2 = this.routeService.getCo2Grams(route);
+      if (co2 > max) {
+        max = co2;
+      }
+    }
+    return max * 0.5;
+  }
+
+
 
   navigate(s: string): void {
     this.router.navigateByUrl(s);

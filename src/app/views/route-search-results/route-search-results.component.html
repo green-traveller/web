@@ -39,14 +39,9 @@
             <div class="route-search-results__column-name">{{ getCustomVehicleName(route) }}</div>
           </div>
           <div *ngIf="routeS.getCo2Kilograms(route); else elseBlock">
-            <div class="route-search-results__co2-clouds">
-              <span>
-                <fa-icon *ngFor="let i of getClouds(route)" [icon]="iconS.getIcon('cloud')"></fa-icon>
-              </span>
-            </div>
-            <div [ngClass]="(routeS.getVehicle(route).co2 < 100)?
-                'route-search-results__co2-numbers':
-                  'route-search-results__co2-numbers--darkred'">
+            <div class="route-search-results__co2-numbers"
+                 [class.route-search-results__co2-numbers--darkred]="highlightCo2Value(route)"
+            >
               {{ routeS.getCo2Kilograms(route) | number: '1.2-2' }} kg
             </div>
           </div>
@@ -68,7 +63,7 @@
               <span class="route-search-results__column-name route-search-results__meta-icon">
                 <fa-icon [icon]="iconS.getIcon('distance')"></fa-icon>
               </span>
-              <div class="route-search-results__column-name">
+              <div class="route-search-results__column-name route-search-results__meta-km-value">
                 {{ routeS.getDistanceString(route) }} <span>km</span>
               </div>
             </div>
@@ -88,17 +83,13 @@
           </div>
           <div>
             <div class="route-search-results__column-name">
-              <fa-icon [icon]="iconS.getIcon('cloud')"></fa-icon>
-              /
-              <fa-icon [icon]="iconS.getIcon('distance')"></fa-icon>
+              CO<sub>2</sub>/km
             </div>
             {{ routeS.getCo2KgPerKm(route) | number: '1.2-2' }} kg
           </div>
           <div>
             <div class="route-search-results__column-name">
-              <fa-icon [icon]="iconS.getIcon('cloud')"></fa-icon>
-              /
-              <fa-icon [icon]="iconS.getIcon('clock')"></fa-icon>
+              CO<sub>2</sub>/h
             </div>
             {{ routeS.getCo2KgPerHour(route) | number: '1.2-2' }} kg
           </div>

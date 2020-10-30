@@ -52,7 +52,7 @@
 
 .route-search-results__item-header {
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-columns: 25% 50% 25%;
   grid-template-rows: 1fr;
   align-items: center;
   text-align: center;
@@ -61,6 +61,9 @@
 .route-search-results__column-name {
   font-size: .7rem;
   color: darkgrey;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .route-search-results__meta {
@@ -78,11 +81,6 @@
 
 .route-search-results__meta-km-value {
   text-align: left;
-}
-
-.route-search-results__co2-clouds {
-  font-size: .7rem;
-  color: var(--secondary);
 }
 
 .route-search-results__co2-numbers {
