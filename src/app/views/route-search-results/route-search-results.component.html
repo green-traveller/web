@@ -1,6 +1,6 @@
 <app-nav-bar title="Results"></app-nav-bar>
 
-<div class="big-navigation-gap">
+<div class="big-navigation-gap" *ngIf="route">
   <div class="route-search-results__route-information">
     <div class="route-search-results__route-visualisation">
       <div>
@@ -99,12 +99,10 @@
             </a>
           </div>
           <div>
-            <div (click)="saveRoute(route)">
-              <a [href]="routeS.getMapsLink(route)" class="btn btn-secondary" target="_blank" >
-                <fa-icon [icon]="iconS.getIcon('map')"></fa-icon>
-                <span> Map & Save</span>
-              </a>
-            </div>
+            <a [href]="routeS.getMapsLink(route)" class="btn btn-secondary" target="_blank" (click)="saveRoute(route)">
+              <fa-icon [icon]="iconS.getIcon('map')"></fa-icon>
+              <span> Map & Save</span>
+            </a>
           </div>
           <div>
             <button type="button" class="btn btn-secondary" (click)="saveRoute(route)">Save</button>

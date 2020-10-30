@@ -82,7 +82,7 @@ export class DataService {
         }
       },
       routes: {
-      },
+      }
     }));
   }
 
