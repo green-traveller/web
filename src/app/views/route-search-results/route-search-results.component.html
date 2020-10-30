@@ -39,7 +39,9 @@
                 <fa-icon *ngFor="let i of getClouds(route)" [icon]="iconS.getIcon('cloud')"></fa-icon>
               </span>
             </div>
-            <div class="route-search-results__co2-numbers">
+            <div [ngClass]="(routeS.getCo2Kilograms(route) < 10)?
+                'route-search-results__co2-numbers':
+                  'route-search-results__co2-numbers--darkred'">
               {{ routeS.getCo2Kilograms(route) | number: '1.2-2' }} kg
             </div>
           </div>

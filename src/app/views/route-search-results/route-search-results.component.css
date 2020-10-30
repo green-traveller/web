@@ -77,6 +77,10 @@
   color: var(--secondary);
 }
 
+.route-search-results__co2-numbers--darkred {
+  color: darkred;
+}
+
 .route-search-results__location-secondary {
   opacity: .7;
   font-size: .8rem;
