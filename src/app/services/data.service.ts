@@ -172,11 +172,12 @@ export class DataService {
     const today = Date.now();
     const days = 24*3600*1000;
     const last30DaysStrings = [];
-    for (let i=30; i>=1; i--) {
+    for (let i=0; i<30; i++) {
       const date = new Date(today - (i*days));
       const dateStr = this.getDateString(date);
       last30DaysStrings.push(dateStr);    
     }
+    last30DaysStrings.reverse();
     return last30DaysStrings;
   }
 
