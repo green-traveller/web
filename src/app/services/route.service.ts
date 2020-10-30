@@ -96,12 +96,12 @@ export class RouteService {
     return this.getCo2Grams(route) / 1000;
   }
 
-  getCo2PerKm(route): number {
-    return this.getCo2Grams(route) / this.getDistance(route);
+  getCo2KgPerKm(route): number {
+    return this.getCo2Kilograms(route) / this.getDistance(route) / 1000;
   }
 
-  getCo2PerHour(route):number {
-    return this.getCo2Grams(route) / this.getDuration(route);
+  getCo2KgPerHour(route):number {
+    return this.getCo2Kilograms(route) / this.getDuration(route) / 3600;
   }
 
   getMainTo(route: Route): string {
