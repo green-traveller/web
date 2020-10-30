@@ -1,4 +1,6 @@
+import { formatNumber } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { ChartOptions } from 'chart.js';
 import { DataService } from 'src/app/services/data.service';
 import { RouteService } from 'src/app/services/route.service';
 
@@ -20,8 +22,14 @@ export class KmPieChartComponent implements OnInit {
   kmWalking = this.dataService.getDistanceLast30DaysByVehicle(this.routeService, 'walking');
 
   kmPieChartData: number[] = [this.kmCar, this.kmMotorcycle, this.kmPublicTransport, this.kmBicycle, this.kmWalking];
+
+  kmSum: number = this.kmPieChartData.reduce((pv, cv) => pv + cv, 0);
+  
+  emptyPieChartData: number[] = [1];
   
   kmPieChartLabels: string[] = ['Car', 'Motorbike', 'Public Transport', 'Bicycle', 'By Foot'];
+
+  emptyPieChartLabels: string[] = ['No routes in the last 30 days'];
 
   kmPieChartColors: object[] = [
     {
@@ -33,6 +41,37 @@ export class KmPieChartComponent implements OnInit {
       pointHoverBorderColor: '#52f75d'
     } 
   ];
+
+  emptyPieChartColors:  object[] = [
+    {
+      backgroundColor: '#f0f0f0',
+    } 
+  ];
+
+  kmPieChartOptions: ChartOptions = {
+    responsive: true,
+    legend: { position: 'bottom' },
+
+    tooltips: {
+      enabled: true,
+      bodyFontSize: 20,
+      xPadding: 10,
+      yPadding: 10,
+      backgroundColor: 'rgba(32, 75, 87, 0.8)',
+      bodyFontColor: '#fff',
+      callbacks: {
+       label(tooltipItem, data): string[] {
+        const label = data.labels[tooltipItem.index];
+        const value = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index].valueOf().toString();
+
+        return [` ${label}: ${formatNumber(Number(value), 'en_US', '1.2-2')} km`];
+       },
+      },
+     },
+
+    plugins: {},
+    maintainAspectRatio: false
+   };
   
   showDetails = false;
 

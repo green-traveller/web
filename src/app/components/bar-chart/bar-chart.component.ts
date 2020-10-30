@@ -17,7 +17,8 @@ export class BarChartComponent implements OnInit {
     responsive: true,
     legend: {
         display: true,
-        position: 'bottom'
+        position: 'bottom',
+        onClick(event: MouseEvent, legendItem): void {}
       },
     scales: { xAxes:
                 [{ticks:

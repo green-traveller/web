@@ -17,13 +17,13 @@
   <hr>
 
   <ngb-carousel [interval]="false" [showNavigationIndicators]="true">
-    <ng-template ngbSlide>
+    <ng-template ngbSlide class ="slide">
       <app-co2-pie-chart></app-co2-pie-chart>
     </ng-template>
-    <ng-template ngbSlide>
+    <ng-template ngbSlide class ="slide">
       <app-km-pie-chart></app-km-pie-chart>      
     </ng-template>
-    <ng-template ngbSlide>
+    <ng-template ngbSlide class ="slide">
       <app-co2-bar-chart></app-co2-bar-chart>
     </ng-template>
   </ngb-carousel>
