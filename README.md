@@ -9,13 +9,15 @@
 
 ## Screenshots
 
-<img src=".readme/setup.png" alt="Setup View" width="200">
-<img src=".readme/search.png" alt="Search View" width="200">
-<img src=".readme/result.png" alt="Results View" width="200">
-<img src=".readme/routes.png" alt="Routes View" width="200">
-<img src=".readme/balance.png" alt="Balance View" width="200">
-<img src=".readme/preferences.png" alt="Preferences View" width="200">
-<img src=".readme/vehicles.png" alt="Vehicles View" width="200">
+<div style="display: flex; justify-content: space-between">
+    <img src=".readme/setup.png" alt="Setup View" width="200">
+    <img src=".readme/search.png" alt="Search View" width="200">
+    <img src=".readme/result.png" alt="Results View" width="200">
+    <img src=".readme/routes.png" alt="Routes View" width="200">
+    <img src=".readme/balance.png" alt="Balance View" width="200">
+    <img src=".readme/preferences.png" alt="Preferences View" width="200">
+    <img src=".readme/vehicles.png" alt="Vehicles View" width="200">
+</div>
 
 ## Usage
 
