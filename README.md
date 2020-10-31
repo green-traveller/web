@@ -1,6 +1,6 @@
-<div style="width: 192px; margin: 0 auto;">
+<p align="center">
     <img src="src/assets/icons/android-chrome-192x192.png" alt="Green Traveller Logo">
-</div>
+</p>
 
 # 🚴🌳 Green Traveller
 
@@ -14,13 +14,13 @@
 ## Screenshots
 
 <div style="display: flex; justify-content: space-between;">
-    <img src=".readme/setup.png" alt="Setup View" width="300">
-    <img src=".readme/search.png" alt="Search View" width="300">
-    <img src=".readme/result.png" alt="Results View" width="300">
-    <img src=".readme/routes.png" alt="Routes View" width="300">
-    <img src=".readme/balance.png" alt="Balance View" width="300">
-    <img src=".readme/preferences.png" alt="Preferences View" width="300">
-    <img src=".readme/vehicles.png" alt="Vehicles View" width="300">
+    <img src=".readme/setup.png" alt="Setup View" width="250">
+    <img src=".readme/search.png" alt="Search View" width="250">
+    <img src=".readme/result.png" alt="Results View" width="250">
+    <img src=".readme/routes.png" alt="Routes View" width="250">
+    <img src=".readme/balance.png" alt="Balance View" width="250">
+    <img src=".readme/preferences.png" alt="Preferences View" width="250">
+    <img src=".readme/vehicles.png" alt="Vehicles View" width="250">
 </div>
 
 ## Usage
