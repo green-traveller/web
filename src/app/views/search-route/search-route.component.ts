@@ -108,7 +108,7 @@ export class SearchRouteComponent implements OnInit, AfterViewInit {
     const dInput = this.dateInput;
     const tInput = this.timeInput;
     if (dInput && tInput) {
-      this.data.time = new Date(`${this.dateInput.nativeElement.value} ${this.timeInput.nativeElement.value}`);
+      this.data.time = new Date(`${this.dateInput.nativeElement.value}T${this.timeInput.nativeElement.value}`);
     } else {
       this.data.time = new Date();
     }
