@@ -6,6 +6,10 @@
   text-align: center;
 }
 
+.personal-goal{   
+  margin-top: 5rem; 
+}
+
 .personal-goal-heading{   
   margin-bottom: 1.25rem; 
 }
@@ -28,4 +32,8 @@
 
 .personal-goal-alert{
   text-align: left;  
+}
+
+.slide:focus {
+  outline: none;
 }

@@ -1,27 +1,29 @@
-<div class="initial-setup-vehicle">
-  <app-close-icon></app-close-icon>
-    <div class="initial-setup-vehicle__text--border">
-      <h3>Hi {{username}}!</h3>
-      <b>
-        Which vehicles do you use frequently?
-      </b>
-  </div>
-  <div *ngFor="let vehicle of defaultVehicles" class="initial-setup-vehicle__list-item" (click)="handleDefaultVehicleClick(vehicle)">
-    <div>
-      <app-vehicle-icon [vehicle]="vehicle.type" [whiteBorder]="true"></app-vehicle-icon>
+<div class="initial-setup__meta">
+  <div class="initial-setup-vehicle">
+    <app-close-icon></app-close-icon>
+      <div class="initial-setup-vehicle__text--border">
+        <h3>Hi {{username}}!</h3>
+        <b>
+          Which vehicles do you use frequently?
+        </b>
     </div>
-    <div class="initial-setup-vehicle__item-details">
-      <div>{{ vehicle.name }}</div>
-    </div>
-    <div class="initial-setup-vehicle__item-actions">
-      <div class="custom-control custom-switch initial-setup-vehicle__item-switch">
-        <input type="checkbox" class="custom-control-input" id="defaultVehicleSwitch" [(ngModel)]="vehicle.active">
-        <label class="custom-control-label" for="defaultVehicleSwitch"></label>
+    <div *ngFor="let vehicle of defaultVehicles" class="initial-setup-vehicle__list-item" (click)="handleDefaultVehicleClick(vehicle)">
+      <div>
+        <app-vehicle-icon [vehicle]="vehicle.type" [whiteBorder]="true"></app-vehicle-icon>
+      </div>
+      <div class="initial-setup-vehicle__item-details">
+        <div>{{ vehicle.name }}</div>
+      </div>
+      <div class="initial-setup-vehicle__item-actions">
+        <div class="custom-control custom-switch initial-setup-vehicle__item-switch">
+          <input type="checkbox" class="custom-control-input" id="defaultVehicleSwitch" [(ngModel)]="vehicle.active">
+          <label class="custom-control-label" for="defaultVehicleSwitch"></label>
+        </div>
       </div>
     </div>
+    <div class="initial-setup-vehicle__text">
+        Everything you set here is configurable in the preferences!
+    </div>
   </div>
-  <div class="initial-setup-vehicle__text">
-      Everything you set here is configurable in the preferences!
-  </div>
+  <app-initial-setup-nav class="parent__init-nav" [dotsActive]="2" [nextPage]="'/setup/tips'" buttonName="Next!"></app-initial-setup-nav>
 </div>
-<app-initial-setup-nav class="parent__init-nav" [dotsActive]="2" [nextPage]="'/setup/tips'" buttonName="Next!"></app-initial-setup-nav>
