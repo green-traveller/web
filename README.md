@@ -1,31 +1,47 @@
 # 🚴🌳 Green Traveller
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.4.
+![Green Traveller Logo](src/assets/icons/android-chrome-192x192.png)
 
-## Current State
+| [Landing Page](https://green-traveller.github.io/) | [App](https://green-traveller.github.io/web/) |
+| --- | --- |
 
-[Develop Branch](https://green-traveller.github.io/web/).
+## Features
 
-## Development server
+## Screenshots
+
+<img src=".readme/setup.png" alt="Setup View" width="200">
+<img src=".readme/search.png" alt="Search View" width="200">
+<img src=".readme/result.png" alt="Results View" width="200">
+<img src=".readme/routes.png" alt="Routes View" width="200">
+<img src=".readme/balance.png" alt="Balance View" width="200">
+<img src=".readme/preferences.png" alt="Preferences View" width="200">
+<img src=".readme/vehicles.png" alt="Vehicles View" width="200">
+
+## Usage
+
+### Setup
+
+You need `node.js` installed in your environment.
+Run `npm install` to install the dependencies.
+To have all features available place a `.config.json` file in the root folder of the project with the following content:
+
+```
+{
+  "keys": {
+    "dev": "<Your Google Maps API Key>"
+  }
+}
+```
+
+### Development
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
+### Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
+### Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
