@@ -7,9 +7,18 @@
 | [Landing Page](https://green-traveller.github.io/) | [App](https://green-traveller.github.io/web/) |
 | --- | --- |
 
+An easy to use App to track your CO₂ emissions from transportation means for your iPhone and Android Smartphone.
+
 ## Features
 
-* easy and user-friendly onboarding
+* Easy and user-friendly onboarding
+* Search and plan routes
+* Make configurations to search parameters
+* Compare and decide on route options
+* Review your CO₂ emissions
+* Set yourself challenges
+* View your travelled routes
+* Add your own vehicles
 
 ## Screenshots
 
