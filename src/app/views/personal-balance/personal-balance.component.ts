@@ -44,16 +44,16 @@ export class PersonalBalanceComponent implements OnInit {
 
   getPersonalGoalAlertMessage(): string {
     if (this.personalGoalBarStatus < 1) {
-      return `Great! In the last 30 days you have been true to your personal goal 
-      and kept your CO₂ emissions from transport ${formatNumber((1 - this.personalGoalBarStatus)*100, 'en_US', '1.1-1')} % lower than ${formatNumber(this.personalGoal, 'en_US', '1.0-0')} kg!`
+      return `Great! Over the last 30 days you have mastered your personal challenge and even kept your CO₂ emissions 
+      from transport ${formatNumber((1 - this.personalGoalBarStatus)*100, 'en_US', '1.1-1')} % lower!`
     } 
     else if (this.personalGoalBarStatus  === 1) {
-      return `Great! You have reached your goal and emitted exactly ${formatNumber(this.currentCo2Sum, 'en_US', '1.0-0')} 
-      kg of CO₂ from transport over the last 30 days. Can you do even better?`
+      return `Great! Over the last 30 days you have mastered your personal challenge and emitted exactly ${formatNumber(this.currentCo2Sum, 'en_US', '1.0-0')} 
+      kg of CO₂ from transport. Can you do even better?`
     }
     else {
-      return `Oh no, you missed your goal! In the last 30 days you have emitted ${formatNumber((this.personalGoalBarStatus - 1)*100, 'en_US', '1.1-1')} % more CO₂ 
-      from transport than ${formatNumber(this.personalGoal, 'en_US', '1.0-0')} kg!`
+      return `Oh no, you failed your personal challenge! Over the last 30 days you have emitted ${formatNumber((this.personalGoalBarStatus - 1)*100, 'en_US', '1.1-1')} % more CO₂ 
+      from transport than you planned to!`
     }
   }
 
