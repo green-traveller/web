@@ -18,16 +18,12 @@
   margin-bottom: 1.5rem;     
 }
 
-::ng-deep .progress-bar {
-  background-color: var(--primary) !important;
-}
-
 ::ng-deep .progress {
-  background-color: var(--primary) !important;
+  background-color: #26c281d8 !important;
 }
 
 ::ng-deep .bg-danger {
-  background-color: #ff4233 !important;
+  background-color: #ff4233d8 !important;
 }
 
 .personal-goal-alert{

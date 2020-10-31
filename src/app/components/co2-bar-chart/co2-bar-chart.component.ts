@@ -18,7 +18,7 @@ export class Co2BarChartComponent implements OnInit {
   
   co2BarChartColors = [
     { 
-      backgroundColor: '#ff3311',
+      backgroundColor: '#ff3311d8',
     },
   ];
   
