@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="src/assets/icons/android-chrome-192x192.png" alt="Green Traveller Logo">
+    <img src="src/assets/icons/android-chrome-512x512.png" alt="Green Traveller Logo" width="128">
 </p>
 
 # 🚴🌳 Green Traveller
