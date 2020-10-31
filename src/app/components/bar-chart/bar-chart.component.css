@@ -1,4 +1,4 @@
 .bar-chart {
-  height: 20.7rem;
-  display: block
+  min-height: 20.7rem;
+  display: flex;
 }
