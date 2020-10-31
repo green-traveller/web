@@ -8,16 +8,20 @@
       </button>
       <div ngbDropdownMenu>
         <button class="nav-bar__menu-item" (click)="navigate('/')" ngbDropdownItem>
-          <fa-icon [icon]="iconService.getIcon('search')"></fa-icon> Search
+          <fa-icon [icon]="iconService.getIcon('search')"></fa-icon>
+          <div class="nav-bar__menu-item-text">Search</div>
         </button>
         <button class="nav-bar__menu-item" (click)="navigate('/balance')" ngbDropdownItem>
-          <fa-icon [icon]="iconService.getIcon('statistics')"></fa-icon> Balance
+          <fa-icon [icon]="iconService.getIcon('statistics')"></fa-icon>
+          <div class="nav-bar__menu-item-text">Balance</div>
         </button>
         <button class="nav-bar__menu-item" (click)="navigate('/previous-routes')" ngbDropdownItem>
-          <fa-icon [icon]="iconService.getIcon('distance')"></fa-icon> Routes
+          <fa-icon [icon]="iconService.getIcon('distance')"></fa-icon>
+          <div class="nav-bar__menu-item-text">Routes</div>
         </button>
         <button class="nav-bar__menu-item" (click)="navigate('/preferences')" ngbDropdownItem>
-          <fa-icon [icon]="iconService.getIcon('preferences')"></fa-icon> Preferences
+          <fa-icon [icon]="iconService.getIcon('preferences')"></fa-icon>
+          <div class="nav-bar__menu-item-text">Preferences</div>
         </button>
       </div>
     </div>
