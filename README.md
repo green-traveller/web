@@ -1,22 +1,26 @@
-# 🚴🌳 Green Traveller
+<div style="display: flex; justify-content: center">
+    <img src="src/assets/icons/android-chrome-192x192.png" alt="Green Traveller Logo">
+</div>
 
-![Green Traveller Logo](src/assets/icons/android-chrome-192x192.png)
+# 🚴🌳 Green Traveller
 
 | [Landing Page](https://green-traveller.github.io/) | [App](https://green-traveller.github.io/web/) |
 | --- | --- |
 
 ## Features
 
+* easy and user-friendly onboarding
+
 ## Screenshots
 
 <div style="display: flex; justify-content: space-between">
-    <img src=".readme/setup.png" alt="Setup View" width="200">
-    <img src=".readme/search.png" alt="Search View" width="200">
-    <img src=".readme/result.png" alt="Results View" width="200">
-    <img src=".readme/routes.png" alt="Routes View" width="200">
-    <img src=".readme/balance.png" alt="Balance View" width="200">
-    <img src=".readme/preferences.png" alt="Preferences View" width="200">
-    <img src=".readme/vehicles.png" alt="Vehicles View" width="200">
+    <img src=".readme/setup.png" alt="Setup View" width="300">
+    <img src=".readme/search.png" alt="Search View" width="300">
+    <img src=".readme/result.png" alt="Results View" width="300">
+    <img src=".readme/routes.png" alt="Routes View" width="300">
+    <img src=".readme/balance.png" alt="Balance View" width="300">
+    <img src=".readme/preferences.png" alt="Preferences View" width="300">
+    <img src=".readme/vehicles.png" alt="Vehicles View" width="300">
 </div>
 
 ## Usage
