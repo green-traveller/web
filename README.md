@@ -1,4 +1,4 @@
-<div style="display: flex; justify-content: center">
+<div style="width: 192px; margin: 0 auto;">
     <img src="src/assets/icons/android-chrome-192x192.png" alt="Green Traveller Logo">
 </div>
 
@@ -13,7 +13,7 @@
 
 ## Screenshots
 
-<div style="display: flex; justify-content: space-between">
+<div style="display: flex; justify-content: space-between;">
     <img src=".readme/setup.png" alt="Setup View" width="300">
     <img src=".readme/search.png" alt="Search View" width="300">
     <img src=".readme/result.png" alt="Results View" width="300">
