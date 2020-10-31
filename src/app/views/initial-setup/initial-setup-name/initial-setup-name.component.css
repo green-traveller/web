@@ -1,6 +1,4 @@
 .initial-setup-name {
-  position: absolute;
-  background-color: var(--secondary);
   min-height: 100%;
   width: 100%;
   color: white;
@@ -9,7 +7,7 @@
 .initial-setup-name__input {
   font-size: 1.1em;
   margin: 1.67em 0;
-  font-weight: bold; 
+  font-weight: bold;
   background-color: var(--secondary);
   text-align: center;
   color: white;
@@ -17,7 +15,7 @@
 
 .initial-setup-name__headline {
   text-align: center;
-  margin: 1rem 0rem 2rem;
+  margin: 1rem 0 2rem;
 }
 
 .initial-setup-name__image {

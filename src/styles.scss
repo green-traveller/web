@@ -45,3 +45,32 @@ $secondary: #204B57;
 .previous-routes__card > * > .card-body {
   padding: 0.5rem 1rem 0.5rem;
 }
+
+.initial-setup__meta {
+  z-index: -10;
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-height: 100%;
+  width: 100%;
+  background: var(--secondary);
+}
+
+@media only screen and (min-width: 600px) {
+  .app,
+  .initial-setup-name,
+  .manage-data__content,
+  .initial-setup-tips,
+  .initial-setup-vehicle {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .parent__init-nav,
+  .search-route__action,
+  .manage-data__content {
+    left: 50% !important;
+    transform: translate(-300px);
+    max-width: 600px;
+  }
+}

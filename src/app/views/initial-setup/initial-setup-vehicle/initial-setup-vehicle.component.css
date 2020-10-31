@@ -1,11 +1,7 @@
 .initial-setup-vehicle {
-  background-color: var(--secondary);
-  position: absolute;
-  z-index: -2;
   min-height: 100%;
   width: 100%;
   color: white;
-  border-bottom: 1px solid #dfe2e1;
 }
 
 .initial-setup-vehicle__item-actions {
@@ -17,7 +13,7 @@
   margin-left: 1rem;
   margin-top: 0.25rem;
 }
- 
+
 .initial-setup-vehicle__item-switch {
   z-index: -1;
 }
