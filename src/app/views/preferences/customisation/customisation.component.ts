@@ -11,9 +11,8 @@ export class CustomisationComponent implements OnInit {
 
   @ViewChild('customInput') customInput: ElementRef;
 
-  // https://www.worldometers.info/co2-emissions/germany-co2-emissions/
   defaultValues = {
-    average: 148, // (per capita * 0.189) / 12
+    average: 132,
     lower: 100
   };
 
