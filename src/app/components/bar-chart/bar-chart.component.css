@@ -1,4 +1,6 @@
 .bar-chart {
   min-height: 20.7rem;
+  max-width: 25.875rem;
+  margin: auto;
   display: flex;
 }
