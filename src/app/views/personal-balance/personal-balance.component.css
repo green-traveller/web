@@ -18,12 +18,8 @@
   margin-bottom: 1.5rem;     
 }
 
-::ng-deep .progress-bar {
-  background-color: var(--primary) !important;
-}
-
 ::ng-deep .progress {
-  background-color: var(--primary) !important;
+  background-color: #26c281 !important;
 }
 
 ::ng-deep .bg-danger {

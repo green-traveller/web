@@ -1,4 +1,5 @@
 .pie-chart {
-    height: 21rem;
-    display: block
+  height: 21rem;
+  margin: auto;
+  display: flex;
 }
