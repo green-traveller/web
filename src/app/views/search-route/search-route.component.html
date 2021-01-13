@@ -63,3 +63,21 @@
     <div class="lds-dual-ring"></div>
   </div>
 </div>
+
+<!-- Modal dialogue for changing vehicles -->
+<ng-template #stagedRouteModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" ngbAutoFocus id="modal-title">Staged Route</h4>
+  </div>
+  <div class="modal-body">
+    {{ dataService.getStagedRoute().vehicleId }}
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-outline-danger" (click)="handleModalButton(false)">
+      <fa-icon [icon]="iconService.getIcon('delete')"></fa-icon>
+    </button>
+    <button class="btn btn-outline-primary" (click)="handleModalButton(true)">
+      <fa-icon [icon]="iconService.getIcon('save')"></fa-icon>
+    </button>
+  </div>
+</ng-template>

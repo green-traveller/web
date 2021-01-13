@@ -6,6 +6,8 @@ import {} from 'googlemaps';
 import { IconService } from '../../services/icon.service';
 import { Search } from '../../models/search';
 import {ResultService} from '../../services/result.service';
+import { DataService } from "../../services/data.service";
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-search-route',
@@ -19,6 +21,7 @@ export class SearchRouteComponent implements OnInit, AfterViewInit {
   @ViewChild('dateInput') dateInput: ElementRef;
   @ViewChild('timeInput') timeInput: ElementRef;
   @ViewChild('passengerInput') passengerInput: ElementRef;
+  @ViewChild('stagedRouteModal') stagedRouteModal: any;
 
   data: Search;
   mapsSdkLoaded: boolean;
@@ -31,8 +34,10 @@ export class SearchRouteComponent implements OnInit, AfterViewInit {
     public changeDetectorRef: ChangeDetectorRef,
     public iconService: IconService,
     private resultService: ResultService,
+    private dataService: DataService,
     private router: Router,
-    private ngZone: NgZone
+    private ngZone: NgZone,
+    private modalService: NgbModal
   ) { }
 
   ngOnInit(): void {
@@ -64,6 +69,22 @@ export class SearchRouteComponent implements OnInit, AfterViewInit {
     if (this.data.from) {
       this.fromInput.nativeElement.value = this.data.from.name;
     }
+    if (this.dataService.getStagedRoute()) {
+      this.openStagedRouteModalWindow();
+    }
+  }
+
+  openStagedRouteModalWindow(): void {
+    this.modalService.open(this.stagedRouteModal,  {ariaLabelledBy: 'modal-title', centered: true, backdrop: 'static', keyboard: false});
+  }
+
+  handleModalButton(saveRoute: boolean): void {
+    if (saveRoute) {
+      this.dataService.saveStagedRoute();
+    } else {
+      this.dataService.setStagedRoute(undefined);
+    }
+    this.modalService.dismissAll();
   }
 
   setUpMapsApiComponents(): void {
