@@ -8,7 +8,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class SaveAnimationComponent implements AfterViewInit {
 
-  @ViewChild('content') content: ElementRef;
+  @ViewChild('animationModal') animationModal: ElementRef;
   @Input() afterAnimation: () => void;
 
   emojis = [
@@ -26,7 +26,7 @@ export class SaveAnimationComponent implements AfterViewInit {
   }
 
   startAnimation(): void {
-    this.modalService.open(this.content, { centered: true, backdrop: 'static' });
+    this.modalService.open(this.animationModal, { centered: true, backdrop: 'static' });
     this.emojiElement = document.querySelector('.emoji');
     this.nextEmoji();
   }
