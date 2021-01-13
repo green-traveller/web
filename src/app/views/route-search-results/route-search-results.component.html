@@ -115,4 +115,4 @@
   </ngb-accordion>
 </div>
 
-<app-save-animation></app-save-animation>
+<app-save-animation *ngIf="showSaveAnimation" [afterAnimation]="afterAnimation.bind(this)"></app-save-animation>

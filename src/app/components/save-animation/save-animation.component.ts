@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -6,32 +6,40 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
   templateUrl: './save-animation.component.html',
   styleUrls: ['./save-animation.component.css']
 })
-export class SaveAnimationComponent implements OnInit {
+export class SaveAnimationComponent implements AfterViewInit {
 
-  emojis = [{text: '🌳', timeout: 250}, {text: '😉', timeout: 250}, {text: '🙌', timeout: 300}]
+  @ViewChild('content') content: ElementRef;
+  @Input() afterAnimation: () => void;
 
-  emojiIndex = 0
-
-  emojiElement: any;
+  emojis = [
+    {text: '🌳', timeout: 250},
+    {text: '😉', timeout: 250},
+    {text: '🙌', timeout: 300}
+  ];
+  emojiIndex = 0;
+  emojiElement: HTMLDivElement;
 
   constructor(private modalService: NgbModal) { }
 
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
+    this.startAnimation();
   }
 
-  openVerticallyCentered(content) {
-    this.modalService.open(content, { centered: true });
+  startAnimation(): void {
+    this.modalService.open(this.content, { centered: true, backdrop: 'static' });
     this.emojiElement = document.querySelector('.emoji');
-    this.startAnimation()
+    this.nextEmoji();
   }
 
-  startAnimation(): void  {
-    const emoji = this.emojis[this.emojiIndex]
-    if (typeof emoji === 'undefined') { 
-      return
+  nextEmoji(): void  {
+    const emoji = this.emojis[this.emojiIndex];
+    if (typeof emoji === 'undefined') {
+      this.modalService.dismissAll();
+      this.afterAnimation();
+      return;
     }
     this.emojiElement.innerText = emoji.text;
     this.emojiIndex += 1;
-    setTimeout(this.startAnimation.bind(this), emoji.timeout)
+    setTimeout(this.nextEmoji.bind(this), emoji.timeout);
   }
 }

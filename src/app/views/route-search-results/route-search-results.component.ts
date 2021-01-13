@@ -1,13 +1,11 @@
-import {Component, OnInit} from '@angular/core';
-import {Route} from 'src/app/models/route';
-import {DataService} from 'src/app/services/data.service';
-import {Vehicle} from 'src/app/models/vehicle';
-import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {IconService} from 'src/app/services/icon.service';
-import {RouteService} from 'src/app/services/route.service';
-import {ResultService} from 'src/app/services/result.service';
-import {Location} from '@angular/common';
-import {Router} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Route } from 'src/app/models/route';
+import { DataService } from 'src/app/services/data.service';
+import { IconService } from 'src/app/services/icon.service';
+import { RouteService } from 'src/app/services/route.service';
+import { ResultService } from 'src/app/services/result.service';
+import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-route-search-results',
@@ -19,6 +17,7 @@ export class RouteSearchResultsComponent implements OnInit {
   route: Route;
   routeResults: Route[] = [];
   co2Threshold: number;
+  showSaveAnimation = false;
 
   routeS: RouteService;
   iconS: IconService;
@@ -56,6 +55,10 @@ export class RouteSearchResultsComponent implements OnInit {
   saveRoute(route: Route): void {
     this.dataService.setRoute(JSON.parse(JSON.stringify(route)));
     this.resultService.resetRoute();
+    this.showSaveAnimation = true;
+  }
+
+  afterAnimation(): void {
     this.navigate('previous-routes');
   }
 
@@ -80,7 +83,7 @@ export class RouteSearchResultsComponent implements OnInit {
   }
 
   getThresholdCo2(): number {
-    let max: number = 0;
+    let max = 0;
     for (const route of this.routeResults) {
       const co2 = this.routeService.getCo2Grams(route);
       if (co2 > max) {
@@ -89,8 +92,6 @@ export class RouteSearchResultsComponent implements OnInit {
     }
     return max * 0.5;
   }
-
-
 
   navigate(s: string): void {
     this.router.navigateByUrl(s);
