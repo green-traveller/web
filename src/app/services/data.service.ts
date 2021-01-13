@@ -142,6 +142,23 @@ export class DataService {
     }
     return routesLast30Days;
   }
+  
+  public getRoutesLastXDays(days: number): Route[] {
+    const routesLastXDays = [];
+    const routes = this.getRoutes();
+    const today = Date.now();
+    const dayInMiliseconds = 24 * 3600 * 1000;
+    const startDate  = new Date(today - (days*dayInMiliseconds));
+    const startDateStr = this.getDateString(startDate);     
+    for (const route of routes) {
+      const routeDate = route.time.split(' ')[0];
+      if (startDateStr <= routeDate) {
+        routesLastXDays.push(route);
+      }
+    }    
+    return routesLastXDays;
+  }
+
   public getRoutesLast6MonthsInclCurrent(): Route[] {
     const routesLast6Months = [];
     const routes = this.getRoutes();
@@ -170,15 +187,28 @@ export class DataService {
 
   public getLast30DaysStrings(): string[] {
     const today = Date.now();
-    const days = 24 * 3600 * 1000;
+    const dayInMiliseconds = 24 * 3600 * 1000;
     const last30DaysStrings = [];
     for (let i=0; i<30; i++) {
-      const date = new Date(today - (i*days));
+      const date = new Date(today - (i*dayInMiliseconds));
       const dateStr = this.getDateString(date);
       last30DaysStrings.push(dateStr);
     }
     last30DaysStrings.reverse();
     return last30DaysStrings;
+  }
+
+  public getLastXDaysStrings(days: number): string[] {
+    const today = Date.now();
+    const dayInMiliseconds = 24 * 3600 * 1000;
+    const lastXDaysStrings = [];
+    for (let i=0; i<days; i++) {
+      const date = new Date(today - (i*dayInMiliseconds));
+      const dateStr = this.getDateString(date);
+      lastXDaysStrings.push(dateStr);
+    }
+    lastXDaysStrings.reverse();
+    return lastXDaysStrings;
   }
 
   public getLastXMonthsStrings(x: number): string[] {
