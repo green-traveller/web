@@ -1,17 +1,16 @@
 import { Injectable } from '@angular/core';
-import {Route} from '../models/route';
-import {formatNumber} from '@angular/common';
-import {RouteService} from './route.service';
+import { Route } from '../models/route';
+import { formatNumber } from '@angular/common';
+import { RouteService } from './route.service';
 import { DataService } from './data.service';
-import {StorageService} from 'ngx-webstorage-service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CalcService {
 
-  constructor(private dataService: DataService) { }
-string;
+  constructor(private dataService: DataService, private routeService: RouteService) { }
+
   public getRoutesLastXDays(days: number): Route[] {
     const routesLastXDays = [];
     const routes = this.dataService.getRoutes();
@@ -29,30 +28,31 @@ string;
   }
 
   public getRoutesLastXMonthsInclCurrent(months: number): Route[] {
-    const routesLast6Months = [];
     const routes = this.dataService.getRoutes();
     const today = new Date();
     const startDate = new Date();
     startDate.setMonth(today.getMonth() - months + 1);
     startDate.setDate(1);
     const endDate = new Date(today.getFullYear(), today.getMonth() + 1, 0);
+    const startDateString = this.getDateString(startDate);
+    const endDateString = this.getDateString(endDate);
     return routes.filter(route => {
       const routeDate = route.time.split(' ')[0];
-      return (this.getDateString(startDate) <= routeDate && routeDate <= this.getDateString(endDate));
+      return (startDateString <= routeDate && routeDate <= endDateString);
     });
   }
 
-  public getDateString(date: Date); : {
+  public getDateString(date: Date): string {
     const dateStr = date.getFullYear() + '-' + formatNumber((date.getMonth() + 1), 'en_US', '2.0-0') + '-' + formatNumber(date.getDate(), 'en_US', '2.0-0');
     return dateStr;
   }
 
-  public getMonthString(date: Date); : string; {
+  public getMonthString(date: Date): string {
     const monthStr = date.getFullYear() + '-' + formatNumber((date.getMonth() + 1), 'en_US', '2.0-0');
     return monthStr;
   }
 
-  public getLast30DaysStrings(); : string[]; {
+  public getLast30DaysStrings(): string[] {
     const today = Date.now();
     const dayInMiliseconds = 24 * 3600 * 1000;
     const last30DaysStrings = [];
@@ -65,7 +65,7 @@ string;
     return last30DaysStrings;
   }
 
-  public getLastXDaysStrings(days: number); : string[]; {
+  public getLastXDaysStrings(days: number): string[] {
     const today = Date.now();
     const dayInMiliseconds = 24 * 3600 * 1000;
     const lastXDaysStrings = [];
@@ -78,7 +78,7 @@ string;
     return lastXDaysStrings;
   }
 
-  public getLastXMonthsStrings(x: number); : string[]; {
+  public getLastXMonthsStrings(x: number): string[] {
     const today = new Date();
     const thisYear: number = today.getFullYear();
     const thisMonth: number = today.getMonth() + 1;
@@ -97,32 +97,32 @@ string;
     return lastXMonthsStrings;
   }
 
-  public getTotalCo2Last30Days(routeService: RouteService); : number; {
+  public getTotalCo2Last30Days(): number {
     let totalCo2Last30Days = 0;
-    const routesLast30Days = this.getRoutesLast30Days();
+    const routesLast30Days = this.getRoutesLastXDays(30);
     for (const route of routesLast30Days) {
-      const co2Route = routeService.getCo2Kilograms(route);
+      const co2Route = this.routeService.getCo2Kilograms(route);
       totalCo2Last30Days += co2Route;
     }
     return totalCo2Last30Days;
   }
 
-  public getCo2Last30DaysByVehicle(routeService: RouteService, vehicleType: string); : number; {
+  public getCo2Last30DaysByVehicle(vehicleType: string): number {
     let co2Last30DaysByVehicle = 0;
-    const routesLast30Days = this.getRoutesLast30Days();
+    const routesLast30Days = this.getRoutesLastXDays(30);
     for (const route of routesLast30Days) {
-      const routeVehicleType = routeService.getVehicle(route).type;
+      const routeVehicleType = this.routeService.getVehicle(route).type;
       if (routeVehicleType === vehicleType) {
-        const co2Route = routeService.getCo2Kilograms(route);
+        const co2Route = this.routeService.getCo2Kilograms(route);
         co2Last30DaysByVehicle += co2Route;
       }
     }
     return co2Last30DaysByVehicle;
   }
 
-  public getAvgCo2PerDayLast6MonthsArr(routeService: RouteService); : number[]; {
+  public getAvgCo2PerDayLast6MonthsArr(routeService: RouteService): number[] {
     const avgCo2PerDayLast6MonthsArray = [];
-    const routesLast6Months = this.getRoutesLast6MonthsInclCurrent();
+    const routesLast6Months = this.getRoutesLastXMonthsInclCurrent(6);
     const last6MonthsStrings = this.getLastXMonthsStrings(6);
     for (const month of last6MonthsStrings) {
       let co2ThisMonth = 0;
@@ -139,7 +139,7 @@ string;
     return avgCo2PerDayLast6MonthsArray;
   }
 
-  public divideByDaysInMonth(value: number, monthStr: string); : number; {
+  public divideByDaysInMonth(value: number, monthStr: string): number {
     const year = monthStr.substring(0, 4);
     const month = monthStr.substring(5, 7);
     let days: number;
@@ -180,9 +180,9 @@ string;
     return result;
   }
 
-  public getDistanceLast30DaysByVehicle(routeService: RouteService, vehicleType: string); : number; {
+  public getDistanceLast30DaysByVehicle(routeService: RouteService, vehicleType: string): number {
     let distLast30DaysByVehicle = 0;
-    const routesLast30Days = this.getRoutesLast30Days();
+    const routesLast30Days = this.getRoutesLastXDays(30);
     for (const route of routesLast30Days) {
       const routeVehicleType = routeService.getVehicle(route).type;
       if (routeVehicleType === vehicleType) {
