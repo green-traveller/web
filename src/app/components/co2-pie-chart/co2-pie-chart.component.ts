@@ -1,8 +1,7 @@
 import { formatNumber } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Alert } from 'src/app/models/alert';
-import { DataService } from 'src/app/services/data.service';
-import { RouteService } from 'src/app/services/route.service';
+import { CalcService } from 'src/app/services/calc.service';
 
 @Component({
   selector: 'app-co2-pie-chart',
@@ -11,30 +10,33 @@ import { RouteService } from 'src/app/services/route.service';
 })
 export class Co2PieChartComponent implements OnInit {
 
+  constructor(private calcService: CalcService) { }
+
   // average co2-emissions [kg] per day caused by transport (excluding air travel) by a German
-  avgTranspCO2German: number = 4.4;   
+  avgTranspCO2German = 4.4;
 
   // average co2 emissions per day in kg over the last 30 days from different means of transport
-  currentCo2Car = this.dataService.getCo2Last30DaysByVehicle(this.routeService, 'car')/30;  
+  currentCo2Car = this.calcService.getCo2Last30DaysByVehicle('car') / 30;
 
-  currentCo2Motorcycle = this.dataService.getCo2Last30DaysByVehicle(this.routeService, 'motorcycle')/30;  
+  currentCo2Motorcycle = this.calcService.getCo2Last30DaysByVehicle('motorcycle') / 30;
 
-  currentCo2PublicTransport = this.dataService.getCo2Last30DaysByVehicle(this.routeService, 'train')/30;
-  
-  currentCo2Data: number[] = [this.currentCo2Car,this.currentCo2Motorcycle, this.currentCo2PublicTransport]; // average co2 emissions per day in kg over the last 30 days from different means of transport
+  currentCo2PublicTransport = this.calcService.getCo2Last30DaysByVehicle('train') / 30;
 
-  currentCo2SumPerDay = this.dataService.getTotalCo2Last30Days(this.routeService)/30; 
+  // average co2 emissions per day in kg over the last 30 days from different means of transport
+  currentCo2Data: number[] = [this.currentCo2Car, this.currentCo2Motorcycle, this.currentCo2PublicTransport];
 
-  currentCo2RestBudget: number = this.avgTranspCO2German - this.currentCo2SumPerDay;  
-  
+  currentCo2SumPerDay = this.calcService.getTotalCo2Last30Days() / 30;
+
+  currentCo2RestBudget: number = this.avgTranspCO2German - this.currentCo2SumPerDay;
+
   // Properties: General Co2-PieChart (All co2 summed up)
-  co2PieChartData: number[]  = this.getCo2PieChartData(); 
+  co2PieChartData: number[]  = this.getCo2PieChartData();
 
   co2PieChartLabels: string[] = this.getCo2PieChartLabels();
 
   co2PieChartColors: object[] =  [
     {
-        backgroundColor: ["#ff6961", '#f0f0f0'],
+        backgroundColor: ['#ff6961', '#f0f0f0'],
         borderColor: '#fff',
         pointBackgroundColor: '#fff',
         pointBorderColor: '#fff'
@@ -48,7 +50,7 @@ export class Co2PieChartComponent implements OnInit {
 
   co2PieChartDetailsColors: object[] =  [
     {
-      backgroundColor: ["#ff6961", "#ffb447", "#efed86", '#f0f0f0'],
+      backgroundColor: ['#ff6961', '#ffb447', '#efed86', '#f0f0f0'],
       borderColor: '#fff',
       pointBackgroundColor: '#fff',
       pointBorderColor: '#fff'
@@ -60,17 +62,15 @@ export class Co2PieChartComponent implements OnInit {
     type: this.getCo2AlertType(),
     message: this.getCo2AlertMessage()
   };
-  
+
   // Flag for Co2-Alert
   showCo2Alert = true;
 
   // Flag for Details-View
   showDetails = false;
-  
-  constructor(private dataService: DataService, private routeService: RouteService) { }
 
   ngOnInit(): void {
-  }  
+  }
 
   getBudgetPercent(): string {
     const value = this.currentCo2SumPerDay * 100 / this.avgTranspCO2German;
@@ -86,7 +86,7 @@ export class Co2PieChartComponent implements OnInit {
     else {
       return [this.currentCo2SumPerDay];
     }
-  }  
+  }
 
   getCo2PieChartLabels(): string[] {
     if (this.currentCo2RestBudget > 0) {
