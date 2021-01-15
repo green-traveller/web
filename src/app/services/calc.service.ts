@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
-import { Route } from '../models/route';
-import { formatNumber } from '@angular/common';
-import { RouteService } from './route.service';
-import { DataService } from './data.service';
+import {Injectable} from '@angular/core';
+import {Route} from '../models/route';
+import {formatNumber} from '@angular/common';
+import {RouteService} from './route.service';
+import {DataService} from './data.service';
 
 @Injectable({
   providedIn: 'root'
@@ -43,26 +43,7 @@ export class CalcService {
   }
 
   public getDateString(date: Date): string {
-    const dateStr = date.getFullYear() + '-' + formatNumber((date.getMonth() + 1), 'en_US', '2.0-0') + '-' + formatNumber(date.getDate(), 'en_US', '2.0-0');
-    return dateStr;
-  }
-
-  public getMonthString(date: Date): string {
-    const monthStr = date.getFullYear() + '-' + formatNumber((date.getMonth() + 1), 'en_US', '2.0-0');
-    return monthStr;
-  }
-
-  public getLast30DaysStrings(): string[] {
-    const today = Date.now();
-    const dayInMiliseconds = 24 * 3600 * 1000;
-    const last30DaysStrings = [];
-    for (let i = 0; i < 30; i++) {
-      const date = new Date(today - (i * dayInMiliseconds));
-      const dateStr = this.getDateString(date);
-      last30DaysStrings.push(dateStr);
-    }
-    last30DaysStrings.reverse();
-    return last30DaysStrings;
+    return date.getFullYear() + '-' + formatNumber((date.getMonth() + 1), 'en_US', '2.0-0') + '-' + formatNumber(date.getDate(), 'en_US', '2.0-0');
   }
 
   public getLastXDaysStrings(days: number): string[] {
@@ -176,8 +157,7 @@ export class CalcService {
         days = 30;
         break;
     }
-    const result = value / days;
-    return result;
+    return value / days;
   }
 
   public getDistanceLast30DaysByVehicle(routeService: RouteService, vehicleType: string): number {
