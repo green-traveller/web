@@ -57,7 +57,7 @@
   grid-template-rows: 1fr;
   align-items: center;
   text-align: center;
-  padding: .75rem 1.25rem;;
+  padding: .75rem 1.25rem;
 }
 
 .route-search-results__column-name {
@@ -112,7 +112,7 @@
 }
 
 ::ng-deep .card-header {
-  padding: 0rem;
+  padding: 0;
 }
 
 
