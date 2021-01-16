@@ -64,13 +64,33 @@
   </div>
 </div>
 
-<!-- Modal dialogue for changing vehicles -->
+<!-- Modal dialogue for unconfirmed route -->
 <ng-template #stagedRouteModal let-modal>
   <div class="modal-header">
     <h4 class="modal-title" ngbAutoFocus id="modal-title">Staged Route</h4>
   </div>
   <div class="modal-body">
-    {{ dataService.getStagedRoute().vehicleId }}
+    <div class="search-route__route-information">
+      <div class="search-route__route-visualisation">
+        <div>
+          <fa-icon [icon]="iconService.getIcon('circle')"></fa-icon>
+        </div>
+        <div>
+          <fa-icon [icon]="iconService.getIcon('circle')"></fa-icon>
+        </div>
+        <div class="search-route__route-visualisation-line"></div>
+      </div>
+      <div class="search-route__locations">
+        <div class="search-route__nowrap-hidden">
+          <span>{{ routeService.getMainFrom(dataService.getStagedRoute()) }}</span>
+          <span class="search-route__location-secondary">, {{ routeService.getSecondaryFrom(dataService.getStagedRoute()) }}</span>
+        </div>
+        <div class="search-route__nowrap-hidden">
+          <span>{{ routeService.getMainTo(dataService.getStagedRoute()) }}</span>
+          <span class="search-route__location-secondary">, {{ routeService.getSecondaryTo(dataService.getStagedRoute()) }}</span>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="modal-footer">
     <button class="btn btn-outline-danger" (click)="handleModalButton(false)">

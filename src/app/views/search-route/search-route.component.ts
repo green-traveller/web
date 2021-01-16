@@ -8,6 +8,7 @@ import { Search } from '../../models/search';
 import {ResultService} from '../../services/result.service';
 import { DataService } from "../../services/data.service";
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { RouteService } from "../../services/route.service";
 
 @Component({
   selector: 'app-search-route',
@@ -35,6 +36,7 @@ export class SearchRouteComponent implements OnInit, AfterViewInit {
     public iconService: IconService,
     private resultService: ResultService,
     private dataService: DataService,
+    private routeService: RouteService,
     private router: Router,
     private ngZone: NgZone,
     private modalService: NgbModal
