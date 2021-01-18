@@ -7,6 +7,7 @@ import { Co2 } from '../models/co2';
 import { Vehicle } from '../models/vehicle';
 import { Route } from '../models/route';
 import { RouteService } from 'src/app/services/route.service';
+import { FavoriteRoute } from '../models/route-favorite';
 
 const STORAGE_KEY = 'GREEN_TRAVELLER_DATA';
 
@@ -84,8 +85,8 @@ export class DataService {
           travelmode: 'driving'
         }
       },
-      routes: {
-      }
+      routes: { },
+      favoriteRoutes: { }
     }));
   }
 
@@ -411,5 +412,38 @@ export class DataService {
 
   public getSetupCompleted(): boolean {
     return this.data.setupCompleted;
+  }
+
+  public setFavoriteRoute(route: Route): void {
+    // this id will be unique and used as reference
+    // ToThink: What about having favorites A to B and B to A which are the same route but are not?
+    const newId = route.from.place_id + route.to.place_id;
+
+    const favRoute : FavoriteRoute = {
+      id: newId,
+      from: route.from,
+      to: route.to
+    } 
+
+
+    this.data.favoriteRoutes[newId] = favRoute;
+    this.setStorage();
+  }
+
+  public deleteFavoriteRoute(route: Route): void {
+    const deleteId = route.from.place_id + route.to.place_id;
+
+    delete this.data.favoriteRoutes[deleteId];
+    this.setStorage();
+  }
+
+  public isFavoriteRoute(route: Route): boolean {
+    const checkId = route.from.place_id + route.to.place_id;
+
+    if (this.data.favoriteRoutes[checkId]) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }
