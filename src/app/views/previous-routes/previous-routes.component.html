@@ -33,6 +33,11 @@
               </div>
               <div class="previous-routes__header-location-line" [style]="'height: ' + getVerticalSpaceBetween(firstCircle, secondCircle) + 'px'"></div>
             </div>
+            <div class="previous-routes__header-meta">
+              <button class="btn btn-secondary" [ngClass]="routeS.isFavoriteRoute(route) ? 'btn btn-warning' : 'btn btn-secondary'" type="button" (click)="routeS.toggleFavoriteState(route)">
+                <fa-icon [icon]="iconS.getIcon('star')"></fa-icon>
+              </button>
+            </div>
           </div>
         </ng-template>
         <!-- Content for each card -->

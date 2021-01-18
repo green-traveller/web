@@ -137,4 +137,16 @@ export class RouteService {
     const validTravelmodes = Object.keys(route.options);
     return activeVehicles.filter(v => validTravelmodes.includes(v.travelmode));
   }
+
+  isFavoriteRoute(route: Route): Boolean {
+    return this.dataService.isFavoriteRoute(route);
+  }
+
+  toggleFavoriteState(route: Route): void {
+    if (this.dataService.isFavoriteRoute(route)) {
+      this.dataService.deleteFavoriteRoute(route);
+    } else {
+      this.dataService.setFavoriteRoute(route);
+    }
+  }
 }
