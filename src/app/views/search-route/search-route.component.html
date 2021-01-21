@@ -67,10 +67,19 @@
 <!-- Modal dialogue for unconfirmed route -->
 <ng-template #stagedRouteModal let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" ngbAutoFocus id="modal-title">Staged Route</h4>
+    <span class="modal-title" ngbAutoFocus id="modal-title">Staged Route</span>
+
   </div>
   <div class="modal-body">
     <div class="search-route__route-information">
+      <div>
+        <div class="search-route__vehicle-icon">
+          <app-vehicle-icon [vehicle]="routeService.getVehicleIconString(dataService.getStagedRoute())"></app-vehicle-icon>
+        </div>
+<!--
+        <div class="route-search-results__column-name">{{ getCustomVehicleName(dataService.getStagedRoute()) }}</div>
+-->
+      </div>
       <div class="search-route__route-visualisation">
         <div>
           <fa-icon [icon]="iconService.getIcon('circle')"></fa-icon>
@@ -90,6 +99,9 @@
           <span class="search-route__location-secondary">, {{ routeService.getSecondaryTo(dataService.getStagedRoute()) }}</span>
         </div>
       </div>
+    </div>
+    <div class="search-route__modal-details">
+
     </div>
   </div>
   <div class="modal-footer">

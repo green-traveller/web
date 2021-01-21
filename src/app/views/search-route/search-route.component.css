@@ -113,6 +113,16 @@
   border: 0.0625rem dashed white;
 }
 
+.search-route__vehicle-icon {
+  margin-right: 1rem;
+  border-radius: 1rem;
+  background-color: #427280;
+}
+
+.modal-header {
+  background-color: var(--primary);
+}
+
 .modal-body {
   padding: 0rem;
 }
