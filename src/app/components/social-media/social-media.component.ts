@@ -16,6 +16,7 @@ export class SocialMediaComponent implements OnInit {
     this.buttonName = 'Social Media';
   }
 
+  // tslint:disable-next-line: typedef
   b64toBlob(b64Data) {
     const contentType = '';
     const sliceSize = 512;
@@ -58,10 +59,10 @@ export class SocialMediaComponent implements OnInit {
       type: 'image/gif',
     });
 
-    //@ts-ignore
+    // @ts-ignore
     if (navigator.canShare) {
       navigator.share({
-        //@ts-ignore
+        // @ts-ignore
         files: [file],
         title: 'Test',
         url: 'www.google.de'
