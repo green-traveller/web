@@ -79,9 +79,9 @@
             <app-vehicle-icon [vehicle]="routeService.getVehicleIconString(dataService.getStagedRoute())"></app-vehicle-icon>
           </div>
           <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-            <button ngbDropdownItem>Action - 1</button>
-            <button ngbDropdownItem>Another Action</button>
-            <button ngbDropdownItem>Something else is here with a very long Text</button>
+            <button ngbDropdownItem *ngFor="let vehicle of dataService.getActiveVehicles()" id="vehicle.id">
+              <app-vehicle-icon [vehicle]="vehicle.type"></app-vehicle-icon>{{ vehicle.name }}
+            </button>
           </div>
         </div>
       </div>
