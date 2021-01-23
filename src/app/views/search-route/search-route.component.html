@@ -73,12 +73,17 @@
   <div class="modal-body">
     <div class="search-route__route-information">
       <div>
-        <div class="search-route__vehicle-icon">
-          <app-vehicle-icon [vehicle]="routeService.getVehicleIconString(dataService.getStagedRoute())"></app-vehicle-icon>
+
+        <div ngbDropdown >
+          <div class="search-route__vehicle-icon" id="dropdownBasic1" ngbDropdownToggle>
+            <app-vehicle-icon [vehicle]="routeService.getVehicleIconString(dataService.getStagedRoute())"></app-vehicle-icon>
+          </div>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <button ngbDropdownItem>Action - 1</button>
+            <button ngbDropdownItem>Another Action</button>
+            <button ngbDropdownItem>Something else is here with a very long Text</button>
+          </div>
         </div>
-<!--
-        <div class="route-search-results__column-name">{{ getCustomVehicleName(dataService.getStagedRoute()) }}</div>
--->
       </div>
       <div class="search-route__route-visualisation">
         <div>

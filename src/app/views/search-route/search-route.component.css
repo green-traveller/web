@@ -119,6 +119,10 @@
   background-color: #427280;
 }
 
+.search-route__vehicle-icon:after {
+  content: none;
+}
+
 .modal-header {
   background-color: var(--primary);
 }
