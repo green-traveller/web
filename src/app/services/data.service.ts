@@ -7,7 +7,7 @@ import { Co2 } from '../models/co2';
 import { Vehicle } from '../models/vehicle';
 import { Route } from '../models/route';
 import { RouteService } from 'src/app/services/route.service';
-import { FavoriteRoute } from '../models/route-favorite';
+import { FavRoute } from '../models/route-fav';
 
 const STORAGE_KEY = 'GREEN_TRAVELLER_DATA';
 
@@ -86,7 +86,7 @@ export class DataService {
         }
       },
       routes: { },
-      favoriteRoutes: { }
+      favRoutes: { }
     }));
   }
 
@@ -414,36 +414,30 @@ export class DataService {
     return this.data.setupCompleted;
   }
 
-  public setFavoriteRoute(route: Route): void {
+  public setFavRoute(route: Route): void {
     // this id will be unique and used as reference
     // ToThink: What about having favorites A to B and B to A which are the same route but are not?
     const newId = route.from.place_id + route.to.place_id;
 
-    const favRoute : FavoriteRoute = {
+    const favRoute : FavRoute = {
       id: newId,
       from: route.from,
       to: route.to
     } 
 
 
-    this.data.favoriteRoutes[newId] = favRoute;
+    this.data.favRoutes[newId] = favRoute;
     this.setStorage();
   }
 
-  public deleteFavoriteRoute(route: Route): void {
+  public deleteFavRoute(route: Route): void {
     const deleteId = route.from.place_id + route.to.place_id;
 
-    delete this.data.favoriteRoutes[deleteId];
+    delete this.data.favRoutes[deleteId];
     this.setStorage();
   }
 
-  public isFavoriteRoute(route: Route): boolean {
-    const checkId = route.from.place_id + route.to.place_id;
-
-    if (this.data.favoriteRoutes[checkId]) {
-      return true;
-    } else {
-      return false;
-    }
+  public getFavRoutes(): { [id: string]: FavRoute} {
+    return this.data.favRoutes;
   }
 }

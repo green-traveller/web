@@ -138,15 +138,22 @@ export class RouteService {
     return activeVehicles.filter(v => validTravelmodes.includes(v.travelmode));
   }
 
-  isFavoriteRoute(route: Route): Boolean {
-    return this.dataService.isFavoriteRoute(route);
+  isFavRoute(route: Route): Boolean {
+    const favRoutes = this.dataService.getFavRoutes();
+
+    if(favRoutes) {
+      const checkId = route.from.place_id + route.to.place_id;
+      return favRoutes[checkId] !== undefined;
+    } else {
+      return false;
+    }
   }
 
-  toggleFavoriteState(route: Route): void {
-    if (this.dataService.isFavoriteRoute(route)) {
-      this.dataService.deleteFavoriteRoute(route);
+  toggleFavState(route: Route): void {
+    if (this.isFavRoute(route)) {
+      this.dataService.deleteFavRoute(route);
     } else {
-      this.dataService.setFavoriteRoute(route);
+      this.dataService.setFavRoute(route);
     }
   }
 }

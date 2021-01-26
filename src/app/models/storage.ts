@@ -1,7 +1,7 @@
 import { Vehicle } from './vehicle';
 import { Co2 } from './co2';
 import { Route } from './route';
-import { FavoriteRoute } from './route-favorite';
+import { FavRoute } from './route-fav';
 
 export interface Storage {
   version: number;
@@ -10,5 +10,5 @@ export interface Storage {
   co2: Co2;
   vehicles: { [id: string]: Vehicle };
   routes: { [id: string]: Route };
-  favoriteRoutes: { [id: string]: FavoriteRoute};
+  favRoutes: { [id: string]: FavRoute};
 }
