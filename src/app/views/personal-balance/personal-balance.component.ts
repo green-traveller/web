@@ -34,6 +34,7 @@ export class PersonalBalanceComponent implements OnInit {
   }
 
   ngAfterViewInit(): void {
+    // @ts-ignore
     const chart = this.Co2Pie.Co2PieChart.PieChart.nativeElement as HTMLCanvasElement;
     const image = document.createElement('img');
     image.src = chart.toDataURL('image/png');
