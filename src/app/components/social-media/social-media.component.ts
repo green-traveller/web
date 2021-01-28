@@ -39,7 +39,7 @@ export class SocialMediaComponent implements OnInit {
 
     const blob = new Blob(byteArrays, {type: contentType});
     return blob;
-}
+  }
 
   export(): void {
     const dataStr = 'data:image/gif;base64,' +
@@ -52,13 +52,50 @@ export class SocialMediaComponent implements OnInit {
     exportElement.remove();
   }
 
-  handleButtonClick(): void {
-    const file = new File(
-      [this.b64toBlob('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg==')],
-     'image.gif', {
-      type: 'image/gif',
-    });
+  drawProgressBar(): any {
+    const canvas = document.createElement('canvas');
+    canvas.width = 400;
+    canvas.height = 100;
+    const context = canvas.getContext('2d');
+  }
 
+  drawCanvas(): any {
+    /*const canvas = document.createElement('canvas');
+    canvas.width = 100;
+    canvas.height = 100;
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = 'red';
+    ctx.fillRect(0, 0, 100, 100);*/
+
+    // document.body.appendChild(img);
+
+    const item = this.canvas.nativeElement as HTMLCanvasElement;
+    console.log(item);
+  //    const canvas = item.toDataURL('image/png');
+    // console.log(canvas);
+
+    const ctx = item.getContext('2d');
+    ctx.font = "30px Arial";
+    ctx.fillText('Hello World', 10, 50);
+
+    const img = document.createElement('img');
+    img.src = item.toDataURL('image/png');
+
+    console.log(img.src.lastIndexOf(','));
+    console.log(img.src.substring(22));
+
+    return img.src.substring(22);
+
+  }
+
+  handleButtonClick(): void {
+    const file = new File([this.b64toBlob(this.drawCanvas())], 'image.png', { type: 'image/png'});
+    /*const file = new File(
+      [this.b64toBlob('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg==')],
+      'image.gif',
+      { type: 'image/gif' }
+      );*/
+    console.log(file);
     // @ts-ignore
     if (navigator.canShare) {
       navigator.share({
