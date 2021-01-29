@@ -110,11 +110,11 @@
     </div>
   </div>
   <div class="modal-footer">
-    <span>Details</span>
-    <button class="btn btn-outline-danger" (click)="handleModalButton(false)">
+    <button class="btn btn-outline-secondary" (click)="handleModalButton('details')">Details</button>
+    <button class="btn btn-outline-danger" (click)="handleModalButton('delete')">
       <fa-icon [icon]="iconService.getIcon('delete')"></fa-icon>
     </button>
-    <button class="btn btn-outline-primary" (click)="handleModalButton(true)">
+    <button class="btn btn-outline-primary" (click)="handleModalButton('save')">
       <fa-icon [icon]="iconService.getIcon('save')"></fa-icon>
     </button>
   </div>

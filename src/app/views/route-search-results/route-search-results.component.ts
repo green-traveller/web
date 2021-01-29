@@ -97,8 +97,6 @@ export class RouteSearchResultsComponent implements OnInit {
     return max * 0.5;
   }
 
-
-
   navigate(s: string): void {
     this.router.navigateByUrl(s);
     this.location.replaceState(s);

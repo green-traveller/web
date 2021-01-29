@@ -1,4 +1,4 @@
-import { formatDate } from '@angular/common';
+import {formatDate, Location} from '@angular/common';
 import { Component, ElementRef, OnInit, ViewChild, ChangeDetectorRef, AfterViewInit, NgZone } from '@angular/core';
 import { MapsSdkService } from '../../services/maps-sdk.service';
 import { Router } from '@angular/router';
@@ -38,6 +38,7 @@ export class SearchRouteComponent implements OnInit, AfterViewInit {
     private dataService: DataService,
     private routeService: RouteService,
     private router: Router,
+    private location: Location,
     private ngZone: NgZone,
     private modalService: NgbModal
   ) { }
@@ -80,11 +81,21 @@ export class SearchRouteComponent implements OnInit, AfterViewInit {
     this.modalService.open(this.stagedRouteModal,  {ariaLabelledBy: 'modal-title', centered: true, backdrop: 'static', keyboard: false});
   }
 
-  handleModalButton(saveRoute: boolean): void {
-    if (saveRoute) {
-      this.dataService.saveStagedRoute();
-    } else {
-      this.dataService.setStagedRoute(undefined);
+  handleModalButton(option: string): void {
+    switch (option) {
+      case 'save': {
+        this.dataService.saveStagedRoute();
+        break;
+      }
+      case 'delete': {
+        this.dataService.setStagedRoute(undefined);
+        break;
+      }
+      case 'details': {
+        this.resultService.setRoute(this.dataService.getStagedRoute());
+        this.navigate('/results');
+        break;
+      }
     }
     this.modalService.dismissAll();
   }
@@ -207,5 +218,10 @@ export class SearchRouteComponent implements OnInit, AfterViewInit {
   changePassengerAmount(n: number): void {
     this.data.passengerAmount += n;
     this.handlePassengerAmountChange();
+  }
+
+  navigate(s: string): void {
+    this.router.navigateByUrl(s);
+    this.location.replaceState(s);
   }
 }
