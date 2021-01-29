@@ -25,9 +25,7 @@
       <fa-icon [icon]="iconS.getIcon('edit')"></fa-icon>
     </div>
   </div>
-
   <ngb-accordion [closeOthers]="false" #acc="ngbAccordion">
-
     <ngb-panel *ngFor="let route of getSortedRoute()" id="{{route.vehicleId}}">
 
       <ng-template ngbPanelHeader>

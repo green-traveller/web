@@ -100,6 +100,16 @@ export class SearchRouteComponent implements OnInit, AfterViewInit {
     this.modalService.dismissAll();
   }
 
+  handleVehicleChoice(option: string): void {
+    this.dataService.getActiveVehicles().forEach((vehicle) => {
+      if (vehicle.id === option) {
+        const stagedRoute = this.dataService.getStagedRoute();
+        stagedRoute.vehicleId = vehicle.id;
+        this.dataService.setStagedRoute(stagedRoute);
+      }
+    });
+  }
+
   setUpMapsApiComponents(): void {
     // https://developers.google.com/maps/documentation/javascript/places-autocomplete?hl=en_US#add-autocomplete
     const autocompleteOrigin = new google.maps.places.Autocomplete(

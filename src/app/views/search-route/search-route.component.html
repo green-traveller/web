@@ -79,7 +79,7 @@
             <app-vehicle-icon [vehicle]="routeService.getVehicleIconString(dataService.getStagedRoute())"></app-vehicle-icon>
           </div>
           <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-            <button ngbDropdownItem *ngFor="let vehicle of dataService.getActiveVehicles()" id="vehicle.id">
+            <button ngbDropdownItem *ngFor="let vehicle of dataService.getActiveVehicles()" id="vehicle.id" (click)="handleVehicleChoice(vehicle.id)">
               <app-vehicle-icon [vehicle]="vehicle.type"></app-vehicle-icon>{{ vehicle.name }}
             </button>
           </div>
