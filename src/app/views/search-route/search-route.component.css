@@ -125,6 +125,7 @@
 
 .modal-header {
   background-color: var(--primary);
+  border-bottom: var(--primary);
 }
 
 .modal-body {
