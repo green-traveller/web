@@ -6,9 +6,9 @@ import {} from 'googlemaps';
 import { IconService } from '../../services/icon.service';
 import { Search } from '../../models/search';
 import {ResultService} from '../../services/result.service';
-import { DataService } from "../../services/data.service";
+import { DataService } from '../../services/data.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { RouteService } from "../../services/route.service";
+import { RouteService } from '../../services/route.service';
 
 @Component({
   selector: 'app-search-route',
@@ -35,8 +35,8 @@ export class SearchRouteComponent implements OnInit, AfterViewInit {
     public changeDetectorRef: ChangeDetectorRef,
     public iconService: IconService,
     private resultService: ResultService,
-    private dataService: DataService,
-    private routeService: RouteService,
+    public dataService: DataService,
+    public routeService: RouteService,
     private router: Router,
     private location: Location,
     private ngZone: NgZone,
