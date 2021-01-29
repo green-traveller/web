@@ -101,13 +101,9 @@ export class SearchRouteComponent implements OnInit, AfterViewInit {
   }
 
   handleVehicleChoice(option: string): void {
-    this.dataService.getActiveVehicles().forEach((vehicle) => {
-      if (vehicle.id === option) {
-        const stagedRoute = this.dataService.getStagedRoute();
-        stagedRoute.vehicleId = vehicle.id;
-        this.dataService.setStagedRoute(stagedRoute);
-      }
-    });
+    const stagedRoute = this.dataService.getStagedRoute();
+    stagedRoute.vehicleId = option;
+    this.dataService.setStagedRoute(stagedRoute);
   }
 
   setUpMapsApiComponents(): void {
