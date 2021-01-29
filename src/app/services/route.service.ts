@@ -120,6 +120,13 @@ export class RouteService {
     return RouteService.getLocationRest(route.from.name);
   }
 
+  /**
+   * returns date string (yyyy-mm--dd)
+   */
+  getDateString(route: Route): string {
+    return route.time.split(' ')[0];
+  }
+
   getVehicle(route: Route): Vehicle {
     return this.dataService.getVehicle(route.vehicleId);
   }

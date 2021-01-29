@@ -68,7 +68,7 @@
 <ng-template #stagedRouteModal let-modal>
   <div class="modal-header">
     <span class="modal-title" ngbAutoFocus id="modal-title">Staged Route</span>
-
+    <span>{{ this.routeService.getDateString(this.dataService.getStagedRoute()) }}</span>
   </div>
   <div class="modal-body">
     <div class="search-route__route-information">
