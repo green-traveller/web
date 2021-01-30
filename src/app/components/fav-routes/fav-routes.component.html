@@ -1,35 +1,35 @@
 <div class="fav-routes">
-<ngb-accordion #acc="ngbAccordion">
-  <ngb-panel id="favPanel">
-    <ng-template ngbPanelHeader>
-      <div class="fav-routes__header" (click)="acc.toggle('favPanel')">
-        <fa-icon class="fav-routes__header-icon" [icon]="iconService.getIcon('star')"></fa-icon>
-        <div>Favourites</div>
-      </div>
-    </ng-template>
+  <ngb-accordion #acc="ngbAccordion">
+    <ngb-panel id="favPanel">
+      <ng-template ngbPanelHeader>
+        <div class="fav-routes__header" (click)="acc.toggle('favPanel')">
+          <fa-icon class="fav-routes__header-icon" [icon]="iconService.getIcon('star')"></fa-icon>
+          <div>Favourites</div>
+        </div>
+      </ng-template>
 
-    <ng-template ngbPanelContent>
-      <div>
-        <div class="fav-routes__item" *ngFor="let favRoute of dataService.getFavRoutesArray()">
-          <div class="fav-routes__item-location">
-            <div>{{favRoute.from.name.split(',')[0]}}</div>
-            <small>{{favRoute.from.name.split(',').slice(1)}}</small>
+      <ng-template ngbPanelContent>
+        <div>
+          <div class="fav-routes__item" *ngFor="let favRoute of dataService.getFavRoutesArray()">
+            <div class="fav-routes__item-location">
+              <div>{{favRoute.from.name.split(',')[0]}}</div>
+              <small>{{favRoute.from.name.split(',').slice(1)}}</small>
+            </div>
+            <div class="fav-routes__item-dots">
+              <fa-icon [icon]="iconService.getIcon('dotsH')"></fa-icon>
+            </div>
+            <div class="fav-routes__item-location">
+              <div>{{favRoute.to.name.split(',')[0]}}</div>
+              <small>{{favRoute.to.name.split(',').slice(1)}}</small>
+            </div>
+            <div class="fav-routes__item-button">
+              <button class="btn btn-secondary" (click)="searchFavRoute(favRoute)">
+                <fa-icon [icon]="iconService.getIcon('upload')"></fa-icon>
+              </button>
+            </div>
           </div>
-          <div class="fav-routes__item-dots">
-            <fa-icon [icon]="iconService.getIcon('dotsH')"></fa-icon>
-          </div>
-          <div class="fav-routes__item-location">
-            <div>{{favRoute.to.name.split(',')[0]}}</div>
-            <small>{{favRoute.to.name.split(',').slice(1)}}</small>
-          </div>
-          <div class="fav-routes__item-button">
-          <button class="btn btn-secondary">
-            <fa-icon [icon]="iconService.getIcon('arrowRight')"></fa-icon>
-          </button>
         </div>
-        </div>
-      </div>
-    </ng-template>
-  </ngb-panel>
-</ngb-accordion>
+      </ng-template>
+    </ngb-panel>
+  </ngb-accordion>
 </div>

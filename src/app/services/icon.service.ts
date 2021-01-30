@@ -10,6 +10,7 @@ import {
   faDatabase,
   faEdit,
   faEllipsisH,
+  faFileUpload,
   faInfoCircle,
   faLeaf,
   faLightbulb,
@@ -63,6 +64,7 @@ export class IconService {
     tip: faLightbulb,
     train: faSubway,
     unknown: faQuestion,
+    upload: faFileUpload,
     user: faUser,
     users: faUsers,
     walking: faWalking

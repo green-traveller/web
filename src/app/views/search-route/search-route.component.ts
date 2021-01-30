@@ -7,6 +7,7 @@ import { MapsSdkService } from '../../services/maps-sdk.service';
 import { ResultService } from '../../services/result.service';
 import { Router } from '@angular/router';
 import { Search } from '../../models/search';
+import { FavRoute } from 'src/app/models/route-fav';
 
 @Component({
   selector: 'app-search-route',
@@ -186,5 +187,14 @@ export class SearchRouteComponent implements OnInit, AfterViewInit {
   changePassengerAmount(n: number): void {
     this.data.passengerAmount += n;
     this.handlePassengerAmountChange();
+  }
+
+  setSearchData(favRoute: FavRoute): void {
+    this.data.from = favRoute.from;
+    this.data.to = favRoute.to;
+    this.fromInput.nativeElement.value = favRoute.from.name;
+    this.toInput.nativeElement.value = favRoute.to.name;
+    this.handleFromInputKeypress();
+    this.handleToInputKeypress();
   }
 }
