@@ -440,4 +440,8 @@ export class DataService {
   public getFavRoutes(): { [id: string]: FavRoute} {
     return this.data.favRoutes;
   }
+
+  public getFavRoutesArray(): FavRoute[] {
+    return Object.values(this.getFavRoutes());
+  }
 }

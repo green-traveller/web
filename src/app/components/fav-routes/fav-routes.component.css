@@ -16,6 +16,40 @@
   margin-right: 0.5rem;
 }
 
-::ng-deep .card-header {
+::ng-deep #favPanel-header {
   padding: 0;
+}
+
+::ng-deep #favPanel > .card-body {
+  padding: 0;
+}
+
+.fav-routes__item {
+  padding: 0.5rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  display: grid;
+  grid-template-columns: 1fr 3rem 1fr 3rem;
+}
+
+.fav-routes__item:last-child {
+  border-bottom: 0;
+}
+
+.fav-routes__item-location {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.fav-routes__item-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+}
+
+.fav-routes__item-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
