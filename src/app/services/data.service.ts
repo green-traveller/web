@@ -416,7 +416,7 @@ export class DataService {
 
   public setFavRoute(route: Route): void {
     // this id will be unique and used as reference
-    // ToThink: What about having favorites A to B and B to A which are the same route but are not?
+    // ToThink: What about having favourites A to B and B to A which are the same route but are not?
     const newId = route.from.place_id + route.to.place_id;
 
     const favRoute : FavRoute = {

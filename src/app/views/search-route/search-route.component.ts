@@ -1,11 +1,12 @@
-import { formatDate } from '@angular/common';
-import { Component, ElementRef, OnInit, ViewChild, ChangeDetectorRef, AfterViewInit, NgZone } from '@angular/core';
-import { MapsSdkService } from '../../services/maps-sdk.service';
-import { Router } from '@angular/router';
 import {} from 'googlemaps';
+import { Component, ElementRef, OnInit, ViewChild, ChangeDetectorRef, AfterViewInit, NgZone } from '@angular/core';
+import { DataService } from 'src/app/services/data.service';
+import { formatDate } from '@angular/common';
 import { IconService } from '../../services/icon.service';
+import { MapsSdkService } from '../../services/maps-sdk.service';
+import { ResultService } from '../../services/result.service';
+import { Router } from '@angular/router';
 import { Search } from '../../models/search';
-import {ResultService} from '../../services/result.service';
 
 @Component({
   selector: 'app-search-route',
@@ -30,6 +31,7 @@ export class SearchRouteComponent implements OnInit, AfterViewInit {
     private mapsSdkService: MapsSdkService,
     public changeDetectorRef: ChangeDetectorRef,
     public iconService: IconService,
+    public dataService: DataService,
     private resultService: ResultService,
     private router: Router,
     private ngZone: NgZone

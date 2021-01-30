@@ -1,0 +1,21 @@
+.fav-routes__header {
+  display: flex;
+  text-decoration: none;
+  text-align: left;
+  background-color: var(--primary);
+  color: white;
+  width: 100%;
+  user-select: none;
+  padding-top: 0.375rem;
+  padding-bottom: 0.375rem;
+  cursor: pointer;
+}
+
+.fav-routes__header-icon {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+::ng-deep .card-header {
+  padding: 0;
+}

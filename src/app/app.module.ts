@@ -36,6 +36,7 @@ import { RouteSearchResultsComponent } from './views/route-search-results/route-
 import { SaveAnimationComponent } from './components/save-animation/save-animation.component';
 import { SearchRouteComponent } from './views/search-route/search-route.component';
 import { VehicleIconComponent } from './components/vehicle-icon/vehicle-icon.component';
+import { FavRoutesComponent } from './components/fav-routes/fav-routes.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { VehicleIconComponent } from './components/vehicle-icon/vehicle-icon.com
     SearchRouteComponent,
     VehicleIconComponent,
     InstallationInstructionsComponent,
-    SaveAnimationComponent
+    SaveAnimationComponent,
+    FavRoutesComponent
   ],
   imports: [
     AppRoutingModule,
