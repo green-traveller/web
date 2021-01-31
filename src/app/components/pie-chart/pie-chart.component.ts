@@ -1,5 +1,5 @@
 import { formatNumber } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { ChartType, ChartOptions } from 'chart.js';
 
 @Component({
@@ -9,9 +9,19 @@ import { ChartType, ChartOptions } from 'chart.js';
 })
 export class PieChartComponent implements OnInit {
 
+  @ViewChild('pieChartCanvas') pieChartCanvas: ElementRef;
+
   pieChartType: ChartType = 'pie';
 
+  exportImage: HTMLImageElement;
+
   @Input() pieChartOptions: ChartOptions = {
+    animation: {
+      duration: 1500,
+      onComplete(animation): void {
+        // this.exportImage = this.getPieChartCanvas().nativeElement.toDataURL('image/png');
+      }
+    },
     responsive: true,
     legend: { position: 'bottom' },
 
@@ -42,14 +52,20 @@ export class PieChartComponent implements OnInit {
 
   @Input() pieChartColors: Array<any>;
 
-  @Input() pieChartLegend: boolean;  
+  @Input() pieChartLegend: boolean;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  getPieChartCanvas(): HTMLCanvasElement {
+    return this.pieChartCanvas.nativeElement;
+  }
+
   // events
-  public chartClicked(e: any): void {}
+  public chartClicked(e: any): void {
+    // console.log(this.getPieChartCanvas().toDataURL('image/png'));
+  }
 
 }
