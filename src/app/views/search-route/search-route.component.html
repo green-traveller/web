@@ -73,7 +73,6 @@
   <div class="modal-body">
     <div class="search-route__route-information">
       <div>
-
         <div ngbDropdown >
           <div class="search-route__vehicle-icon" id="dropdownBasic1" ngbDropdownToggle>
             <app-vehicle-icon [vehicle]="routeService.getVehicleIconString(dataService.getStagedRoute())"></app-vehicle-icon>
@@ -104,9 +103,6 @@
           <span class="search-route__location-secondary">, {{ routeService.getSecondaryTo(dataService.getStagedRoute()) }}</span>
         </div>
       </div>
-    </div>
-    <div class="search-route__modal-details">
-
     </div>
   </div>
   <div class="modal-footer">

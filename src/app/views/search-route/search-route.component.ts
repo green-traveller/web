@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import {} from 'googlemaps';
 import { IconService } from '../../services/icon.service';
 import { Search } from '../../models/search';
-import {ResultService} from '../../services/result.service';
+import { ResultService } from '../../services/result.service';
 import { DataService } from '../../services/data.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { RouteService } from '../../services/route.service';

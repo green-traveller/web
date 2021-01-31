@@ -121,7 +121,7 @@ export class RouteService {
   }
 
   /**
-   * returns date string (yyyy-mm--dd)
+   * returns date string (yyyy-mm-dd)
    */
   getDateString(route: Route): string {
     return route.time.split(' ')[0];

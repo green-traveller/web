@@ -1,13 +1,11 @@
-import {Component, OnInit} from '@angular/core';
-import {Route} from 'src/app/models/route';
-import {DataService} from 'src/app/services/data.service';
-import {Vehicle} from 'src/app/models/vehicle';
-import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {IconService} from 'src/app/services/icon.service';
-import {RouteService} from 'src/app/services/route.service';
-import {ResultService} from 'src/app/services/result.service';
-import {Location} from '@angular/common';
-import {Router} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Route } from 'src/app/models/route';
+import { DataService } from 'src/app/services/data.service';
+import { IconService } from 'src/app/services/icon.service';
+import { RouteService } from 'src/app/services/route.service';
+import { ResultService } from 'src/app/services/result.service';
+import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-route-search-results',
@@ -55,7 +53,6 @@ export class RouteSearchResultsComponent implements OnInit {
 
   saveRoute(route: Route): void {
     this.dataService.setRoute(JSON.parse(JSON.stringify(route)));
-    // reset stagedRoute
     this.dataService.setStagedRoute(undefined);
     this.resultService.resetRoute();
     this.navigate('previous-routes');
