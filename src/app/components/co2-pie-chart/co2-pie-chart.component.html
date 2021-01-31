@@ -4,7 +4,7 @@
 
   <div *ngIf="!showDetails; else viewDetails">
     <div class="co2-pie-chart--overlay-parent">
-      <app-pie-chart [pieChartLabels]="co2PieChartLabels" [pieChartData]="co2PieChartData"
+      <app-pie-chart #pieChart [pieChartLabels]="co2PieChartLabels" [pieChartData]="co2PieChartData"
         [pieChartColors]="co2PieChartColors"></app-pie-chart>
       <div class="co2-pie-chart--overlay-child" *ngIf="currentCo2RestBudget < 0">
         <span>{{ getBudgetPercent() }}</span>
