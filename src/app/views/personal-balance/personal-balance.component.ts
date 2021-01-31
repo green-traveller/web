@@ -1,5 +1,6 @@
 import { formatNumber } from '@angular/common';
 import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { NgbCarousel } from '@ng-bootstrap/ng-bootstrap';
 import Chart from 'chart.js';
 import { Co2PieChartComponent } from 'src/app/components/co2-pie-chart/co2-pie-chart.component';
 import { Alert } from 'src/app/models/alert';
@@ -15,7 +16,9 @@ export class PersonalBalanceComponent implements OnInit {
 
   currentCo2Sum = this.dataService.getTotalCo2Last30Days(this.routeService);
 
-  @ViewChild('co2PieChart') co2PieChart: Co2PieChartComponent;
+  @ViewChild( 'carousel' ) carousel: NgbCarousel;
+  @ViewChild( 'co2PieChart' ) co2PieChart: Co2PieChartComponent;
+  @ViewChild( 'co2PieChartCanvas' ) co2PieChartCanvas: HTMLCanvasElement;
   // Personal Goal
 
   personalGoal: number = this.dataService.getCo2PersonalChallenge().value;
@@ -29,11 +32,21 @@ export class PersonalBalanceComponent implements OnInit {
 
   showPersonalChallengeAlert = true;
 
-  co2PieChartCanvas: HTMLCanvasElement;
-
   constructor(private dataService: DataService, private routeService: RouteService) { }
 
   ngOnInit(): void {
+  }
+
+  getActiveCarouselId(): string {
+    return this.carousel.activeId;
+  }
+
+  setImageDataForActiveChart(chartId: string): void {
+    const chart = chartId.substring(10, 11);
+    if (chart === '0') {
+      this.co2PieChartCanvas = this.getCo2PieChartCanvas();
+      //console.log(this.co2PieChartCanvas);
+    }
   }
 
   getCo2PieChart(): Co2PieChartComponent {
@@ -70,28 +83,14 @@ export class PersonalBalanceComponent implements OnInit {
     }
   }
 
-  triggerImageExport(trigger: boolean): void {
-    if (trigger) {
-      console.log(this.getCo2PieChart().getPieChart().getPieChartCanvas().toDataURL('image/png'));
-    }
-    // const file = new File([this.b64toBlob(this.drawCanvas())], 'image.png', { type: 'image/png'});
-    /*const file = new File(
-      [this.b64toBlob('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg==')],
-      'image.gif',
-      { type: 'image/gif' }
-      );*/
-    // console.log(file);
-    // // @ts-ignore
-    // if (navigator.canShare) {
-    //   navigator.share({
-    //     // @ts-ignore
-    //     files: [file],
-    //     title: 'Test',
-    //     url: 'www.google.de'
-    //   });
-    // } else {
-    //   this.export();
-    // }
+  onSocialMediaClick(): void {
+    this.setImageDataForActiveChart(this.getActiveCarouselId());
   }
 
+  /*triggerImageExport(trigger: boolean): void {
+    // (imageExportRequested)="triggerImageExport($event)" in html
+    if (trigger) {
+      this.setImageDataForActiveChart(this.getActiveCarouselId());
+    }
+  }*/
 }

@@ -16,7 +16,7 @@
 
   <hr>
 
-  <ngb-carousel [interval]="false" [showNavigationIndicators]="true">
+  <ngb-carousel #carousel [interval]="false" [showNavigationIndicators]="true">
     <ng-template ngbSlide class ="slide">
       <app-co2-pie-chart #co2PieChart></app-co2-pie-chart>
     </ng-template>
@@ -28,6 +28,7 @@
     </ng-template>
   </ngb-carousel>
 
-  <app-social-media (imageExportRequested)="triggerImageExport($event)" [co2PieChartCanvas]="co2PieChartCanvas"></app-social-media>
+  <app-social-media (click)="onSocialMediaClick()" [co2PieChartCanvas]="co2PieChartCanvas"></app-social-media>
 
 </div>
+
