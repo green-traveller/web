@@ -12,7 +12,7 @@ import { PieChartComponent } from '../pie-chart/pie-chart.component';
 })
 export class Co2PieChartComponent implements OnInit {
 
-  @ViewChild('pieChart') pieChart: PieChartComponent;
+  @ViewChild( 'co2PieChart' ) co2PieChart: PieChartComponent;
 
   // average co2-emissions [kg] per day caused by transport (excluding air travel) by a German
   avgTranspCO2German = 4.4;
@@ -76,8 +76,8 @@ export class Co2PieChartComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getPieChart(): PieChartComponent {
-    return this.pieChart;
+  getCo2PieChart(): PieChartComponent {
+    return this.co2PieChart;
   }
 
   getBudgetPercent(): string {

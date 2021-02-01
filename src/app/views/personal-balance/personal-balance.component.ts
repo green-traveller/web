@@ -1,10 +1,11 @@
-import { formatNumber } from '@angular/common';
-import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
-import { NgbCarousel } from '@ng-bootstrap/ng-bootstrap';
-import Chart from 'chart.js';
-import { Co2PieChartComponent } from 'src/app/components/co2-pie-chart/co2-pie-chart.component';
 import { Alert } from 'src/app/models/alert';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Co2PieChartComponent } from 'src/app/components/co2-pie-chart/co2-pie-chart.component';
+import { Co2BarChartComponent } from 'src/app/components/co2-bar-chart/co2-bar-chart.component';
 import { DataService } from 'src/app/services/data.service';
+import { formatNumber } from '@angular/common';
+import { KmPieChartComponent } from 'src/app/components/km-pie-chart/km-pie-chart.component';
+import { NgbCarousel } from '@ng-bootstrap/ng-bootstrap';
 import { RouteService } from 'src/app/services/route.service';
 
 @Component({
@@ -14,53 +15,34 @@ import { RouteService } from 'src/app/services/route.service';
 })
 export class PersonalBalanceComponent implements OnInit {
 
-  currentCo2Sum = this.dataService.getTotalCo2Last30Days(this.routeService);
-
-  @ViewChild( 'carousel' ) carousel: NgbCarousel;
-  @ViewChild( 'co2PieChart' ) co2PieChart: Co2PieChartComponent;
-  @ViewChild( 'co2PieChartCanvas' ) co2PieChartCanvas: HTMLCanvasElement;
   // Personal Goal
-
+  currentCo2Sum: number = this.dataService.getTotalCo2Last30Days(this.routeService);
   personalGoal: number = this.dataService.getCo2PersonalChallenge().value;
-
   personalGoalBarStatus: number = (this.currentCo2Sum / this.personalGoal);
-
   personalGoalAlert: Alert = {
     type: this.getPersonalGoalAlertType(),
     message: this.getPersonalGoalAlertMessage()
   };
-
   showPersonalChallengeAlert = true;
+
+  // Component Ids
+  @ViewChild( 'carousel' ) carousel: NgbCarousel;
+  @ViewChild( 'chartCanvas' ) chartCanvas: HTMLCanvasElement;
+  @ViewChild( 'co2BarChart' ) co2BarChart: Co2BarChartComponent;
+  @ViewChild( 'co2PieChart' ) co2PieChart: Co2PieChartComponent;
+  @ViewChild( 'kmPieChart' ) kmPieChart: KmPieChartComponent;
 
   constructor(private dataService: DataService, private routeService: RouteService) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
-  getActiveCarouselId(): string {
-    return this.carousel.activeId;
-  }
-
-  setImageDataForActiveChart(chartId: string): void {
-    const chart = chartId.substring(10, 11);
-    if (chart === '0') {
-      this.co2PieChartCanvas = this.getCo2PieChartCanvas();
-      //console.log(this.co2PieChartCanvas);
-    }
-  }
-
-  getCo2PieChart(): Co2PieChartComponent {
-    return this.co2PieChart;
-  }
-
-  getCo2PieChartCanvas(): HTMLCanvasElement {
-    return this.getCo2PieChart().getPieChart().getPieChartCanvas();
-  }
+  // Alert Methods
 
   getPersonalGoalAlertType(): string {
     if (this.personalGoalBarStatus < 1) {
       return 'success';
-    } else if (this.personalGoalBarStatus === 1) {
+    }
+    else if (this.personalGoalBarStatus === 1) {
       return 'warning';
     }
     else {
@@ -83,14 +65,54 @@ export class PersonalBalanceComponent implements OnInit {
     }
   }
 
-  onSocialMediaClick(): void {
-    this.setImageDataForActiveChart(this.getActiveCarouselId());
+  // getter
+
+  getActiveCarouselId(): string {
+    return this.carousel.activeId;
   }
 
-  /*triggerImageExport(trigger: boolean): void {
-    // (imageExportRequested)="triggerImageExport($event)" in html
-    if (trigger) {
-      this.setImageDataForActiveChart(this.getActiveCarouselId());
+  getCo2PieChart(): Co2PieChartComponent {
+    return this.co2PieChart;
+  }
+
+  getKmPieChart(): KmPieChartComponent {
+    return this.kmPieChart;
+  }
+
+  getCo2BarChart(): Co2BarChartComponent {
+    return this.co2BarChart;
+  }
+
+  getCo2PieChartCanvas(): HTMLCanvasElement {
+    return this.getCo2PieChart().getCo2PieChart().getPieChartCanvas();
+  }
+
+  getKmPieChartCanvas(): HTMLCanvasElement {
+    return this.getKmPieChart().getKmPieChart().getPieChartCanvas();
+  }
+
+  getCo2BarChartCanvas(): HTMLCanvasElement {
+    return this.getCo2BarChart().getBarChart().getBarChartCanvas();
+  }
+  // Canvas Methods
+
+  setImageDataForActiveChart(chartId: string): void {
+    const chart = chartId.substring(10, 11);
+    switch (chart) {
+      case '0': this.chartCanvas = this.getCo2PieChartCanvas();
+                console.log('0');
+                break;
+      case '1': this.chartCanvas = this.getKmPieChartCanvas();
+                console.log('1');
+                break;
+      case '2': this.chartCanvas = this.getCo2BarChartCanvas();
+                console.log('2');
+                break;
     }
-  }*/
+  }
+
+  onSocialMediaClick(): void {
+    console.log('clicked');
+    this.setImageDataForActiveChart(this.getActiveCarouselId());
+  }
 }

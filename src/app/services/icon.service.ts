@@ -23,6 +23,7 @@ import {
   faUser,
   faUsers,
   faWalking,
+  faShare,
   IconDefinition
 } from '@fortawesome/free-solid-svg-icons';
 import {
@@ -53,6 +54,7 @@ export class IconService {
     question: faQuestionCircle,
     redo: faRedoAlt,
     search: faSearch,
+    share: faShare,
     statistics: faChartPie,
     tip: faLightbulb,
     train: faSubway,

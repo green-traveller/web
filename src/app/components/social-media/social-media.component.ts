@@ -1,6 +1,5 @@
-import { Component, Input, Output, EventEmitter, OnInit, ChangeDetectionStrategy, SimpleChange } from '@angular/core';
-import { Observable } from 'rxjs';
-import { setTokenSourceMapRange } from 'typescript';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { IconService } from '../../services/icon.service';
 
 @Component({
   selector: 'app-social-media',
@@ -9,18 +8,18 @@ import { setTokenSourceMapRange } from 'typescript';
 })
 export class SocialMediaComponent implements OnInit {
 
-  private _co2PieChartCanvas: HTMLCanvasElement;
+  private _chartCanvas: HTMLCanvasElement;
 
-  @Input() set co2PieChartCanvas(value: HTMLCanvasElement) {
-    if (this._co2PieChartCanvas !== value) {
-      this._co2PieChartCanvas = value;
+  @Input() set chartCanvas(value: HTMLCanvasElement) {
+    if (this._chartCanvas !== value) {
+      this._chartCanvas = value;
       this.socialMediaShare();
     }
   }
 
   @Output() imageExportRequested = new EventEmitter<boolean>();
 
-  constructor() { }
+  constructor(public iconService: IconService) { }
 
   buttonName: string;
 
@@ -64,16 +63,16 @@ export class SocialMediaComponent implements OnInit {
     exportElement.remove();
   }
 
+  addTextToCanvas(): void {
+  }
+
   drawProgressBar(): any {
-    const canvas = document.createElement('canvas');
-    canvas.width = 400;
-    canvas.height = 100;
-    const context = canvas.getContext('2d');
   }
 
   socialMediaShare(): void {
     const img = document.createElement('img');
-    img.src = this._co2PieChartCanvas.toDataURL('image/png');
+    img.src = this._chartCanvas.toDataURL('image/png');
+    console.log(img.src);
     const file = new File([this.b64toBlob(img.src.substring(22))],
       'image.png',
       { type: 'image/png' }
@@ -90,7 +89,4 @@ export class SocialMediaComponent implements OnInit {
       this.export(img.src);
     }
   }
-
-  // handleButtonClick(): void {
-  // }
 }
