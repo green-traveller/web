@@ -14,7 +14,6 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { PersonalBalanceComponent } from './views/personal-balance/personal-balance.component';
 import { PreferencesComponent } from './views/preferences/preferences.component';
 import { SearchRouteComponent } from './views/search-route/search-route.component';
-import { SocialMediaComponent } from './components/social-media/social-media.component';
 import { PreviousRoutesComponent } from './views/previous-routes/previous-routes.component';
 import { RouteSearchResultsComponent } from './views/route-search-results/route-search-results.component';
 
@@ -34,8 +33,7 @@ const routes: Routes = [
   { path: 'results', component: RouteSearchResultsComponent },
   { path: 'setup', component: InitialSetupNameComponent },
   { path: 'setup/vehicle', component: InitialSetupVehicleComponent },
-  { path: 'setup/tips', component: InitialSetupTipsComponent },
-  { path: 'social', component: SocialMediaComponent }
+  { path: 'setup/tips', component: InitialSetupTipsComponent }
 ];
 
 @NgModule({
