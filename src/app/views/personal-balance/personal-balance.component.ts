@@ -28,10 +28,11 @@ export class PersonalBalanceComponent implements OnInit {
 
   // Component Ids
   @ViewChild( 'carousel' ) carousel: NgbCarousel;
-  @ViewChild( 'chartCanvas' ) chartCanvas: HTMLCanvasElement;
   @ViewChild( 'co2BarChart' ) co2BarChart: Co2BarChartComponent;
   @ViewChild( 'co2PieChart' ) co2PieChart: Co2PieChartComponent;
   @ViewChild( 'kmPieChart' ) kmPieChart: KmPieChartComponent;
+
+  chartCanvas: HTMLCanvasElement;
 
   constructor(private dataService: DataService, private routeService: RouteService, public iconService: IconService) { }
 
@@ -95,9 +96,10 @@ export class PersonalBalanceComponent implements OnInit {
   getCo2BarChartCanvas(): HTMLCanvasElement {
     return this.getCo2BarChart().getBarChart().getBarChartCanvas();
   }
+
   // Canvas Methods
 
-  setImageDataForActiveChart(chartId: string): void {
+  setImageDataForActiveChart(chartId: string): HTMLCanvasElement {
     const chart = chartId.substring(10, 11);
     switch (chart) {
       case '0':
@@ -110,9 +112,74 @@ export class PersonalBalanceComponent implements OnInit {
         this.chartCanvas = this.getCo2BarChartCanvas();
         break;
     }
+    const exportCanvas = document.createElement('canvas');
+    const context = exportCanvas.getContext('2d');
+    exportCanvas.width = this.chartCanvas.width;
+    exportCanvas.height = this.chartCanvas.height + 250;
+    context.drawImage(this.chartCanvas, 0, 250);
+    const text = 'My CO₂ from transport';
+    context.textAlign = 'center';
+    context.font = 'bold 50px sans-serif';
+    context.fillStyle =  '#26C281';
+    context.fillText(text, 450, 150);
+    return exportCanvas;
   }
 
   onSocialMediaClick(): void {
-    this.setImageDataForActiveChart(this.getActiveCarouselId());
+    const id = this.getActiveCarouselId();
+    const canvas = this.setImageDataForActiveChart(id);
+    const img = document.createElement('img');
+    img.src = canvas.toDataURL('image/png');
+    console.log(img.src);
+    const file = new File([this.b64toBlob(img.src.substring(22))],
+      'image.png',
+      { type: 'image/png' }
+      );
+    // @ts-ignore
+    if (navigator.canShare) {
+      navigator.share({
+      // @ts-ignore
+      files: [file],
+      title: '',
+      url: ''
+      });
+    } else {
+      this.export(img.src);
+    }
+  }
+
+  // tslint:disable-next-line: typedef
+  b64toBlob(b64Data) {
+    const contentType = '';
+    const sliceSize = 512;
+
+    const byteCharacters = atob(b64Data);
+    const byteArrays = [];
+
+    for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+        const slice = byteCharacters.slice(offset, offset + sliceSize);
+
+        const byteNumbers = new Array(slice.length);
+        for (let i = 0; i < slice.length; i++) {
+            byteNumbers[i] = slice.charCodeAt(i);
+        }
+
+        const byteArray = new Uint8Array(byteNumbers);
+
+        byteArrays.push(byteArray);
+    }
+
+    const blob = new Blob(byteArrays, {type: contentType});
+    return blob;
+  }
+
+  export(imageSource): void {
+    const dataStr = imageSource;
+    const exportElement = document.createElement('a');
+    exportElement.setAttribute('href', dataStr);
+    const exportName = 'image.png';
+    exportElement.setAttribute('download', exportName);
+    exportElement.click();
+    exportElement.remove();
   }
 }

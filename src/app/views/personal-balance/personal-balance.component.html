@@ -1,13 +1,11 @@
 <app-nav-bar title="Personal CO₂ Balance"></app-nav-bar>
 
-<div class="social-media-share__background" (click)="onSocialMediaClick()" [chartCanvas]="chartCanvas">
-  <div class="social-media-share">
-    <fa-icon [icon]="iconService.getIcon('share')"></fa-icon> Share your Personal Balance
-  </div>
-</div>
-
 <div class="navigation-gap">
-
+  <div class="social-media-share__background" (click)="onSocialMediaClick()">
+    <div class="social-media-share">
+      <fa-icon [icon]="iconService.getIcon('share')"></fa-icon> &nbsp; Share your Personal Balance
+    </div>
+  </div>
   <div class="personal-goal">
     <h4 class="personal-goal-heading">Personal Challenge</h4>
     <div class="progressbar-personal-goal">

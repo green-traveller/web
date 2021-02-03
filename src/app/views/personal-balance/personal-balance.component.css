@@ -12,7 +12,7 @@
   width: 100%;
   padding: 0.2rem;
   padding-bottom: 0rem;
-  margin-bottom: 0rem;
+  margin-bottom: 0rem;  
   display: flex;
   position: fixed;
   background: white;
@@ -30,7 +30,6 @@
   cursor: pointer;
   text-align:center;
   color: var(--primary);
-  justify-content: space-between;
   width: 100%;
 }
 
