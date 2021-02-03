@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterContentChecked, AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { ChartOptions } from 'chart.js';
 import { DataService } from 'src/app/services/data.service';
 import { formatNumber } from '@angular/common';
@@ -13,6 +13,7 @@ import { RouteService } from 'src/app/services/route.service';
 export class KmPieChartComponent implements OnInit {
 
   @ViewChild( 'kmPieChart' ) kmPieChart: PieChartComponent;
+  @ViewChild( 'emptyPieChart' ) emptyPieChart: PieChartComponent;
 
   kmCar = this.dataService.getDistanceLast30DaysByVehicle(this.routeService, 'car');
 
@@ -54,7 +55,6 @@ export class KmPieChartComponent implements OnInit {
   kmPieChartOptions: ChartOptions = {
     responsive: true,
     legend: { position: 'bottom' },
-
     tooltips: {
       enabled: true,
       bodyFontSize: 20,
@@ -84,7 +84,12 @@ export class KmPieChartComponent implements OnInit {
   }
 
   getKmPieChart(): PieChartComponent {
-    return this.kmPieChart;
+    if (this.kmSum > 0) {
+      return this.kmPieChart;
+    }
+    else {
+      return this.emptyPieChart;
+    }
   }
 
 }

@@ -8,7 +8,7 @@
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 101;
+  z-index: 102;
 }
 
 .nav-bar__item {
@@ -39,6 +39,7 @@
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   display: flex;
+
 }
 
 .nav-bar__menu-item-text {

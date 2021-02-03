@@ -1,16 +1,40 @@
 .personal-goal{    
   width: 90%;     
+  padding-top: 3.5rem;
+  margin-top: 1.25rem; 
   margin-left: 5%;
   margin-right: 5%;  
   margin-bottom: 1.25rem;   
   text-align: center;
 }
 
-.personal-goal{   
-  margin-top: 5rem; 
+.social-media-share__background {
+  width: 100%;
+  padding: 0.2rem;
+  padding-bottom: 0rem;
+  margin-bottom: 0rem;
+  display: flex;
+  position: fixed;
+  background: white;
+  opacity: 100%;
+  z-index: 101;
 }
 
-.personal-goal-heading{   
+.social-media-share {
+  align-items: center;
+  background-color: rgba(38, 194, 129, 0.1);
+  border-radius: 0.5rem;
+  margin: 0.5rem;
+  padding: 0.5rem;
+  margin-bottom: 0rem;
+  cursor: pointer;
+  text-align:center;
+  color: var(--primary);
+  justify-content: space-between;
+  width: 100%;
+}
+
+.personal-goal-heading{
   margin-bottom: 1.25rem; 
 }
 
