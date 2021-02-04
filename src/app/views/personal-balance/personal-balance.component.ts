@@ -6,7 +6,7 @@ import { DataService } from 'src/app/services/data.service';
 import { formatNumber } from '@angular/common';
 import { IconService } from '../../services/icon.service';
 import { KmPieChartComponent } from 'src/app/components/km-pie-chart/km-pie-chart.component';
-import { NgbCarousel } from '@ng-bootstrap/ng-bootstrap';
+import { NgbCarousel, NgbProgressbar } from '@ng-bootstrap/ng-bootstrap';
 import { RouteService } from 'src/app/services/route.service';
 
 @Component({
@@ -31,8 +31,12 @@ export class PersonalBalanceComponent implements OnInit {
   @ViewChild( 'co2BarChart' ) co2BarChart: Co2BarChartComponent;
   @ViewChild( 'co2PieChart' ) co2PieChart: Co2PieChartComponent;
   @ViewChild( 'kmPieChart' ) kmPieChart: KmPieChartComponent;
+  @ViewChild ( 'pBar' ) pBar: NgbProgressbar;
 
   chartCanvas: HTMLCanvasElement;
+
+  colorGreen = '#85bb88';
+  colorRed = '#ff6961';
 
   constructor(private dataService: DataService, private routeService: RouteService, public iconService: IconService) { }
 
@@ -99,6 +103,85 @@ export class PersonalBalanceComponent implements OnInit {
 
   // Canvas Methods
 
+  drawProgressBarSingleColor(width: number, top: number, bottom: number, left: number, right: number, start: number): HTMLCanvasElement {
+    let color = this.colorRed;
+    const cornerRadius = 5;
+    const canvas = document.createElement('canvas');
+    canvas.width = width;
+    canvas.height = 50;
+    const context = canvas.getContext('2d');
+    context.lineWidth = 1;
+
+    if (this.personalGoalBarStatus === 0) { color = this.colorGreen; }
+    context.strokeStyle = color;
+    context.fillStyle = color;
+
+    context.beginPath();
+    context.moveTo(start, top);
+    context.arcTo(right, top, right, bottom, cornerRadius);
+    context.arcTo(right, bottom, left, bottom, cornerRadius);
+    context.arcTo(left, bottom, left, top, cornerRadius);
+    context.arcTo(left, top, right, top, cornerRadius);
+    context.closePath();
+    context.stroke();
+    context.fill();
+
+    return canvas;
+  }
+
+  drawProgressBar(width: number, top: number, bottom: number, left: number, right: number, start: number): HTMLCanvasElement {
+    const cornerRadius = 5;
+    const canvas = document.createElement('canvas');
+    canvas.width = width;
+    canvas.height = 50;
+    const context = canvas.getContext('2d');
+    context.lineWidth = 1;
+
+    context.beginPath();
+    context.strokeStyle = this.colorRed;
+    context.fillStyle = this.colorRed;
+    context.moveTo(start, top);
+    context.arcTo(left, top, left, bottom, cornerRadius);
+    context.arcTo(left, bottom, right, bottom, cornerRadius);
+    context.lineTo(start, bottom);
+    context.closePath();
+    context.stroke();
+    context.fill();
+    context.beginPath();
+    context.strokeStyle = this.colorGreen;
+    context.fillStyle = this.colorGreen;
+    context.moveTo(start, top);
+    context.arcTo(right, top, right, bottom, cornerRadius);
+    context.arcTo(right, bottom, left, bottom, cornerRadius);
+    context.lineTo(start, bottom);
+    context.closePath();
+    context.stroke();
+    context.fill();
+
+    return canvas;
+  }
+
+  drawCanvas(width: number): HTMLCanvasElement {
+    let canvas = document.createElement('canvas');
+    canvas.width = width;
+    canvas.height = 50;
+    const rightPoint = canvas.width - 10;
+    const leftPoint = 10;
+    const topPoint = 10;
+    const bottomPoint = canvas.height - 10;
+
+    let startpoint = canvas.width * this.personalGoalBarStatus;
+    if (startpoint < 15) { startpoint = 15; }
+    if (startpoint > (rightPoint - 15)) { startpoint = rightPoint - 15; }
+
+    if ((this.personalGoalBarStatus > 0) && (this.personalGoalBarStatus < 1)) {
+      canvas = this.drawProgressBar(width, topPoint, bottomPoint, leftPoint, rightPoint, startpoint);
+    } else {
+      canvas = this.drawProgressBarSingleColor(width, topPoint, bottomPoint, leftPoint, rightPoint, canvas.width / 2);
+    }
+    return canvas;
+  }
+
   setImageDataForActiveChart(chartId: string): HTMLCanvasElement {
     const chart = chartId.substring(10, 11);
     switch (chart) {
@@ -115,13 +198,19 @@ export class PersonalBalanceComponent implements OnInit {
     const exportCanvas = document.createElement('canvas');
     const context = exportCanvas.getContext('2d');
     exportCanvas.width = this.chartCanvas.width;
-    exportCanvas.height = this.chartCanvas.height + 250;
-    context.drawImage(this.chartCanvas, 0, 250);
-    const text = 'My CO₂ from transport';
+    exportCanvas.height = this.chartCanvas.height + (this.chartCanvas.height * 0.3);
+    context.drawImage(this.drawCanvas(this.chartCanvas.width), 0, exportCanvas.height * 0.12);
+    context.drawImage(this.chartCanvas, 0, exportCanvas.height - this.chartCanvas.height);
     context.textAlign = 'center';
-    context.font = 'bold 50px sans-serif';
-    context.fillStyle =  '#26C281';
-    context.fillText(text, 450, 150);
+    context.font = 'bold 40px sans-serif';
+    context.fillStyle = 'black';
+    context.lineWidth = 30;
+    context.strokeStyle = this.colorGreen;
+    context.strokeRect(0, 0, exportCanvas.width, exportCanvas.height);
+    let text = 'My Personal Challenge';
+    context.fillText(text, exportCanvas.width / 2, exportCanvas.height * 0.1);
+    text = 'My CO2 Emissions';
+    context.fillText(text, exportCanvas.width / 2, exportCanvas.height * 0.2);
     return exportCanvas;
   }
 
@@ -130,22 +219,23 @@ export class PersonalBalanceComponent implements OnInit {
     const canvas = this.setImageDataForActiveChart(id);
     const img = document.createElement('img');
     img.src = canvas.toDataURL('image/png');
-    console.log(img.src);
+    // console.log(img.src);
     const file = new File([this.b64toBlob(img.src.substring(22))],
       'image.png',
       { type: 'image/png' }
       );
     // @ts-ignore
-    if (navigator.canShare) {
+    /*if (navigator.canShare) {
       navigator.share({
       // @ts-ignore
       files: [file],
       title: '',
       url: ''
       });
-    } else {
-      this.export(img.src);
-    }
+    } else {*/
+    this.export(img.src);
+    // }
+    // window.open('www.instagram.com');
   }
 
   // tslint:disable-next-line: typedef

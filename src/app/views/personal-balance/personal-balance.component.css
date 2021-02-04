@@ -12,12 +12,15 @@
   width: 100%;
   padding: 0.2rem;
   padding-bottom: 0rem;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
   margin-bottom: 0rem;  
-  display: flex;
+  display: flex; 
   position: fixed;
   background: white;
   opacity: 100%;
   z-index: 101;
+  max-width: 600px;
 }
 
 .social-media-share {
