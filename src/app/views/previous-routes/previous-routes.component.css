@@ -39,7 +39,7 @@
 }
 
 .previous-routes__header-fav {
-  text-align: center;
+  text-align: right;
   flex-basis: 4rem;
   flex-shrink: 0;
   margin-left: auto;
