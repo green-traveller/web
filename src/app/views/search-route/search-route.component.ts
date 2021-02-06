@@ -78,7 +78,7 @@ export class SearchRouteComponent implements OnInit, AfterViewInit {
     // https://developers.google.com/maps/documentation/javascript/place-data-fields?hl=en_US
     autocompleteOrigin.setFields(['place_id', 'name']);
     // When the user selects an address from the drop-down
-    google.maps.event.addListenerOnce(autocompleteOrigin, 'place_changed', () => {
+    google.maps.event.addListener(autocompleteOrigin, 'place_changed', () => {
       this.data.from = autocompleteOrigin.getPlace();
       this.fromInputValid = true;
       this.fromInput.nativeElement.setCustomValidity('');
