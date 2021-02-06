@@ -7,6 +7,7 @@ import { Co2 } from '../models/co2';
 import { Vehicle } from '../models/vehicle';
 import { Route } from '../models/route';
 import { RouteService } from 'src/app/services/route.service';
+import { FavRoute } from '../models/route-fav';
 
 const STORAGE_KEY = 'GREEN_TRAVELLER_DATA';
 
@@ -84,8 +85,8 @@ export class DataService {
           travelmode: 'driving'
         }
       },
-      routes: {
-      }
+      routes: { },
+      favRoutes: { }
     }));
   }
 
@@ -411,5 +412,36 @@ export class DataService {
 
   public getSetupCompleted(): boolean {
     return this.data.setupCompleted;
+  }
+
+  public setFavRoute(route: Route): void {
+    // this id will be unique and used as reference
+    // ToThink: What about having favourites A to B and B to A which are the same route but are not?
+    const newId = route.from.place_id + route.to.place_id;
+
+    const favRoute : FavRoute = {
+      id: newId,
+      from: route.from,
+      to: route.to
+    } 
+
+
+    this.data.favRoutes[newId] = favRoute;
+    this.setStorage();
+  }
+
+  public deleteFavRoute(route: Route): void {
+    const deleteId = route.from.place_id + route.to.place_id;
+
+    delete this.data.favRoutes[deleteId];
+    this.setStorage();
+  }
+
+  public getFavRoutes(): { [id: string]: FavRoute} {
+    return this.data.favRoutes;
+  }
+
+  public getFavRoutesArray(): FavRoute[] {
+    return Object.values(this.getFavRoutes());
   }
 }

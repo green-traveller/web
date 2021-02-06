@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {
+  faArrowRight,
   faBicycle,
   faCarSide,
   faChartPie,
@@ -8,6 +9,8 @@ import {
   faCog,
   faDatabase,
   faEdit,
+  faEllipsisH,
+  faFileUpload,
   faInfoCircle,
   faLeaf,
   faLightbulb,
@@ -18,6 +21,7 @@ import {
   faRedoAlt,
   faRoute,
   faSearch,
+  faStar,
   faSubway,
   faTrashAlt,
   faUser,
@@ -36,6 +40,7 @@ import {
 export class IconService {
 
   APP_ICONS = {
+    arrowRight: faArrowRight,
     back: faChevronLeft,
     bicycle: faBicycle,
     car: faCarSide,
@@ -44,6 +49,7 @@ export class IconService {
     data: faDatabase,
     delete: faTrashAlt,
     distance: faRoute,
+    dotsH: faEllipsisH,
     edit: faEdit,
     info: faInfoCircle,
     leaf: faLeaf,
@@ -53,10 +59,12 @@ export class IconService {
     question: faQuestionCircle,
     redo: faRedoAlt,
     search: faSearch,
+    star: faStar,
     statistics: faChartPie,
     tip: faLightbulb,
     train: faSubway,
     unknown: faQuestion,
+    upload: faFileUpload,
     user: faUser,
     users: faUsers,
     walking: faWalking
