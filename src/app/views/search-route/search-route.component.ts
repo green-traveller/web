@@ -1,5 +1,14 @@
-import {formatDate, Location} from '@angular/common';
-import { Component, ElementRef, OnInit, ViewChild, ChangeDetectorRef, AfterViewInit, NgZone } from '@angular/core';
+import { formatDate, Location } from '@angular/common';
+import {
+  Component,
+  ElementRef,
+  OnInit,
+  ViewChild,
+  ChangeDetectorRef,
+  AfterViewInit,
+  NgZone,
+  TemplateRef
+} from '@angular/core';
 import { MapsSdkService } from '../../services/maps-sdk.service';
 import { Router } from '@angular/router';
 import {} from 'googlemaps';
@@ -22,7 +31,7 @@ export class SearchRouteComponent implements OnInit, AfterViewInit {
   @ViewChild('dateInput') dateInput: ElementRef;
   @ViewChild('timeInput') timeInput: ElementRef;
   @ViewChild('passengerInput') passengerInput: ElementRef;
-  @ViewChild('stagedRouteModal') stagedRouteModal: any;
+  @ViewChild('stagedRouteModal') stagedRouteModal: ElementRef;
 
   data: Search;
   mapsSdkLoaded: boolean;
