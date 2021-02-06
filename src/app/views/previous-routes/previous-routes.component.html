@@ -34,7 +34,7 @@
               <div class="previous-routes__header-location-line" [style]="'height: ' + getVerticalSpaceBetween(firstCircle, secondCircle) + 'px'"></div>
             </div>
             <div class="previous-routes__header-fav">
-              <button class="btn btn-secondary" [ngClass]="routeS.isFavRoute(route) ? 'btn btn-warning' : 'btn btn-secondary'" type="button" (click)="toggleFavState($event, route)">
+              <button class="btn" [ngClass]="routeS.isFavRoute(route) ? 'btn-warning' : 'btn-secondary'" type="button" (click)="toggleFavState($event, route)">
                 <fa-icon [icon]="iconS.getIcon('star')"></fa-icon>
               </button>
             </div>
