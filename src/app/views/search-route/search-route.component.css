@@ -132,6 +132,23 @@
   padding: 0rem;
 }
 
+.dropdown-item {
+  margin: 0;
+  padding: .5rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dropdown-item--text {
+  margin-left: .5rem;
+}
+
+.dropdown-menu {
+  min-width: 2rem;
+  max-width: 14rem;
+}
+
 .lds-dual-ring {
   display: inline-block;
   width: 80px;

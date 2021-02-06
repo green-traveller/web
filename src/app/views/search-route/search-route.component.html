@@ -73,13 +73,14 @@
   <div class="modal-body">
     <div class="search-route__route-information">
       <div>
-        <div ngbDropdown >
+        <div ngbDropdown placement="right" >
           <div class="search-route__vehicle-icon" id="dropdownBasic1" ngbDropdownToggle>
             <app-vehicle-icon [vehicle]="routeService.getVehicleIconString(dataService.getStagedRoute())"></app-vehicle-icon>
           </div>
           <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
             <button ngbDropdownItem *ngFor="let vehicle of routeService.getPossibleVehicles(this.dataService.getStagedRoute())" id="vehicle.id" (click)="handleVehicleChoice(vehicle.id)">
-              <app-vehicle-icon [vehicle]="vehicle.type"></app-vehicle-icon>{{ vehicle.name }}
+              <app-vehicle-icon [vehicle]="vehicle.type"></app-vehicle-icon>
+              <span class="dropdown-item--text">{{ vehicle.name }}</span>
             </button>
           </div>
         </div>
