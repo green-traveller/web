@@ -84,7 +84,7 @@
 
 .search-route__locations {
   flex-grow: 1;
-  margin: 0.5rem;
+  margin: 0 0.5rem;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

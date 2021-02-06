@@ -31,7 +31,7 @@ export class SearchRouteComponent implements OnInit, AfterViewInit {
   @ViewChild('dateInput') dateInput: ElementRef;
   @ViewChild('timeInput') timeInput: ElementRef;
   @ViewChild('passengerInput') passengerInput: ElementRef;
-  @ViewChild('stagedRouteModal') stagedRouteModal: ElementRef;
+  @ViewChild('stagedRouteModal') stagedRouteModal: TemplateRef<object>;
 
   data: Search;
   mapsSdkLoaded: boolean;
