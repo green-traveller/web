@@ -304,6 +304,20 @@ export class DataService {
     this.setStorage();
   }
 
+  public setStagedRoute(route: Route): void {
+    this.data.stagedRoute = route;
+    this.setStorage();
+  }
+
+  public getStagedRoute(): Route {
+    return this.data.stagedRoute;
+  }
+
+  public saveStagedRoute(): void {
+    this.setRoute(this.getStagedRoute());
+    this.setStagedRoute(undefined);
+  }
+
   public setRouteVehicle(route: Route, vehicleId: string): void {
     this.data.routes[route.id].vehicleId = vehicleId;
     this.setStorage();

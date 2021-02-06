@@ -1,11 +1,14 @@
-import { formatDate } from '@angular/common';
+import {formatDate, Location} from '@angular/common';
 import { Component, ElementRef, OnInit, ViewChild, ChangeDetectorRef, AfterViewInit, NgZone } from '@angular/core';
 import { MapsSdkService } from '../../services/maps-sdk.service';
 import { Router } from '@angular/router';
 import {} from 'googlemaps';
 import { IconService } from '../../services/icon.service';
 import { Search } from '../../models/search';
-import {ResultService} from '../../services/result.service';
+import { ResultService } from '../../services/result.service';
+import { DataService } from '../../services/data.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { RouteService } from '../../services/route.service';
 
 @Component({
   selector: 'app-search-route',
@@ -19,6 +22,7 @@ export class SearchRouteComponent implements OnInit, AfterViewInit {
   @ViewChild('dateInput') dateInput: ElementRef;
   @ViewChild('timeInput') timeInput: ElementRef;
   @ViewChild('passengerInput') passengerInput: ElementRef;
+  @ViewChild('stagedRouteModal') stagedRouteModal: any;
 
   data: Search;
   mapsSdkLoaded: boolean;
@@ -31,8 +35,12 @@ export class SearchRouteComponent implements OnInit, AfterViewInit {
     public changeDetectorRef: ChangeDetectorRef,
     public iconService: IconService,
     private resultService: ResultService,
+    public dataService: DataService,
+    public routeService: RouteService,
     private router: Router,
-    private ngZone: NgZone
+    private location: Location,
+    private ngZone: NgZone,
+    private modalService: NgbModal
   ) { }
 
   ngOnInit(): void {
@@ -64,6 +72,38 @@ export class SearchRouteComponent implements OnInit, AfterViewInit {
     if (this.data.from) {
       this.fromInput.nativeElement.value = this.data.from.name;
     }
+    if (this.dataService.getStagedRoute()) {
+      this.openStagedRouteModalWindow();
+    }
+  }
+
+  openStagedRouteModalWindow(): void {
+    this.modalService.open(this.stagedRouteModal,  {ariaLabelledBy: 'modal-title', centered: true, backdrop: 'static', keyboard: false});
+  }
+
+  handleModalButton(option: string): void {
+    switch (option) {
+      case 'save': {
+        this.dataService.saveStagedRoute();
+        break;
+      }
+      case 'delete': {
+        this.dataService.setStagedRoute(undefined);
+        break;
+      }
+      case 'details': {
+        this.resultService.setRoute(this.dataService.getStagedRoute());
+        this.navigate('/results');
+        break;
+      }
+    }
+    this.modalService.dismissAll();
+  }
+
+  handleVehicleChoice(option: string): void {
+    const stagedRoute = this.dataService.getStagedRoute();
+    stagedRoute.vehicleId = option;
+    this.dataService.setStagedRoute(stagedRoute);
   }
 
   setUpMapsApiComponents(): void {
@@ -184,5 +224,10 @@ export class SearchRouteComponent implements OnInit, AfterViewInit {
   changePassengerAmount(n: number): void {
     this.data.passengerAmount += n;
     this.handlePassengerAmountChange();
+  }
+
+  navigate(s: string): void {
+    this.router.navigateByUrl(s);
+    this.location.replaceState(s);
   }
 }

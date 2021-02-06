@@ -9,4 +9,5 @@ export interface Storage {
   co2: Co2;
   vehicles: { [id: string]: Vehicle };
   routes: { [id: string]: Route };
+  stagedRoute: Route;
 }
