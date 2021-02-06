@@ -44,12 +44,24 @@ export class RouteSearchResultsComponent implements OnInit {
     }
   }
 
+  /**
+   * Generates an array of routes where each route has another possible vehicle.
+   */
   setRoutePerOption(): void {
-    const activeVehicles = this.routeService.getPossibleVehicles(this.route);
-    for (const vehicle of activeVehicles) {
+    const possibleVehicles = this.routeService.getPossibleVehicles(this.route);
+    for (const vehicle of possibleVehicles) {
       this.route.vehicleId = vehicle.id;
       this.routeResults.push(JSON.parse(JSON.stringify(this.route)));
     }
+  }
+
+  /**
+   * Returns an array of routes sorted according to their co2 emission (*ascending*).
+   */
+  getSortedRoute(): Route[] {
+    return this.routeResults.sort((a, b) =>
+      (this.routeService.getCo2Grams(a) > this.routeService.getCo2Grams(b)) ? 1 :
+        ((this.routeService.getCo2Grams(b) > this.routeService.getCo2Grams(a)) ? -1 : 0));
   }
 
   saveRoute(route: Route): void {
@@ -63,20 +75,13 @@ export class RouteSearchResultsComponent implements OnInit {
     this.navigate('previous-routes');
   }
 
-  stageRoute(route: Route): void {
-    this.dataService.setStagedRoute(route);
-  }
-
+  /**
+   * Returns routes vehicleName, if it's a custom vehicle.
+   */
   getCustomVehicleName(route: Route): string {
     if (this.dataService.getDefaultVehicles().indexOf(this.dataService.getVehicle(route.vehicleId)) < 0) {
       return this.dataService.getVehicle(route.vehicleId).name;
     }
-  }
-
-  getSortedRoute(): Route[] {
-    return this.routeResults.sort((a, b) =>
-      (this.routeService.getCo2Grams(a) > this.routeService.getCo2Grams(b)) ? 1 :
-        ((this.routeService.getCo2Grams(b) > this.routeService.getCo2Grams(a)) ? -1 : 0));
   }
 
   handleBackToSearchClick(): void {

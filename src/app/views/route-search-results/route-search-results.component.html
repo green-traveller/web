@@ -92,7 +92,7 @@
             {{ routeS.getCo2KgPerHour(route) | number: '1.2-2' }} kg
           </div>
           <div>
-            <a [href]="routeS.getMapsLink(route)" class="btn btn-secondary" target="_blank" (click)="stageRoute(route)">
+            <a [href]="routeS.getMapsLink(route)" class="btn btn-secondary" target="_blank" (click)="dataService.setStagedRoute(route)">
               <fa-icon [icon]="iconS.getIcon('map')"></fa-icon>
             </a>
           </div>
