@@ -9,13 +9,14 @@ import {
   NgZone,
   TemplateRef
 } from '@angular/core';
-import { MapsSdkService } from '../../services/maps-sdk.service';
-import { Router } from '@angular/router';
 import {} from 'googlemaps';
+import { DataService } from 'src/app/services/data.service';
 import { IconService } from '../../services/icon.service';
-import { Search } from '../../models/search';
+import { MapsSdkService } from '../../services/maps-sdk.service';
 import { ResultService } from '../../services/result.service';
-import { DataService } from '../../services/data.service';
+import { Router } from '@angular/router';
+import { Search } from '../../models/search';
+import { FavRoute } from 'src/app/models/route-fav';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { RouteService } from '../../services/route.service';
 
@@ -43,6 +44,7 @@ export class SearchRouteComponent implements OnInit, AfterViewInit {
     private mapsSdkService: MapsSdkService,
     public changeDetectorRef: ChangeDetectorRef,
     public iconService: IconService,
+    public dataService: DataService,
     private resultService: ResultService,
     public dataService: DataService,
     public routeService: RouteService,
@@ -124,7 +126,7 @@ export class SearchRouteComponent implements OnInit, AfterViewInit {
     // https://developers.google.com/maps/documentation/javascript/place-data-fields?hl=en_US
     autocompleteOrigin.setFields(['place_id', 'name']);
     // When the user selects an address from the drop-down
-    google.maps.event.addListenerOnce(autocompleteOrigin, 'place_changed', () => {
+    google.maps.event.addListener(autocompleteOrigin, 'place_changed', () => {
       this.data.from = autocompleteOrigin.getPlace();
       this.fromInputValid = true;
       this.fromInput.nativeElement.setCustomValidity('');
@@ -233,6 +235,15 @@ export class SearchRouteComponent implements OnInit, AfterViewInit {
   changePassengerAmount(n: number): void {
     this.data.passengerAmount += n;
     this.handlePassengerAmountChange();
+  }
+
+  setSearchData(favRoute: FavRoute): void {
+    this.data.from = favRoute.from;
+    this.data.to = favRoute.to;
+    this.fromInput.nativeElement.value = favRoute.from.name;
+    this.toInput.nativeElement.value = favRoute.to.name;
+    this.handleFromInputKeypress();
+    this.handleToInputKeypress();
   }
 
   navigate(s: string): void {

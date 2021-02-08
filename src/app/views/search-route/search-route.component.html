@@ -50,6 +50,10 @@
   </div>
   <small class="search-route__state-info" *ngIf="!mapsSdkLoaded">Maps SDK not loaded.</small>
 
+  <div [hidden]="(dataService.getFavRoutes() | json) === '{}'">
+    <app-fav-routes (set-search-data)="setSearchData($event)"></app-fav-routes>
+  </div>
+
   <div class="search-route__action">
     <button
       class="btn btn-primary btn-block"
