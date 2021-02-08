@@ -44,7 +44,6 @@ export class SearchRouteComponent implements OnInit, AfterViewInit {
     private mapsSdkService: MapsSdkService,
     public changeDetectorRef: ChangeDetectorRef,
     public iconService: IconService,
-    public dataService: DataService,
     private resultService: ResultService,
     public dataService: DataService,
     public routeService: RouteService,
