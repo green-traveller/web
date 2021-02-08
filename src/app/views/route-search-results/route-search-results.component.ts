@@ -17,6 +17,7 @@ export class RouteSearchResultsComponent implements OnInit {
   route: Route;
   routeResults: Route[] = [];
   co2Threshold: number;
+  showSaveAnimation = false;
 
   routeS: RouteService;
   iconS: IconService;
@@ -55,6 +56,10 @@ export class RouteSearchResultsComponent implements OnInit {
     this.dataService.setRoute(JSON.parse(JSON.stringify(route)));
     this.dataService.setStagedRoute(undefined);
     this.resultService.resetRoute();
+    this.showSaveAnimation = true;
+  }
+
+  afterAnimation(): void {
     this.navigate('previous-routes');
   }
 
@@ -84,7 +89,7 @@ export class RouteSearchResultsComponent implements OnInit {
   }
 
   getThresholdCo2(): number {
-    let max: number = 0;
+    let max = 0;
     for (const route of this.routeResults) {
       const co2 = this.routeService.getCo2Grams(route);
       if (co2 > max) {

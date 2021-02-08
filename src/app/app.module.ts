@@ -22,6 +22,7 @@ import { InitialSetupNameComponent } from './views/initial-setup/initial-setup-n
 import { InitialSetupNavComponent } from './components/initial-setup-nav/initial-setup-nav.component';
 import { InitialSetupVehicleComponent } from './views/initial-setup/initial-setup-vehicle/initial-setup-vehicle.component';
 import { InitialSetupTipsComponent } from './views/initial-setup/initial-setup-tips/initial-setup-tips.component';
+import { InstallationInstructionsComponent } from './components/installation-instructions/installation-instructions.component';
 import { InstallTipsComponent } from './views/preferences/install-tips/install-tips.component';
 import { EmptyResultsComponent } from './components/empty-results/empty-results.component';
 import { KmPieChartComponent } from './components/km-pie-chart/km-pie-chart.component';
@@ -31,10 +32,10 @@ import { PersonalBalanceComponent } from './views/personal-balance/personal-bala
 import { PieChartComponent } from './components/pie-chart/pie-chart.component';
 import { PreferencesComponent } from './views/preferences/preferences.component';
 import { PreviousRoutesComponent } from './views/previous-routes/previous-routes.component';
+import { RouteSearchResultsComponent } from './views/route-search-results/route-search-results.component';
+import { SaveAnimationComponent } from './components/save-animation/save-animation.component';
 import { SearchRouteComponent } from './views/search-route/search-route.component';
 import { VehicleIconComponent } from './components/vehicle-icon/vehicle-icon.component';
-import { RouteSearchResultsComponent } from './views/route-search-results/route-search-results.component';
-import { InstallationInstructionsComponent } from './components/installation-instructions/installation-instructions.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { InstallationInstructionsComponent } from './components/installation-ins
     RouteSearchResultsComponent,
     SearchRouteComponent,
     VehicleIconComponent,
-    InstallationInstructionsComponent
+    InstallationInstructionsComponent,
+    SaveAnimationComponent
   ],
   imports: [
     AppRoutingModule,
