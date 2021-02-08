@@ -11,4 +11,5 @@ export interface Storage {
   vehicles: { [id: string]: Vehicle };
   routes: { [id: string]: Route };
   favRoutes: { [id: string]: FavRoute};
+  stagedRoute: Route;
 }

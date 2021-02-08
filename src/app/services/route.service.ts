@@ -120,6 +120,11 @@ export class RouteService {
     return RouteService.getLocationRest(route.from.name);
   }
 
+  getDisplayDateShort(route: Route): string {
+    const datestring = route.time.split(' ')[0];
+    return new Date(datestring).toLocaleDateString('en-US', { weekday: 'short', day: '2-digit', month: 'short', year: 'numeric' });
+  }
+
   getVehicle(route: Route): Vehicle {
     return this.dataService.getVehicle(route.vehicleId);
   }

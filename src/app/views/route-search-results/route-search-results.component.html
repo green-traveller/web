@@ -25,9 +25,7 @@
       <fa-icon [icon]="iconS.getIcon('edit')"></fa-icon>
     </div>
   </div>
-
   <ngb-accordion [closeOthers]="false" #acc="ngbAccordion">
-
     <ngb-panel *ngFor="let route of getSortedRoute()" id="{{route.vehicleId}}">
 
       <ng-template ngbPanelHeader>
@@ -94,7 +92,7 @@
             {{ routeS.getCo2KgPerHour(route) | number: '1.2-2' }} kg
           </div>
           <div>
-            <a [href]="routeS.getMapsLink(route)" class="btn btn-secondary" target="_blank">
+            <a [href]="routeS.getMapsLink(route)" class="btn btn-secondary" target="_blank" (click)="stageRoute(route)">
               <fa-icon [icon]="iconS.getIcon('map')"></fa-icon>
             </a>
           </div>
