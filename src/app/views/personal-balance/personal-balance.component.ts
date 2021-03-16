@@ -31,12 +31,18 @@ export class PersonalBalanceComponent implements OnInit {
   @ViewChild( 'co2BarChart' ) co2BarChart: Co2BarChartComponent;
   @ViewChild( 'co2PieChart' ) co2PieChart: Co2PieChartComponent;
   @ViewChild( 'kmPieChart' ) kmPieChart: KmPieChartComponent;
-  @ViewChild ( 'pBar' ) pBar: NgbProgressbar;
+ // @ViewChild( 'pBar' ) pBar: NgbProgressbar;
 
   chartCanvas: HTMLCanvasElement;
 
+  // attributes for Progressbar drawing
   colorGreen = '#85bb88';
   colorRed = '#ff6961';
+  startPoint = undefined;
+  rightPoint = undefined;
+  leftPoint = 10;
+  topPoint = 10;
+  bottomPoint = undefined;
 
   constructor(private dataService: DataService, private routeService: RouteService, public iconService: IconService) { }
 
@@ -77,28 +83,28 @@ export class PersonalBalanceComponent implements OnInit {
     return this.carousel.activeId;
   }
 
-  getCo2PieChart(): Co2PieChartComponent {
-    return this.co2PieChart;
-  }
-
-  getKmPieChart(): KmPieChartComponent {
-    return this.kmPieChart;
-  }
-
   getCo2BarChart(): Co2BarChartComponent {
     return this.co2BarChart;
+  }
+
+  getCo2BarChartCanvas(): HTMLCanvasElement {
+    return this.getCo2BarChart().getBarChart().getBarChartCanvas();
+  }
+
+  getCo2PieChart(): Co2PieChartComponent {
+    return this.co2PieChart;
   }
 
   getCo2PieChartCanvas(): HTMLCanvasElement {
     return this.getCo2PieChart().getCo2PieChart().getPieChartCanvas();
   }
 
-  getKmPieChartCanvas(): HTMLCanvasElement {
-    return this.getKmPieChart().getKmPieChart().getPieChartCanvas();
+  getKmPieChart(): KmPieChartComponent {
+    return this.kmPieChart;
   }
 
-  getCo2BarChartCanvas(): HTMLCanvasElement {
-    return this.getCo2BarChart().getBarChart().getBarChartCanvas();
+  getKmPieChartCanvas(): HTMLCanvasElement {
+    return this.getKmPieChart().getKmPieChart().getPieChartCanvas();
   }
 
   // Canvas Methods
@@ -164,15 +170,13 @@ export class PersonalBalanceComponent implements OnInit {
   drawCanvas(width: number): HTMLCanvasElement {
     let canvas = document.createElement('canvas');
     canvas.width = width;
-    canvas.height = 50;
-    const rightPoint = canvas.width - 10;
-    const leftPoint = 10;
-    const topPoint = 10;
-    const bottomPoint = canvas.height - 10;
+    canvas.height = 40;
+    this.rightPoint = canvas.width - 10;
+    this.bottomPoint = canvas.height - 10;
 
-    let startpoint = canvas.width * this.personalGoalBarStatus;
-    if (startpoint < 15) { startpoint = 15; }
-    if (startpoint > (rightPoint - 15)) { startpoint = rightPoint - 15; }
+    this.startPoint = canvas.width * this.personalGoalBarStatus;
+    if (this.startPoint < 15) { this.startPoint = 15; }
+    if (this.startPoint > (this.rightPoint - 15)) { this.startPoint = this.rightPoint - 15; }
 
     if ((this.personalGoalBarStatus > 0) && (this.personalGoalBarStatus < 1)) {
       canvas = this.drawProgressBar(width, topPoint, bottomPoint, leftPoint, rightPoint, startpoint);
@@ -195,6 +199,7 @@ export class PersonalBalanceComponent implements OnInit {
         this.chartCanvas = this.getCo2BarChartCanvas();
         break;
     }
+
     const exportCanvas = document.createElement('canvas');
     const context = exportCanvas.getContext('2d');
     exportCanvas.width = this.chartCanvas.width;
@@ -205,11 +210,9 @@ export class PersonalBalanceComponent implements OnInit {
     context.font = 'bold 40px sans-serif';
     context.fillStyle = 'black';
     context.lineWidth = 30;
-    context.strokeStyle = this.colorGreen;
-    context.strokeRect(0, 0, exportCanvas.width, exportCanvas.height);
-    let text = 'My Personal Challenge';
+    let text = 'Green Traveller';
     context.fillText(text, exportCanvas.width / 2, exportCanvas.height * 0.1);
-    text = 'My CO2 Emissions';
+    text = 'My CO₂ Emissions';
     context.fillText(text, exportCanvas.width / 2, exportCanvas.height * 0.2);
     return exportCanvas;
   }
