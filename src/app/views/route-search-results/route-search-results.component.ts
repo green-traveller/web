@@ -54,12 +54,17 @@ export class RouteSearchResultsComponent implements OnInit {
 
   saveRoute(route: Route): void {
     this.dataService.setRoute(JSON.parse(JSON.stringify(route)));
+    this.dataService.setStagedRoute(undefined);
     this.resultService.resetRoute();
     this.showSaveAnimation = true;
   }
 
   afterAnimation(): void {
     this.navigate('previous-routes');
+  }
+
+  stageRoute(route: Route): void {
+    this.dataService.setStagedRoute(route);
   }
 
   getCustomVehicleName(route: Route): string {
@@ -75,6 +80,7 @@ export class RouteSearchResultsComponent implements OnInit {
   }
 
   handleBackToSearchClick(): void {
+    this.dataService.setStagedRoute(undefined);
     this.navigate('/');
   }
 

@@ -67,7 +67,7 @@ import { VehicleIconComponent } from './components/vehicle-icon/vehicle-icon.com
     SearchRouteComponent,
     VehicleIconComponent,
     InstallationInstructionsComponent
-
+    InstallationInstructionsComponent,
   ],
   imports: [
     AppRoutingModule,

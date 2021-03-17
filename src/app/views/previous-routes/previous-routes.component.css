@@ -38,6 +38,13 @@
   border: 0.0625rem dashed black;
 }
 
+.previous-routes__header-fav {
+  text-align: right;
+  flex-basis: 4rem;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
 .table-margin__header {
   margin-bottom: 0;
 }

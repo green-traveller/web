@@ -1,11 +1,24 @@
-import { formatDate } from '@angular/common';
-import { Component, ElementRef, OnInit, ViewChild, ChangeDetectorRef, AfterViewInit, NgZone } from '@angular/core';
-import { MapsSdkService } from '../../services/maps-sdk.service';
-import { Router } from '@angular/router';
+import { formatDate, Location } from '@angular/common';
+import {
+  Component,
+  ElementRef,
+  OnInit,
+  ViewChild,
+  ChangeDetectorRef,
+  AfterViewInit,
+  NgZone,
+  TemplateRef
+} from '@angular/core';
 import {} from 'googlemaps';
+import { DataService } from 'src/app/services/data.service';
 import { IconService } from '../../services/icon.service';
+import { MapsSdkService } from '../../services/maps-sdk.service';
+import { ResultService } from '../../services/result.service';
+import { Router } from '@angular/router';
 import { Search } from '../../models/search';
-import {ResultService} from '../../services/result.service';
+import { FavRoute } from 'src/app/models/route-fav';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { RouteService } from '../../services/route.service';
 
 @Component({
   selector: 'app-search-route',
@@ -19,6 +32,7 @@ export class SearchRouteComponent implements OnInit, AfterViewInit {
   @ViewChild('dateInput') dateInput: ElementRef;
   @ViewChild('timeInput') timeInput: ElementRef;
   @ViewChild('passengerInput') passengerInput: ElementRef;
+  @ViewChild('stagedRouteModal') stagedRouteModal: TemplateRef<object>;
 
   data: Search;
   mapsSdkLoaded: boolean;
@@ -31,8 +45,12 @@ export class SearchRouteComponent implements OnInit, AfterViewInit {
     public changeDetectorRef: ChangeDetectorRef,
     public iconService: IconService,
     private resultService: ResultService,
+    public dataService: DataService,
+    public routeService: RouteService,
     private router: Router,
-    private ngZone: NgZone
+    private location: Location,
+    private ngZone: NgZone,
+    private modalService: NgbModal
   ) { }
 
   ngOnInit(): void {
@@ -64,6 +82,38 @@ export class SearchRouteComponent implements OnInit, AfterViewInit {
     if (this.data.from) {
       this.fromInput.nativeElement.value = this.data.from.name;
     }
+    if (this.dataService.getStagedRoute()) {
+      this.openStagedRouteModalWindow();
+    }
+  }
+
+  openStagedRouteModalWindow(): void {
+    this.modalService.open(this.stagedRouteModal,  {ariaLabelledBy: 'modal-title', centered: true, backdrop: 'static', keyboard: false});
+  }
+
+  handleModalButton(option: string): void {
+    switch (option) {
+      case 'save': {
+        this.dataService.saveStagedRoute();
+        break;
+      }
+      case 'delete': {
+        this.dataService.setStagedRoute(undefined);
+        break;
+      }
+      case 'details': {
+        this.resultService.setRoute(this.dataService.getStagedRoute());
+        this.navigate('/results');
+        break;
+      }
+    }
+    this.modalService.dismissAll();
+  }
+
+  handleVehicleChoice(option: string): void {
+    const stagedRoute = this.dataService.getStagedRoute();
+    stagedRoute.vehicleId = option;
+    this.dataService.setStagedRoute(stagedRoute);
   }
 
   setUpMapsApiComponents(): void {
@@ -75,7 +125,7 @@ export class SearchRouteComponent implements OnInit, AfterViewInit {
     // https://developers.google.com/maps/documentation/javascript/place-data-fields?hl=en_US
     autocompleteOrigin.setFields(['place_id', 'name']);
     // When the user selects an address from the drop-down
-    google.maps.event.addListenerOnce(autocompleteOrigin, 'place_changed', () => {
+    google.maps.event.addListener(autocompleteOrigin, 'place_changed', () => {
       this.data.from = autocompleteOrigin.getPlace();
       this.fromInputValid = true;
       this.fromInput.nativeElement.setCustomValidity('');
@@ -184,5 +234,19 @@ export class SearchRouteComponent implements OnInit, AfterViewInit {
   changePassengerAmount(n: number): void {
     this.data.passengerAmount += n;
     this.handlePassengerAmountChange();
+  }
+
+  setSearchData(favRoute: FavRoute): void {
+    this.data.from = favRoute.from;
+    this.data.to = favRoute.to;
+    this.fromInput.nativeElement.value = favRoute.from.name;
+    this.toInput.nativeElement.value = favRoute.to.name;
+    this.handleFromInputKeypress();
+    this.handleToInputKeypress();
+  }
+
+  navigate(s: string): void {
+    this.router.navigateByUrl(s);
+    this.location.replaceState(s);
   }
 }

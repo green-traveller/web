@@ -50,6 +50,10 @@
   </div>
   <small class="search-route__state-info" *ngIf="!mapsSdkLoaded">Maps SDK not loaded.</small>
 
+  <div [hidden]="(dataService.getFavRoutes() | json) === '{}'">
+    <app-fav-routes (set-search-data)="setSearchData($event)"></app-fav-routes>
+  </div>
+
   <div class="search-route__action">
     <button
       class="btn btn-primary btn-block"
@@ -63,3 +67,54 @@
     <div class="lds-dual-ring"></div>
   </div>
 </div>
+
+<!-- Modal dialogue for unconfirmed route -->
+<ng-template #stagedRouteModal let-modal>
+  <div class="modal-header">
+    <span class="modal-title" ngbAutoFocus id="modal-title">Staged Route</span>
+    <span>{{ this.routeService.getDisplayDateShort(this.dataService.getStagedRoute()) }}</span>
+  </div>
+  <div class="modal-body">
+    <div class="search-route__route-information">
+        <div ngbDropdown placement="right" >
+          <div class="search-route__vehicle-icon" id="dropdownBasic1" ngbDropdownToggle>
+            <app-vehicle-icon [vehicle]="routeService.getVehicleIconString(dataService.getStagedRoute())"></app-vehicle-icon>
+          </div>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <button ngbDropdownItem *ngFor="let vehicle of routeService.getPossibleVehicles(this.dataService.getStagedRoute())" id="vehicle.id" (click)="handleVehicleChoice(vehicle.id)">
+              <app-vehicle-icon [vehicle]="vehicle.type"></app-vehicle-icon>
+              <span class="dropdown-item--text">{{ vehicle.name }}</span>
+            </button>
+          </div>
+      </div>
+      <div class="search-route__route-visualisation">
+        <div>
+          <fa-icon [icon]="iconService.getIcon('circle')"></fa-icon>
+        </div>
+        <div>
+          <fa-icon [icon]="iconService.getIcon('circle')"></fa-icon>
+        </div>
+        <div class="search-route__route-visualisation-line"></div>
+      </div>
+      <div class="search-route__locations">
+        <div class="search-route__nowrap-hidden">
+          <span>{{ routeService.getMainFrom(dataService.getStagedRoute()) }}</span>
+          <span class="search-route__location-secondary">, {{ routeService.getSecondaryFrom(dataService.getStagedRoute()) }}</span>
+        </div>
+        <div class="search-route__nowrap-hidden">
+          <span>{{ routeService.getMainTo(dataService.getStagedRoute()) }}</span>
+          <span class="search-route__location-secondary">, {{ routeService.getSecondaryTo(dataService.getStagedRoute()) }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-outline-secondary" (click)="handleModalButton('details')">Details</button>
+    <button class="btn btn-outline-danger" (click)="handleModalButton('delete')">
+      <fa-icon [icon]="iconService.getIcon('delete')"></fa-icon>
+    </button>
+    <button class="btn btn-outline-primary" (click)="handleModalButton('save')">
+      <fa-icon [icon]="iconService.getIcon('save')"></fa-icon>
+    </button>
+  </div>
+</ng-template>

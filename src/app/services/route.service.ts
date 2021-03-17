@@ -120,6 +120,11 @@ export class RouteService {
     return RouteService.getLocationRest(route.from.name);
   }
 
+  getDisplayDateShort(route: Route): string {
+    const datestring = route.time.split(' ')[0];
+    return new Date(datestring).toLocaleDateString('en-US', { weekday: 'short', day: '2-digit', month: 'short', year: 'numeric' });
+  }
+
   getVehicle(route: Route): Vehicle {
     return this.dataService.getVehicle(route.vehicleId);
   }
@@ -136,5 +141,24 @@ export class RouteService {
     const activeVehicles = this.dataService.getActiveVehicles();
     const validTravelmodes = Object.keys(route.options);
     return activeVehicles.filter(v => validTravelmodes.includes(v.travelmode));
+  }
+
+  isFavRoute(route: Route): Boolean {
+    const favRoutes = this.dataService.getFavRoutes();
+
+    if(favRoutes) {
+      const checkId = route.from.place_id + route.to.place_id;
+      return favRoutes[checkId] !== undefined;
+    } else {
+      return false;
+    }
+  }
+
+  toggleFavState(route: Route): void {
+    if (this.isFavRoute(route)) {
+      this.dataService.deleteFavRoute(route);
+    } else {
+      this.dataService.setFavRoute(route);
+    }
   }
 }

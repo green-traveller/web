@@ -94,4 +94,9 @@ export class PreviousRoutesComponent implements OnInit {
     this.router.navigateByUrl('/');
     this.location.replaceState('/');
   }
+
+  toggleFavState(event: any, route: Route): void {
+    event.stopPropagation();
+    this.routeS.toggleFavState(route);
+  }
 }
