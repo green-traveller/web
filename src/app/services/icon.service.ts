@@ -22,13 +22,13 @@ import {
   faRoute,
   faSave,
   faSearch,
+  faShare,
   faStar,
   faSubway,
   faTrashAlt,
   faUser,
   faUsers,
   faWalking,
-  faShare,
   IconDefinition
 } from '@fortawesome/free-solid-svg-icons';
 import {
