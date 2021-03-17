@@ -1,4 +1,4 @@
-import { AfterContentChecked, AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ChartOptions } from 'chart.js';
 import { DataService } from 'src/app/services/data.service';
 import { formatNumber } from '@angular/common';

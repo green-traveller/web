@@ -63,6 +63,7 @@ export class IconService {
     save: faSave,
     search: faSearch,
     share: faShare,
+    star: faStar,
     statistics: faChartPie,
     tip: faLightbulb,
     train: faSubway,

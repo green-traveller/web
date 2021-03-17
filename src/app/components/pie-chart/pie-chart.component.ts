@@ -16,12 +16,6 @@ export class PieChartComponent implements OnInit {
   exportImage: HTMLImageElement;
 
   @Input() pieChartOptions: ChartOptions = {
-    animation: {
-      duration: 1500,
-      onComplete(animation): void {
-        // this.exportImage = this.getPieChartCanvas().nativeElement.toDataURL('image/png');
-      }
-    },
     responsive: true,
     legend: { position: 'bottom' },
 
@@ -64,8 +58,6 @@ export class PieChartComponent implements OnInit {
   }
 
   // events
-  public chartClicked(e: any): void {
-    // console.log(this.getPieChartCanvas().toDataURL('image/png'));
-  }
+  public chartClicked(e: any): void {}
 
 }
