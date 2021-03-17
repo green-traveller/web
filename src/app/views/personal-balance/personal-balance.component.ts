@@ -8,6 +8,7 @@ import { IconService } from '../../services/icon.service';
 import { KmPieChartComponent } from 'src/app/components/km-pie-chart/km-pie-chart.component';
 import { NgbCarousel, NgbProgressbar } from '@ng-bootstrap/ng-bootstrap';
 import { RouteService } from 'src/app/services/route.service';
+import { Color } from 'ng2-charts';
 
 @Component({
   selector: 'app-personal-balance',
@@ -31,18 +32,21 @@ export class PersonalBalanceComponent implements OnInit {
   @ViewChild( 'co2BarChart' ) co2BarChart: Co2BarChartComponent;
   @ViewChild( 'co2PieChart' ) co2PieChart: Co2PieChartComponent;
   @ViewChild( 'kmPieChart' ) kmPieChart: KmPieChartComponent;
- // @ViewChild( 'pBar' ) pBar: NgbProgressbar;
 
   chartCanvas: HTMLCanvasElement;
 
   // attributes for Progressbar drawing
   colorGreen = '#85bb88';
   colorRed = '#ff6961';
+  canvasHeight = 50;
+  canvasWidth = undefined;
   startPoint = undefined;
   rightPoint = undefined;
   leftPoint = 10;
   topPoint = 10;
   bottomPoint = undefined;
+  switchColor = false;
+  startColor: any;
 
   constructor(private dataService: DataService, private routeService: RouteService, public iconService: IconService) { }
 
@@ -109,140 +113,162 @@ export class PersonalBalanceComponent implements OnInit {
 
   // Canvas Methods
 
-  drawProgressBarSingleColor(width: number, top: number, bottom: number, left: number, right: number, start: number): HTMLCanvasElement {
-    let color = this.colorRed;
-    const cornerRadius = 5;
-    const canvas = document.createElement('canvas');
-    canvas.width = width;
-    canvas.height = 50;
-    const context = canvas.getContext('2d');
-    context.lineWidth = 1;
-
-    if (this.personalGoalBarStatus === 0) { color = this.colorGreen; }
-    context.strokeStyle = color;
-    context.fillStyle = color;
-
-    context.beginPath();
-    context.moveTo(start, top);
-    context.arcTo(right, top, right, bottom, cornerRadius);
-    context.arcTo(right, bottom, left, bottom, cornerRadius);
-    context.arcTo(left, bottom, left, top, cornerRadius);
-    context.arcTo(left, top, right, top, cornerRadius);
-    context.closePath();
-    context.stroke();
-    context.fill();
-
-    return canvas;
-  }
-
-  drawProgressBar(width: number, top: number, bottom: number, left: number, right: number, start: number): HTMLCanvasElement {
-    const cornerRadius = 5;
-    const canvas = document.createElement('canvas');
-    canvas.width = width;
-    canvas.height = 50;
-    const context = canvas.getContext('2d');
-    context.lineWidth = 1;
-
-    context.beginPath();
-    context.strokeStyle = this.colorRed;
-    context.fillStyle = this.colorRed;
-    context.moveTo(start, top);
-    context.arcTo(left, top, left, bottom, cornerRadius);
-    context.arcTo(left, bottom, right, bottom, cornerRadius);
-    context.lineTo(start, bottom);
-    context.closePath();
-    context.stroke();
-    context.fill();
-    context.beginPath();
-    context.strokeStyle = this.colorGreen;
-    context.fillStyle = this.colorGreen;
-    context.moveTo(start, top);
-    context.arcTo(right, top, right, bottom, cornerRadius);
-    context.arcTo(right, bottom, left, bottom, cornerRadius);
-    context.lineTo(start, bottom);
-    context.closePath();
-    context.stroke();
-    context.fill();
-
-    return canvas;
-  }
-
   drawCanvas(width: number): HTMLCanvasElement {
     let canvas = document.createElement('canvas');
     canvas.width = width;
-    canvas.height = 40;
-    this.rightPoint = canvas.width - 10;
-    this.bottomPoint = canvas.height - 10;
+    canvas.height = 50;
 
-    this.startPoint = canvas.width * this.personalGoalBarStatus;
-    if (this.startPoint < 15) { this.startPoint = 15; }
-    if (this.startPoint > (this.rightPoint - 15)) { this.startPoint = this.rightPoint - 15; }
+    this.calculateProgressBarValues(canvas.width, canvas.height);
 
-    if ((this.personalGoalBarStatus > 0) && (this.personalGoalBarStatus < 1)) {
-      canvas = this.drawProgressBar(width, topPoint, bottomPoint, leftPoint, rightPoint, startpoint);
-    } else {
-      canvas = this.drawProgressBarSingleColor(width, topPoint, bottomPoint, leftPoint, rightPoint, canvas.width / 2);
+    canvas = this.drawProgressBarNew();
+
+    return canvas;
+  }
+
+  calculateProgressBarValues(width: number, height: number): void {
+    this.rightPoint = width - 10;
+    this.bottomPoint = height - 10;
+
+    this.startPoint = width * this.personalGoalBarStatus;
+
+    if ((this.startPoint > 15) && (this.startPoint < (this.rightPoint - 15))) {
+      this.switchColor = true;
+      this.startColor = this.colorRed;
     }
+    if (this.startPoint < 15) {
+      this.startPoint = 15;
+      this.startColor = this.colorGreen;
+    }
+    if (this.startPoint > (this.rightPoint - 15)) {
+      this.startPoint = this.rightPoint - 15;
+      this.startColor = this.colorRed;
+    }
+  }
+
+  drawProgressBarNew(): HTMLCanvasElement {
+    const cornerRadius = 3;
+    const canvas = document.createElement('canvas');
+    canvas.width = this.canvasWidth;
+    canvas.height = this.canvasHeight;
+    const context = canvas.getContext('2d');
+
+    context.strokeStyle = this.startColor;
+    context.fillStyle = this.startColor;
+    context.beginPath();
+    context.moveTo(this.startPoint, this.topPoint);
+    context.arcTo(this.leftPoint, this.topPoint, this.leftPoint, this.bottomPoint, cornerRadius);
+    context.arcTo(this.leftPoint, this.bottomPoint, this.rightPoint, this.bottomPoint, cornerRadius);
+    context.lineTo(this.startPoint, this.bottomPoint);
+    context.closePath();
+    context.stroke();
+    context.fill();
+    if ((this.switchColor) && (this.startColor === this.colorGreen)) {
+      context.strokeStyle = this.colorRed;
+      context.fillStyle = this.colorRed;
+    } else {
+      context.strokeStyle = this.colorGreen;
+      context.fillStyle = this.colorGreen;
+    }
+    context.beginPath();
+    context.moveTo(this.startPoint, this.topPoint);
+    context.arcTo(this.rightPoint, this.topPoint, this.rightPoint, this.bottomPoint, cornerRadius);
+    context.arcTo(this.rightPoint, this.bottomPoint, this.leftPoint, this.bottomPoint, cornerRadius);
+    context.lineTo(this.startPoint, this.bottomPoint);
+    context.closePath();
+    context.stroke();
+    context.fill();
+
     return canvas;
   }
 
   setImageDataForActiveChart(chartId: string): HTMLCanvasElement {
     const chart = chartId.substring(10, 11);
+    let chartText: string;
+
     switch (chart) {
       case '0':
         this.chartCanvas = this.getCo2PieChartCanvas();
+        chartText = 'My CO₂ Emissions';
         break;
       case '1':
         this.chartCanvas = this.getKmPieChartCanvas();
+        chartText = 'My Means of Transport';
         break;
       case '2':
         this.chartCanvas = this.getCo2BarChartCanvas();
+        chartText = 'My Emissions Over the Last 6 Months';
         break;
     }
 
+    // create Canvas for drawing
     const exportCanvas = document.createElement('canvas');
     const context = exportCanvas.getContext('2d');
-    exportCanvas.width = this.chartCanvas.width;
-    exportCanvas.height = this.chartCanvas.height + (this.chartCanvas.height * 0.3);
-    context.drawImage(this.drawCanvas(this.chartCanvas.width), 0, exportCanvas.height * 0.12);
+
+    // set size of Canvas for titles, progressbar and chart
+    this.canvasWidth = this.chartCanvas.width;
+    exportCanvas.width = this.canvasWidth;
+    exportCanvas.height = this.chartCanvas.height + (this.chartCanvas.height * 0.5);
+
+    // positioning of titles and progressbar
+    const heightUpperParts = (this.chartCanvas.height * 0.5) / 5;
+    const positionGT = heightUpperParts;
+    const positionPC = heightUpperParts * 2 + heightUpperParts / 2;
+    const positionCO2 = positionPC + heightUpperParts * 2;
+    const positionPB = positionPC + heightUpperParts / 2;
+
+    // fill background
+    context.beginPath();
+    context.rect(0, 0, exportCanvas.width, exportCanvas.height);
+    context.fillStyle = '#204B57';
+    context.fill();
+
+    // draw progressbar and chart on exportCanvas
+    context.drawImage(this.drawCanvas(exportCanvas.width), 0, positionPB);
     context.drawImage(this.chartCanvas, 0, exportCanvas.height - this.chartCanvas.height);
+
+    // add titles to exportCanvas
     context.textAlign = 'center';
+    context.font = 'bold 60px sans-serif';
+    context.fillStyle = '#26C281';
+
+    let text = '\uD83D\uDEB4 \uD83C\uDF33 Green Traveller';
+    context.fillText(text, exportCanvas.width / 2, positionGT);
+
     context.font = 'bold 40px sans-serif';
-    context.fillStyle = 'black';
-    context.lineWidth = 30;
-    let text = 'Green Traveller';
-    context.fillText(text, exportCanvas.width / 2, exportCanvas.height * 0.1);
-    text = 'My CO₂ Emissions';
-    context.fillText(text, exportCanvas.width / 2, exportCanvas.height * 0.2);
+    text = 'My Personal Challenge';
+    context.fillText(text, exportCanvas.width / 2, positionPC);
+    context.fillText(chartText, exportCanvas.width / 2, positionCO2);
+
     return exportCanvas;
   }
+
+  // social media button functionality
 
   onSocialMediaClick(): void {
     const id = this.getActiveCarouselId();
     const canvas = this.setImageDataForActiveChart(id);
     const img = document.createElement('img');
     img.src = canvas.toDataURL('image/png');
-    // console.log(img.src);
     const file = new File([this.b64toBlob(img.src.substring(22))],
       'image.png',
       { type: 'image/png' }
       );
     // @ts-ignore
-    /*if (navigator.canShare) {
+    if (navigator.canShare) {
       navigator.share({
       // @ts-ignore
       files: [file],
       title: '',
       url: ''
       });
-    } else {*/
+    } else {
     this.export(img.src);
-    // }
-    // window.open('www.instagram.com');
+    }
   }
 
-  // tslint:disable-next-line: typedef
-  b64toBlob(b64Data) {
+  // image data conversion for export
+
+  b64toBlob(b64Data: string): Blob {
     const contentType = '';
     const sliceSize = 512;
 
@@ -266,7 +292,7 @@ export class PersonalBalanceComponent implements OnInit {
     return blob;
   }
 
-  export(imageSource): void {
+  export(imageSource: any): void {
     const dataStr = imageSource;
     const exportElement = document.createElement('a');
     exportElement.setAttribute('href', dataStr);
