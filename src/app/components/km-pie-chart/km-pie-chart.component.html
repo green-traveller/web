@@ -1,13 +1,13 @@
 <div class="pie-chart-km">
   <h4>Means of Transport</h4>  
   <h6>Distance in km</h6>
-    <div *ngIf="kmSum > 0; else emptyPieChart">
-      <app-pie-chart [pieChartLabels]="kmPieChartLabels" [pieChartData]="kmPieChartData"
+    <div *ngIf="kmSum > 0; else emptyChart">
+      <app-pie-chart #kmPieChart [pieChartLabels]="kmPieChartLabels" [pieChartData]="kmPieChartData"
         [pieChartColors]="kmPieChartColors" [pieChartOptions]="kmPieChartOptions">
       </app-pie-chart>
     </div>
-    <ng-template #emptyPieChart>
-      <app-pie-chart [pieChartLabels]="emptyPieChartLabels" [pieChartData]="emptyPieChartData"
+    <ng-template #emptyChart>
+      <app-pie-chart #emptyPieChart [pieChartLabels]="emptyPieChartLabels" [pieChartData]="emptyPieChartData"
         [pieChartColors]="emptyPieChartColors" [pieChartOptions]="kmPieChartOptions">
       </app-pie-chart>
     </ng-template>

@@ -1,5 +1,5 @@
 import { formatNumber } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
 import { Colors, Label } from 'ng2-charts';
 
@@ -9,6 +9,8 @@ import { Colors, Label } from 'ng2-charts';
   styleUrls: ['./bar-chart.component.css']
 })
 export class BarChartComponent implements OnInit {
+
+  @ViewChild( 'barChartCanvas' ) barChartCanvas: ElementRef;
 
   barChartType: ChartType = 'bar';
 
@@ -79,6 +81,10 @@ export class BarChartComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  getBarChartCanvas(): HTMLCanvasElement {
+    return this.barChartCanvas.nativeElement;
   }
 
 }
